@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling>=1.20"]
+build-backend = "hatchling.build"
+
+[project]
+name = "CHORD_Sensitivity"
+version = "0.1.0"
+description = "Compute sensitivity of CHORD array to Radio Recombination Lines."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [{ name = "Duncan C-S", email = "you@example.com" }]
+keywords = ["CHORD"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+  "numpy>=1.26",
+]
+
+[project.urls]
+Homepage = "https://github.com/DuncanCSt/CHORD_Sensitivity"
+Issues = "https://github.com/DuncanCSt/CHORD_Sensitivity/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/CHORD_Sensitivity"]
