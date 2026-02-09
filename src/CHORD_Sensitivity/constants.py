@@ -5,6 +5,7 @@ CHORD = {
    'dish_separation_ew': 6.3, # m
    'dish_separation_ns': 8.5, # m
    'dish_diameter': 6.0, # m
+   'efficiency': 0.5, # aperture efficiency
    'latitude': 49.320750,
    'frequencyMin': 300, # MHz
    'frequencyMax': 1500, # MHz
@@ -22,6 +23,7 @@ PATHFINDER = {
     'dish_separation_ew': 6.3, # m
     'dish_separation_ns': 8.5, # m
     'dish_diameter': 6.0, # m
+    'efficiency': 0.5, # aperture efficiency
     'latitude': 49.320750,
     'frequencyMin': 300, # MHz
     'frequencyMax': 1500, # MHz
