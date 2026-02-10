@@ -135,7 +135,8 @@ class Telescope:
             self,
             delta_nu: float,
             central_freq: float | list[float],
-            phi_offset: float | list[float]
+            phi_offset: None | float | list[float] = None,
+            T_background: None | float | list[float] = None
     ) -> float | list[float]:
         """
         Calculate the RMS noise level.
@@ -151,9 +152,10 @@ class Telescope:
             Channel width in Hz.
         central_freq : float | list[float]
             Central observing frequency in Hz.
-        phi_offset : float | list[float]
+        phi_offset : None | float | list[float]
             Angular offset from the pointing center in radians.
-        
+        T_background : None | float | list[float]
+            Sky temperature in K. (System + Background)
         Returns
         -------
         float | list[float]
@@ -167,10 +169,10 @@ class Telescope:
                 raise ValueError("If either central_freq or phi_offset are arrays, they must have the same length.")
     
         params = self.params
-        T_sys = params['Tsys']                  # K
+        T_sys = float(params['Tsys'])           # K
         diameter = params['dish_diameter']      # m
         efficiency = params['efficiency']       # dimensionless
-        dec_deg = params['dec_deg']             # degrees
+        dec_deg = params['latitude']             # degrees
 
         # Number of antennas
         N = params['ndish_ew'] * params['ndish_ns']
@@ -178,11 +180,21 @@ class Telescope:
         # Effective collecting area per dish (m²)
         A_eff = np.pi * (diameter / 2)**2 * efficiency
 
-        # System Equivalent Flux Density (Jy)
-        SEFD = 2 * K_B * T_sys / A_eff  # Jy
-
         # Number of baselines contributing independent noise
         N_baselines = N * (N - 1)
+
+        # Phi offset correction
+        if phi_offset is None:
+            phi_offset = 1.0 if is_scalar else [1.0] * len(central_freq)
+
+        # Get total temperature (system + background)
+        if T_background is None:
+            T = np.array([T_sys]) if is_scalar else np.array([T_sys] * len(central_freq))
+        else:
+            T = np.atleast_1d(T_background)
+
+        # System Equivalent Flux Density (Jy)
+        SEFD = 2 * K_B * T / A_eff  # Jy
 
         p_fwhm = np.atleast_1d(self.P_FWHM(central_freq))  # radians
         d_phi = np.atleast_1d(self.D_phi(phi_offset, central_freq))  # dimensionless
