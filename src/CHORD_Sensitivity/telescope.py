@@ -26,6 +26,10 @@ class Telescope:
             self.params = PATHFINDER
         else:
             raise ValueError("Telescope name not recognized. Choose either 'CHORD' or 'PATHFINDER'.")
+    
+    # def params(self) -> dict:
+    #     """Return the telescope parameters."""
+    #     return self.params
         
     def P_FWHM(self, freq: float | list[float]) -> float | list[float]:
         """
@@ -134,9 +138,10 @@ class Telescope:
     def sigma_rms(
             self,
             delta_nu: float,
-            central_freq: float | list[float],
+            freq: float | list[float],
             phi_offset: None | float | list[float] = None,
-            T_background: None | float | list[float] = None
+            T_background: None | float | list[float] = None,
+            dec_deg: None | float = None
     ) -> float | list[float]:
         """
         Calculate the RMS noise level.
@@ -150,29 +155,31 @@ class Telescope:
         ----------
         delta_nu : float
             Channel width in Hz.
-        central_freq : float | list[float]
-            Central observing frequency in Hz.
+        freq : float | list[float]
+            Observing frequency in Hz.
         phi_offset : None | float | list[float]
             Angular offset from the pointing center in radians.
         T_background : None | float | list[float]
             Sky temperature in K. (System + Background)
+        dec_deg : None | float
+            Declination in degrees. If None, use the telescope's latitude.
         Returns
         -------
         float | list[float]
             RMS noise level in Jy/beam.
         """
-        is_scalar = isinstance(central_freq, (int, float))
+        is_scalar = isinstance(freq, (int, float))
         if not is_scalar:
-            if not isinstance(phi_offset, (list)):
-                raise ValueError("If central_freq is an array, phi_offset must also be an array.")
-            elif len(central_freq) != len(phi_offset):
-                raise ValueError("If either central_freq or phi_offset are arrays, they must have the same length.")
+            if phi_offset and not isinstance(phi_offset, (list)):
+                raise ValueError("If freq is an array, phi_offset must also be an array.")
+            elif phi_offset and len(freq) != len(phi_offset):
+                raise ValueError("If either freq or phi_offset are arrays, they must have the same length.")
     
         params = self.params
         T_sys = float(params['Tsys'])           # K
         diameter = params['dish_diameter']      # m
         efficiency = params['efficiency']       # dimensionless
-        dec_deg = params['latitude']             # degrees
+        dec_deg = dec_deg if dec_deg is not None else params['latitude']
 
         # Number of antennas
         N = params['ndish_ew'] * params['ndish_ns']
@@ -185,19 +192,19 @@ class Telescope:
 
         # Phi offset correction
         if phi_offset is None:
-            phi_offset = 1.0 if is_scalar else [1.0] * len(central_freq)
+            phi_offset = 0.0 if is_scalar else [0.0] * len(freq)
 
         # Get total temperature (system + background)
         if T_background is None:
-            T = np.array([T_sys]) if is_scalar else np.array([T_sys] * len(central_freq))
+            T = np.array([T_sys]) if is_scalar else np.array([T_sys] * len(freq))
         else:
             T = np.atleast_1d(T_background)
 
         # System Equivalent Flux Density (Jy)
         SEFD = 2 * K_B * T / A_eff  # Jy
 
-        p_fwhm = np.atleast_1d(self.P_FWHM(central_freq))  # radians
-        d_phi = np.atleast_1d(self.D_phi(phi_offset, central_freq))  # dimensionless
+        p_fwhm = np.atleast_1d(self.P_FWHM(freq))  # radians
+        d_phi = np.atleast_1d(self.D_phi(phi_offset, freq))  # dimensionless
 
         term1 = SEFD / np.sqrt(2 * delta_nu * N_baselines)
         term2 = np.sqrt((2 * np.sqrt(2 * np.log(2)) * OMEGA * np.cos(np.radians(dec_deg))) /
@@ -205,11 +212,12 @@ class Telescope:
         
         rms = term1 * term2
 
-        return rms[0] if is_scalar else rms.tolist()
+        return float(rms[0]) if is_scalar else rms.tolist()
     
-    def surface_temperature(self, 
-                            sigma_rms: float | list[float],
-                            freq: float | list[float]) -> float | list[float]:
+    def surface_temperature(self,
+                            freq: float | list[float],
+                            sigma_rms: None | float | list[float] = None,
+                            delta_nu: None | float = None) -> float | list[float]:
         """
         Convert RMS noise level to surface temperature sensitivity.
 
@@ -217,8 +225,10 @@ class Telescope:
 
         Parameters
         ----------
-        sigma_rms : float | list[float]
-            RMS noise level in Jy/beam.
+        sigma_rms : None | float | list[float]
+            RMS noise level in Jy/beam. If None, delta_nu must be provided to calculate it.
+        delta_nu : None | float
+            Channel width in Hz. Required if sigma_rms is None.
         freq : float | list[float]
             Observing frequency in Hz.
 
@@ -227,6 +237,11 @@ class Telescope:
         float | list[float]
             Surface temperature sensitivity in K.
         """
+        if sigma_rms is None:
+            if delta_nu is None:
+                raise ValueError("If sigma_rms is not provided, delta_nu must be provided to calculate it.")
+            sigma_rms = self.sigma_rms(delta_nu=delta_nu, freq=freq)
+        
         is_scalar = isinstance(sigma_rms, (int, float))
         freq = convert_freq_to_Hz(freq, self.params)  # Hz
         sigma_array = np.atleast_1d(sigma_rms)  # Jy/beam

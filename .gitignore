@@ -4,3 +4,11 @@ __pycache__/
 *.py[cod]
 .coverage
 htmlcov/
+geo_data/shp/
+geo_data/site
+*.gpkg
+*.qgz
+*.png
+*.jpg
+*.ipynb_checkpoints/
+*.DS_Store
