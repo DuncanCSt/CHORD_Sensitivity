@@ -25,4 +25,4 @@ Homepage = "https://github.com/DuncanCSt/CHORD_Sensitivity"
 Issues = "https://github.com/DuncanCSt/CHORD_Sensitivity/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/CHORD_Sensitivity"]
+packages = ["src/CHORD_Sensitivity", "src/RFI"]
