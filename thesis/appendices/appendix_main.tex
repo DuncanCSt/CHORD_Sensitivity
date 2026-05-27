@@ -1,0 +1,22 @@
+\newpage
+\pagestyle{headings}
+\addtocontents{toc}{%
+\protect\renewcommand*\protect\cftchappresnum{\appendixname~}}
+
+%\appendix 
+%if you have several appendices use the template ubc_2010_spring_doe_jane-appendices.tex
+\begin{appendices}
+\addappheadtotoc %uses the current page number when it makes the entry in the ToC
+\appendixpage %generate a blank Appendix page; 
+%note putting Appendix in the same page as the first appendix is not trivial; best found is https://tex.stackexchange.com/questions/374552/appendices-title-on-first-page-of-appendices-and-not-separate-page but the search option of \xpatchcmd does not match since the appendix chapter headers were likely modified from the default by another loaded package
+
+\addtocontents{toc}{
+\setlength{\cftbeforechapskip}{\cftbeforesecskip}
+\setlength{\cftchapindent}{\cftsecindent}
+\protect\renewcommand{\cftchapfont}{\cftsecfont}
+\protect\renewcommand{\protect\cftchapdotsep}{\cftsecdotsep}
+}
+
+\input{appendices/appendix_example}
+
+\end{appendices}

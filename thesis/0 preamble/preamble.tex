@@ -1,0 +1,154 @@
+\frontmatter                    % Mandatory
+
+% The order of the following components should be preserved.  The order
+% listed here is the order currently required by FoGS.
+\maketitle                      % Mandatory
+
+\makeatletter
+The following individuals certify that they have read, and recommend to the College of Graduate Studies for acceptance, a thesis/dissertation entitled:
+
+\vspace{2ex}
+
+%do NOT put curly braces after \ul to let soul expand by removing braces https://tex.stackexchange.com/questions/496833/package-soul-underline-problem-with-macro-text
+\textsc{\ul\@title}
+
+
+\vspace{1ex}
+
+\noindent submitted by \underline{\sc \@author} in partial fulfilment of the requirements of the degree of \underline{\@degreetitle}
+\makeatother
+
+\newlength{\linespace}
+\setlength{\linespace}{.75cm} %change .75cm to .5cm for smaller space between signatures or 1cm if less people have to sign
+\vspace{2\linespace}\smaller
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UPDATE THE FOLLOWING AS PER YOUR THESIS COMMITTEE
+
+\noindent\underline{Jane Doe, Irving K. Barber Faculty of Science} 
+\\
+\textbf{Supervisor}
+
+\vspace{\linespace}
+
+\noindent\underline{Jane Doe, School of Engineering} 
+\\
+\textbf{Supervisory Committee Member}
+
+\vspace{\linespace}
+
+\noindent\underline{Jane Doe, School of Health \& Exercise Sciences} 
+\\
+\textbf{Supervisory Committee Member}
+
+\vspace{\linespace}
+
+\noindent\underline{Jane Doe, Irving K. Barber Faculty of Science} 
+\\
+\textbf{University Examiner}
+
+\vspace{\linespace}
+
+\noindent\underline{Jane Doe, Simon Fraser University} 
+\\
+\textbf{External Examiner}
+
+\vspace{2\linespace}
+
+\noindent\textbf{Additional Committee Members include:}
+
+\vspace{\linespace}
+
+\noindent\underline{Jane Doe, Irving K. Barber Faculty of Science} 
+\\
+\textbf{Supervisory Committee Member}
+
+\vspace{\linespace}
+
+\noindent\underline{Jane Doe, Irving K. Barber Faculty of Science} 
+\\
+\textbf{Supervisory Committee Member}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END COMMITTEE PAGE
+\normalsize
+
+\newpage
+
+
+\begin{abstract}                % Mandatory -  maximum 350 words
+The abstract:
+\begin{itemize}
+    \item Is a concise and accurate summary of the thesis.
+    \item Should state the problem, the methods of investigation, and the general conclusions.
+    \item Must not contain tables, graphs or illustrations.
+    \item Must not exceed 350 words.
+    \item Should contain keywords that will facilitate automated information retrieval.
+    \item Must be the only abstract in the thesis.
+\end{itemize}
+
+%This is a sample thesis based on the \texttt{ubcthesis.cls} template from Michael Forbes. The thesis includes the additional style file \texttt{ubcostyle.sty} in accordance to the official standards for the UBCO College of Graduate Studies. This sample thesis together with the style files and templates produces a document that is officially accepted by the UBCO College of Graduate Studies. 
+
+%If you need a package, look into ubcostyle.sty to see if it is not already loaded there. 
+%See the file README.txt for additional instructions to produce the bibliography, index, and glossary automatically.
+\end{abstract}
+
+\renewcommand{\abstractname}{Lay Summary}
+
+\begin{abstract}
+Effective January 2018, all theses and dissertations must include a lay summary. The lay summary explains the key goals and contributions of the research/scholarly work in terms that can be understood by the general public. It does not use technical terms and discipline-specific language. It must not exceed 150 words in length.
+\end{abstract}
+
+\chapter{Preface}
+The Preface must include only the following:
+\begin{itemize}
+    \item A statement indicating the relative contributions of all collaborators and co-authors (including supervisors and members of the supervisory committee) of publications or material submitted for publication, emphasizing details of the student’s contribution and stating the proportion of research and writing conducted by the student. The statement must include details about the student’s contribution to the following:
+    \begin{itemize}
+        \item Identification and design of the research.
+        \item Contributions to the various parts of the research.
+        \item Analysis of the research data, if applicable.
+        \item Preparation of manuscripts, if any.
+        \item If the student was the sole contributor to all work involved in the thesis or dissertation and in the writing of the thesis or dissertation, a statement should be included to that effect.
+    \end{itemize}
+    \item A concise description of all use of generative artificial intelligence (AI)  in the research described, the drafting of, and the preparation of the thesis or dissertation.  If generative AI was not used in any way, a clear statement that generative AI was not used for any aspects of this work must be included. For a clear description of what constitutes generative AI, visit \url{https://genai.ubc.ca/}
+    \item A list of any publications or submissions arising from work presented in the thesis/dissertation including the title of the article and name of the publisher (only if the article has been accepted or published), and the chapter(s) of the thesis/dissertation in which the work is located.
+    \item The name of the particular UBC Research Ethics Board, and the Certificate Number(s) of the Ethics Certificate(s) obtained, if ethics approval was required for the research.
+    \item If copyrighted materials are included in the thesis/dissertation, they need to be documented here. Please check the requirements in the “Copyright” section below.
+\end{itemize}
+
+\newpage
+\phantomsection \label{tableofcontent}%set anchor at right location
+\addcontentsline{toc}{chapter}{\contentsname}
+\tableofcontents                % Mandatory: generate toc
+\newpage 
+\phantomsection \label{listoftab}%set anchor at right location
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables                   % Mandatory if thesis has tables
+\newpage
+\phantomsection \label{listoffig}%set anchor at right location
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures                  % Mandatory if thesis has figures
+
+
+\chapter{Acknowledgements}      % Optional
+In this section you can:
+\begin{itemize}
+    \item Acknowledge the extent to which assistance has been given by members of staff, fellow students, data technicians, editors, and/or others.
+    \item Recognize the supervision and advice given by your supervisor and committee members.
+    \item Acknowledge colleagues with whom you have written journal articles.
+\end{itemize}
+
+\chapter{Dedication} % Optional
+The dedication is usually quite short, and is a personal rather than
+an academic recognition. The dedication is usually quite short, and is a personal rather than academic recognition. You can use any font or language you wish for the dedication page.
+
+The \emph{Dedication} does not have to be
+titled, but it must appear in the table of contents.  If you want to
+skip the chapter title but still enter it into the Table of Contents,
+use this command \verb|\chapter[Dedication]{}|.
+
+
+
+% Any other unusual prefactory material should come here before the
+% main body.
+
+% Now regular page numbering begins.
+\mainmatter

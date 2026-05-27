@@ -1,0 +1,191 @@
+% Chapters are the next main unit.
+\chapter{Introduction}
+The thesis must clearly state its theme, hypotheses and/or goals (sometimes called “the research question(s)”), and provide sufficient background information to enable a non-specialist scholar to understand them. It must contain a thorough review of relevant literature, perhaps in a separate chapter.
+
+Note: The thesis must only contain one section titled “Introduction”. (Please see an exemption for published material in the “Including Published Material in a Thesis or Dissertation section below). 
+
+For more detail on the structure, see \url{https://gradstudies.ok.ubc.ca/academics/thesis-and-dissertation/preparation/}
+
+This sample thesis discusses changes from the sample thesis of Michael Forbes, that make the thesis compliant with UBCO College of Graduate Studies standards. If you need more information about the template and LaTeX, please check out the sample thesis of Michael Forbes at
+
+\href{http://alum.mit.edu/www/mforbes/projects/ubcthesis/}{http://alum.mit.edu/www/mforbes/projects/ubcthesis/}.
+
+%Include citations in your thesis as you write:
+\cite{MR2848848,MR2461448,MR2834159,infconv,convmono,MR2668638,Bauschke:2007-PA02,proxbas}
+
+\section{Packages}
+There are several packages included in \texttt{ubcostyle.sty}. So before you add a new package, check first if it is already included there.
+
+\section{Glossary}
+You need to provide a glossary of notation. The ubcostyle file uses the package \texttt{glossaries}. Please read the documentation for this package.
+
+In short, you need to define glossary entries with a keyword at the beginning of the document. You can use the \texttt{glsadd} with the keyword to add the corresponding page number to the glossary, where the glsadd command appears. In general, only use this at the place where a symbol or notation is introduced the first time. Sorting can be done with the sort keyword. You can use subgroups (like number sets, operator families, etc.). However, within a group, sorting should be according to appearance in the document.
+
+Once you have all your entries defined, compile your LaTex document. After that, open a command line terminal and \texttt{cd} into the directory of your thesis. If your thesis file name is \texttt{ubc\_2010\_spring\_doe\_jane.tex} (which is standard file name required by UBC circle when uploading the thesis), then type
+\texttt{makeglossaries ubc\_2010\_spring\_doe\_jane}\\
+and compile your document again. The glossary should be there.
+
+\section{Epigraph}
+If you want to add an epigraph to a chapter (epigraph in the sense of a literary inscription, not a function epigraph), you can use the command \texttt{epigraph} after the chapter. Check out the documentation of the \texttt{epigraph} package for more information.
+
+The following are examples of how to incorporate graphics into your thesis.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{figure}
+    \caption[Sample figure.]{\label{fig:happy} This is a sample figure
+      Note that we have
+      used the optional argument for the caption command so that only
+      a short version of this caption occurs in the list of figures.}
+  \end{center}
+\end{figure}
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{figure}
+    \caption{\label{fig:happy2} This is the same sample figure with still
+			a long caption but this time we did not use a short caption command
+			in the table of figures.}
+  \end{center}
+\end{figure}
+
+You should really put text in between figures so LaTeX has more flexibility to place the figure at the appropriate location.
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=150px]{figure} % Replace with your figure
+		\caption{Figure on the left side is identical to the one on the right.}
+		\label{fig:ex-ppa-l1-linf-1}
+	\end{subfigure}
+	\hfill % Adds horizontal space between subfigures
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=150px]{figure.pdf} % Replace with your figure.pdf
+		\caption{Figure on the right side is identical to the one on the left.}
+		\label{fig:ex-ppa-l1-linf-2}
+	\end{subfigure}
+	\caption{An example of putting two figures side by side using the subcaption package.}
+	\label{ref:ex-ppa-l1-linf}
+\end{figure}
+
+
+\begin{figure}%
+\caption{Another Figure}%
+\end{figure}
+
+\begin{figure}%
+\caption{Another Figure with a very long title to check the alignment in the lof}%
+\end{figure}
+
+\begin{figure}%
+\caption{Another Figure}%
+\end{figure}
+
+\begin{figure}%
+\caption{Another Figure}%
+\end{figure}
+
+\begin{figure}%
+\caption{Another Figure}%
+\end{figure}
+
+\begin{figure}%
+\caption{Another Figure}%
+\end{figure}
+
+\begin{figure}%
+\caption{Another Figure}%
+\end{figure}
+
+\begin{table}
+\caption{Short table title}
+\end{table}
+\begin{table}
+\caption{Short table title}
+\end{table}
+\begin{table}
+\caption{Long table title that wraps around several lines and goes on and on and on and on and on}
+\end{table}
+\begin{table}
+\caption{Short table title}
+\end{table}
+\begin{table}
+\caption{Short table title}
+\end{table}
+\begin{table}
+\caption{Short table title}
+\end{table}
+\begin{table}
+\caption{Short table title}
+\end{table}
+\begin{table}
+\caption{Short table title}
+\end{table}
+
+
+\chapter{Sample Content Using Mathematical Notations}
+
+\section{Facts and theorems}
+If we use a well established fact or theorem, we state it with a citation in the paragraph title of the fact or theorem. The following is from a well known textbook.\footnote{Note that in this definition, we use the \texttt{glsadd} command for the newly used symbols.}
+
+\begin{fact}\cite[Theorem~IV.2.4.2]{Hiriart-Urruty:1993-ConvexAnalysis}\label{def:marginalfunc}
+Define the \emph{marginal function} $\gamma$ associated with $g:\R^n\times\R^m\rightarrow \R\cup
+\{+\infty\}$ by $z\mapsto \gamma(z):=\inf_x
+g(x,z)$. If $g$ is a proper convex function and is bounded below on the set  $\R^n \times \{z\}$ for all $z$, then $\gamma$ is convex.
+\end{fact}
+
+\section{Propositions and lemmas}
+Here is a lemma followed by its proof.
+\[
+D =\left\{ (x,\lambda)\in \R^d \times \R^+ : \frac{x}{\lambda} \in C\right\}.
+\]
+
+
+\begin{lemma}
+Assume $C$ is a nonempty closed convex set. Then the set $D$ is a nonempty closed convex cone.
+\end{lemma}
+
+\begin{proof}
+The fact that $D$ is nonempty and closed follows from $C$ being non\-empty and closed. One can check directly that $D$ is a cone....
+
+Hence $D$ is convex.
+\end{proof}
+Make sure that the qed symbol is always on the last line of the proof. If the last line is an equation, you can enforce the qed on the same line with the \texttt{qedhere} command.
+
+For citations, please use BibTex. A sample article to verify formatting and style is \cite{Bauschke:2007-PA02}. Use the bibliography style \texttt{ubco}, which is basic \texttt{alphaurl} style with inline links enabled. Please compile multiple times when generating the references. The last entry in a reference are the back references to the pages with the citation. They need an additional compilation, once the bibtex entries are generated.
+
+Note that the bibliography style is discipline dependent so feel free to use the style adopted by your discipline, for example siam for mathematics.
+
+\chapter{Landscape Mode}
+The landscape mode allows you to rotate a page through 90 degrees.  It
+is generally not a good idea to make the chapter heading landscape,
+but it can be useful for long tables etc.
+
+\begin{landscape}
+  This text should appear rotated, allowing for formatting of very
+  wide tables etc.  Note that this might only work after you convert
+  the \texttt{dvi} file to a postscript (\texttt{ps}) or \texttt{pdf}
+  file using \texttt{dvips} or \texttt{dvipdf} etc.
+\end{landscape}
+
+\chapter{Conclusion}
+Here comes the conclusion.
+\begin{table}[tbph]
+\centering
+\caption{A publication quality table. Very very very very very very very very very very long title.
+\label{table:food1}}
+\begin{tabular}{@{}llr@{}} \toprule 
+\multicolumn{2}{c}{Item} \\ \cmidrule(r){1-2} 
+Animal & Description & Price (\$)\\ \midrule 
+Gnat & per gram & 13.65 \\ 
+& each & 0.01 \\ 
+Gnu & stuffed & 92.50 \\ 
+Emu & stuffed & 33.33 \\ 
+Armadillo & frozen & 8.99 \\ \bottomrule 
+\end{tabular}
+\end{table}
+
+\newpage
+Your conclusion can go on for several pages.

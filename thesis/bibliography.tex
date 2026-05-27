@@ -1,0 +1,15 @@
+% This file is setup to use a bibtex file sample.bib and uses the
+% plain style.  Other styles may be used depending on the conventions
+% of your field of study.
+%
+% Note: the bibliography must come before the appendices.
+
+
+%change heading ``Chapter 5 Bibliography''->''Bibliography''
+\newpage %newpage needed otherwise pagestyle applied to previous chapter. Does not actually create a new page
+\pagestyle{fancy}\chead{Bibliography}\rhead{}\cfoot{}\rfoot{\thepage}
+
+%Bibliography style is discipline dependent. Mathematic student can use e.g. SIAM
+\bibliographystyle{ubco}
+%\bibliographystyle{siam}
+\bibliography{bibliography}%name of your .bib file

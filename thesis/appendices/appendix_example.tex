@@ -1,0 +1,21 @@
+\chapter{Tables}
+Here you can have additional tables. Table captions are always on top.
+
+In order to use publication quality tables, one should use the guidelines in \cite{Fear:2005manual}. In short, do not use vertical rules or double rules, units in the column heading (not in the body of the table), precede decimals with a digit, and do not use ditto signs. Table \ref{table:food} is according to the guidelines. 
+
+For tables, the caption goes on top, for figures, the caption goes on the bottom. If possible, always position tables and figures at the top of a page.\footnote{In this case, the chapter heading prevents the table from being at the top.} Use the option \verb|tbph| for the placement.
+
+\begin{table}[tbph]
+\centering
+\caption{A publication quality table. Very very very very very very very very very very long title.
+\label{table:food}}
+\begin{tabular}{@{}llr@{}} \toprule 
+\multicolumn{2}{c}{Item} \\ \cmidrule(r){1-2} 
+Animal & Description & Price (\$)\\ \midrule 
+Gnat & per gram & 13.65 \\ 
+& each & 0.01 \\ 
+Gnu & stuffed & 92.50 \\ 
+Emu & stuffed & 33.33 \\ 
+Armadillo & frozen & 8.99 \\ \bottomrule 
+\end{tabular}
+\end{table}

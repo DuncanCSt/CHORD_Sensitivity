@@ -1,0 +1,142 @@
+% Formatting
+% ==========
+
+\renewcommand\thepart         {\Roman{part}}
+\renewcommand\thechapter      {\arabic{chapter}}
+\renewcommand\thesection      {\thechapter.\arabic{section}}
+\renewcommand\thesubsection   {\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\renewcommand\theparagraph    {\thesubsubsection.\arabic{paragraph}}
+\renewcommand\thesubparagraph {\theparagraph.\arabic{subparagraph}}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+
+% Packages
+% ========
+\usepackage{fancyhdr}
+\addtolength{\headheight}{1.6pt}
+
+% General LaTex handling
+% ----------------------
+% extend memory and register space
+\usepackage{etex}
+% Better error messages
+\usepackage{checkend}
+
+% Bibliography and citations
+% --------------------------
+\usepackage[numbers,sort&compress]{natbib}
+
+% Document structure and layout
+% -----------------------------
+\usepackage{afterpage}
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{psfrag}
+\usepackage{appendix}
+\usepackage{indentfirst} 
+
+% Graphics and figures
+% --------------------
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+% Table handling
+% --------------
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{xtab}
+\usepackage{rotating}
+
+% Formatting toc, lof, lot
+% -------------------------
+\usepackage{calc} %provides \settowidth{} and \widthof{}
+\usepackage{tocloft}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+\renewcommand{\cftchappresnum}{\chaptername\space}
+\settowidth{\cftchapnumwidth}{\widthof{\appendixname 99:~}}
+\renewcommand{\cftchapaftersnum}{:\space}
+
+\renewcommand\cfttabpresnum{Table }
+\settowidth{\cfttabnumwidth}{\widthof{\cfttabpresnum 99.99 }}
+
+\renewcommand{\cftfigpresnum}{Figure }%For List of Figures to say Figure X.X
+\settowidth{\cftfignumwidth}{\widthof{\cftfigpresnum 99.99 }}
+
+% Ease putting Appendix in singular/plural
+% --------------------------------------------------
+\renewcommand{\appendixtocname}{\appendixname}
+\renewcommand{\appendixpagename}{\appendixname}
+
+% Quotations on chapters, if desired
+% ----------------------------------
+\usepackage{epigraph}
+
+% Mathematics
+% -----------
+% AMS macros
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{amsfonts}
+% draws diagonal lines through arguments
+%\usepackage{cancel}
+% customize theorem styles
+%\usepackage{theorem}
+
+% Computer science
+% ----------------
+%\usepackage{listings}
+\usepackage[lined,ruled]{algorithm2e}
+
+% Hyperlinks
+% ----------
+\usepackage[bookmarks,bookmarksnumbered,%
+    %citebordercolor={0.8 0.8 0.8},filebordercolor={0.8 0.8 0.8},%
+    %linkbordercolor={0.8 0.8 0.8},pagebordercolor={0.8 0.8 0.8},%
+    %urlbordercolor={0.8 0.8 0.8},%
+    citebordercolor={0.7 1 0.7},
+    linkbordercolor={0.7 0.7 1},
+    %pagebordercolor={1 0.7 0.7},
+	pdfborder={0 0 0},%remove boxes around links
+	colorlinks=false,
+    pagebackref,linktocpage%
+    ]{hyperref}
+%%% The following change how the the back-references text is typeset in a
+%%% bibliography when `backref' or `pagebackref' are used
+\usepackage{color}
+\definecolor{greytext}{gray}{0.5}
+\renewcommand\backrefpagesname{\(\rightarrow\) pages}
+\renewcommand\backref{\textcolor{greytext} \backrefpagesname\ }
+
+% Permanent style changes
+% =======================
+
+% change bullets for lists
+\renewcommand{\labelitemi}{$-$}
+% addition to the booktabs package
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+\renewcommand{\descriptionlabel}[1]%
+         {\hspace{\labelsep}#1}
+
+\allowdisplaybreaks[1]
+
+% Theorems, Definitions, Propositions
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%allows underline with \ul{} to be split along multiple lines contrary to \underline{}
+\usepackage{soul}

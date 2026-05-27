@@ -1,0 +1,53 @@
+\documentclass[msc,oneside]{ubcthesis}%msc, phd, masc, ma, or meng
+
+% ================================================================================
+% CHANGE THE FOLLOWING ACCORDING TO YOUR PROGRAM/THESIS
+% ================================================================================
+\institution{The University Of British Columbia}
+\faculty{The College of Graduate Studies}
+\institutionaddress{Okanagan}
+
+% For an Honours thesis, use \documentclasss[msc,oneside]{ubcthesis} above and
+% uncomment and modify the next line:
+%\degreetitle{B.Sc. Computer Science Honours}
+
+\title{Sample Thesis Template for UBC Okanagan graduate students (mostly) in computer science and mathematics}
+%\subtitle{With a Subtitle}
+\author{Jane Mary Doe} % The name needs to be exactly the same as on the diploma i.e. (Name from SISC)
+\copyrightyear{2010}
+\submitdate{April 2010} % date of approved thesis
+\program{Computer Science}%or Mathematics, or Interdisciplinary Studies
+\previousdegree{B.Sc. Hons., The University of British Columbia, 2008}
+\previousdegree{M.Sc., The University of British Columbia, 2010}
+
+% ================================================================================
+
+\usepackage{ubcostyle} %loads packages
+
+
+% ===================================================================
+% CHANGE THE FOLLOWING COMMANDS ACCORDING TO YOUR NEEDS
+% ===================================================================
+\newcommand{\R}{\mathbb{R}}   %real number
+\newcommand{\Z}{\mathbb{Z}}   %integers
+\newcommand{\C}{\mathbb{C}}   %complex numbers
+
+\newcommand{\dom}{\operatorname{dom}}
+\providecommand{\TT}[1]{\ensuremath{\Theta\left(#1\right)}} % big-Theta
+\providecommand{\OO}[1]{\ensuremath{\mathcal{O}\left(#1\right)}} % big-Oh
+% ===================================================================
+
+%Uncomment the next line if there are more than one appendix
+%\renewcommand*\appendixname{Appendices}
+
+\begin{document}
+
+% \include{0 preamble/preamble}
+% \include{1 Background/background_main}
+\include{2 Analysis/analysis_main}
+
+\include{bibliography}
+% \include{appendices/appendix_main}
+
+\end{document}
+\endinput
