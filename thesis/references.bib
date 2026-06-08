@@ -1,0 +1,888 @@
+
+@article{nita_statistics_2010,
+	title = {Statistics of the {Spectral} {Kurtosis} {Estimator}},
+	volume = {122},
+	issn = {1538-3873},
+	url = {https://iopscience.iop.org/article/10.1086/652409},
+	doi = {10.1086/652409},
+	abstract = {Statistics of the Spectral Kurtosis Estimator, Nita, Gelu M., Gary, Dale E.},
+	language = {en},
+	number = {891},
+	urldate = {2026-06-08},
+	journal = {Publications of the Astronomical Society of the Pacific},
+	publisher = {IOP Publishing},
+	author = {Nita, Gelu M. and Gary, Dale E.},
+	month = apr,
+	year = {2010},
+	pages = {595},
+}
+
+@misc{bruce_wideband_2026,
+	title = {Wideband {RFI} {Monitor} {Requirements}, {Design}, and {Commissioning} at {DRAO}},
+	url = {http://arxiv.org/abs/2605.08479},
+	doi = {10.48550/arXiv.2605.08479},
+	abstract = {In this paper, we introduce the radio frequency interference monitor deployed at the Dominion Radio Astrophysical Observatory. It provides 2 GHz of instantaneous bandwidth, supporting channel bandwidths as fine as {\textasciitilde}100 Hz for 1 s integrations, or integration times as low as {\textasciitilde}50 ms for the standard 3.33 kHz channel bandwidth. After operating as a prototype instrument for several years, the monitor was commissioned to improve the calibration method, analog section temperature, and gain stability. It now operates both as a transient detector and as a long-term radio environment characterization tool. We introduce novel applications for the monitor and derive a new method for calculating the effect of gain drift on integrated data.},
+	urldate = {2026-06-08},
+	publisher = {arXiv},
+	author = {Bruce, Nicholas and Baard, Charl and Harrison, Stephen and Islam, Mohammad and Otto, Abraham J. and Lagoy, Dustin and Messing, Robert and Robert, Benoit and Robishaw, Timothy and Driessen, Peter F.},
+	month = may,
+	year = {2026},
+	note = {arXiv:2605.08479 [astro-ph.IM]},
+	keywords = {Astrophysics - Instrumentation and Methods for Astrophysics},
+}
+
+@misc{thommen_closed-form_2021,
+	title = {A {Closed}-{Form} {Approximation} to the {Conjugate} {Prior} of the {Dirichlet} and {Beta} {Distributions}},
+	url = {http://arxiv.org/abs/2107.03183},
+	doi = {10.48550/arXiv.2107.03183},
+	abstract = {We derive the conjugate prior of the Dirichlet and beta distributions and explore it with numerical examples to gain an intuitive understanding of the distribution itself, its hyperparameters, and conditions concerning its convergence. Due to the prior's intractability, we proceed to define and analyze a closed-form approximation. Finally, we provide an algorithm implementing this approximation that enables fully tractable Bayesian conjugate treatment of Dirichlet and beta likelihoods without the need for Monte Carlo simulations.},
+	urldate = {2026-05-04},
+	publisher = {arXiv},
+	author = {Thommen, Kaspar},
+	month = jul,
+	year = {2021},
+	note = {arXiv:2107.03183 [stat]},
+	keywords = {Computer Science - Machine Learning, Mathematics - Statistics Theory, Statistics - Machine Learning},
+}
+
+@article{andreoli_conjugate_nodate,
+	title = {A conjugate prior for the {Dirichlet} distribution},
+	abstract = {This note investigates a conjugate class for the Dirichlet distribution class in the exponential family.},
+	language = {en},
+	author = {Andreoli, Jean-Marc and Europe, Naverlabs},
+}
+
+@article{lu_predicting_2023,
+	title = {Predicting {Label} {Distribution} {From} {Tie}-{Allowed} {Multi}-{Label} {Ranking}},
+	volume = {45},
+	issn = {1939-3539},
+	url = {https://ieeexplore.ieee.org/document/10198360},
+	doi = {10.1109/TPAMI.2023.3300310},
+	abstract = {Label distribution offers more information about label polysemy than logical label. There are presently two approaches to obtaining label distributions: LDL (label distribution learning) and LE (label enhancement). In LDL, experts must annotate training instances with label distributions, and a predictive function is trained on this training set to obtain label distributions. In LE, experts must annotate instances with logical labels, and label distributions are recovered from them. However, LDL is limited by expensive annotations, and LE has no performance guarantee. Therefore, we investigate how to predict label distribution from TMLR (tie-allowed multi-label ranking) which is a compromise on annotation cost but has good performance guarantees. On the one hand, we theoretically dissect the relationship between TMLR and label distribution. We define EAE (expected approximation error) to quantify the quality of an annotation, provide EAE bounds for TMLR, and derive the optimal range of label distributions corresponding to a given TMLR annotation. On the other hand, we propose a framework for predicting label distribution from TMLR via conditional Dirichlet mixtures. This framework blends the procedures of recovering and learning label distributions end-to-end and allows us to effortlessly encode our knowledge by a semi-adaptive scoring function. Extensive experiments validate our proposal.},
+	number = {12},
+	urldate = {2026-05-01},
+	journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+	author = {Lu, Yunan and Li, Weiwei and Li, Huaxiong and Jia, Xiuyi},
+	month = dec,
+	year = {2023},
+	keywords = {Annotations, Correlation, Costs, Label distribution prediction, Predictive models, Random access memory, Task analysis, Training, label enhancement, learning with ambiguity},
+	pages = {15364--15379},
+}
+
+@article{wang_learning_2026,
+	title = {Learning {Label} {Distribution} with {Dirichlet} {Process} {Mixture} {Model}},
+	volume = {40},
+	copyright = {Copyright (c) 2026 Association for the Advancement of Artificial Intelligence},
+	issn = {2374-3468},
+	url = {https://ojs.aaai.org/index.php/AAAI/article/view/39846},
+	doi = {10.1609/aaai.v40i31.39846},
+	abstract = {Label Distribution Learning (LDL) is an effective machine learning paradigm for addressing label ambiguity, where each sample is annotated with a distribution that conveys rich semantic information. However, during the actual annotation process of label distributions, annotators often exhibit divergent labeling preferences for the same sample. Most existing LDL methods overlook this heterogeneity, assuming that the observed label distribution originates from a single labeling pattern. Such an assumption limits their capacity to manage inter-annotator disagreement and constrains the generalization of the resulting models. To address this issue, we propose, for the first time, a Dirichlet process mixture model (DPMM)-based framework for LDL. This framework leverages nonparametric Bayesian methods to adaptively uncover diverse latent labeling patterns from the data and to accurately model annotator heterogeneity. Specifically, the ground-truth label distribution of each sample is modeled as a weighted mixture of multiple latent components, where a feature-conditioned gating mechanism adaptively controls the contribution of each component. Experimental results demonstrate that the proposed model consistently achieves competitive performance on several widely-used benchmark datasets.},
+	language = {en},
+	number = {31},
+	urldate = {2026-04-30},
+	journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+	author = {Wang, Minglong and Li, Weiwei and Lu, Yunan and Jia, Xiuyi},
+	month = mar,
+	year = {2026},
+	pages = {26398--26406},
+}
+
+@inproceedings{lu_predicting_2022,
+	address = {Red Hook, NY, USA},
+	series = {{NIPS} '22},
+	title = {Predicting label distribution from multi-label ranking},
+	isbn = {978-1-7138-7108-8},
+	abstract = {Label distribution can provide richer information about label polysemy than logical labels in multi-label learning. There are currently two strategies including LDL (label distribution learning) and LE (label enhancement) to predict label distributions. LDL requires experts to annotate instances with label distributions and learn a predictive mapping on such a training set. LE requires experts to annotate instances with logical labels and generates label distributions from them. However, LDL requires costly annotation, and the performance of the LE is unstable. In this paper, we study the problem of predicting label distribution from multi-label ranking which is a compromise w.r.t. annotation cost but has good guarantees for performance. On the one hand, we theoretically investigate the relation between multi-label ranking and label distribution. We define the notion of EAE (expected approximation error) to quantify the quality of an annotation, give the bounds of EAE for multi-label ranking, and derive the optimal range of label distribution corresponding to a particular multi-label ranking. On the other hand, we propose a framework of label distribution predicting from multi-label ranking via conditional Dirichlet mixtures. This framework integrates the processes of recovering and learning label distributions end-to-end and allows us to easily encode our knowledge about current tasks by a scoring function. Finally, we implement extensive experiments to validate our proposal.},
+	urldate = {2026-04-30},
+	booktitle = {Proceedings of the 36th {International} {Conference} on {Neural} {Information} {Processing} {Systems}},
+	publisher = {Curran Associates Inc.},
+	author = {Lu, Yunan and Jia, Xiuyi},
+	month = nov,
+	year = {2022},
+	pages = {36931--36943},
+}
+
+@inproceedings{li_approximately_2025,
+	title = {Approximately {Correct} {Label} {Distribution} {Learning}},
+	url = {https://openreview.net/forum?id=6BHa4AJVSM},
+	abstract = {Label distribution learning (LDL) is a powerful learning paradigm that emulates label polysemy by assigning label distributions over the label space. However, existing LDL evaluation metrics struggle to capture meaningful performance differences due to their insensitivity to subtle distributional changes, and existing LDL learning objectives often exhibit biases by disproportionately emphasizing a small subset of samples with extreme predictions. As a result, the LDL metrics lose their discriminability, and the LDL objectives are also at risk of overfitting. In this paper, we propose DeltaLDL, a percentage of predictions that are approximately correct within the context of LDL, as a solution to the above problems. DeltaLDL can serve as a novel evaluation metric, which is parameter-free and reflects more on real performance improvements. DeltaLDL can also serve as a novel learning objective, which is differentiable and encourages most samples to be predicted as approximately correct, thereby mitigating overfitting. Our theoretical analysis and empirical results demonstrate the effectiveness of the proposed solution.},
+	language = {en},
+	urldate = {2026-04-30},
+	author = {Li, Weiwei and Wu, Haitao and Lu, Yunan and Jia, Xiuyi},
+	month = jun,
+	year = {2025},
+}
+
+@inproceedings{wu_divide_2025,
+	title = {Divide and {Conquer}: {Learning} {Label} {Distribution} with {Subtasks}},
+	shorttitle = {Divide and {Conquer}},
+	url = {https://openreview.net/forum?id=i2N7gCWcQG},
+	abstract = {Label distribution learning (LDL) is a novel learning paradigm that emulates label polysemy by assigning label distributions over the label space. However, recent LDL work seems to exhibit a notable contradiction: 1) existing LDL methods employ auxiliary tasks to enhance performance, which narrows their focus to specific applications, thereby lacking generalizability; 2) conversely, LDL methods without auxiliary tasks rely on losses tailored solely to the primary task, lacking beneficial data to guide the learning process. In this paper, we propose S-LDL, a novel and minimalist solution that generates subtask label distributions, i.e., a form of extra supervised information, to reconcile the above contradiction. S-LDL encompasses two key aspects: 1) an algorithm capable of generating subtasks without any prior/expert knowledge; and 2) a plug-andplay framework seamlessly compatible with existing LDL methods, and even adaptable to derivative tasks of LDL. Our analysis and experiments demonstrate that S-LDL is effective and efficient. To the best of our knowledge, this paper represents the first endeavor to address LDL via subtasks.},
+	language = {en},
+	urldate = {2026-04-30},
+	author = {Wu, Haitao and Li, Weiwei and Jia, Xiuyi},
+	month = jun,
+	year = {2025},
+}
+
+@inproceedings{wang_classification_2019,
+	title = {Classification with {Label} {Distribution} {Learning}.},
+	volume = {1},
+	url = {https://palm.seu.edu.cn/xgeng/files/ijcai19a.pdf},
+	urldate = {2026-04-30},
+	booktitle = {{IJCAI}},
+	author = {Wang, Jing and Geng, Xin},
+	year = {2019},
+	pages = {2},
+}
+
+@inproceedings{wang_classification_2019-1,
+	address = {Macao, China},
+	title = {Classification with {Label} {Distribution} {Learning}},
+	isbn = {978-0-9992411-4-1},
+	url = {https://www.ijcai.org/proceedings/2019/515},
+	doi = {10.24963/ijcai.2019/515},
+	abstract = {Label Distribution Learning (LDL) is a novel learning paradigm, aim of which is to minimize the distance between the model output and the groundtruth label distribution. We notice that, in real-word applications, the learned label distribution model is generally treated as a classiﬁcation model, with the label corresponding to the highest model output as the predicted label, which unfortunately prompts an inconsistency between the training phrase and the test phrase. To solve the inconsistency, we propose in this paper a new Label Distribution Learning algorithm for Classiﬁcation (LDL4C). Firstly, instead of KL-divergence, absolute loss is applied as the measure for LDL4C. Secondly, samples are reweighted with information entropy. Thirdly, large margin classiﬁer is adapted to boost discrimination precision. We then reveal that theoretically LDL4C seeks a balance between generalization and discrimination. Finally, we compare LDL4C with existing LDL algorithms on 17 real-word datasets, and experimental results demonstrate the effectiveness of LDL4C in classiﬁcation.},
+	language = {en},
+	urldate = {2026-04-30},
+	booktitle = {Proceedings of the {Twenty}-{Eighth} {International} {Joint} {Conference} on {Artificial} {Intelligence}},
+	publisher = {International Joint Conferences on Artificial Intelligence Organization},
+	author = {Wang, Jing and Geng, Xin},
+	month = aug,
+	year = {2019},
+	pages = {3712--3718},
+}
+
+@misc{noauthor_ldl4c_nodate,
+	title = {{LDL4C} ({Wang} \& {Geng} 2019) - {Google} {Scholar}},
+	url = {https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=LDL4C+%28Wang+%26+Geng+2019%29&btnG=},
+	urldate = {2026-04-30},
+}
+
+@inproceedings{gal_dropout_2016,
+	title = {Dropout as a bayesian approximation: {Representing} model uncertainty in deep learning},
+	shorttitle = {Dropout as a bayesian approximation},
+	url = {https://proceedings.mlr.press/v48/gal16.html?trk=public_post_comment-text},
+	urldate = {2026-04-30},
+	booktitle = {international conference on machine learning},
+	publisher = {PMLR},
+	author = {Gal, Yarin and Ghahramani, Zoubin},
+	year = {2016},
+	pages = {1050--1059},
+}
+
+@inproceedings{gal_dropout_2016-1,
+	title = {Dropout as a {Bayesian} {Approximation}: {Representing} {Model} {Uncertainty} in {Deep} {Learning}},
+	issn = {1938-7228},
+	shorttitle = {Dropout as a {Bayesian} {Approximation}},
+	url = {https://proceedings.mlr.press/v48/gal16.html},
+	abstract = {Deep learning tools have gained tremendous attention in applied machine learning. However such tools for regression and classification do not capture model uncertainty. In comparison, Bayesian models offer a mathematically grounded framework to reason about model uncertainty, but usually come with a prohibitive computational cost. In this paper we develop a new theoretical framework casting dropout training in deep neural networks (NNs) as approximate Bayesian inference in deep Gaussian processes. A direct result of this theory gives us tools to model uncertainty with dropout NNs – extracting information from existing models that has been thrown away so far. This mitigates the problem of representing uncertainty in deep learning without sacrificing either computational complexity or test accuracy. We perform an extensive study of the properties of dropout’s uncertainty. Various network architectures and non-linearities are assessed on tasks of regression and classification, using MNIST as an example. We show a considerable improvement in predictive log-likelihood and RMSE compared to existing state-of-the-art methods, and finish by using dropout’s uncertainty in deep reinforcement learning.},
+	language = {en},
+	urldate = {2026-04-30},
+	booktitle = {Proceedings of {The} 33rd {International} {Conference} on {Machine} {Learning}},
+	publisher = {PMLR},
+	author = {Gal, Yarin and Ghahramani, Zoubin},
+	month = jun,
+	year = {2016},
+	pages = {1050--1059},
+}
+
+@article{lu_predicting_2022-1,
+	title = {Predicting {Label} {Distribution} from {Multi}-label {Ranking}},
+	volume = {35},
+	url = {https://papers.nips.cc/paper_files/paper/2022/hash/efc549c2d22edf2f244b7013387c6251-Abstract-Conference.html},
+	language = {en},
+	urldate = {2026-04-30},
+	journal = {Advances in Neural Information Processing Systems},
+	author = {Lu, Yunan and Jia, Xiuyi},
+	month = dec,
+	year = {2022},
+	pages = {36931--36943},
+}
+
+@article{gonzalez_decomposition-fusion_2021,
+	title = {Decomposition-{Fusion} for {Label} {Distribution} {Learning}},
+	volume = {66},
+	issn = {1566-2535},
+	url = {https://www.sciencedirect.com/science/article/pii/S1566253520303596},
+	doi = {10.1016/j.inffus.2020.08.024},
+	abstract = {Label Distribution Learning (LDL) is a general learning framework that assigns an instance to a distribution over a set of labels rather than to a single label or multiple labels. Current LDL methods have proven their effectiveness in many real-life machine learning applications. However, LDL is a generalization of the classification task and as such it is exposed to the same problems as standard classification algorithms, including class-imbalanced, noise, overlapping or irregularities. The purpose of this paper is to mitigate these effects by using decomposition strategies. The technique devised, called Decomposition-Fusion for LDL (DF-LDL), is based on one of the most renowned strategy in decomposition: the One-vs-One scheme, which we adapt to be able to deal with LDL datasets. In addition, we propose a competent fusion method that allows us to discard non-competent classifiers when their output is probably not of interest. The effectiveness of the proposed DF-LDL method is verified on several real-world LDL datasets on which we have carried out two types of experiments. First, comparing our proposal with the base learners and, second, comparing our proposal with the state-of-the-art LDL algorithms. DF-LDL shows significant improvements in both experiments.},
+	urldate = {2026-04-30},
+	journal = {Information Fusion},
+	author = {González, Manuel and González-Almagro, Germán and Triguero, Isaac and Cano, José-Ramón and García, Salvador},
+	month = feb,
+	year = {2021},
+	keywords = {Decomposition strategies, Label Distribution Learning, Machine learning, One vs. One},
+	pages = {64--75},
+}
+
+@article{zychowski_duo-ldl_2021,
+	title = {Duo-{LDL} method for {Label} {Distribution} {Learning} based on pairwise class dependencies},
+	volume = {110},
+	issn = {1568-4946},
+	url = {https://www.sciencedirect.com/science/article/pii/S1568494621005068},
+	doi = {10.1016/j.asoc.2021.107585},
+	abstract = {Label Distribution Learning (LDL) is a new learning paradigm with numerous applications in various domains. It is a generalization of both standard multiclass classification and multilabel classification. Instead of a binary value, in LDL, each label is assigned a real number which corresponds to a degree of membership of the object being classified to a given class. In this paper a new neural network approach to Label Distribution Learning (Duo-LDL), which considers pairwise class dependencies, is introduced. The method is extensively tested on 15 well-established benchmark sets, against 6 evaluation measures, proving its competitiveness to state-of-the-art non-neural LDL approaches. Additional experimental results on artificially generated data demonstrate that Duo-LDL is especially effective in the case of most challenging benchmarks, with extensive input feature representations and numerous output classes.},
+	urldate = {2026-04-30},
+	journal = {Applied Soft Computing},
+	author = {Żychowski, Adam and Mańdziuk, Jacek},
+	month = oct,
+	year = {2021},
+	keywords = {Duo-LDL, Label distribution learning, Neural networks},
+	pages = {107585},
+}
+
+@article{wang_residual_2025,
+	title = {Residual k{\textless}math{\textgreater}{\textless}mi is="true"{\textgreater}k{\textless}/mi{\textgreater}{\textless}/math{\textgreater}-{Nearest} {Neighbors} {Label} {Distribution} {Learning}},
+	volume = {158},
+	issn = {0031-3203},
+	url = {https://www.sciencedirect.com/science/article/pii/S003132032400757X},
+	doi = {10.1016/j.patcog.2024.111006},
+	abstract = {Label Distribution Learning (LDL) is a novel learning paradigm that assigns label distribution to each instance. It aims to learn the label distribution of training instances and predict unknown ones. Algorithm Adaptation (AA)-kNN is one of the most representative LDL baselines that adapts the kNN algorithm to LDL. Its generalization risk has been proven to approach zero if given infinite training data. Despite its theoretical advantage, AA-kNN generally performs poorly because real-world LDL problems only have finite or small training data. In this paper, we improve AA-kNN and propose a novel method called Residual k-Nearest Neighbors Label Distribution Learning (RkNN-LDL). First, RkNN-LDL introduces residual label distribution learning. Second, RkNN-LDL exploits the neighborhood structure of label distribution. In theoretical analysis, we prove that RkNN-LDL has a tighter generalization bound than AA-kNN. Besides, extensive experiments validate that RkNN-LDL beats several state-of-the-art LDL methods and statistically outperforms AA-kNN.},
+	urldate = {2026-04-30},
+	journal = {Pattern Recognition},
+	author = {Wang, Jing and Feng, Fu and Lv, Jianhui and Geng, Xin},
+	month = feb,
+	year = {2025},
+	keywords = {-Nearest Neighbors (NN), Generalization, Label Distribution Learning (LDL), Label ambiguity, Manifold, Neighborhood},
+	pages = {111006},
+}
+
+@article{geng_label_2016,
+	title = {Label {Distribution} {Learning}},
+	volume = {28},
+	issn = {1558-2191},
+	url = {https://ieeexplore.ieee.org/document/7439855},
+	doi = {10.1109/TKDE.2016.2545658},
+	abstract = {Although multi-label learning can deal with many problems with label ambiguity, it does not fit some real applications well where the overall distribution of the importance of the labels matters. This paper proposes a novel learning paradigm named label distribution learning (LDL) for such kind of applications. The label distribution covers a certain number of labels, representing the degree to which each label describes the instance. LDL is a more general learning framework which includes both single-label and multi-label learning as its special cases. This paper proposes six working LDL algorithms in three ways: problem transformation, algorithm adaptation, and specialized algorithm design. In order to compare the performance of the LDL algorithms, six representative and diverse evaluation measures are selected via a clustering analysis, and the first batch of label distribution datasets are collected and made publicly available. Experimental results on one artificial and 15 real-world datasets show clear advantages of the specialized algorithms, which indicates the importance of special design for the characteristics of the LDL problem.},
+	number = {7},
+	urldate = {2026-04-30},
+	journal = {IEEE Transactions on Knowledge and Data Engineering},
+	author = {Geng, Xin},
+	month = jul,
+	year = {2016},
+	keywords = {Algorithm design and analysis, Clustering algorithms, Learning systems, Loss measurement, Machine learning algorithms, Multi-label learning, Prediction algorithms, Training, label distribution learning, learning with ambiguity},
+	pages = {1734--1748},
+}
+
+@inproceedings{zhang_label_2025,
+	title = {Label {Distribution} {Learning} using the {Squared} {Neural} {Family} on the {Probability} {Simplex}},
+	issn = {2640-3498},
+	url = {https://proceedings.mlr.press/v286/zhang25a.html},
+	abstract = {Label distribution learning (LDL) provides a framework wherein a distribution over categories rather than a single category is predicted, with the aim of addressing ambiguity in labeled data. Existing research on LDL mainly focuses on the task of point estimation, i.e., finding an optimal distribution in the probability simplex conditioned on the given sample. In this paper, we propose a novel label distribution learning model SNEFY-LDL, which estimates a probability distribution of all possible label distributions over the simplex, by unleashing the expressive power of the recently introduced Squared Neural Family (SNEFY), a new class of tractable probability models. As a way to summarize the fitted model, we derive the closed-form label distribution mean, variance and covariance conditioned on the given sample, which can be used to predict the ground-truth label distributions, construct label distribution confidence intervals, and measure the correlations between different labels. Moreover, more information about the label distribution prediction uncertainties can be acquired from the modeled probability density function. Extensive experiments on conformal prediction, active learning and ensemble learning are conducted, verifying SNEFY-LDL’s great effectiveness in LDL uncertainty quantification. The source code of this paper is available at https://github.com/daokunzhang/SNEFY-LDL.},
+	language = {en},
+	urldate = {2026-04-23},
+	booktitle = {Proceedings of the {Forty}-first {Conference} on {Uncertainty} in {Artificial} {Intelligence}},
+	publisher = {PMLR},
+	author = {Zhang, Daokun and Tsuchida, Russell and Sejdinovic, Dino},
+	month = jul,
+	year = {2025},
+	pages = {4872--4888},
+}
+
+@misc{noauthor_distribution_nodate,
+	title = {Distribution {Learning} and {Its} {Application} in {Deep} {Learning}},
+	url = {https://arxiv.org/html/2406.05666v8},
+	urldate = {2026-04-22},
+}
+
+@misc{noauthor_hmm_nodate,
+	title = {{HMM} 590 {Report}},
+	url = {https://www.overleaf.com/project/69da996b48a033923bd5c52c},
+	abstract = {An online LaTeX editor that’s easy to use. No installation, real-time collaboration, version control, hundreds of LaTeX templates, and more.},
+	language = {en},
+	urldate = {2026-04-15},
+}
+
+@book{josang_subjective_2016,
+	address = {Cham},
+	series = {Artificial {Intelligence}: {Foundations}, {Theory}, and {Algorithms}},
+	title = {Subjective {Logic}},
+	copyright = {http://www.springer.com/tdm},
+	isbn = {978-3-319-42335-7 978-3-319-42337-1},
+	url = {http://link.springer.com/10.1007/978-3-319-42337-1},
+	doi = {10.1007/978-3-319-42337-1},
+	urldate = {2026-04-14},
+	publisher = {Springer International Publishing},
+	author = {Jøsang, Audun},
+	year = {2016},
+}
+
+@article{michelot_hmmtmb_2025,
+	title = {{hmmTMB}: {Hidden} {Markov} {Models} with {Flexible} {Covariate} {Effects} in {R}},
+	volume = {114},
+	copyright = {Copyright (c) 2025 Théo Michelot},
+	issn = {1548-7660},
+	shorttitle = {{hmmTMB}},
+	url = {https://doi.org/10.18637/jss.v114.i05},
+	doi = {10.18637/jss.v114.i05},
+	abstract = {Hidden Markov models (HMMs) are widely applied in studies where a discrete-valued process of interest is observed indirectly. They have for example been used to model behavior from human and animal tracking data, disease status from medical data, and financial market volatility from stock prices. The model has two main sets of parameters: transition probabilities, which drive the latent state process, and observation parameters, which characterize the state-dependent distributions of observed variables. One particularly useful extension of HMMs is the inclusion of covariates on those parameters, to investigate the drivers of state transitions or to implement Markov-switching regression models. We present the new R package hmmTMB for HMM analyses, with flexible covariate models in both the hidden state and observation parameters. In particular, non-linear effects are implemented using penalized splines, including multiple univariate and multivariate splines, with automatic smoothness selection. The package allows for various random effect formulations (including random intercepts and slopes), to capture between-group heterogeneity. hmmTMB can be applied to multivariate observations, and it accommodates various types of response data, including continuous (bounded or not), discrete, and binary variables. Parameter constraints can be used to implement non-standard dependence structures, such as semi-Markov, higher-order Markov, and autoregressive models. Here, we summarize the relevant statistical methodology, we describe the structure of the package, and we present an example analysis of animal tracking data to showcase the workflow of the package.},
+	language = {en},
+	urldate = {2026-04-14},
+	journal = {Journal of Statistical Software},
+	author = {Michelot, Théo},
+	month = sep,
+	year = {2025},
+	pages = {1--45},
+}
+
+@book{zucchini_hidden_2017,
+	address = {Boca Raton},
+	edition = {2},
+	title = {Hidden {Markov} {Models} for {Time} {Series}: {An} {Introduction} {Using} {R}, {Second} {Edition}},
+	isbn = {978-1-315-37248-8},
+	shorttitle = {Hidden {Markov} {Models} for {Time} {Series}},
+	doi = {10.1201/b20790},
+	abstract = {Hidden Markov Models for Time Series: An Introduction Using R, Second Edition illustrates the great flexibility of hidden Markov models (HMMs) as general-purpose models for time series data. The book provides a broad understanding of the models and their uses.
+After presenting the basic model formulation, the book covers estimation, forecasting, decoding, prediction, model selection, and Bayesian inference for HMMs. Through examples and applications, the authors describe how to extend and generalize the basic model so that it can be applied in a rich variety of situations.
+The book demonstrates how HMMs can be applied to a wide range of types of time series: continuous-valued, circular, multivariate, binary, bounded and unbounded counts, and categorical observations. It also discusses how to employ the freely available computing environment R to carry out the computations.
+Features
+
+Presents an accessible overview of HMMs
+Explores a variety of applications in ecology, finance, epidemiology, climatology, and sociology
+Includes numerous theoretical and programming exercises
+Provides most of the analysed data sets online
+New to the second edition
+
+A total of five chapters on extensions, including HMMs for longitudinal data, hidden semi-Markov models and models with continuous-valued state process
+New case studies on animal movement, rainfall occurrence and capture-recapture data},
+	publisher = {Chapman and Hall/CRC},
+	author = {Zucchini, Walter and MacDonald, Iain L. and Langrock, Roland},
+	month = dec,
+	year = {2017},
+}
+
+@misc{noauthor_comprehensive_nodate,
+	title = {A {Comprehensive} {Survey} on {Evidential} {Deep} {Learning} and {Its} {Applications}},
+	url = {https://arxiv.org/html/2409.04720v1#S1},
+	urldate = {2026-04-03},
+}
+
+@inproceedings{sensoy_evidential_2018,
+	title = {Evidential {Deep} {Learning} to {Quantify} {Classification} {Uncertainty}},
+	volume = {31},
+	url = {https://proceedings.neurips.cc/paper/2018/hash/a981f2b708044d6fb4a71a1463242520-Abstract.html},
+	urldate = {2026-01-29},
+	booktitle = {Advances in {Neural} {Information} {Processing} {Systems}},
+	publisher = {Curran Associates, Inc.},
+	author = {Sensoy, Murat and Kaplan, Lance and Kandemir, Melih},
+	year = {2018},
+}
+
+@article{park_change-point_2023,
+	title = {Change-{Point} {Detection} and {Regularization} in {Time} {Series} {Cross}-{Sectional} {Data} {Analysis}},
+	volume = {31},
+	copyright = {http://creativecommons.org/licenses/by/4.0/},
+	issn = {1047-1987, 1476-4989},
+	url = {https://www.cambridge.org/core/product/identifier/S1047198722000237/type/journal_article},
+	doi = {10.1017/pan.2022.23},
+	abstract = {Abstract
+            
+              Researchers of time series cross-sectional data regularly face the change-point problem, which requires them to discern between significant parametric shifts that can be deemed structural changes and minor parametric shifts that must be considered noise. In this paper, we develop a general Bayesian method for change-point detection in high-dimensional data and present its application in the context of the fixed-effect model. Our proposed method, hidden Markov Bayesian bridge model, jointly estimates high-dimensional regime-specific parameters and hidden regime transitions in a unified way. We apply our method to Alvarez, Garrett, and Lange’s (1991,
+              American Political Science Review
+              85, 539–556) study of the relationship between government partisanship and economic growth and Allee and Scalera’s (2012,
+              International Organization
+              66, 243–276) study of membership effects in international organizations. In both applications, we found that the proposed method successfully identify substantively meaningful temporal heterogeneity in parameters of regression models.},
+	language = {en},
+	number = {2},
+	urldate = {2025-10-16},
+	journal = {Political Analysis},
+	author = {Park, Jong Hee and Yamauchi, Soichiro},
+	month = apr,
+	year = {2023},
+	keywords = {horseshoe},
+	pages = {257--277},
+}
+
+@article{helgoy_sparse_2024,
+	title = {Sparse {Bayesian} learning using {TMB} ({Template} {Model} {Builder})},
+	volume = {34},
+	issn = {1573-1375},
+	url = {https://doi.org/10.1007/s11222-024-10476-8},
+	doi = {10.1007/s11222-024-10476-8},
+	abstract = {Sparse Bayesian Learning, and more specifically the Relevance Vector Machine (RVM), can be used in supervised learning for both classification and regression problems. Such methods are particularly useful when applied to big data in order to find a sparse (in weight space) representation of the model. This paper demonstrates that the Template Model Builder (TMB) is an accurate and flexible computational framework for implementation of sparse Bayesian learning methods.The user of TMB is only required to specify the joint likelihood of the weights and the data, while the Laplace approximation of the marginal likelihood is automatically evaluated to numerical precision. This approximation is in turn used to estimate hyperparameters by maximum marginal likelihood. In order to reduce the computational cost of the Laplace approximation we introduce the notion of an “active set” of weights, and we devise an algorithm for dynamically updating this set until convergence, similar to what is done in other RVM type methods. We implement two different methods using TMB; the RVM and the Probabilistic Feature Selection and Classification Vector Machine method, where the latter also performs feature selection. Experiments based on benchmark data show that our TMB implementation performs comparable to that of the original implementation, but at a lower implementation cost. TMB can also calculate model and prediction uncertainty, by including estimation uncertainty from both latent variables and the hyperparameters. In conclusion, we find that TMB is a flexible tool that facilitates implementation and prototyping of sparse Bayesian methods.},
+	language = {en},
+	number = {5},
+	urldate = {2025-10-09},
+	journal = {Statistics and Computing},
+	author = {Helgøy, Ingvild M. and Skaug, Hans J. and Li, Yushu},
+	month = aug,
+	year = {2024},
+	keywords = {Laplace approximation, Relevance vector machine, Sparse Bayesian learning, TMB-theory, Template model builder},
+	pages = {173},
+}
+
+@misc{bacri_gentle_2022,
+	title = {A gentle tutorial on accelerated parameter and confidence interval estimation for hidden {Markov} models using {Template} {Model} {Builder}},
+	url = {http://arxiv.org/abs/2205.03686},
+	doi = {10.48550/arXiv.2205.03686},
+	abstract = {A very common way to estimate the parameters of a hidden Markov model (HMM) is the relatively straightforward computation of maximum likelihood (ML) estimates. For this task, most users rely on user-friendly implementation of the estimation routines via an interpreted programming language such as the statistical software environment R (R Core Team, 2021). Such an approach can easily require time-consuming computations, in particular for longer sequences of observations. In addition, selecting a suitable approach for deriving confidence intervals for the estimated parameters is not entirely obvious (see, e.g., Zucchini et al., 2016; Lystig and Hughes, 2002; Visser et al., 2000), and often the computationally intensive bootstrap methods have to be applied. In this tutorial, we illustrate how to speed up the computation of ML estimates significantly via the R package TMB. Moreover, this approach permits simple retrieval of standard errors at the same time. We illustrate the performance of our routines using different data sets. First, two smaller samples from a mobile application for tinnitus patients and a well-known data set of fetal lamb movements with 87 and 240 data points, respectively. Second, we rely on larger data sets of simulated data of sizes 2000 and 5000 for further analysis. This tutorial is accompanied by a collection of scripts which are all available on GitHub. These scripts allow any user with moderate programming experience to benefit quickly from the computational advantages of TMB.},
+	urldate = {2025-10-08},
+	publisher = {arXiv},
+	author = {Bacri, Timothée and Berentsen, Geir D. and Bulla, Jan and Hølleland, Sondre},
+	month = may,
+	year = {2022},
+	note = {arXiv:2205.03686},
+	keywords = {Statistics - Computation, TMB theory},
+}
+
+@article{emig_first_2019,
+	title = {The first detection of radio recombination lines at cosmological distances},
+	volume = {622},
+	copyright = {https://www.edpsciences.org/en/authors/copyright-and-licensing},
+	issn = {0004-6361, 1432-0746},
+	url = {https://www.aanda.org/10.1051/0004-6361/201834052},
+	doi = {10.1051/0004-6361/201834052},
+	abstract = {Context.
+              Recombination lines involving high principal quantum numbers (n ∼ 50 − 1000) populate the radio spectrum in large numbers. Low-frequency ({\textless} 1 GHz) observations of radio recombination lines (RRLs) primarily from carbon and hydrogen offer a new, if not unique, way to probe cold, largely atomic gas and warm, ionised gas in other galaxies. Furthermore, RRLs can be used to determine the physical state of the emitting regions, such as temperature and density. These properties make RRLs, potentially, a powerful tool of extragalactic interstellar medium (ISM) physics. At low radio frequencies, it is conceivable to detect RRLs out to cosmological distances when illuminated by a strong radio continuum. However, they are extremely faint (
+              τ
+              peak
+               ∼ 10
+              −3
+               − 10
+              −4
+              ) and have so far eluded detection outside of the local universe.
+            
+            
+              Aims.
+              With observations of the radio quasar 3C 190 (
+              z
+               = 1.1946), we aim to demonstrate that the ISM can be explored out to great distances through low-frequency RRLs.
+            
+            
+              Methods
+              . 3C 190 was observed with the LOw Frequency ARray (LOFAR) and processed using newly developed techniques for spectral analysis.
+            
+            
+              Results.
+              We report the detection of RRLs in the frequency range 112 MHz–163 MHz in the spectrum of 3C 190. Stacking 13
+              α
+              -transitions with principal quantum numbers n = 266 − 301, a peak 6
+              σ
+              feature of optical depth
+              τ
+              peak
+               = (1.0 ± 0.2)×10
+              −3
+              and FWHM = 31.2 ± 8.3 km s
+              −1
+              was found at
+              z
+               = 1.124. This corresponds to a velocity offset of −9965 km s
+              −1
+              with respect to the systemic redshift of 3C 190.
+            
+            
+              Conclusions.
+              We consider three interpretations of the origin of the RRL emission: an intervening dwarf-like galaxy, an active galactic nucleus (AGN) driven outflow, and the inter-galactic medium. We argue that the recombination lines most likely originate in a dwarf-like galaxy (
+              M
+               ∼ 10
+              9
+               
+              M
+              ⊙
+              ) along the line of sight, although we cannot rule out an AGN-driven outflow. We do find the RRLs to be inconsistent with an inter-galactic medium origin. With this detection, we have opened up a new way to study the physical properties of cool, diffuse gas out to cosmological distances.},
+	urldate = {2025-06-03},
+	journal = {Astronomy \& Astrophysics},
+	author = {Emig, K. L. and Salas, P. and De Gasperin, F. and Oonk, J. B. R. and Toribio, M. C. and Röttgering, H. J. A. and Tielens, A. G. G. M.},
+	month = feb,
+	year = {2019},
+	pages = {A7},
+}
+
+@article{emig_first_2019-1,
+	title = {The first detection of radio recombination lines at cosmological distances},
+	volume = {622},
+	copyright = {© ESO 2019},
+	issn = {0004-6361, 1432-0746},
+	url = {https://www.aanda.org/articles/aa/abs/2019/02/aa34052-18/aa34052-18.html},
+	doi = {10.1051/0004-6361/201834052},
+	abstract = {{\textless}i{\textgreater}Context.{\textless}i/{\textgreater} Recombination lines involving high principal quantum numbers (n ∼ 50 − 1000) populate the radio spectrum in large numbers. Low-frequency ({\textless} 1 GHz) observations of radio recombination lines (RRLs) primarily from carbon and hydrogen offer a new, if not unique, way to probe cold, largely atomic gas and warm, ionised gas in other galaxies. Furthermore, RRLs can be used to determine the physical state of the emitting regions, such as temperature and density. These properties make RRLs, potentially, a powerful tool of extragalactic interstellar medium (ISM) physics. At low radio frequencies, it is conceivable to detect RRLs out to cosmological distances when illuminated by a strong radio continuum. However, they are extremely faint ({\textless}i{\textgreater}τ{\textless}i/{\textgreater}{\textless}sub{\textgreater}peak{\textless}sub/{\textgreater} ∼ 10{\textless}sup{\textgreater}−3{\textless}sup/{\textgreater} − 10{\textless}sup{\textgreater}−4{\textless}sup/{\textgreater}) and have so far eluded detection outside of the local universe.{\textless}i{\textgreater}Aims.{\textless}i/{\textgreater} With observations of the radio quasar 3C 190 ({\textless}i{\textgreater}z{\textless}i/{\textgreater} = 1.1946), we aim to demonstrate that the ISM can be explored out to great distances through low-frequency RRLs.{\textless}i{\textgreater}Methods{\textless}i/{\textgreater}. 3C 190 was observed with the LOw Frequency ARray (LOFAR) and processed using newly developed techniques for spectral analysis.{\textless}i{\textgreater}Results.{\textless}i/{\textgreater} We report the detection of RRLs in the frequency range 112 MHz–163 MHz in the spectrum of 3C 190. Stacking 13 {\textless}i{\textgreater}α{\textless}i/{\textgreater}-transitions with principal quantum numbers n = 266 − 301, a peak 6{\textless}i{\textgreater}σ{\textless}i/{\textgreater} feature of optical depth {\textless}i{\textgreater}τ{\textless}i/{\textgreater}{\textless}sub{\textgreater}peak{\textless}sub/{\textgreater} = (1.0 ± 0.2)×10{\textless}sup{\textgreater}−3{\textless}sup/{\textgreater} and FWHM = 31.2 ± 8.3 km s{\textless}sup{\textgreater}−1{\textless}sup/{\textgreater} was found at {\textless}i{\textgreater}z{\textless}i/{\textgreater} = 1.124. This corresponds to a velocity offset of −9965 km s{\textless}sup{\textgreater}−1{\textless}sup/{\textgreater} with respect to the systemic redshift of 3C 190.{\textless}i{\textgreater}Conclusions.{\textless}i/{\textgreater} We consider three interpretations of the origin of the RRL emission: an intervening dwarf-like galaxy, an active galactic nucleus (AGN) driven outflow, and the inter-galactic medium. We argue that the recombination lines most likely originate in a dwarf-like galaxy ({\textless}i{\textgreater}M{\textless}i/{\textgreater} ∼ 10{\textless}sup{\textgreater}9{\textless}sup/{\textgreater} {\textless}i{\textgreater}M{\textless}i/{\textgreater}{\textless}sub{\textgreater}⊙{\textless}sub/{\textgreater}) along the line of sight, although we cannot rule out an AGN-driven outflow. We do find the RRLs to be inconsistent with an inter-galactic medium origin. With this detection, we have opened up a new way to study the physical properties of cool, diffuse gas out to cosmological distances.},
+	language = {en},
+	urldate = {2025-06-03},
+	journal = {Astronomy \& Astrophysics},
+	publisher = {EDP Sciences},
+	author = {Emig, K. L. and Salas, P. and Gasperin, F. de and Oonk, J. B. R. and Toribio, M. C. and Röttgering, H. J. A. and Tielens, A. G. G. M.},
+	month = feb,
+	year = {2019},
+	keywords = {Stacking},
+	pages = {A7},
+}
+
+@phdthesis{salas_munoz_fresh_nodate,
+	title = {A fresh view on carbon radio recombination lines powered by {LOFAR} {\textbar} {Scholarly} {Publications}},
+	url = {https://scholarlypublications.universiteitleiden.nl/handle/1887/72197},
+	language = {en},
+	urldate = {2025-06-03},
+	author = {Salas Munoz, P. A.},
+	keywords = {Stacking},
+}
+
+@inproceedings{haffner_wisconsin_2016,
+	title = {The {Wisconsin} {H}-{Alpha} {Mapper} {Sky} {Survey}},
+	volume = {227},
+	url = {https://ui.adsabs.harvard.edu/abs/2016AAS...22734717H},
+	abstract = {We present the first all-sky, kinematic survey of Hα from the Milky Way, combining survey observations taken with the Wisconsin H-Alpha Mapper (WHAM) from Kitt Peak (1997-2007) and Cerro Tololo (2009-present). The WHAM Sky Survey (WHAM-SS) reaches sensitivity levels of about 0.1 R (EM {\textasciitilde} 0.2 pc cm{\textasciicircum}-6) with emission detected toward every direction in the sky. Each pointing of the survey comprises a spatially integrated spectrum from a one-degree beam on the sky covering at least 200 km/s around the Local Standard of Rest with 12 km/s spectral resolution. WHAM was designed primarily to study the pervasive warm ionized medium (WIM) component of the interstellar medium (ISM) but also reveals many large-scale, locally-ionized regions throughout the Galaxy. The WIM is a diffuse but thick component of the ISM that extends several kiloparsecs into the Galactic halo with a kinematic signature that traces the gaseous spiral arms of the Galaxy. In addition to this fairly smooth global emission, the Hα sky contains many individual H II regions and supernova remnants, a few revealed in the WHAM-SS for the first time. Some locations are dominated by complex filamentary network of diffuse ionized gas where the ISM has been shaped by past winds and supernovae and is now powered by a new wave of star formation. At high latitudes, faint emission from intermediate-velocity clouds is also regularly present. The success of WHAM as a fully remote observing facility for nearly two decades is due in no small part to the excellent and responsive support staff at KPNO in Arizona and CTIO in Chile. WHAM has been designed, built, and operated primarily through support of the National Science Foundation. The current research presented here is funded by award AST-1108911.},
+	urldate = {2025-06-03},
+	author = {Haffner, L. Matthew and Reynolds, Ronald J. and Babler, Brian L. and Madsen, Gregory J. and Hill, Alex S. and Barger, Kathleen and Jaehnig, Kurt P. and Mierkiewicz, Edwin J. and Percival, Jeffrey W. and Chopra, Nitish and Pingel, Nickolas and Reese, Daniel T. and Gostisha, Martin and Wunderlin, Jennifer},
+	month = jan,
+	year = {2016},
+	note = {ADS Bibcode: 2016AAS...22734717H},
+	keywords = {Observational Surveys},
+	pages = {347.17},
+}
+
+@article{alves_hipass_2015,
+	title = {The {HIPASS} survey of the {Galactic} plane in radio recombination lines},
+	volume = {450},
+	issn = {1365-2966, 0035-8711},
+	url = {http://academic.oup.com/mnras/article/450/2/2025/985327/The-HIPASS-survey-of-the-Galactic-plane-in-radio},
+	doi = {10.1093/mnras/stv751},
+	language = {en},
+	number = {2},
+	urldate = {2025-06-03},
+	journal = {Monthly Notices of the Royal Astronomical Society},
+	author = {Alves, Marta I. R. and Calabretta, Mark and Davies, Rodney D. and Dickinson, Clive and Staveley-Smith, Lister and Davis, Richard J. and Chen, Tianyue and Barr, Adam},
+	month = jun,
+	year = {2015},
+	keywords = {Observational Surveys},
+	pages = {2025--2042},
+}
+
+@article{liu_survey_2019,
+	title = {Survey of {Ionized} {Gas} of the {Galaxy}, {Made} with the {Arecibo} {Telescope} ({SIGGMA}): {Inner} {Galaxy} {Data} {Release}},
+	volume = {240},
+	issn = {0067-0049, 1538-4365},
+	shorttitle = {Survey of {Ionized} {Gas} of the {Galaxy}, {Made} with the {Arecibo} {Telescope} ({SIGGMA})},
+	url = {https://iopscience.iop.org/article/10.3847/1538-4365/aaef8e},
+	doi = {10.3847/1538-4365/aaef8e},
+	abstract = {Abstract
+            
+              The Survey of Ionized Gas of the Galaxy, Made with the Arecibo telescope (SIGGMA) provides a fully sampled view of the radio recombination line (RRL) emission from the portion of the Galactic plane visible with Arecibo. Observations use the Arecibo
+              L
+              -band Feed Array, which has a FWHM beam size of 3.′4. Twelve hydrogen RRLs from H163
+              α
+              to H174
+              α
+              are located within the instantaneous bandpass from 1225 MHz to 1525 MHz. We provide here cubes of average (“stacked”) RRL emission for the inner Galaxy region 32° ≤ 
+              ℓ
+               ≤ 70°,
+              
+                
+                  
+                
+                
+              
+              , with an angular resolution of 6′. The stacked RRL rms at 5.1 km s
+              −1
+              velocity resolution is ∼0.65 mJy beam
+              −1
+              , making this the most sensitive large-scale fully sampled RRL survey extant. We use SIGGMA data to catalog 319 RRL detections in the direction of 244 known H
+              ii
+              regions, and 108 new detections in the direction of 79 H
+              ii
+              region candidates. We identify 11 carbon RRL emission regions, all of which are spatially coincident with known H
+              ii
+              regions. We detect RRL emission in the direction of 14 of the 32 supernova remnants (SNRs) found in the survey area. This RRL emission frequently has the same morphology as the SNRs. The RRL velocities give kinematic distances in agreement with those found in the literature, indicating that RRLs may provide an additional tool to constrain distances to SNRs. Finally, we analyze the two bright star-forming complexes: W49 and W51. We discuss the possible origins of the RRL emission in directions of SNRs W49B and W51C.},
+	number = {1},
+	urldate = {2025-06-03},
+	journal = {The Astrophysical Journal Supplement Series},
+	author = {Liu, Bin and Anderson, L. D. and McIntyre, Travis and Anish Roshi, D. and Churchwell, Ed and Minchin, Robert and Terzian, Yervant},
+	month = jan,
+	year = {2019},
+	keywords = {Observational Surveys},
+	pages = {14},
+}
+
+@article{hou_peering_2022,
+	title = {Peering into the {Milky} {Way} by {FAST}: {II}. {Ionized} gas in the inner {Galactic} disk revealed by the piggyback line observations of the {FAST} {GPPS} survey},
+	volume = {65},
+	issn = {1869-1927},
+	shorttitle = {Peering into the {Milky} {Way} by {FAST}},
+	url = {https://doi.org/10.1007/s11433-022-2039-8},
+	doi = {10.1007/s11433-022-2039-8},
+	abstract = {As one of the major components of the interstellar medium, the ionized gas in our Milky Way, especially the low-density diffuse component, has not been extensively observed in the radio band. The Galactic Plane Pulsar Snapshot (GPPS) survey covers the sky area within the Galactic latitude of ±10° around the Galactic plane visible by the Five-hundred-meter Aperture Spherical radio Telescope (FAST), and the spectral line data are simultaneously recorded during the pulsar survey observations. With an integration time of 5 min for each beam, the GPPS survey project provides the most sensitive piggyback spectra for tens of radio recombination lines (RRLs) in the band of 1000–1500 MHz for Hnα, Henα, Cnα, as well as Hnβ and Hnγ. We processed the spectral data of RRLs, and obtained a sensitive averaged Hnα RRL map of a sky area of 88 square degrees in the inner Galaxy of 33° ≼ l ≼ 55° and ∣b∣ ≼ 2°0. The final spectral data of the Hnα RRLs have a spatial resolution of ∼3′, a spectral resolution of 2.2 km s−1, and a typical spectral RMS noise of 0.25 mJy beam−1 or 6.3 mK in main-beam brightness temperature. The FAST GPPS Hnα RRL observations are sensitive down to an emission measure of about 200 cm−6 pc if a 3σ detection limit is required. The new Hnα RRL map shows complex structural features dominated by a number of Hii regions and large extended diffuse ionized gas regions. We detect about 94\% of the known Hii regions and confirm 43 WISE Hii regions in the observed sky area. Several large Hii regions or star-forming complexes in the distant outer Galaxy are resolved in the map of Hnα RRLs. Extended RRL features of the diffuse ionized gas are detected. In addition, the GPPS piggyback spectral-line data also provide sensitive detection for other kinds of RRLs, such as the Henα, Cnα, Hnβ, and Hnγ RRLs. The RRL data products of the GPPS survey will be published and updated at http://zmtt.bao.ac.cn/MilkyWayFAST/.},
+	language = {en},
+	number = {12},
+	urldate = {2025-06-03},
+	journal = {Science China Physics, Mechanics \& Astronomy},
+	author = {Hou, LiGang and Han, JinLin and Hong, Tao and Gao, XuYang and Wang, Chen},
+	month = nov,
+	year = {2022},
+	keywords = {Observational Surveys},
+	pages = {129703},
+}
+
+@article{anderson_gbt_2021,
+	title = {The {GBT} {Diffuse} {Ionized} {Gas} {Survey} ({GDIGS}): {Survey} {Overview} and {First} {Data} {Release}},
+	volume = {254},
+	issn = {0067-0049},
+	shorttitle = {The {GBT} {Diffuse} {Ionized} {Gas} {Survey} ({GDIGS})},
+	url = {https://dx.doi.org/10.3847/1538-4365/abef65},
+	doi = {10.3847/1538-4365/abef65},
+	abstract = {The Green Bank Telescope (GBT) Diffuse Ionized Gas Survey (GDIGS) traces ionized gas in the Galactic midplane by measuring 4–8 GHz radio recombination line (RRL) emission. The nominal survey zone is 32.°3 {\textgreater} ℓ {\textgreater} − 5°, ∣b∣ {\textless} 0.°5, but coverage extends above and below the plane in select fields and additionally includes the areas around W47 (ℓ ≃ 37.°5) and W49 (ℓ ≃ 43°). GDIGS simultaneously observes 22 Hnα (15 usable), 25 Hnβ (18 usable), and 8 Hnγ RRLs (all usable), as well as multiple molecular line transitions (including those of , H2CO, and CH3OH). Here, we describe the GDIGS survey parameters and characterize the RRL data, focusing primarily on the Hnα data. We produce sensitive data cubes by averaging the usable RRLs, after first smoothing to a common spectral resolution of 0.5 km s−1 and a spatial resolution of 2.′65 for Hnα, 2.′62 for Hnβ, and 2.′09 for Hnγ. The average spectral noise per spaxel in the Hnα data cubes is ∼10 mK (∼5 mJy beam−1). This sensitivity allows GDIGS to detect RRLs from plasma throughout the inner Galaxy. The GDIGS Hnα data are sensitive to emission measures EM ≳ 1100 cm−6 pc, which corresponds to a mean electron density 〈n e 〉 ≳ 30 cm−3 for a 1 pc path length or 〈n e 〉 ≳ 1 cm−3 for a 1 kpc path length.},
+	language = {en},
+	number = {2},
+	urldate = {2025-06-03},
+	journal = {The Astrophysical Journal Supplement Series},
+	publisher = {The American Astronomical Society},
+	author = {Anderson, L. D. and Luisi, Matteo and Liu, Bin and Wenger, Trey V. and Balser, Dana. S. and Bania, T. M. and Haffner, L. M. and Linville, Dylan J. and Mascoop, J. L.},
+	month = may,
+	year = {2021},
+	keywords = {Observational Surveys},
+	pages = {28},
+}
+
+@article{liu_pilot_2024,
+	title = {A pilot study of {Galactic} radio recombination lines using {FAST}: {Identification} of diffuse ionized gas clumps and off-arm star-forming regions},
+	volume = {689},
+	copyright = {https://creativecommons.org/licenses/by/4.0},
+	issn = {0004-6361, 1432-0746},
+	shorttitle = {A pilot study of {Galactic} radio recombination lines using {FAST}},
+	url = {https://www.aanda.org/10.1051/0004-6361/202449258},
+	doi = {10.1051/0004-6361/202449258},
+	abstract = {Observing low-frequency decimeter hydrogen radio recombination lines (RRLs) with large single-dish telescopes, such as the Fivehundred-meter Aperture Spherical radio Telescope (FAST) in the L band, is a unique method for probing massive star formation on scales of hundreds of parsecs. This approach is particularly effective for detecting relatively weak and extended emissions from low-density gas ionized by massive stars. Deep, unbiased decimeter or centimeter RRL surveys with large single-dish telescopes can significantly enhance our understanding of the diffuse ionized gas along the Galactic plane. This, in turn, will improve our knowledge of the life cycle of matter in the interstellar medium and the dynamics of the Galaxy. In this context, we present a pilot project for such a blind L-band RRL survey targeting the Galactic plane and conducted using FAST. The results include the detection of RRL clumps and the identification of an off-arm active massive star-forming region near the Sagittarius-Carina arm. The ongoing and upcoming massive star formation in this region may be associated with the kink in the Sagittarius-Carina arm near 23◦ azimuth.},
+	language = {en},
+	urldate = {2025-06-03},
+	journal = {Astronomy \& Astrophysics},
+	author = {Liu, Bin and Wang, Junzhi and Zhang, Bo and Li, Shanghuo and Liu, Shu and Li, Juan and Peng, Bo and Fang, Min and Mai, Xiaofeng},
+	month = sep,
+	year = {2024},
+	keywords = {Observational Surveys},
+	pages = {A29},
+}
+
+@techreport{vanderlinde_lrp_2019,
+	title = {{LRP} 2020 {Whitepaper}: {The} {Canadian} {Hydrogen} {Observatory} and {Radio}-transient {Detector} ({CHORD})},
+	shorttitle = {{LRP} 2020 {Whitepaper}},
+	url = {http://arxiv.org/abs/1911.01777},
+	doi = {10.5281/zenodo.3765414},
+	abstract = {The Canadian Hydrogen Observatory and Radio-transient Detector (CHORD) is a next-generation radio telescope, proposed for construction to start immediately. CHORD is a pan-Canadian project, designed to work with and build on the success of the Canadian Hydrogen Intensity Mapping Experiment (CHIME). It is an ultra-wideband, "large-N, small-D" telescope, consisting of a central array of 512x6-m dishes, supported by a pair of distant outrigger stations, each equipped with CHIME-like cylinders and a 64-dish array. CHORD will measure the distribution of matter over a huge swath of the Universe, detect and localize tens of thousands of Fast RadioBursts (FRBs), and undertake cutting-edge measurements of fundamental physics.},
+	urldate = {2025-06-03},
+	author = {Vanderlinde, K. and Bandura, K. and Belostotski, L. and Bond, R. and Boyle, P. and Brown, J. and Chiang, H. C. and Dobbs, M. and Gaensler, B. and Hinshaw, G. and Kaspi, V. and Landecker, T. and Liu, A. and Masui, K. and Mena-Parra, J. and Ng, C. and Pen, U. and Rupen, M. and Sievers, J. and Smith, K. and Spekkens, K. and Stairs, I. and Turok, N.},
+	month = oct,
+	year = {2019},
+	note = {arXiv:1911.01777 [astro-ph]},
+	keywords = {CHORD},
+}
+
+@article{adam_markov-switching_2024,
+	title = {Markov-switching decision trees},
+	volume = {108},
+	issn = {1863-818X},
+	url = {https://doi.org/10.1007/s10182-024-00501-6},
+	doi = {10.1007/s10182-024-00501-6},
+	abstract = {Decision trees constitute a simple yet powerful and interpretable machine learning tool. While tree-based methods are designed only for cross-sectional data, we propose an approach that combines decision trees with time series modeling and thereby bridges the gap between machine learning and statistics. In particular, we combine decision trees with hidden Markov models where, for any time point, an underlying (hidden) Markov chain selects the tree that generates the corresponding observation. We propose an estimation approach that is based on the expectation-maximisation algorithm and assess its feasibility in simulation experiments. In our real-data application, we use eight seasons of National Football League (NFL) data to predict play calls conditional on covariates, such as the current quarter and the score, where the model’s states can be linked to the teams’ strategies. R code that implements the proposed method is available on GitHub.},
+	number = {2},
+	journal = {AStA Advances in Statistical Analysis},
+	author = {Adam, Timo and Ötting, Marius and Michels, Rouven},
+	month = jun,
+	year = {2024},
+	pages = {461--476},
+}
+
+@article{offringa_post-correlation_2010,
+	title = {Post-correlation radio frequency interference classification methods},
+	volume = {405},
+	issn = {0035-8711},
+	url = {https://doi.org/10.1111/j.1365-2966.2010.16471.x},
+	doi = {10.1111/j.1365-2966.2010.16471.x},
+	abstract = {We describe and compare several post-correlation radio frequency interference (RFI) classification methods. As data sizes of observations grow with new and improved telescopes, the need for completely automated, robust methods for RFI mitigation is pressing. We investigated several classification methods and find that, for the data sets we used, the most accurate among them is the SumThreshold method. This is a new method formed from a combination of existing techniques, including a new way of thresholding. This iterative method estimates the astronomical signal by carrying out a surface fit in the time-frequency plane. With a theoretical accuracy of 95 per cent recognition and an approximately 0.1 per cent false probability rate in simple simulated cases, the method is in practice as good as the human eye in finding RFI. In addition, it is fast, robust, does not need a data model before it can be executed and works in almost all configurations with its default parameters. The method has been compared using simulated data with several other mitigation techniques, including one based upon the singular value decomposition of the time-frequency matrix, and has shown better results than the rest.},
+	number = {1},
+	journal = {Monthly Notices of the Royal Astronomical Society},
+	author = {Offringa, A. R. and de Bruyn, A. G. and Biehl, M. and Zaroubi, S. and Bernardi, G. and Pandey, V. N.},
+	month = jun,
+	year = {2010},
+	note = {\_eprint: https://academic.oup.com/mnras/article-pdf/405/1/155/3356799/mnras0405-0155.pdf},
+	pages = {155--167},
+}
+
+@article{offringa_post-correlation_2010-1,
+	title = {Post-correlation radio frequency interference classification methods},
+	volume = {405},
+	issn = {0035-8711},
+	url = {https://doi.org/10.1111/j.1365-2966.2010.16471.x},
+	doi = {10.1111/j.1365-2966.2010.16471.x},
+	abstract = {We describe and compare several post-correlation radio frequency interference (RFI) classification methods. As data sizes of observations grow with new and improved telescopes, the need for completely automated, robust methods for RFI mitigation is pressing. We investigated several classification methods and find that, for the data sets we used, the most accurate among them is the SumThreshold method. This is a new method formed from a combination of existing techniques, including a new way of thresholding. This iterative method estimates the astronomical signal by carrying out a surface fit in the time-frequency plane. With a theoretical accuracy of 95 per cent recognition and an approximately 0.1 per cent false probability rate in simple simulated cases, the method is in practice as good as the human eye in finding RFI. In addition, it is fast, robust, does not need a data model before it can be executed and works in almost all configurations with its default parameters. The method has been compared using simulated data with several other mitigation techniques, including one based upon the singular value decomposition of the time-frequency matrix, and has shown better results than the rest.},
+	number = {1},
+	journal = {Monthly Notices of the Royal Astronomical Society},
+	author = {Offringa, A. R. and de Bruyn, A. G. and Biehl, M. and Zaroubi, S. and Bernardi, G. and Pandey, V. N.},
+	month = jun,
+	year = {2010},
+	note = {\_eprint: https://academic.oup.com/mnras/article-pdf/405/1/155/3356799/mnras0405-0155.pdf},
+	pages = {155--167},
+}
+
+@article{molinos-senante_tariffs_2013,
+	title = {Tariffs and {Cost} {Recovery} in {Water} {Reuse}},
+	volume = {27},
+	issn = {1573-1650},
+	url = {https://doi.org/10.1007/s11269-012-0111-4},
+	doi = {10.1007/s11269-012-0111-4},
+	abstract = {In water stressed areas, water reuse has been identified as a key component of integral water resource management. However, the economics of water reuse projects are a major barrier for their implementation. The objectives of pricing for water demand management, pricing for encouraging the use of regenerated water, and pricing for cost recovery are not simultaneously achievable. In this paper, the major constraints hindering the implementation of the cost recovery principle in water reuse have been identified. Moreover, a two-part tariff with a combination of a decreasing and increasing rate structure for the variable charge is proposed as a partial solution to improve water reuse pricing. Finally, some policy recommendations from the perspective of integrated water resource management are formulated.},
+	number = {6},
+	journal = {Water Resources Management},
+	author = {Molinos-Senante, M. and Hernandez-Sancho, F. and Sala-Garrido, R.},
+	month = apr,
+	year = {2013},
+	pages = {1797--1808},
+}
+
+@article{kerrigan_optimizing_2019,
+	title = {Optimizing sparse {RFI} prediction using deep learning},
+	volume = {488},
+	copyright = {https://academic.oup.com/journals/pages/open\_access/funder\_policies/chorus/standard\_publication\_model},
+	issn = {0035-8711, 1365-2966},
+	url = {https://academic.oup.com/mnras/article/488/2/2605/5529408},
+	doi = {10.1093/mnras/stz1865},
+	abstract = {ABSTRACT
+            Radio frequency interference (RFI) is an ever-present limiting factor among radio telescopes even in the most remote observing locations. When looking to retain the maximum amount of sensitivity and reduce contamination for Epoch of Reionization studies, the identification and removal of RFI is especially important. In addition to improved RFI identification, we must also take into account computational efficiency of the RFI-Identification algorithm as radio interferometer arrays such as the Hydrogen Epoch of Reionization Array (HERA) grow larger in number of receivers. To address this, we present a deep fully convolutional neural network (DFCN) that is comprehensive in its use of interferometric data, where both amplitude and phase information are used jointly for identifying RFI. We train the network using simulated HERA visibilities containing mock RFI, yielding a known ‘ground truth’ data set for evaluating the accuracy of various RFI algorithms. Evaluation of the DFCN model is performed on observations from the 67 dish build-out, HERA-67, and achieves a data throughput of 1.6 × 105 HERA time-ordered 1024 channelled visibilities per hour per GPU. We determine that relative to an amplitude only network including visibility phase adds important adjacent time–frequency context which increases discrimination between RFI and non-RFI. The inclusion of phase when predicting achieves a recall of 0.81, precision of 0.58, and F2 score of 0.75 as applied to our HERA-67 observations.},
+	language = {en},
+	number = {2},
+	urldate = {2024-12-21},
+	journal = {Monthly Notices of the Royal Astronomical Society},
+	author = {Kerrigan, Joshua and Plante, Paul La and Kohn, Saul and Pober, Jonathan C and Aguirre, James and Abdurashidova, Zara and Alexander, Paul and Ali, Zaki S and Balfour, Yanga and Beardsley, Adam P and Bernardi, Gianni and Bowman, Judd D and Bradley, Richard F and Burba, Jacob and Carilli, Chris L and Cheng, Carina and DeBoer, David R and Dexter, Matt and Acedo, Eloy De Lera and Dillon, Joshua S and Estrada, Julia and Ewall-Wice, Aaron and Fagnoni, Nicolas and Fritz, Randall and Furlanetto, Steve R and Glendenning, Brian and Greig, Bradley and Grobbelaar, Jasper and Gorthi, Deepthi and Halday, Ziyaad and Hazelton, Bryna J and Hickish, Jack and Jacobs, Daniel C and Julius, Austin and Kern, Nicholas S and Kittiwisit, Piyanat and Kolopanis, Matthew and Lanman, Adam and Lekalake, Telalo and Liu, Adrian and MacMahon, David and Malan, Lourence and Malgas, Cresshim and Maree, Matthys and Martinot, Zachary E and Matsetela, Eunice and Mesinger, Andrei and Molewa, Mathakane and Morales, Miguel F and Mosiane, Tshegofalang and Neben, Abraham R and Parsons, Aaron R and Patra, Nipanjana and Pieterse, Samantha and Razavi-Ghods, Nima and Ringuette, Jon and Robnett, James and Rosie, Kathryn and Sims, Peter and Smith, Craig and Syce, Angelo and Thyagarajan, Nithyanandan and Williams, Peter K G and Zheng, Haoxuan},
+	month = sep,
+	year = {2019},
+	pages = {2605--2615},
+}
+
+@article{sun_robust_2022,
+	title = {A robust {RFI} identification for radio interferometry based on a convolutional neural network},
+	volume = {512},
+	copyright = {https://academic.oup.com/journals/pages/open\_access/funder\_policies/chorus/standard\_publication\_model},
+	issn = {0035-8711, 1365-2966},
+	url = {https://academic.oup.com/mnras/article/512/2/2025/6545804},
+	doi = {10.1093/mnras/stac570},
+	abstract = {ABSTRACT
+            The rapid development of new generation radio interferometers such as the Square Kilometer Array (SKA) has opened up unprecedented opportunities for astronomical research. However, anthropogenic radio frequency interference (RFI) from communication technologies and other human activities severely affects the fidelity of observational data. It also significantly reduces the sensitivity of the telescopes. We proposed a robust convolutional neural network (CNN) model to identify RFI based on machine-learning methods. We overlaid RFI on the simulation data of SKA1-LOW to construct three visibility function data sets. One data set was used for modelling, and the other two were used for validating the model’s usability. The experimental results show that the area under the curve reaches 0.93, with satisfactory accuracy and precision. We then further investigated the effectiveness of the model by identifying the RFI in the actual observational data from LOFAR and MeerKAT. The results show that the model performs well. The overall effectiveness is comparable to AOFlagger software and provides an improvement over existing methods in some instances.},
+	language = {en},
+	number = {2},
+	urldate = {2024-12-21},
+	journal = {Monthly Notices of the Royal Astronomical Society},
+	author = {Sun, Haomin and Deng, Hui and Wang, Feng and Mei, Ying and Xu, Tingting and Smirnov, Oleg and Deng, Linhua and Wei, Shoulin},
+	month = mar,
+	year = {2022},
+	pages = {2025--2033},
+}
+
+@article{li_robust_2022,
+	title = {A {Robust} {RFI} {Identification} {Method} for {Radio} {Interferometry} {Based} on {LightGBM}},
+	volume = {134},
+	issn = {0004-6280, 1538-3873},
+	url = {https://iopscience.iop.org/article/10.1088/1538-3873/acab2e},
+	doi = {10.1088/1538-3873/acab2e},
+	abstract = {Abstract
+            
+              Radio frequency interference is an essential factor affecting the observation data quality of radio telescopes. In constructing the Square Kilometer Array (SKA) radio interferometer, dealing with radio frequency interference (RFI) effectively is always a hot issue in data processing. Traditional identification methods have poor precision or recall, and existing machine-learning-based methods have complicated models and low processing efficiency. We propose a LightGBM identification method based on previous machine-learning research to identify RFI. Based on the data of SKA1-LOW simulation observations, we construct five visibility function data sets, one for modeling and the rest for validation. The experimental results show that the
+              F
+              2
+              -score reaches 0.9583, and the training and prediction speed are much more efficient than those of convolutional neural networks in a similar recent study. Then, we further investigate the effectiveness of this model in identifying RFI from actual MeerKAT observations. The results show that the overall effectiveness is comparable to tools such as Tfcrop and Rflag, improving over existing methods in identification speed.},
+	number = {1042},
+	urldate = {2024-12-21},
+	journal = {Publications of the Astronomical Society of the Pacific},
+	author = {Li, Weijie and Cao, Zhong and Deng, Hui and Mei, Ying and Chen, Linjie and Wang, Feng},
+	month = dec,
+	year = {2022},
+	pages = {124503},
+}
+
+@article{baes_hernquist_2002,
+	title = {The {Hernquist} model revisited: {Completely} analytical anisotropic dynamical models},
+	volume = {393},
+	issn = {0004-6361, 1432-0746},
+	shorttitle = {The {Hernquist} model revisited},
+	url = {http://www.aanda.org/10.1051/0004-6361:20021064},
+	doi = {10.1051/0004-6361:20021064},
+	number = {2},
+	urldate = {2024-12-11},
+	journal = {Astronomy \& Astrophysics},
+	author = {Baes, M. and Dejonghe, H.},
+	month = oct,
+	year = {2002},
+	pages = {485--497},
+}
+
+@article{hernquist_analytical_1990,
+	title = {An analytical model for spherical galaxies and bulges},
+	volume = {356},
+	issn = {0004-637X, 1538-4357},
+	url = {http://adsabs.harvard.edu/doi/10.1086/168845},
+	doi = {10.1086/168845},
+	language = {en},
+	urldate = {2024-12-11},
+	journal = {The Astrophysical Journal},
+	author = {Hernquist, Lars},
+	month = jun,
+	year = {1990},
+	pages = {359},
+}
+
+@article{plummer_problem_1911,
+	title = {On the {Problem} of {Distribution} in {Globular} {Star} {Clusters}: ({Plate} 8.)},
+	volume = {71},
+	issn = {0035-8711, 1365-2966},
+	shorttitle = {On the {Problem} of {Distribution} in {Globular} {Star} {Clusters}},
+	url = {https://academic.oup.com/mnras/article-lookup/doi/10.1093/mnras/71.5.460},
+	doi = {10.1093/mnras/71.5.460},
+	language = {en},
+	number = {5},
+	urldate = {2024-12-11},
+	journal = {Monthly Notices of the Royal Astronomical Society},
+	author = {Plummer, H. C.},
+	month = mar,
+	year = {1911},
+	pages = {460--470},
+}
+
+@article{evans_hypervirial_2005,
+	title = {Hypervirial models of stellar systems},
+	volume = {360},
+	issn = {0035-8711},
+	url = {https://doi.org/10.1111/j.1365-2966.2005.09078.x},
+	doi = {10.1111/j.1365-2966.2005.09078.x},
+	abstract = {A family of cusped potential–density pairs is presented for modelling galaxies and dark haloes. The density profile is cusped like ρ∼rp−2 at small radii. The distribution function is simple and takes the form f∝Lp−2E(3p+1)/2 (where E is the binding energy and L is the angular momentum). The models all possess the remarkable property that the virial theorem holds locally, from which they earn their name as the hypervirial family. Famously, this property was first discovered by Eddington to hold for the Plummer model in 1916. In fact, the seductive properties of the Plummer model extend to the whole hypervirial family, including the members possessing the cosmologically important cusps of ρ∼r−1, ρ∼r−3/2 or ρ∼r−4/3. The intrinsic and projected properties of the family of models are discussed in some detail.},
+	number = {2},
+	urldate = {2024-12-11},
+	journal = {Monthly Notices of the Royal Astronomical Society},
+	author = {Evans, N. W. and An, J.},
+	month = jun,
+	year = {2005},
+	pages = {492--498},
+}
+
+@phdthesis{eadie_measuring_2013,
+	address = {Kingston, Canada},
+	type = {thesis},
+	title = {Measuring the {Mass} of a {Galaxy}: {An} evaluation of the performance of {Bayesian} mass estimates using statistical simulation},
+	url = {http://hdl.handle.net/1974/7863},
+	abstract = {This research uses a Bayesian approach to study the biases that may occur when kinematic data is used to estimate the mass of a galaxy. Data is simulated from the Hernquist (1990) distribution functions (DFs) for velocity dispersions of the isotropic, constant anisotropic, and anisotropic Osipkov (1979) and Merritt (1985) type, and then analysed using the isotropic Hernquist model. Biases are explored when i) the model and data come from the same DF, ii) the model and data come from the same DF but tangential velocities are unknown, iii) the model and data come from different DFs, and iv) the model and data come from different DFs and the tangential velocities are unknown. Mock observations are also created from the Gauthier (2006) simulations and analysed with the isotropic Hernquist model. No bias was found in situation (i), a slight positive bias was found in (ii), a negative bias was found in (iii), and a large positive bias was found in (iv). The mass estimate of the Gauthier system when tangential velocities were unknown was nearly correct, but the mass profile was not described well by the isotropic Hernquist model. When the Gauthier data was analysed with the tangential velocities, the mass of the system was overestimated. The code created for the research runs three parallel Markov Chains for each data set, uses the Gelman-Rubin statistic to assess convergence, and combines the converged chains into a single sample of the posterior distribution for each data set. The code also includes two ways to deal with nuisance parameters. One is to marginalize over the nuisance parameter at every step in the chain, and the other is to sample the nuisance parameters using a hybrid-Gibbs sampler. When tangential velocities, v(t), are unobserved in the analyses above, they are sampled as nuisance parameters in the Markov Chain. The v(t) estimates from the Markov chains did a poor job of estimating the true tangential velocities. However, the posterior samples of v(t) proved to be useful, as the estimates of the tangential velocities helped explain the biases discovered in situations (i)-(iv) above.},
+	urldate = {2024-12-10},
+	school = {Queen's University at Kingston},
+	author = {Eadie, Gwendolyn},
+	month = mar,
+	year = {2013},
+	keywords = {Masters\_thesis},
+}
+
+@article{eadie_estimating_2015,
+	title = {{ESTIMATING} {THE} {GALACTIC} {MASS} {PROFILE} {IN} {THE} {PRESENCE} {OF} {INCOMPLETE} {DATA}},
+	volume = {806},
+	copyright = {http://iopscience.iop.org/info/page/text-and-data-mining},
+	issn = {1538-4357},
+	url = {https://iopscience.iop.org/article/10.1088/0004-637X/806/1/54},
+	doi = {10.1088/0004-637X/806/1/54},
+	number = {1},
+	urldate = {2024-12-09},
+	journal = {The Astrophysical Journal},
+	author = {Eadie, Gwendolyn M. and Harris, William E. and Widrow, Lawrence M.},
+	month = jun,
+	year = {2015},
+	pages = {54},
+}
+
+@misc{noauthor_zotero_nodate,
+	title = {Zotero {\textbar} {Your} personal research assistant},
+	url = {https://www.zotero.org/start},
+	urldate = {2024-12-09},
+}

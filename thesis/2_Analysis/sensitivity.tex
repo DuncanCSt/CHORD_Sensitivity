@@ -1,0 +1,219 @@
+\section{CHORD Sensitivity}
+
+
+\subsection{Point source sensitivity}
+
+The one sigma point source sensitivity is equivalent to the root mean square (RMS) thermal noise which for a drift-scan radio interferometer, assuming dual polarization and natural weighting, is given in Essential Radio Astronomy (ERA) eq. 3.203 as:
+\begin{equation}
+    \sigma_S 
+    = \frac{2kT_S}{A_e\sqrt{N(N-1)~\Delta \nu ~\tau_{\mathrm{eff}}}}
+\end{equation}
+where:
+\begin{itemize}
+    \item \(k=1.38\times 10^3 \Jy \K^{-1} \m^2\) is the Boltzmann constant,
+    \item \( T_s = 30\K\) is the expected system temperature of each antenna (aka the thermal noise) source,
+    \item \( A_e = \pi(D/2)^2\cdot0.5=14.14 \m^2\) is the effective collecting area assuming a \(50\%\) illumination efficiency,
+    \item \(\Delta \nu\) is the bandwidth in Hz,
+    \item \(N\) is the number of antennas, note that \(N(N-1)\) is twice is the number of baselines since each baseline contributes two visibilities of uncorrelated noise,
+    \item \(\tau_{\mathrm{eff}}\) is the effective integration time in seconds, defined below.
+\end{itemize}
+Antenna parameters are obtained from https://chord.mywikis.wiki/wiki/CHORD\_Pathfinder\_Basics.
+
+The radiometer equation can be simplified by introducing the system equivalent flux density (SEFD) where
+
+\begin{align}
+    SEFD &= \frac{2kT_s}{A_e} \\
+    &= 5868 \Jy
+\end{align}
+
+The noise can therefore be expressed in dual polirization as
+
+\begin{equation}
+\sigma_{\mathrm{RMS}} = \frac{\mathrm{SEFD}}{\sqrt{2 \, \Delta \nu \, \tau_{\mathrm{eff}} \, N(N-1)}},
+\label{noise_rms}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item \(\mathrm{SEFD}\) is the system equivalent flux density in Jy,
+    \item \(1/\sqrt2\) arises from dual polarization for a stokes I RMS calculation.
+\end{itemize}
+
+% Defining the effective integration time
+For a Gaussian primary beam, the response function with peak of unity parameterized in terms of its FWHM is
+\begin{align}
+    A(r)
+    &= \exp\left(\frac{r^2}{2\sigma^2}\right) \\
+    &= \exp\left[-4\ln2~\left (\frac{r}{\theta_{\FWHM}} \right )^2\right]
+\end{align}
+where:
+\begin{itemize}
+    \item r is the distance away from the beam center
+    \item \(\theta_{\FWHM} = 2 \sqrt{2 \ln 2} ~\sigma\) is the primary beam FWHM 
+\end{itemize}
+Replacing the radial distance \(r\) with
+\[ r(t) = \sqrt{\theta(t)^2 + \phi^2}, \] 
+where \(\theta(t)=\theta^*(t)-\theta_0\) and \( \phi=\phi^*-\phi_0\) are the angles in azimuth (EW) and zenith (NS) between the beam center \( (\theta_0, \phi_0) \) and a given sky location \(( \theta^*(t), \phi^*)\). We can further express the azimuth angle in terms earth's declination specific apparent angular velocity as \( \theta^*(t) = t\cdot\omega\cos\phi_0\), and assume for simplicity that \( \theta_0 = 0\deg \) and that CHORD is pointing at the zenith, thus \(\phi_0=\delta\) the CHORD latitude. Making the tangent plane assumption we will ignore curvature and assume that the local sky is flat, treating \( \theta, \phi \) as Cartesian coordinates.
+\begin{equation}
+    A(t) = \exp\left[-4\ln2~\frac{t^2\omega^2 \cos^2\delta + \phi^2}{\theta_{\FWHM}^2 }\right].
+\end{equation}
+The total power accumulated from a point source per day of drift scan is the integrated time which the source spends within the primary beam squared. The first factor of the primary beam comes from the natural antena power response, while the second arises during map making during the conversation from fourier domain to image domain. \\
+
+Assuming we take \(t=0\) to be when the source is directly over the beam \(\theta(0) = 0 \) then tau effective is computed as:
+\begin{align}
+    \tau_{eff} 
+    &= \int_{-\infty}^\infty A^2(t)dt \\
+    &= \int_{-\infty}^\infty  \exp\left[-8\ln2~\frac{t^2\omega^2 \cos^2\delta + \phi^2}{\theta_{\FWHM}^2 }\right] dt \\
+    &= \exp\left(-8\ln2\frac{\phi^2}{\theta_\FWHM^2}\right)\int_{-\infty}^\infty  \exp\left[-8\ln2~\frac{t^2\omega^2 \cos^2\delta}{\theta_{\FWHM}^2 }\right] dt\\\
+    &= D(\phi)\sqrt{\frac{\pi}{8\ln2}}\frac{\theta_{\FWHM}}{\omega \cos\delta}.
+    \label{tau_eff}
+\end{align}
+
+where:
+\begin{itemize}
+    \item \(\theta_{\FWHM} = 2 \sqrt{2 \ln 2} ~\sigma\) is the Gaussian beam FWHM,
+    \item \(\omega = 7.29\times10^{-5} ~\rad/s\) is Earth's sidereal rotation angular velocity,
+    \item \(\delta\) is the declination in degrees,
+    \item \(D(\phi) = \exp\left(-8\ln2\frac{\phi^2}{\theta_{\FWHM}^2}\right)\) is a term in range ]0,1] for the attenuation from sources outside the beam path.
+\end{itemize}
+
+Combining equations \ref{noise_rms} and \ref{tau_eff} yields:
+\begin{equation}
+    \sigma_{RMS} = \frac{SEFD}{\sqrt{2 ~\Delta\nu~N(N-1) }}~\sqrt{\frac{2\sqrt{2\ln2}~\omega~cos\delta}{\sqrt{\pi}~\theta_{\FWHM}~D(\phi)}}
+\end{equation}
+Which can be simplified and expressed in radians as:
+\begin{equation}
+    \sigma_{RMS}~[Jy] = \frac{SEFD}{143}~\sqrt{\frac{~\cos\delta}{\Delta\nu[Hz]~N(N-1)~\theta_{FWHM}[\text{rad}] ~D(\phi)}}
+\label{eq:combined_point_source_sensitivity}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{plots/attenuation_function.png}
+    \caption{Attenuation function for sources outside the beam center path.}
+    \label{fig:placeholder}
+\end{figure}
+
+\subsection{Converting to brightness temperature}
+The surface brightness sensitivity is obtained by dividing the point source sensitivity by the synthesized beam solid angle
+\begin{equation}
+\sigma_\Omega = \frac{\sigma_s}{\Omega_s}.
+\end{equation}
+
+It is then converted to a brightness temperature by applying the Raleigh-Jeans limit
+\begin{equation}
+\sigma_T = \frac{\sigma_\Omega c^2}{2k\nu^2},
+\end{equation}
+
+The synthesized beam is modeled as a 2D Gaussian with peak 1, which can be expressed by its FWHM as
+\begin{equation}
+    A(\theta, \phi) = \exp\left[-4\ln2~\left (\frac{\theta}{\theta_{\mathrm{FWHM}}} \right )^2 \right] \exp\left[-4\ln2~\left( \frac{\phi}{\phi_{\mathrm{FWHM}}}\right)^2\right].
+\end{equation}
+The solid angle is the integrated beam power, which is given by
+\begin{align}
+    \Omega_s
+    &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}A(\theta, \phi)~ d\theta d\phi \\
+    &= \int_{-\infty}^{\infty}\exp\left[-4\ln2~\left (\frac{\theta}{\theta_{\mathrm{FWHM}}} \right )^2 \right]~ d\theta \int_{-\infty}^{\infty}\exp\left[-4\ln2~\left (\frac{\phi}{\phi_{\mathrm{FWHM}}} \right )^2 \right]d\phi \\
+    &= \frac{\pi ~\theta_{\FWHM}~\phi_{\FWHM}}{4\ln2}
+\end{align}
+Where \(\theta_{\FWHM}\) and \(\phi_{\FWHM}\) are the synthesized beam full-width-at-half-maximum which are given by
+\begin{equation}
+    \theta_{\FWHM} = \frac{c}{\nu~D_{bl}}
+\end{equation}
+Where \(D_{bl}\) is the distance of the longest baseline.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{plots/brightness_temperature_vs_frequency.png}
+    \caption{Brightness Temperature Sensitivity in mK as a function of observing frequency using a 5kHz bandwidth, 0 deg offset, 1 observing day and full CHORD.}
+    \label{fig:internal_brighntess_sensitivity_plot}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{plots/RMS_declination_maps_galactic.png}
+    \caption{Daily RMS as a function of declination at $1.5\GHz$ is plotted and shows lower noise at high declination as expected.}
+    \label{fig:rms_dec_map}
+\end{figure}
+
+\subsection{Incorporating Radio background noise}
+
+Radio background also contributes to the total noise. Radio background adds linearly to the total system temperature so noise from background is calculated in the same method as equation \eqref{eq:combined_point_source_sensitivity}. In other words, SEFD for combined background and system noise is taken to be the sum of system temperature and the background temperature.
+
+\begin{equation}
+    SEFD = \frac{2k(T_{sys}+T_{sky})}{A_e}
+\end{equation}
+
+\subsubsection{Background Sky plots}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{plots/gsm_maps.png}
+    \caption{Radio background maps measured in brightness temperature (K) for 4 different frequencies. Background is highest in the galactic plane, particularly towards the galactic center. }
+    \label{fig:placeholder}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{plots/gsm_median_sky_temperature.png}
+    \caption{Radio Background increases exponentially towards lower frequencies.}
+    \label{fig:median_background_noise}
+\end{figure}
+
+\subsubsection{Total noise plots}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{plots/gsm_total_noise_maps.png}
+    \caption{Total noise for 4 frequencies in brightness temperature (mK) for a single observing day. The plots show that noise is positionally dependent, with less noise at high declination and more noise at low declination or near the galactic midplane.}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/median_total_noise.png}
+    \caption{Median total noise, is highest at both extreme low frequencies, where noise is dominated by the strong background temperature, and at high frequencies where it is dominated by the system temperate. The median map noise is minimized around 600 MHz where system noise is lowest and background remains relatively weak. }
+    \label{fig:placeholder}
+\end{figure}
+
+\subsubsection{Total noise by region}
+Now looking at how noise changes for different regions.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\linewidth]{plots/noise_map_regions.png}
+    \caption{plot showing the three regions that are considered. The Galactic plane where $\|b\|<1.5$, the mid latitude where $5<b<10$, and high latitudes where $20<b<60$.}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+
+% Row 1
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{plots/median_noise_galactic_plane.png}
+    \subcaption{Galactic Plane, Noise is dominated by background.}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{plots/median_noise_mid_latitude.png}
+    \subcaption{Mid Latitude, noise is a mix of system and background noise.}
+\end{minipage}
+
+\vspace{0.05cm}
+
+% Row 2
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{plots/median_noise_high_latitude.png}
+    \subcaption{High Latitude noise is dominated by the system noise.}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{plots/median_noise_all_regions.png}
+    \subcaption{Overlay of the three regions, showing how noise curve varies by latitude.}
+\end{minipage}
+
+\caption{Comparison of noise vs frequency for three different regions.}
+\label{fig:median_noise_by_region}
+\end{figure}
