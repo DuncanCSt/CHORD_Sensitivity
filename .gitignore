@@ -11,3 +11,17 @@ geo_data/site
 *.jpg
 *.ipynb_checkpoints/
 *.DS_Store
+
+# LaTeX build artifacts
+build/
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex.gz

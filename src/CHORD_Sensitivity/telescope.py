@@ -74,8 +74,10 @@ class Telescope:
         freq_array = np.atleast_1d(freq)
         
         wavelength = C / freq_array  # in meters
-        max_baseline_ew = self.params['dish_separation_ew'] * self.params['ndish_ew']  # in meters
-        max_baseline_ns = self.params['dish_separation_ns'] * self.params['ndish_ns']  # in meters
+        # Longest baseline is the center-to-center distance between the two
+        # outermost dishes: (ndish - 1) gaps of the dish separation.
+        max_baseline_ew = self.params['dish_separation_ew'] * (self.params['ndish_ew'] - 1)  # in meters
+        max_baseline_ns = self.params['dish_separation_ns'] * (self.params['ndish_ns'] - 1)  # in meters
 
         fwhm_ew = wavelength / max_baseline_ew  # in radians
         fwhm_ns = wavelength / max_baseline_ns  # in radians
