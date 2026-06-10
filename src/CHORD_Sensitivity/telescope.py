@@ -214,13 +214,16 @@ class Telescope:
         
         rms = term1 * term2
 
-        return float(rms[0]) if is_scalar else rms.tolist()
+        # Return a scalar only when the result truly is one value. A scalar
+        # freq combined with an array T_background (or dec_deg) yields one rms
+        # per element, which must not be collapsed to rms[0].
+        return float(rms[0]) if (is_scalar and rms.size == 1) else rms.tolist()
     
     def surface_temperature(self,
                             freq: float | list[float],
                             sigma_rms: None | float | list[float] = None,
                             delta_nu: None | float = None) -> float | list[float]:
-        """
+        r"""
         Convert RMS noise level to surface temperature sensitivity.
 
         $$ \sigma_T = \frac{\sigma c^2}{\Omega_s 2 k \nu^2} $$
