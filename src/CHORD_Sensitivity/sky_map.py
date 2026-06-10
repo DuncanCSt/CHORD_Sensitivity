@@ -127,6 +127,7 @@ class SkyMap:
     def plot_sky_noise(self,
             delta_nu: float,
             freqs: list[float],
+            title: str | None = None,
             type: Literal["background_only", "system_only", "total_noise"] = "total_noise",
             chord_range: bool = True,
             save_path: str | None = None,
@@ -199,6 +200,9 @@ class SkyMap:
             pad=0.02,
         )
         cbar.set_label(f"Temperature ({unit})", fontsize=14)
+
+        if title is not None:
+            plt.suptitle(title, fontsize=16)
 
         if save_path is not None:
             plt.savefig(save_path, dpi=150, bbox_inches="tight")

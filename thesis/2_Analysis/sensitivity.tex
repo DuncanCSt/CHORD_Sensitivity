@@ -148,11 +148,13 @@ Figures \ref{fig:angular_resolution} and \ref{fig:surface_temperature_5kHz} show
 
 \subsection{Incorporating Radio background noise}
 
-Radio background also contributes to the total noise and thus lowers sensitivity. Radio background adds linearly to the total system temperature so noise from background is calculated in the same method as equation \eqref{eq:combined_point_source_sensitivity}. In other words, SEFD for combined background and system noise is taken to be the sum of system temperature and the background temperature.
+Radio background contributes to total noise and lowers sensitivity. Radio background adds linearly to the total system temperature so noise from background is calculated in the same method as equation \eqref{eq:combined_point_source_sensitivity}. In other words, SEFD for combined background and system noise is taken to be the sum of system temperature and the background temperature.
 
 \begin{equation}
     SEFD = \frac{2k(T_{sys}+T_{sky})}{A_e}
 \end{equation}
+
+The radio background is obtained from the 
 
 \subsubsection{Background Sky plots}
 \begin{figure}[H]
