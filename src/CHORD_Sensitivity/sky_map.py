@@ -33,6 +33,7 @@ class SkyMap:
             freq: float | list[float],
             type: Literal["background_only", "system_only", "total_noise"] = "total_noise",
             CHORD_range: bool = True,
+            custom_range: dict[str, float] | None = None,
         ) -> list[np.ndarray]:
         """
         Compute brightness-temperature sky maps over the observable sky.
@@ -163,6 +164,8 @@ class SkyMap:
             The figure holding the grid of panels.
         """
         maps = self.sky_noise(delta_nu=delta_nu, freq=freqs, type=type, CHORD_range=chord_range)
+        if unit == "mK":
+            maps = [m * 1e3 for m in maps]  # convert K to mK
 
         nrows = 2
         ncols = int(np.ceil(len(maps) / nrows))

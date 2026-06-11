@@ -8,16 +8,7 @@ The senstivity of a radio interfermoter is the minimum flux density of a point s
     = \frac{2kT_S}{A_e\sqrt{N(N-1)~\Delta \nu ~\tau_{\mathrm{eff}}}},
     \label{eq:radiometer_noise_rms}
 \end{equation}
-where:
-\begin{itemize}
-    \item \(k=1.38\times 10^3 \Jy \K^{-1} \m^2\) is the Boltzmann constant,
-    \item \( T_s = 30\K\) is the expected system temperature of each antenna,
-    \item \( A_e = \pi(D/2)^2\cdot0.5=14.14 \m^2\) is the effective collecting area assuming a \(50\%\) illumination efficiency,
-    \item \(\Delta \nu\) is the bandwidth in Hz,
-    \item \(N\) is the number of antennas, note that \(N(N-1)\) is twice is the number of baselines since each baseline contributes two visibilities of uncorrelated noise,
-    \item \(\tau_{\mathrm{eff}}\) is the effective integration time in seconds, defined below.
-\end{itemize}
-Antenna parameters are obtained from \citet{chord_pathfinder_basics}.
+where \(k=1.38\times 10^3 \Jy \K^{-1} \m^2\) is the Boltzmann constant, \( T_s = 30\K\) is the expected system temperature of each antenna, and \( A_e = \pi(D/2)^2\cdot0.5=14.14 \m^2\) is the effective collecting area assuming a \(50\%\) illumination efficiency. The remaining quantities are the bandwidth \(\Delta \nu\) in Hz, the number of antennas \(N\)---noting that \(N(N-1)\) is twice the number of baselines, since each baseline contributes two visibilities of uncorrelated noise---and the effective integration time \(\tau_{\mathrm{eff}}\) in seconds, defined below. Antenna parameters are obtained from \citet{chord_pathfinder_basics}.
 
 The radiometer equation can be simplified by introducing the system equivalent flux density (SEFD) as
 
@@ -77,13 +68,7 @@ Assuming we take \(t=0\) to be when the source is directly over the beam \(\thet
     \label{tau_eff}
 \end{align}
 
-where:
-\begin{itemize}
-    \item \(\theta_{\FWHM} = 2 \sqrt{2 \ln 2} ~\sigma\) is the Gaussian beam FWHM,
-    \item \(\omega = 7.29\times10^{-5} ~\rad/s\) is Earth's sidereal rotation angular velocity,
-    \item \(\delta\) is the declination in degrees,
-    \item \(D(\phi) = \exp\left(-8\ln2\frac{\phi^2}{\theta_{\FWHM}^2}\right)\) is a term in range ]0,1] for the attenuation from sources outside the beam path.
-\end{itemize}
+where \(\theta_{\FWHM} = 2 \sqrt{2 \ln 2} ~\sigma\) is the Gaussian beam FWHM, \(\omega = 7.29\times10^{-5} ~\rad/s\) is Earth's sidereal rotation angular velocity, and \(\delta\) is the declination in degrees. The final factor \(D(\phi) = \exp\left(-8\ln2\frac{\phi^2}{\theta_{\FWHM}^2}\right)\) is a term in the range \(\left]0,1\right]\) accounting for the attenuation of sources outside the beam path.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/chord_primary_beam_attenuation.png}
@@ -141,92 +126,43 @@ It is then converted to a brightness temperature by applying the Raleigh-Jeans l
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/chord_pathfinder_surface_temperature_5kHz.png}
-    \caption{CHORD and Pathfinder surface temperature sensitivity using a 5 kHz bandwidth, shows that sensitivity is improved at lower frequencies due to the wider beam and longer effective integration time.}
+    \caption{CHORD and Pathfinder surface temperature sensitivity using a 5 kHz bandwidth and one observation day, shows that sensitivity is improved at lower frequencies due to the wider beam and longer effective integration time.}
     \label{fig:surface_temperature_5kHz}
 \end{figure}
-Figures \ref{fig:angular_resolution} and \ref{fig:surface_temperature_5kHz} show the angular resolution and surface temperature sensitivity for CHORD and Pathfinder across the 300-1500 MHz band. The angular resolution improves at higher frequencies while sensitivity is best at lower frequencies, representing the trade-off between beam size and integration time.  Sensitivity at higher frequency can be improved at the cost of angular resolution by convolving the final image to a larger beam, however low frequency angular resolution cannot be improved without increasing the maximum baseline length.
+Figures \ref{fig:angular_resolution} and \ref{fig:surface_temperature_5kHz} show the angular resolution and surface temperature sensitivity for CHORD and Pathfinder across the 300-1500 MHz band. The angular resolution improves at higher frequencies while sensitivity is best at lower frequencies, representing the trade-off between beam size and integration time.  Sensitivity at higher frequency can be improved at the cost of angular resolution by convolving the final image to a larger beam, however low frequency angular resolution cannot be improved without increasing the maximum baseline length. Sensitivity is also improved at higher declinations due to the longer effective integration time, as sources move slower across the sky and spend more time within the primary beam. The sensitivity maps for a single observing day are shown in figure \ref{fig:system_only_noise}.
+
+\begin{figure}[H]
+    \centering
+    \textbf{System Noise maps}
+    \includegraphics[width=1\linewidth]{thesis/plots/sensitivity/system_only_noise.png}
+    \caption{System Noise in the CHORD range for different frequencies, showing that noise is reduced at lower frequencies, due to the the wider beam, and also reduced at high declinations as sources move slower across the sky thus spending more time within the primary beam.}
+    \label{fig:system_only_noise}
+\end{figure}
 
 \subsection{Incorporating Radio background noise}
 
-Radio background contributes to total noise and lowers sensitivity. Radio background adds linearly to the total system temperature so noise from background is calculated in the same method as equation \eqref{eq:combined_point_source_sensitivity}. In other words, SEFD for combined background and system noise is taken to be the sum of system temperature and the background temperature.
+Radio background contributes unwanted noise which degrades sensitivity. Radio background is received by the antenna and adds linearly to the total system temperature. Therefore, noise from background is calculated in the same method as equation \eqref{eq:combined_point_source_sensitivity}. In other words, SEFD for combined background and system noise is taken to be the sum of system temperature and the background temperature.
 
 \begin{equation}
     SEFD = \frac{2k(T_{sys}+T_{sky})}{A_e}
 \end{equation}
 
-The radio background is obtained from the 
+The radio background is obtained from the Global Sky Model \citep{zheng_improved_2017}. This model incorporates all dominant sources of radio emission into a single all-sky map of brightness temperature from 10 MHz to 5THz. The model is accesable through the pygdsm package \citep{pygdsm}, which allows for easy querying of the background temperature at any given frequency and sky location. Plots are created using mollweide projections in Galactic coordinates using the healpy package \citep{healpy}. The full sky background maps are shown in figure \ref{fig:Radio_background_maps}.
 
-\subsubsection{Background Sky plots}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{plots/gsm_maps.png}
-    \caption{Radio background maps measured in brightness temperature (K) for 4 different frequencies. Background is highest in the galactic plane, particularly towards the galactic center. }
-    \label{fig:placeholder}
+    \textbf{Radio background maps}
+    \includegraphics[width=1\linewidth]{thesis/plots/sensitivity/background_only.png}
+    \caption{Radio background maps in Galactic coordinates centered on the CHORD field of view, measured in brightness temperature (K) for 4 different frequencies. Background is highest at lower frequency and along the galactic plane, particularly towards the galactic center. }
+    \label{fig:Radio_background_maps}
 \end{figure}
 
+Maps of total sensitivity, which incorporates both system noise and radio background noise, are shown in figure \ref{fig:placeholder}. The total sensitivity is positionally and frequency dependent, with less noise at high declination and more along the midplane.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{plots/gsm_median_sky_temperature.png}
-    \caption{Radio Background increases exponentially towards lower frequencies.}
-    \label{fig:median_background_noise}
-\end{figure}
-
-\subsubsection{Total noise plots}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{plots/gsm_total_noise_maps.png}
-    \caption{Total noise for 4 frequencies in brightness temperature (mK) for a single observing day. The plots show that noise is positionally dependent, with less noise at high declination and more noise at low declination or near the galactic midplane.}
-    \label{fig:placeholder}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\linewidth]{plots/median_total_noise.png}
-    \caption{Median total noise, is highest at both extreme low frequencies, where noise is dominated by the strong background temperature, and at high frequencies where it is dominated by the system temperate. The median map noise is minimized around 600 MHz where system noise is lowest and background remains relatively weak. }
-    \label{fig:placeholder}
-\end{figure}
-
-\subsubsection{Total noise by region}
-Now looking at how noise changes for different regions.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.65\linewidth]{plots/noise_map_regions.png}
-    \caption{plot showing the three regions that are considered. The Galactic plane where $\|b\|<1.5$, the mid latitude where $5<b<10$, and high latitudes where $20<b<60$.}
-    \label{fig:placeholder}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-
-% Row 1
-\begin{minipage}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{plots/median_noise_galactic_plane.png}
-    \subcaption{Galactic Plane, Noise is dominated by background.}
-\end{minipage}
-\hfill
-\begin{minipage}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{plots/median_noise_mid_latitude.png}
-    \subcaption{Mid Latitude, noise is a mix of system and background noise.}
-\end{minipage}
-
-\vspace{0.05cm}
-
-% Row 2
-\begin{minipage}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{plots/median_noise_high_latitude.png}
-    \subcaption{High Latitude noise is dominated by the system noise.}
-\end{minipage}
-\hfill
-\begin{minipage}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{plots/median_noise_all_regions.png}
-    \subcaption{Overlay of the three regions, showing how noise curve varies by latitude.}
-\end{minipage}
-
-\caption{Comparison of noise vs frequency for three different regions.}
-\label{fig:median_noise_by_region}
+    \textbf{Total noise maps}
+    \includegraphics[width=1\linewidth]{thesis/plots/sensitivity/total_noise.png}
+    \caption{Total noise maps in Galactic coordinates centered on the CHORD field of view, measured in brightness temperature (mK) for 4 different frequencies.}
+    \label{fig:total_noise_maps}
 \end{figure}
