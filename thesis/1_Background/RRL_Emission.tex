@@ -10,7 +10,7 @@ RRLs are sources of radio frequency emissions produced in an ionized medium afte
 
 where \(R_H\) is the Rydberg constant for hydrogen, \(c\) is the speed of light, \(n\) is the final quantum number, and \(\Delta n\) is the change in quantum numbers. Transitions where \(\Delta n = 1\) are called alpha transitions, \(\Delta n = 2\) and \(\Delta n = 3\) are beta and gamma transitions respectively.\\
 
-Line intensity estimates in the radio range assuming optically thin emission and local thermodynamic equilibrium are shown by \citep{andersonGBTDiffuseIonized2021} to be
+Line intensity estimates in the radio range assuming optically thin emission and local thermodynamic equilibrium are shown by \citet{andersonGBTDiffuseIonized2021} to be
 
 \begin{equation}
     \left( \frac{T_L}{\K} \right) \backsimeq 3076~\left(\frac{T_e}{\K}\right)^{-3/2}\left(\frac{\EM}{\pc \cm^{-6}}\right) \left(\frac{\nu_0}{\GHz}\right)^{-1} \left(\frac{\Delta V}{\km \s^{-1}} \right)^{-1} \Delta n M_{\Delta n},
@@ -24,13 +24,13 @@ Emission measure is defined as the integral of the electron density squared alon
     \EM = \int n_e^2 dl
 \end{equation}
 
-where \(n_e\) is the electron density and \(l\) is the line of sight distance, meaning \(\EM\) is a measure of the total quantity of electrons producing photons within the line of sight. Electron temperature is a measure of the average kinetic energy of electrons, and is assumed by \cite{andersonGBTDiffuseIonized2021} to be \(\approx 8000 \K\). Taken together, temperature and emission measure are the two physical parameters that determine the strength of RRL emission.\\
+where \(n_e\) is the electron density and \(l\) is the line of sight distance, meaning \(\EM\) is a measure of the total quantity of electrons producing photons within the line of sight. Electron temperature is a measure of the average kinetic energy of electrons, and is assumed by \citet{andersonGBTDiffuseIonized2021} to be \(\approx 8000 \K\). Taken together, temperature and emission measure are the two physical parameters that determine the strength of RRL emission.\\
 
 The two important features to note from equation \eqref{eq:line_intensity} is firstly that alpha transitions are expected to be an order of magnitude stronger than beta transitions and two orders of magnitude stronger than gamma transitions, and secondly that line intensity is inversely proportional to frequency, meaning that lower frequency lines are expected to be strongest.\\
 
 While line emission should theoretically occur only at the specific frequency characterized by the Rydberg formula \eqref{eq:rydberg_formula}, when measuring a line emission produced by an astronomical source the line will be broadened in its frequency profile to a shape approximately Gaussian characterized by its FWHM line width \(\Delta V\). The line broadening is caused by a combination of thermal broadening, the random motion of electrons, turbulence, the bulk motion of the gas, and pressure broadening, the perturbations of energy levels between closely packed neighboring particles.\\
 
-The integrated line intensity, which is the line intensity integrated over the line width, which eliminates the dependence on \(\Delta V\), is further shown by \citep{andersonGBTDiffuseIonized2021} to be
+The integrated line intensity, which is the line intensity integrated over the line width, which eliminates the dependence on \(\Delta V\), is further shown by \citet{andersonGBTDiffuseIonized2021} to be
 
 \begin{equation}
     \frac{W_{RRL}}{\K \km \s^{-1}} \backsimeq 3274~\left(\frac{T_e}{\K}\right)^{-3/2}\left(\frac{\EM}{\pc \cm^{-6}}\right) \left(\frac{\nu_0}{\GHz}\right)^{-1} \Delta n M_{\Delta n}.
