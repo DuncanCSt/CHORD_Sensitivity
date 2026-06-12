@@ -1,14 +1,15 @@
 \section{CHORD Sensitivity}
+\label{sec:sensitivity}
 
 \subsection{Point source sensitivity}
 
-The senstivity of a radio interfermoter is the minimum flux density of a point source that can be detected at a given signal to noise ratio (SNR). Choosing an SNR of 1, the sensitivity is equal to the RMS noise, which can be theoretically computed using the radiometer equation given by \citet[eq. 3.203]{condon_essential_2016} as
+The senstivity of a radio interfermoter is the minimum flux density of a point source that can be detected at a given signal to noise ratio (SNR). Choosing an SNR of 1, the sensitivity is equal to the RMS noise, which can be theoretically computed using the radiometer equation given by \cite[eq. 3.203]{condonEssentialRadioAstronomy2016} as
 \begin{equation}
     \sigma_{\mathrm{RMS}, ~\mathrm{single~pol}}
     = \frac{2kT_S}{A_e\sqrt{N(N-1)~\Delta \nu ~\tau_{\mathrm{eff}}}},
     \label{eq:radiometer_noise_rms}
 \end{equation}
-where \(k=1.38\times 10^3 \Jy \K^{-1} \m^2\) is the Boltzmann constant, \( T_s = 30\K\) is the expected system temperature of each antenna, and \( A_e = \pi(D/2)^2\cdot0.5=14.14 \m^2\) is the effective collecting area assuming a \(50\%\) illumination efficiency. The remaining quantities are the bandwidth \(\Delta \nu\) in Hz, the number of antennas \(N\)---noting that \(N(N-1)\) is twice the number of baselines, since each baseline contributes two visibilities of uncorrelated noise---and the effective integration time \(\tau_{\mathrm{eff}}\) in seconds, defined below. Antenna parameters are obtained from \citet{chord_pathfinder_basics}.
+where \(k=1.38\times 10^3 \Jy \K^{-1} \m^2\) is the Boltzmann constant, \( T_s = 30\K\) is the expected system temperature of each antenna, and \( A_e = \pi(D/2)^2\cdot0.5=14.14 \m^2\) is the effective collecting area assuming a \(50\%\) illumination efficiency. The remaining quantities are the bandwidth \(\Delta \nu\) in Hz, the number of antennas \(N\)---noting that \(N(N-1)\) is twice the number of baselines, since each baseline contributes two visibilities of uncorrelated noise---and the effective integration time \(\tau_{\mathrm{eff}}\) in seconds, defined below. Antenna parameters are obtained from the CHORD internal wikipedia \cite{CHORDSummaryCHORD}.
 
 The radiometer equation can be simplified by introducing the system equivalent flux density (SEFD) as
 
@@ -32,7 +33,7 @@ The CHORD primary beam is an Airy disk which has response pattern
 \end{equation}
 where \(J_1\) is the first order Bessel function of the first kind, \(D\) is the dish diameter, \(f\) is the observing frequency, and \(\theta\) is the angle from the beam center. The Full Width at Half Maximum (FWHM) of the Airy disk is given by 
 \begin{align}
-    A(\theta) &= \frac{1}{2} \\
+    A(\theta_{\FWHM}) &= \frac{1}{2} \\
     \Rightarrow \theta_{\FWHM} &\approx 1.029 \frac{\lambda}{D}.
 \end{align}
 For simplicity we will model the primary beam as a Gaussian with a matched FWHM and ignore the sidelobes. The Gaussian beam response is given by
@@ -157,7 +158,7 @@ The radio background is obtained from the Global Sky Model \citep{zheng_improved
     \label{fig:Radio_background_maps}
 \end{figure}
 
-Maps of total sensitivity, which incorporates both system noise and radio background noise, are shown in figure \ref{fig:placeholder}. The total sensitivity is positionally and frequency dependent, with less noise at high declination and more along the midplane.
+Maps of total sensitivity, which incorporates both system noise and radio background noise, are shown in figure \ref{fig:total_noise_maps}. The total sensitivity is positionally and frequency dependent, with less noise at high declination and more along the midplane.
 
 \begin{figure}[H]
     \centering

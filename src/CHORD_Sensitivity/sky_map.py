@@ -33,7 +33,6 @@ class SkyMap:
             freq: float | list[float],
             type: Literal["background_only", "system_only", "total_noise"] = "total_noise",
             CHORD_range: bool = True,
-            custom_range: dict[str, float] | None = None,
         ) -> list[np.ndarray]:
         """
         Compute brightness-temperature sky maps over the observable sky.

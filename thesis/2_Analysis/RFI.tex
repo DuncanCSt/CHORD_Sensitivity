@@ -1,5 +1,29 @@
 \section{Radio Frequency Interference Analysis}
 
+Based on estimations from the DRAO RFI monitor, we expect to have good visibility for 44 transitions and partial visibility for an additional 27. The number of visible lines per frequency range is presented in table \ref{tbl:RFI_lines}.
+
+\begin{table}[h!]
+\centering
+\caption{RFI Impact on Transition Line Visibility}
+\label{tbl:RFI_lines}
+
+\begin{tabular}{lrr}
+\hline
+\textbf{Frequency Range (MHz)} & \textbf{Visible Transitions} & \textbf{Partially Visible Transitions} \\
+\hline
+400--800     & 21 & 19 \\
+800--1200    & 11 & 8  \\
+1200--1500   & 12 & 0  \\
+\hline
+\textbf{Total} & \textbf{44} & \textbf{27} \\
+\hline
+\end{tabular}
+
+\\[4pt]
+\textit{Estimates based on DRAO RFI monitor.}
+
+\end{table}
+
 \subsection{Definition of RFI}
 Radio frequency interference (RFI) consists of radio waves emitted from any Earthly source that can overcome or be confused with the target signal. Examples of RFI can include satellites, electronic equipment, and local broadband communications. Unlike statistical noise, RFI cannot be removed through smoothing or time averaging because RFI is a distinct signal and not a random variable. Instead, it must be identified and removed.\\
 

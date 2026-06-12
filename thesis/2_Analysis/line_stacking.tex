@@ -1,44 +1,62 @@
 \section{Radio Line Stacking}
 \label{sec:line_stacking}
 
-Based on estimations from the DRAO RFI monitor, we expect to have good visibility for 44 transitions and partial visibility for an additional 27. The number of visible lines per frequency range is presented in table \ref{tbl:RFI_lines}.
-
-\begin{table}[h!]
-\centering
-\caption{RFI Impact on Transition Line Visibility}
-\label{tbl:RFI_lines}
-
-\begin{tabular}{lrr}
-\hline
-\textbf{Frequency Range (MHz)} & \textbf{Visible Transitions} & \textbf{Partially Visible Transitions} \\
-\hline
-400--800     & 21 & 19 \\
-800--1200    & 11 & 8  \\
-1200--1500   & 12 & 0  \\
-\hline
-\textbf{Total} & \textbf{44} & \textbf{27} \\
-\hline
-\end{tabular}
-
-\\[4pt]
-\textit{Estimates based on DRAO RFI monitor.}
-
-\end{table}
-
-
-\subsection{Line Strength vs Frequency}
 % (for a deeper look at line strength based on GDIGGS see \url{https://www.overleaf.com/project/68b0918d19fe364fd7b8db66})
-The line intensity is given by
+The principle of line stacking is that each transition line is a measurement of the same underlying physical quantity, namely the emission measure and electron temperature of the ionized gas. We can therefore treat each line measurement as an independent sample of the same signal but with a different random noise contribution. In the ideal case, with \(n\) independant samples of a random variable with mean \(\mu\) and variance \(\sigma^2\), the mean of the samples has a variance of \(\sigma^2/n\), meaning that by stacking \(n\) lines we can reduce the noise by a factor of \(\sqrt{n}\). However, for RRLs the lines at different frequencies have both different strengths and different noise levels, so the ideal strategy is not to combine all measurements linearly. From section \ref{sec:rrl_emission} we know that line strength is inversely proportional to frequency (\(T_L \propto \nu^{-1}\)), and from section \ref{sec:sensitivity} that the noise is both frequency and spatially dependent. \\
+
+The optimal method of combining multiple observations having different variances is to use an inverse-variance-weighted average. Which is a weighted average of the observations using the inverse variance as the weighting factor,
+\begin{equation}
+    \hat{x} = \frac{\sum_i x_i \cdot w_i}{\sum_i w_i}, ~~ Var(\hat{x}) = \frac{\sum_i w_i^2 \cdot\sigma_i^2}{(\sum_i w_i)^2}
+    \label{eq:weighted_avg}
+\end{equation}
+\begin{equation}
+    w_i = \frac{1}{\sigma_i^2}.
+\end{equation}
+In the case when all variances are the same, then equation \eqref{eq:weighted_avg} is simply the mean.
+
+However the inverse-variance-weighted average assumes that each signal carries the same information. We therefore take a reference frequency \(\nu_0\) and rescale the line and noise based on that reference such that each line carries the same expected signal strength. The rescaled line strength \(x'\), noise \(\sigma'\) and weights \(w'\) are given by
+
+\begin{equation}
+    x'_i=x_i \frac{\nu_i}{\nu_0}, ~~ \sigma'_i = \sigma_i\frac{\nu_i}{\nu_0}, ~~ w_i'= \frac{\nu_0^2}{\sigma_i^2 ~ \nu_i^2}.
+    \label{eq:rescaled_signal_and_noise}
+\end{equation}
+The inverse-variance-weighted mean, variance and standard deviation of the rescaled quantities are given by
+\begin{equation}
+    \hat{x}' 
+    = \frac{\sum_i x_i' \cdot w_i'}{\sum_i w_i'}
+    % = \frac{\sum_i (x_i\frac{\nu_i}{\nu_0}) ( \frac{\nu_0^2}{\sigma_i^2\nu_i^2} )} {\sum_i \frac{\nu_0^2}{\sigma_i^2\nu_i^2}} 
+    = \frac{1}{\nu_0} \frac{\sum_i x_i \frac{1}{\sigma_i^2\nu_i}}{\sum_i \frac{1}{\sigma_i^2\nu_i^2}}
+    \label{eq:stacked_weighted_average}
+\end{equation}
+\begin{equation}
+    Var(\hat{x}') 
+    = \frac{\sum_i w_i'^2 \cdot\sigma_i'^2}{(\sum_i w_i')^2}
+    % = \frac{\sum_i (\frac{\nu_0^2}{\sigma_i^2 \nu_i^2})^2 (\sigma_i \frac{\nu_i}{\nu_0})^2}{(\sum_i \frac{\nu_0^2}{\sigma_i^2 \nu_i^2} )^2}
+    % = \frac{1}{\nu_0^2} \frac{\sum_i \frac{1}{\sigma_i^2\nu_i^2}}{(\sum_i \frac{1}{\sigma_i^2 \nu_i^2})^2}
+    = \left( \nu_0^2 \sum_i \frac{1}{\sigma_i^2 \nu_i^2} \right)^{-1}
+    \label{eq:stacked_variance}
+\end{equation}
+\begin{equation}
+    \hat{\sigma}' = \sqrt{Var(\hat{x}')} = \nu_0^{-1} \left( \sum_i \frac{1}{\sigma_i^2 \nu_i^2} \right)^{-1/2}.
+    \label{eq:stacked_std}
+\end{equation}
+The choice of \(\nu_0\) is arbitrary and only adds a scaling factor to the mean and variance but does not impact SNR which given by
+\begin{equation}
+    SNR = \frac{\hat{x}'}{\sqrt{Var(\hat{x}')}} = \frac{\sum_i x_i\frac{1}{\sigma_i^2 \nu_i}}{\sqrt{\sum_i \frac{1}{\sigma_i^2 \nu_i^2}}}.
+\end{equation}
+
+\subsection{Other Stuff}
 
 \begin{equation}
     \left( \frac{T_L}{\K} \right) \backsimeq 3076~\left(\frac{T_e}{\K}\right)^{-3/2}\left(\frac{\EM}{\pc \cm^{-6}}\right) \left(\frac{\nu_0}{\GHz}\right)^{-1} \left(\frac{\Delta V}{\km \s^{-1}} \right)^{-1} \Delta n M_{\Delta n}.
 \end{equation}
 
-The physical parameters of electron temperature \((T_e)\), emission-measure \(\EM\) and FWHM line width \((\Delta V)\) are all constant for every line. So for the purpose of sensitivity estimation, the relationship of interest is
+The physical parameters of electron temperature \((T_e)\), emission-measure \(\EM\) and FWHM line width \((\Delta V)\) are constant for lines within a given region. So for the purpose of optimal line stacking estimation, the relationship of interest is
 \begin{equation}
     T_L \propto \nu^{-1}.
     \label{eq.temp_propto_inv_freq}
 \end{equation}
+
 For the purpose of this analysis we will assume a peak line intensity at \(1.5 \GHz\) of \(10\mK\) which is of the correct order of magnitude based on the median emission measure from \cite{Anderson_2021}. Note that this is not very precise and is likely only true in the galactic midplane, however it serves as a reasonable approximation for the current analysis.
 \begin{equation}
     T_L(1.5 \GHz) = 10 \mK, ~~T_L(\nu)=10\mK \frac{1.5\GHz}{\nu ~[\GHz~]}
