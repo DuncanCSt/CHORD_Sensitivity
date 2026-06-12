@@ -84,9 +84,16 @@ Combining equations \ref{noise_rms} and \ref{tau_eff} yields:
 \end{equation}
 Which can be simplified and expressed in radians as:
 \begin{equation}
-    \sigma_{RMS}~[Jy] = \frac{SEFD}{143}~\sqrt{\frac{~\cos\delta}{\Delta\nu[Hz]~N(N-1)~\theta_{FWHM}[\text{rad}] ~D(\phi)}}
+    \sigma_{RMS}~[Jy/Beam] = \frac{SEFD}{143}~\sqrt{\frac{~\cos\delta}{\Delta\nu[Hz]~N(N-1)~\theta_{FWHM}[\text{rad}] ~D(\phi)}}
 \label{eq:combined_point_source_sensitivity}
 \end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/chord_point_source_sensitivity.png}
+    \caption{CHORD point source sensitivity vs observing frequency for one observing day with 5 kHz bandwidth. Shows Sensitivity is improved at lower frequencies due to the wider beam and longer effective integration time.}
+    \label{fig:chord_point_source_sensitivity}
+\end{figure}
 
 \subsection{Brightness temperature sensitivity}
 A telescope's synthesised beam is the combined sensitivity across all antennas. The angular resolution is defined as the smallest angular scale that can be resolved by the synthesized beam, and is measured by the synthesized beam FWHM, given by
@@ -120,6 +127,13 @@ Surface brightness sensitivity, which is a measure of the telescope's ability to
 \sigma_\Omega [\text{Jy/sr}] = \frac{\sigma_{RMS}}{\Omega_s}.
 \end{equation}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/chord_pathfinder_surface_brightness_sensitivity.png}
+    \caption{CHORD and Pathfinder surface brightness sensitivity (\(\sigma_\Omega\)) using a 5 kHz bandwidth and one observation day. Sensitivity is worse at higher frequencies due to the smaller beam size, which reduces the effective integration time and synthesized beam solid angle.}
+    \label{fig:surface_brightness_sensitivity}
+\end{figure}
+
 It is then converted to a brightness temperature by applying the Raleigh-Jeans limit
 \begin{equation}
 \sigma_T [\text{K}] = \frac{\sigma_\Omega c^2}{2k\nu^2}.
@@ -128,25 +142,25 @@ It is then converted to a brightness temperature by applying the Raleigh-Jeans l
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/chord_pathfinder_surface_temperature_5kHz.png}
-    \caption{CHORD and Pathfinder surface temperature sensitivity using a 5 kHz bandwidth and one observation day, shows that sensitivity is improved at lower frequencies due to the wider beam and longer effective integration time.}
+    \caption{CHORD and Pathfinder surface temperature sensitivity (\(\sigma_T\)) using a 5 kHz bandwidth and one observation day. Sensitivity is still worse at higher frequencies but the trend is less pronounced compared to surface brightness sensitivity.}
     \label{fig:surface_temperature_5kHz}
 \end{figure}
-Figures \ref{fig:angular_resolution} and \ref{fig:surface_temperature_5kHz} show the angular resolution and surface temperature sensitivity for CHORD and Pathfinder across the 300-1500 MHz band. The angular resolution improves at higher frequencies while sensitivity is best at lower frequencies, representing the trade-off between beam size and integration time.  Sensitivity at higher frequency can be improved at the cost of angular resolution by convolving the final image to a larger beam, however low frequency angular resolution cannot be improved without increasing the maximum baseline length. Sensitivity is also improved at higher declinations due to the longer effective integration time, as sources move slower across the sky and spend more time within the primary beam. The sensitivity maps for a single observing day are shown in figure \ref{fig:system_only_noise}.
+Figures \ref{fig:angular_resolution} and \ref{fig:surface_temperature_5kHz} show the inverse relationship between angular resolution and surface temperature sensitivity across the 300-1500 MHz band, representing the trade-off between beam size and integration time.  Sensitivity at higher frequency can be improved at the cost of angular resolution by convolving the final image to a larger beam, however low frequency angular resolution cannot be improved without increasing the maximum baseline length. Sensitivity is also improved at higher declinations due to the longer effective integration time, as sources move slower across the sky and spend more time within the primary beam. The sensitivity maps for a single observing day are shown in figure \ref{fig:system_only_noise}.
 
 \begin{figure}[H]
     \centering
-    \textbf{System Noise maps}
+    \textbf{Temperature sensitivity maps assuming empty sky}
     \includegraphics[width=1\linewidth]{thesis/plots/sensitivity/system_only_noise.png}
-    \caption{System Noise in the CHORD range for different frequencies, showing that noise is reduced at lower frequencies, due to the the wider beam, and also reduced at high declinations as sources move slower across the sky thus spending more time within the primary beam.}
+    \caption{Surface temperature sensitivity (\(\sigma_T\)) in the CHORD range for different frequencies, showing that noise is reduced at lower frequencies, due to the the wider beam, and also reduced at high declinations as sources move slower across the sky thus spending more time within the primary beam.}
     \label{fig:system_only_noise}
 \end{figure}
 
 \subsection{Incorporating Radio background noise}
 
-Radio background contributes unwanted noise which degrades sensitivity. Radio background is received by the antenna and adds linearly to the total system temperature. Therefore, noise from background is calculated in the same method as equation \eqref{eq:combined_point_source_sensitivity}. In other words, SEFD for combined background and system noise is taken to be the sum of system temperature and the background temperature.
+Radio background contributes unwanted noise which degrades sensitivity. Radio background is received by the antenna and adds linearly to the total antenna temperature. Therefore, noise from background is calculated in the same method as equation \eqref{eq:combined_point_source_sensitivity}. In other words, SEFD for combined background and internal noise is taken to be the sum of antenna temperature and the background temperature.
 
 \begin{equation}
-    SEFD = \frac{2k(T_{sys}+T_{sky})}{A_e}
+    SEFD = \frac{2k(T_{ant}+T_{sky})}{A_e}
 \end{equation}
 
 The radio background is obtained from the Global Sky Model \citep{zhengImprovedModelDiffuse2017}. This model incorporates all dominant sources of radio emission into a single all-sky map of brightness temperature from 10 MHz to 5THz. The model is accesable through the pygdsm package \citep{pricePyGDSMPythonInterface2016}, which allows for easy querying of the background temperature at any given frequency and sky location. Plots are created using mollweide projections in Galactic coordinates using the healpy package \citep{zoncaHealpyEqualArea2019}. The full sky background maps are shown in figure \ref{fig:Radio_background_maps}.
