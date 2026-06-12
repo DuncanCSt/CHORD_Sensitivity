@@ -3,7 +3,7 @@
 
 \subsection{Point source sensitivity}
 
-The senstivity of a radio interfermoter is the minimum flux density of a point source that can be detected at a given signal to noise ratio (SNR). Choosing an SNR of 1, the sensitivity is equal to the RMS noise, which can be theoretically computed using the radiometer equation given by \cite[eq. 3.203]{condonEssentialRadioAstronomy2016} as
+The senstivity of a radio interfermoter is the minimum flux density of a point source that can be detected at a given signal to noise ratio (SNR). Choosing an SNR of 1, the sensitivity is equal to the RMS noise, which can be theoretically computed using the radiometer equation given by \citet[eq. 3.203]{condonEssentialRadioAstronomy2016} as
 \begin{equation}
     \sigma_{\mathrm{RMS}, ~\mathrm{single~pol}}
     = \frac{2kT_S}{A_e\sqrt{N(N-1)~\Delta \nu ~\tau_{\mathrm{eff}}}},
@@ -95,6 +95,13 @@ A telescope's synthesised beam is the combined sensitivity across all antennas. 
 \end{equation}
 where \(D_{bl, EW}\) and \(D_{bl, NS}\) are the distances of the longest baselines in the east-west and north-south directions, respectively.\\
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/chord_pathfinder_angular_resolution.png}
+    \caption{CHORD and Pathfinder angular resolution vs observing frequency.}
+    \label{fig:angular_resolution}
+\end{figure}
+
 The synthesized beam can be approximated as a 2D Gaussian with FWHM equal to the angular resolution in azimuth (\(\theta_{\mathrm{FWHM}}\)) and zenith (\(\phi_{\mathrm{FWHM}}\)) directions. The synthesized beam profile is given by
 \begin{equation}
     A(\theta, \phi) = \exp\left[-4\ln2~\left (\frac{\theta}{\theta_{\mathrm{FWHM}}} \right )^2 \right] \exp\left[-4\ln2~\left( \frac{\phi}{\phi_{\mathrm{FWHM}}}\right)^2\right].
@@ -120,12 +127,6 @@ It is then converted to a brightness temperature by applying the Raleigh-Jeans l
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/chord_pathfinder_angular_resolution.png}
-    \caption{CHORD and Pathfinder angular resolution vs observing frequency.}
-    \label{fig:angular_resolution}
-\end{figure}
-\begin{figure}[H]
-    \centering
     \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/chord_pathfinder_surface_temperature_5kHz.png}
     \caption{CHORD and Pathfinder surface temperature sensitivity using a 5 kHz bandwidth and one observation day, shows that sensitivity is improved at lower frequencies due to the wider beam and longer effective integration time.}
     \label{fig:surface_temperature_5kHz}
@@ -148,7 +149,7 @@ Radio background contributes unwanted noise which degrades sensitivity. Radio ba
     SEFD = \frac{2k(T_{sys}+T_{sky})}{A_e}
 \end{equation}
 
-The radio background is obtained from the Global Sky Model \citep{zheng_improved_2017}. This model incorporates all dominant sources of radio emission into a single all-sky map of brightness temperature from 10 MHz to 5THz. The model is accesable through the pygdsm package \citep{pygdsm}, which allows for easy querying of the background temperature at any given frequency and sky location. Plots are created using mollweide projections in Galactic coordinates using the healpy package \citep{healpy}. The full sky background maps are shown in figure \ref{fig:Radio_background_maps}.
+The radio background is obtained from the Global Sky Model \citep{zhengImprovedModelDiffuse2017}. This model incorporates all dominant sources of radio emission into a single all-sky map of brightness temperature from 10 MHz to 5THz. The model is accesable through the pygdsm package \citep{pricePyGDSMPythonInterface2016}, which allows for easy querying of the background temperature at any given frequency and sky location. Plots are created using mollweide projections in Galactic coordinates using the healpy package \citep{zoncaHealpyEqualArea2019}. The full sky background maps are shown in figure \ref{fig:Radio_background_maps}.
 
 \begin{figure}[H]
     \centering
