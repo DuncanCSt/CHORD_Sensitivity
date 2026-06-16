@@ -14,7 +14,7 @@ The optimal method of combining multiple observations having different variances
 \end{equation}
 In the case when all variances are the same, then equation \eqref{eq:weighted_avg} is simply the mean.
 
-However the inverse-variance-weighted average assumes that each signal carries the same information. We therefore take a reference frequency \(\nu_0\) and rescale the line and noise based on that reference such that each line carries the same expected signal strength. The rescaled line strength \(x'\), noise \(\sigma'\) and weights \(w'\) are given by
+However the inverse-variance-weighted average assumes that each signal carries the same information, when we know that the line intensity is inversely proportional to frequency. We therefore take a reference frequency \(\nu_0\) and rescale each line and noise based on that reference. We multiply each line and noise by a scalar such that each transformed line now carries the same expected signal strength. The rescaled line strength \(x'\), noise \(\sigma'\) and weights \(w'\) are given by
 
 \begin{equation}
     x'_i=x_i \frac{\nu_i}{\nu_0}, ~~ \sigma'_i = \sigma_i\frac{\nu_i}{\nu_0}, ~~ w_i'= \frac{\nu_0^2}{\sigma_i^2 ~ \nu_i^2}.
