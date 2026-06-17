@@ -1,0 +1,25 @@
+\section{Extension CHORD}
+\label{sec:extension_chord}
+
+\subsection{Candidate Site Selection}
+
+Angular resolution of an interferometer is determined by the maximum baseline, which is the distance between the two furthest dishes. CHORD plans to include very long baselines by adding outrigger stations 3300 km and 1000 km away at Green Bank Observatory and Hat Creek Radio Observatory respectively. These outriggers are designed to provide precise localization of bright transient events like Fast Radio Bursts but can't be used for high sensitivity surveys like RRL surveys which require continuous integration over weeks to months. Instead, 16 to 32 additional dishes can be added to the DRAO site which will feed directly to the main correlator. The purpose of the additional dishes, dubbed Extension CHORD is to improve the angular resolution of the synthesized beam. The impact on sensitivity will be minimal as increasing from 512 dishes to 544 dishes only increases the sensitivity by 6 percent and so is ignored in the sensitivity analysis of section \ref{sec:sensitivity}.\\
+
+Locations to model extension CHORD were selected by identifying areas of the site that could be developed with minimal effort. These sites include places that already have disturbed ground and pre-existing power connections. A map of the site showing the proposed labeled locations is shown in Figure \ref{fig:ext_chord_site_map}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{plots/ext_chord/site_map.png}
+	\caption{Site map for Extension CHORD. Each potential location is labeled A through G. The locations are selected to minimize construction effort by utilizing areas of disturbed ground and pre-existing power connections.}
+	\label{fig:ext_chord_site_map}
+\end{figure}
+
+\subsection{Weighting Methods}
+The Fourier transform of an image decomposes the image into a sum of spatial frequencies. Spatial frequencies pointing East-West in the image spaced are labeled u while spatial frequencies pointing North-South are labeled v. Each baseline of an interferometer is sensitive to a specific spatial frequency based on the distance $b_{EW}$ and $b_{NS}$ between the two dishes and the wavelength of observation $\lambda$ as given by the equations
+\begin{equation}
+    u = \frac{b_x}{\lambda}, v = \frac{b_y}{\lambda}.
+\end{equation}
+Shorter baselines are sensitive to larger spatial structures while longer baselines provide fine details.\\
+
+Sensitivity is maximized by weighting each baseline equally, which is called natural weighting. However spatial resolution can be improved by weighting longer baselines more heavily, which is called uniform weighting. A middle ground between the two is called robust weighting, which applies a tunable weighting scheme to balance sensitivity and resolution.\\
+
