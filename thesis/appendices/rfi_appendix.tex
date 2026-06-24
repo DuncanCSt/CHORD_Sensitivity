@@ -1,0 +1,107 @@
+\section{Log-Gamma vs Gaussian Distributions}
+\label{sec:gamma_vs_gaussian}
+\subsection{Gamma Distribution}
+Proof that the sum of $N$ independent Gamma random variables approaches a Gaussian distribution for $N >> 1$.\\
+
+Starting with taking the log of a Gamma PDF with shape parameter $N$ and scale parameter $\theta$ (which is written as $f(x)$ instead of $f(x; N, \theta)$ for compactness):
+\begin{align}
+    \ln f(x) &= \ln \frac{x^{N-1} e^{-x/\theta}}{\theta^N \Gamma(N)} \\[4pt]
+     &= (N-1)\ln x - \frac{x}{\theta} - N\ln \theta - \ln \Gamma(N).
+\end{align}
+The mode can be found by taking the first derivative of the log PDF and setting it to zero:
+\begin{align}
+    \frac{d}{dx} \ln f(x_0) &= \frac{N-1}{x_0} - \frac{1}{\theta} = 0 \\[4pt]
+    \Rightarrow x_0 &= (N-1)\theta \approx N\theta.
+\end{align}
+The curvature at the mode can be found by taking the second derivative of the log PDF and evaluating it at the mode:
+\begin{align}
+    \frac{d^2}{dx^2} \ln f(x_0) &= -\frac{N-1}{x_0^2} \\[4pt]
+    &=-\frac{1}{(N-1)\theta^2} \approx -\frac{1}{N\theta^2}.
+\end{align}
+Next we can take a Taylor expansion of the log PDF around the mode $x_0$ noting that $d/dx \ln f(x_0) = 0$ given that its the mode:
+\begin{align}
+    \ln f(x) &= \ln f(x_0) + \frac{1}{2} \frac{d^2}{dx^2} \ln f(x_0) (x - x_0)^2 + \dots \\[4pt]
+    &\approx \ln f(x_0) - \frac{(x - x_0)^2}{2N\theta^2}.
+\end{align}
+Exponentiating
+\begin{align}
+    f(x) &\approx C \exp\left(-\frac{(x - x_0)^2}{2N\theta^2}\right) \\[4pt]
+    &\approx C \exp\left(-\frac{(x - N\theta)^2}{2N\theta^2}\right).
+\end{align}
+
+Now we consider a Gaussian distribution with mean $N\theta$ and variance $N\theta^2$:
+\begin{align}
+    g(x; N\theta, N\theta^2) &= \frac{1}{\sqrt{2\pi N\theta^2}} \exp\left(-\frac{(x - N\theta)^2}{2N\theta^2}\right) \\[4pt]
+    &\approx C \exp\left(-\frac{(x - N\theta)^2}{2N\theta^2}\right).
+\end{align}
+Thus we have shown that the PDF of the Gamma distribution approaches the PDF of the Gaussian distribution up to a constant C as $N$ becomes large and $N-1 \approx N$. It can be shown that the constant C is equal to $1/\sqrt{2\pi N\theta^2}$ by normalizing the Gamma distribution and using Stirling's approximation for the Gamma function. However, the normalizing constant does not impact the Kurtosis so the full derivation of it is omitted.
+
+\subsection{Log-Gamma Distribution}
+Proof that the log of a Gamma distribution approaches a Gaussian distribution for $N >> 1$.\\
+
+Let $W$ be a log-Gamma random variable defined as $W = \ln X$ where $X \sim \text{Gamma}(N, \theta)$. By a change of variables with
+$x = e^{w}$ and $dx = e^{w}\,dw$, the PDF of $W$ is
+\begin{align}
+    f_W(w) &= f_X(e^{w})\,e^{w}
+        = \frac{(e^{w})^{N-1} e^{-e^{w}/\theta}}{\theta^N \Gamma(N)}\,e^{w} \\[4pt]
+    &= \frac{e^{Nw}\, e^{-e^{w}/\theta}}{\theta^N \Gamma(N)}.
+\end{align}
+The log PDF is
+\begin{equation}
+    \ln f_W(w) = Nw - \frac{e^{w}}{\theta} - N\ln\theta - \ln\Gamma(N).
+\end{equation}
+Applying the same procedure as above, the mode and curvature are obtained from the first two derivatives:
+\begin{align}
+    \frac{d}{dw}\ln f_W(w_0) &= N - \frac{e^{w_0}}{\theta} = 0
+        \;\Rightarrow\; w_0 = \ln(N\theta), \\[4pt]
+    \frac{d^2}{dw^2}\ln f_W(w_0) &= -\frac{e^{w_0}}{\theta} = -N.
+\end{align}
+Next we take the Taylor expansion about the mode, where again the first derivative term is zero:
+\begin{align}
+    \ln f_W(w) &= \ln f_W(w_0) + \frac{1}{2}\frac{d^2}{dw^2}\ln f_W(w_0) (w - w_0)^2 + \dots \\[4pt]
+    &\approx \ln f_W(w_0) - \frac{N}{2}(w - w_0)^2.
+\end{align}
+After exponentiating the approximate form of the log-Gamma PDF is
+\begin{equation}
+    f_W(w; N, \theta) \approx C \exp\left(-\frac{N(w - w_0)^2}{2}\right).
+\end{equation}
+So we have shown that the PDF of a log-Gamma $W = \ln X$ to second order is exactly a Gaussian distribution with mean $w_0 = \ln(N\theta)$ and variance $1/N$. 
+
+\section{Spectral Kurtosis Pair Plot}
+\label{sec:spectral_kurtosis_pair_plot}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{thesis/plots/rfi/rfi_flag_agreement.png}
+    \caption{Pair plot of agreement between RFI labels for each of the 11 time segments showing the extent of agreement between each pair of segments.}
+    \label{fig:spectral_kurtosis_pair_plot}
+\end{figure}
+
+\section{Alternative RFI Thresholds}
+\label{sec:alternative_rfi_thresholds}
+
+Two subjective design decisions were made in the RFI analysis of section \ref{sec:excess_kurtosis_rfi_detection}. The first was to use RFI thresholds of [0.1\%, 99.9\%] on calibrated spectral kurtosis. These thresholds were chosen to reduce false positives (clean spectrum labeled RFI); however, they will also decrease true positives (RFI spectrum labeled RFI). Secondly, while aggregating the 11 independent time segments, we assumed that if at at least 6 of the 11 segment are clean we consider the frequency clean (`mean'); alternative approaches are to require that at least one of the segments be clean (`any') or that all segments be clean (`all'). The results of these alternative approaches are shown in table \ref{tbl:rrl_clean_counts}.\\
+
+From the results we can see that neither the `any' or `mean' aggregation method is very sensitive to the choice of spectral kurtosis threshold. Meanwhile the 'all' aggregation is extremly sensitive and produces no visible lines for thresholds above 0.5\% and only one for 0.1\%. In the case of `all' aggregation with a 0.1\% threshold, a clean channel is expected to be falsely labeled as RFI 0.2\% of the time; over 11 samples, the probability that at least one channel is a false positive is $\approx 0.02$. When computing the Gaussian weighted average at 300 MHz three standard deviations cover 180 channels (with even more channels covered at higher frequencies), so the probability that at least one channel is falsely labeled as RFI is $\approx 0.97$. This explains why the `all' aggregation predicts that no lines are visible since even under true Gaussian noise the probability of a false positive inducing a clean score less then 99\% is close to 1.\\
+
+In Comparison, under Gaussian noise there is only a $2.9 \times 10^{-14}$ probability of observing a false positive within 6 or more of the same bin across the 11 segments (the `mean' case). Even over 888 bins (six standard deviations at 1500 MHz) the probability of observing a false positive is just $2.6 \times 10^{-11}$. The probability of a false positive in the `any' case is even lower. It is therefore safe to conclude that lines labeled RFI contaminated using the `mean' approach reflects true RFI and not sampling uncertainty.\\
+
+\begin{table}[h!]
+\centering
+\caption{Number of detectable hydrogen RRLs per frequency region, by cross-segment aggregation method (any/mean/all) and spectral kurtosis threshold (0.1\%, 0.5\%, 1\%).}
+\label{tbl:rrl_clean_counts}
+\begin{tabular}{lccccccccc}
+\toprule
+ & \multicolumn{3}{c}{\textbf{any}} & \multicolumn{3}{c}{\textbf{mean}} & \multicolumn{3}{c}{\textbf{all}} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10}
+\textbf{Region} & 0.1\% & 0.5\% & 1\% & 0.1\% & 0.5\% & 1\% & 0.1\% & 0.5\% & 1\% \\
+\midrule
+Low frequency  & 32 & 32 & 32 & 29 & 29 & 29 & 0 & 0 & 0 \\
+Mid frequency  & 26 & 26 & 26 & 23 & 23 & 23 & 1 & 0 & 0 \\
+High frequency & 32 & 32 & 31 & 27 & 26 & 25 & 0 & 0 & 0 \\
+\midrule
+\textbf{Total} & 90 & 90 & 89 & 79 & 78 & 77 & 1 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+

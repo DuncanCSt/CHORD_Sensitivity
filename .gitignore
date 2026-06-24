@@ -25,3 +25,6 @@ build/
 *.lof
 *.lot
 *.synctex.gz
+
+*.sigmf-data
+*.sigmf-meta

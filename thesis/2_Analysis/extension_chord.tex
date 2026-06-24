@@ -14,12 +14,15 @@ Locations to model extension CHORD were selected by identifying areas of the sit
 	\label{fig:ext_chord_site_map}
 \end{figure}
 
-\subsection{Weighting Methods}
-The Fourier transform of an image decomposes the image into a sum of spatial frequencies. Spatial frequencies pointing East-West in the image spaced are labeled u while spatial frequencies pointing North-South are labeled v. Each baseline of an interferometer is sensitive to a specific spatial frequency based on the distance $b_{EW}$ and $b_{NS}$ between the two dishes and the wavelength of observation $\lambda$ as given by the equations
+\subsection{UV coverage and Synthesised Beam}
+The Fourier transform of an image decomposes the image into a sum of spatial sinusoids of different frequencies. Spatial frequencies pointing East-West in the image spaced are labeled u while spatial frequencies pointing North-South are labeled v. Each baseline of an interferometer is sensitive to a specific spatial frequency based on the distance $b_{EW}$ and $b_{NS}$ between the two dishes and the wavelength of observation $\lambda$ as given by the equations
 \begin{equation}
     u = \frac{b_x}{\lambda}, v = \frac{b_y}{\lambda}.
 \end{equation}
-Shorter baselines are sensitive to larger spatial structures while longer baselines provide fine details.\\
+Shorter baselines are sensitive to large-scale spatial structures on the sky, while longer baselines provide fine details. The collection of all $u$ and $v$ values sampled is called the UV coverage. The synthesised beam, sometimes called the `dirty beam', is the shape on the sky that a telescope is sensitive to given its UV coverage. To perfectly reconstruct an image of the sky, every spatial frequency would need to be measured. An infinitly sampled UV coverage would produce a delta function synthesided beam, meaning a sinlge point on the sky could be perfectly measured. In practice there are a finite number of baselines creating a finite UV coverage, the reconstructed image will contain distortions which are visible through the synthesised beam pattern.\\
 
-Sensitivity is maximized by weighting each baseline equally, which is called natural weighting. However spatial resolution can be improved by weighting longer baselines more heavily, which is called uniform weighting. A middle ground between the two is called robust weighting, which applies a tunable weighting scheme to balance sensitivity and resolution.\\
+
+
+\subsection{Weighting Methods}
+Sensitivity is maximized by weighting each baseline equally, which is called natural weighting. However spatial resolution can be improved by weighting longer baselines more heavily, which is called uniform weighting. A middle ground between the two is called robust weighting, which applies a tunable weight to balance sensitivity and resolution.\\
 
