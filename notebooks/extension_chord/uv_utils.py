@@ -303,7 +303,8 @@ def compute_dirty_beam(uvd, title="", npix=128, freq_hz=900e6,
                        padding=10.0, image_extent_deg=None,
                        zoom_factor=1.5,
                        weighting="natural", robust=None,
-                       zoom_extent=None, plot_beam=True):
+                       zoom_extent=None, plot_beam=True, save_path=None,
+                       show=True):
     """Compute and plot the normalised dirty beam (synthesized PSF).
 
     Parameters
@@ -331,6 +332,11 @@ def compute_dirty_beam(uvd, title="", npix=128, freq_hz=900e6,
     zoom_extent : float or None
         If given, fix the plot window to +/-zoom_extent arcmin (overrides
         zoom_factor). Useful for consistent axes when comparing weightings.
+    save_path : str or None
+        If given, save the plot to this path.
+    show : bool
+        If True, display the figure with ``plt.show()``; if False, close it
+        after saving (useful for batch runs that only write files to disk).
 
     Returns
     -------
@@ -464,7 +470,13 @@ def compute_dirty_beam(uvd, title="", npix=128, freq_hz=900e6,
                  bbox=dict(boxstyle="round,pad=0.4", facecolor="white",
                            alpha=0.85, edgecolor="gray"))
         plt.tight_layout()
-        plt.show()
+        if save_path is not None:
+            plt.savefig(save_path, dpi=300)
+            print(f"Saved dirty beam plot to '{save_path}'")
+        if show:
+            plt.show()
+        else:
+            plt.close(fig)
 
     return beam, l_arcmin, m_arcmin, eff_l_arcmin, eff_m_arcmin, relative_noise
 
@@ -521,7 +533,8 @@ def adaptive_briggs_sweep(dish_array, r_lo=-2, r_hi=2, tol=0.1,
     print(f"Sampled {len(r_arr)} robust values in {n_iter} bisections, total iterations: {n_iter}")
     return r_arr, nf_arr, eff_l_arr, eff_m_arr
 
-def plot_briggs_values(title, r_arr, nf_arr, eff_l_arr, eff_m_arr):
+def plot_briggs_values(title, r_arr, nf_arr, eff_l_arr, eff_m_arr, save_path=None,
+                       show=True):
     fig, ax1 = plt.subplots(figsize=(8, 5))
 
     color1 = "tab:blue"
@@ -549,4 +562,10 @@ def plot_briggs_values(title, r_arr, nf_arr, eff_l_arr, eff_m_arr):
     fig.legend(loc="upper center", bbox_to_anchor=(0.5, 0.88), ncol=2)
     ax1.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.show()
+    if save_path is not None:
+        plt.savefig(save_path, dpi=300)
+        print(f"Saved Briggs values plot to '{save_path}'")
+    if show:
+        plt.show()
+    else:
+        plt.close(fig)

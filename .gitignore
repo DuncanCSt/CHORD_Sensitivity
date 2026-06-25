@@ -28,3 +28,5 @@ build/
 
 *.sigmf-data
 *.sigmf-meta
+
+notebooks/extension_chord/results
