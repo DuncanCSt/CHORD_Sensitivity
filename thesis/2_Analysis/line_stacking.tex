@@ -2,45 +2,45 @@
 \label{sec:line_stacking}
 
 % (for a deeper look at line strength based on GDIGGS see \url{https://www.overleaf.com/project/68b0918d19fe364fd7b8db66})
-The principle of line stacking is that each transition line is a measurement of the same underlying physical quantity, namely the emission measure and electron temperature of the ionized gas. We can therefore treat each line measurement as an independent sample of the same signal but with a different random noise contribution. In the ideal case, with \(n\) independant samples of a random variable with mean \(\mu\) and variance \(\sigma^2\), the mean of the samples has a variance of \(\sigma^2/n\), meaning that by stacking \(n\) lines we can reduce the noise by a factor of \(\sqrt{n}\). However, for RRLs the lines at different frequencies have both different strengths and different noise levels, so the ideal strategy is not to combine all measurements linearly. From section \ref{sec:rrl_emission} we know that line strength is inversely proportional to frequency (\(T_L \propto \nu^{-1}\)), and from section \ref{sec:sensitivity} that the noise is both frequency and spatially dependent. \\
+The principle of line stacking is that each RRL is a measurement of the same underlying physical quantities, namely the emission measure and electron temperature of the ionized gas. We model each observation \(x_i\) as an independent draw from a normal distribution, \(x_i \sim \mathcal{N}(T_L, \sigma_i^2)\), where \(T_L\) is the line strength and \(\sigma_i\) is the brightness temperature sensitivity\footnote{Brightness temperature sensitivity is equivalent to the noise in the measurement and the two terms are used interchangeably} of line \(i\). In the ideal case, for \(n\) independent samples with mean \(\mu\) and common variance \(\sigma^2\), the variance on the mean is \(\sigma^2/n\). For RRLs, however, lines at different frequencies have different noise, so the optimal estimator is not a simple average but a weighted average. \\
 
-The optimal method of combining multiple observations having different variances is to use an inverse-variance-weighted average. Which is a weighted average of the observations using the inverse variance as the weighting factor,
+The inverse-variance-weighted average minimizes the variance of the mean when variances are not constant. The weighted mean \(\hat{\mu}\) and variance \(\mathrm{Var}(\hat{\mu})\) are given by
 \begin{equation}
-    \hat{x} = \frac{\sum_i x_i \cdot w_i}{\sum_i w_i}, ~~ Var(\hat{x}) = \frac{\sum_i w_i^2 \cdot\sigma_i^2}{(\sum_i w_i)^2}
+    \hat{\mu} = \frac{\sum_i x_i w_i}{\sum_i w_i}, \quad \mathrm{Var}(\hat{\mu}) = \frac{\sum_i w_i^2 \sigma_i^2}{(\sum_i w_i)^2}
     \label{eq:weighted_avg}
 \end{equation}
 \begin{equation}
     w_i = \frac{1}{\sigma_i^2}.
 \end{equation}
-In the case when all variances are the same, then equation \eqref{eq:weighted_avg} is simply the mean.
+When all variances are equal, equation \eqref{eq:weighted_avg} reduces to the simple arithmetic mean.
 
-However the inverse-variance-weighted average assumes that each signal carries the same information, when we know that the line intensity is inversely proportional to frequency. We therefore take a reference frequency \(\nu_0\) and rescale each line and noise based on that reference. We multiply each line and noise by a scalar such that each transformed line now carries the same expected signal strength. The rescaled line strength \(x'\), noise \(\sigma'\) and weights \(w'\) are given by
+Inverse-variance-weighted average assumes that each sample has the same mean, however RRLs have different expected line strengths at different frequencies, meaning the expected mean \(T_L\) is not constant. To account for this we rescale each line and its noise to a common reference frequency \(\nu_0\). After rescaling, each observation has the same expected mean but different variances. The rescaled line strength \(x'\), noise \(\sigma'\) and weights \(w'\) are given by
 
 \begin{equation}
-    x'_i=x_i \frac{\nu_i}{\nu_0}, ~~ \sigma'_i = \sigma_i\frac{\nu_i}{\nu_0}, ~~ w_i'= \frac{\nu_0^2}{\sigma_i^2 ~ \nu_i^2}.
+    x_i' = x_i \frac{\nu_i}{\nu_0}, \quad \sigma_i' = \sigma_i \frac{\nu_i}{\nu_0}, \quad w_i' = \frac{\nu_0^2}{\sigma_i^2 \nu_i^2}.
     \label{eq:rescaled_signal_and_noise}
 \end{equation}
-The inverse-variance-weighted mean, variance and standard deviation of the rescaled quantities are given by
+% The inverse-variance-weighted mean, variance and standard deviation of the rescaled quantities are given by
+% \begin{equation}
+%     \hat{\mu}'
+%     = \frac{\sum_i x_i' w_i'}{\sum_i w_i'}
+%     % = \frac{\sum_i (x_i\frac{\nu_i}{\nu_0}) ( \frac{\nu_0^2}{\sigma_i^2\nu_i^2} )} {\sum_i \frac{\nu_0^2}{\sigma_i^2\nu_i^2}}
+%     = \frac{1}{\nu_0} \frac{\sum_i x_i \frac{1}{\sigma_i^2\nu_i}}{\sum_i \frac{1}{\sigma_i^2\nu_i^2}}
+%     \label{eq:stacked_weighted_average}
+% \end{equation}
+% \begin{equation}
+%     \mathrm{Var}(\hat{\mu}')
+%     = \frac{\sum_i w_i'^2 \sigma_i'^2}{(\sum_i w_i')^2}
+%     % = \frac{\sum_i (\frac{\nu_0^2}{\sigma_i^2 \nu_i^2})^2 (\sigma_i \frac{\nu_i}{\nu_0})^2}{(\sum_i \frac{\nu_0^2}{\sigma_i^2 \nu_i^2} )^2}
+%     % = \frac{1}{\nu_0^2} \frac{\sum_i \frac{1}{\sigma_i^2\nu_i^2}}{(\sum_i \frac{1}{\sigma_i^2 \nu_i^2})^2}
+%     = \left( \nu_0^2 \sum_i \frac{1}{\sigma_i^2 \nu_i^2} \right)^{-1}
+%     \label{eq:stacked_variance}
+% \end{equation}
+% \begin{equation}
+%     \hat{\sigma}' = \sqrt{\mathrm{Var}(\hat{\mu}')} = \nu_0^{-1} \left( \sum_i \frac{1}{\sigma_i^2 \nu_i^2} \right)^{-1/2}.
+%     \label{eq:stacked_std}
+% \end{equation}
+The choice of \(\nu_0\) is arbitrary and adds a scaling factor to the estimated mean. The SNR is independent of the choice of \(\nu_0\) and is given by
 \begin{equation}
-    \hat{x}' 
-    = \frac{\sum_i x_i' \cdot w_i'}{\sum_i w_i'}
-    % = \frac{\sum_i (x_i\frac{\nu_i}{\nu_0}) ( \frac{\nu_0^2}{\sigma_i^2\nu_i^2} )} {\sum_i \frac{\nu_0^2}{\sigma_i^2\nu_i^2}} 
-    = \frac{1}{\nu_0} \frac{\sum_i x_i \frac{1}{\sigma_i^2\nu_i}}{\sum_i \frac{1}{\sigma_i^2\nu_i^2}}
-    \label{eq:stacked_weighted_average}
-\end{equation}
-\begin{equation}
-    Var(\hat{x}') 
-    = \frac{\sum_i w_i'^2 \cdot\sigma_i'^2}{(\sum_i w_i')^2}
-    % = \frac{\sum_i (\frac{\nu_0^2}{\sigma_i^2 \nu_i^2})^2 (\sigma_i \frac{\nu_i}{\nu_0})^2}{(\sum_i \frac{\nu_0^2}{\sigma_i^2 \nu_i^2} )^2}
-    % = \frac{1}{\nu_0^2} \frac{\sum_i \frac{1}{\sigma_i^2\nu_i^2}}{(\sum_i \frac{1}{\sigma_i^2 \nu_i^2})^2}
-    = \left( \nu_0^2 \sum_i \frac{1}{\sigma_i^2 \nu_i^2} \right)^{-1}
-    \label{eq:stacked_variance}
-\end{equation}
-\begin{equation}
-    \hat{\sigma}' = \sqrt{Var(\hat{x}')} = \nu_0^{-1} \left( \sum_i \frac{1}{\sigma_i^2 \nu_i^2} \right)^{-1/2}.
-    \label{eq:stacked_std}
-\end{equation}
-The choice of \(\nu_0\) is arbitrary and only adds a scaling factor to the mean and variance but does not impact SNR which given by
-\begin{equation}
-    SNR = \frac{\hat{x}'}{\sqrt{Var(\hat{x}')}} = \frac{\sum_i x_i\frac{1}{\sigma_i^2 \nu_i}}{\sqrt{\sum_i \frac{1}{\sigma_i^2 \nu_i^2}}}.
+    \mathrm{SNR} = \frac{\hat{\mu}'}{\sqrt{\mathrm{Var}(\hat{\mu}')}} = \frac{\sum_i x_i \frac{1}{\sigma_i^2 \nu_i}}{\sqrt{\sum_i \frac{1}{\sigma_i^2 \nu_i^2}}}.
 \end{equation}
