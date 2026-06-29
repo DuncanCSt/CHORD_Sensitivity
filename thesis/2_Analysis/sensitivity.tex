@@ -185,44 +185,4 @@ Maps of total sensitivity, which incorporates both system noise and radio backgr
     \label{fig:total_noise_maps}
 \end{figure}
 
-\subsection{Signal to Noise Ratio by Region}
-In section \ref{sec:rrl_emission} we showed that the peak line intensity \(T_L\) is inversely proportional to frequency, meaning that lower frequency lines are expected to be strongest and easiest to detect. However, CHORD is also less sensitive at low frequency, as seen in figure \ref{fig:total_noise_maps}, due to the dominant impact of background noise. It is therefore important to understand how the signal to noise ratio (SNR) varies across the CHORD band depending on the sky location. To compute the SNR, we take the ratio of the expected signal, which is the line intensity \(T_L\) from equation \eqref{eq:line_intensity}, to the noise, which is the total sensitivity \(\sigma_T\) from section \ref{sec:background_noise}.\\
-
-To visualise SNR by region, we assume a uniform line intensity of \(T_L = 10 \mK\) at 1500 MHz across the entire sky. In reality, line intensity will vary significantly across the sky, so the SNR scale is not accurate. However, the shape and maxima of the SNR-per-frequency plots are still valid and can be used to understand which lines are most important for a given sky location. The locations used are shown in figure \ref{fig:snr_locations}, and the SNR vs frequency for each location is shown in figure \ref{fig:snr_by_region}.\\
-
-% From section \ref{sec:rrl_emission} we have shown that the peak line intensity \(T_L\) is inversely proportional to frequency, meaning that lower frequency lines are expected to be strongest and easiest to detect. However from section \ref{sec:background_noise} we have shown that sensitivity is also spacially and frequency dependent, being impacted by background noise at low frequency, small beam size at high frequency, and shorter integration times at low declination. Due to these many factors the signal to noise ratio (SNR) varies significantly across the CHORD band depending on the sky location. To compute the SNR, we take the ratio of the expected signal, which is the line intensity \(T_L\) from equation \eqref{eq:line_intensity}, to the noise, which is the total sensitivity \(\sigma_T\) from section \ref{sec:background_noise}.\\
-
-% To visualise how SNR changes by region, we assume a uniform line intensity of \(T_L = 10 \mK\) at 1500 MHz across the entire sky. In reality line intensity will vary significantly across the sky but the true signal strength only applies a scaling factor to the SNR it does not change the shape or maxima of the SNR per frequency plots. Signal is assumed to scale exactly as \(1/\nu\) while noise per frequency is taken from the total noise maps shown in figure \ref{fig:total_noise_maps}, noting that noise is equivalent to sensitivity in this case. Three locations are chosen to demonstrate the high galactic latitude, mid galactic latitude, and galactic plane cases, and the SNR is computed across the CHORD band for each location. A plot of the selected locations is shown in figure \ref{fig:snr_locations} and the SNR vs frequency for each location is shown in figure \ref{fig:snr_by_region}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/snr_locations.png}
-    \caption{400 MHz noise map showing the three selected regions used to demonstrate SNR variations for high galactic latitude, mid galactic latitude, and galactic plane cases.}
-    \label{fig:snr_locations}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/snr_by_region.png}
-    \caption{SNR per line by sky location, demonstrating that in the Galactic plane SNR peaks between 1--1.3 GHz, at mid Galactic latitudes SNR peaks between 0.7--1 GHz, and at high Galactic latitudes SNR peaks between 0.5--0.6 GHz.}
-    \label{fig:snr_by_region}
-\end{figure}
-
-To understand what is driving the SNR trends by region, we can separate the impact of system effects (beam shape, integration time, declination) from the impact of background noise. In figure \ref{fig:snr_system_vs_background} we plot SNR ignoring all background and SNR assuming sensitivity is equal to the background. Based on system effects alone, SNR is significantly higher at low frequency due to the compound effect of higher signal and higher sensitivity. In contrast, when sensitivity is directly proportional to background temperature, SNR is highest at high frequency where background noise is lowest. In reality, sensitivity is a combination of system effects, beam shape, and background noise, which is why SNR peaks differently depending on the sky location.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.49\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{thesis/plots/sensitivity/snr_by_region_system_only.png}
-        \caption{System noise only}
-    \end{subfigure}
-    \begin{subfigure}{0.49\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{thesis/plots/sensitivity/snr_by_region_background_only.png}
-        \caption{Background noise only}
-    \end{subfigure}
-    \caption{In the system-noise-only case, SNR peaks at low frequency due to the wider beam and higher signals. When sensitivity is assumed equal to background temperature, SNR peaks at high frequency.}
-    \label{fig:snr_system_vs_background}
-\end{figure}
 

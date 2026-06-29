@@ -30,3 +30,4 @@ build/
 *.sigmf-meta
 
 notebooks/extension_chord/results
+.github
