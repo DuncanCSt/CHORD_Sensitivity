@@ -1,9 +1,9 @@
-\section{Radio Line Stacking}
+\chapter{Radio Line Stacking}
 \label{sec:line_stacking}
+The principle of line stacking is that each RRL is a measurement of the same underlying physical quantities, namely the emission measure and electron temperature of the ionized gas. We model each observation \(x_i\) as an independent draw from a normal distribution, \(x_i \sim \mathcal{N}(T_L, \sigma_i^2)\), where \(T_L\) is the line strength and \(\sigma_i\) is the brightness temperature sensitivity\footnote{Brightness temperature sensitivity is equivalent to the noise in the measurement and the two terms are used interchangeably} of line \(i\). In the ideal case, for \(n\) independent samples with mean \(\mu\) and common variance \(\sigma^2\), the variance on the mean is \(\sigma^2/n\). For RRLs, however, lines at different frequencies have different noise, so the optimal estimator is not a simple average but a weighted average which we discuss in section \ref{sec:weighted_average}. In section \ref{sec:snr_by_region} we provide optimal stacking strategies by region. \\
 
-% (for a deeper look at line strength based on GDIGGS see \url{https://www.overleaf.com/project/68b0918d19fe364fd7b8db66})
-The principle of line stacking is that each RRL is a measurement of the same underlying physical quantities, namely the emission measure and electron temperature of the ionized gas. We model each observation \(x_i\) as an independent draw from a normal distribution, \(x_i \sim \mathcal{N}(T_L, \sigma_i^2)\), where \(T_L\) is the line strength and \(\sigma_i\) is the brightness temperature sensitivity\footnote{Brightness temperature sensitivity is equivalent to the noise in the measurement and the two terms are used interchangeably} of line \(i\). In the ideal case, for \(n\) independent samples with mean \(\mu\) and common variance \(\sigma^2\), the variance on the mean is \(\sigma^2/n\). For RRLs, however, lines at different frequencies have different noise, so the optimal estimator is not a simple average but a weighted average. \\
-
+\section{Inverse-variance-weighted average}
+\label{sec:weighted_average}
 The inverse-variance-weighted average minimizes the variance of the mean when variances are not constant. The weighted mean \(\hat{\mu}\) and variance \(\mathrm{Var}(\hat{\mu})\) are given by
 \begin{equation}
     \hat{\mu} = \frac{\sum_i x_i w_i}{\sum_i w_i}, \quad \mathrm{Var}(\hat{\mu}) = \frac{\sum_i w_i^2 \sigma_i^2}{(\sum_i w_i)^2}
@@ -14,21 +14,22 @@ The inverse-variance-weighted average minimizes the variance of the mean when va
 \end{equation}
 When all variances are equal, equation \eqref{eq:weighted_avg} reduces to the simple arithmetic mean.
 
-Inverse-variance-weighted average assumes that each sample has the same mean, however peak line strength is inversely proportional to frequency, \(T_L \propto \nu^{-1}\), meaning the expected mean is not constant. To account for this we rescale each line and its noise to a common reference frequency \(\nu_0\). After rescaling, each observation has the same expected mean but different variances. The rescaled line strength \(x'\), noise \(\sigma'\) and weights \(w'\) are given by
+The inverse-variance-weighted average assumes that each sample has the same mean. However, peak line strength is inversely proportional to frequency, \(T_L \propto \nu^{-1}\), meaning the expected mean is not constant. To account for this we rescale each line and its noise to a common reference frequency \(\nu_0\). After rescaling, each observation has the same expected mean but different variances. The rescaled line strength \(x'\), noise \(\sigma'\), and weights \(w'\) are given by
 
 \begin{equation}
     x_i' = x_i \frac{\nu_i}{\nu_0}, \quad \sigma_i' = \sigma_i \frac{\nu_i}{\nu_0}, \quad w_i' = \frac{\nu_0^2}{\sigma_i^2 \nu_i^2}.
     \label{eq:rescaled_signal_and_noise}
 \end{equation}
-The choice of \(\nu_0\) is arbitrary and simply changes the reference point of the estimated mean. SNR of the stacked estimate is independent of the choice of \(\nu_0\) and is given by
+The choice of \(\nu_0\) is arbitrary and simply changes the reference point of the estimated mean. The SNR of the stacked estimate is independent of the choice of \(\nu_0\) and is given by
 \begin{equation}
     \mathrm{SNR} = \frac{\hat{\mu}}{\sqrt{\mathrm{Var}(\hat{\mu})}} = \frac{\sum_i x_i w_i}{\sqrt{\sum_i w_i^2 \sigma_i^2}}.
 \end{equation}
 
-\subsection{Signal to Noise Ratio by Region}
-Peak line intensity \(T_L\) is inversely proportional to frequency, meaning that lower frequency lines are expected to be strongest and easiest to detect. However, CHORD is also less sensitive at low frequency, as seen in figure \ref{fig:total_noise_maps}, due to the dominant impact of background noise. It is therefore important to understand how the signal to noise ratio (SNR) varies across the CHORD band depending on the sky location. To compute the SNR, we take the ratio of the expected signal, which is the line intensity \(T_L\) from equation \eqref{eq:line_intensity}, to the noise, which is the total sensitivity \(\sigma_T\) from section \ref{sec:background_noise}.\\
+\section{Signal-to-Noise Ratio by Region}
+\label{sec:snr_by_region}
+Peak line intensity \(T_L\) is inversely proportional to frequency, meaning that lower-frequency lines are expected to be strongest and easiest to detect. However, CHORD is also less sensitive at low frequency, as seen in figure \ref{fig:total_noise_maps}, due to the dominant impact of background noise. It is therefore important to understand how the signal-to-noise ratio (SNR) varies across the CHORD band depending on the sky location. To compute the SNR, we take the ratio of the expected signal, which is the line intensity \(T_L\) from equation \eqref{eq:line_intensity}, to the noise, which is the total sensitivity \(\sigma_T\) from section \ref{sec:background_noise}.\\
 
-To visualise SNR by region, we assume a uniform line intensity of \(T_L = 10 \mK\) at 1500 MHz across the entire sky. In reality, line intensity will vary significantly across the sky, so the SNR scale is not accurate. However, the shape and maxima of the SNR-per-frequency plots are still valid and can be used to understand which lines are most important for a given sky location. The locations used are shown in figure \ref{fig:snr_locations}, and the SNR vs frequency for each location is shown in figure \ref{fig:snr_by_region}.\\
+To visualise SNR by region, we assume a uniform line intensity of \(T_L = 10 \mK\) at 1500 MHz across the entire sky. In reality, line intensity will vary significantly across the sky, so the SNR scale is not accurate. However, the shape and maxima of the SNR-per-frequency plots are still valid and can be used to understand which lines are most important for a given sky location. The locations used are shown in figure \ref{fig:snr_locations}, and the SNR versus frequency for each location is shown in figure \ref{fig:snr_by_region}.\\
 
 % From section \ref{sec:rrl_emission} we have shown that the peak line intensity \(T_L\) is inversely proportional to frequency, meaning that lower frequency lines are expected to be strongest and easiest to detect. However from section \ref{sec:background_noise} we have shown that sensitivity is also spacially and frequency dependent, being impacted by background noise at low frequency, small beam size at high frequency, and shorter integration times at low declination. Due to these many factors the signal to noise ratio (SNR) varies significantly across the CHORD band depending on the sky location. To compute the SNR, we take the ratio of the expected signal, which is the line intensity \(T_L\) from equation \eqref{eq:line_intensity}, to the noise, which is the total sensitivity \(\sigma_T\) from section \ref{sec:background_noise}.\\
 
@@ -44,7 +45,7 @@ To visualise SNR by region, we assume a uniform line intensity of \(T_L = 10 \mK
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/snr_by_region.png}
-    \caption{SNR per line by sky location, demonstrating that in the Galactic plane SNR peaks between 1--1.3 GHz, at mid Galactic latitudes SNR peaks between 0.7--1 GHz, and at high Galactic latitudes SNR peaks between 0.5--0.6 GHz.}
+    \caption{SNR per line by sky location, demonstrating that in the Galactic plane SNR peaks around 500 MHz, at mid Galactic latitudes SNR peaks around 400 MHz, and at high Galactic latitudes SNR peaks around 300 MHz.}
     \label{fig:snr_by_region}
 \end{figure}
 
