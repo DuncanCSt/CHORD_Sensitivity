@@ -1,11 +1,24 @@
 \chapter{Background}
 \section{Interstellar Medium}
-TODO: Section to explain what is the interstellar medium. Why mapping it is important. What is ionized gas and how does it relate to the ISM. How does inoized gas produce photons and why use radio emission as opposed to optical.\\
-(First few sentences of RRL Emission section may move here instead.)
+Stars are born in the coalescing gas and dust that permeate our Milky Way Galaxy, known as the interstellar medium (ISM) \cite{carrollIntroductionModernAstrophysics2017}. As stars evolve, they recycle material to the ISM through stellar winds and supernovae, enriching the ISM with new elements. To understand the lifecycle of stars, it is important to study the nature of the ISM. Beyond its importance in star formation, the ISM traces the structure and dynamics of our Milky Way Galaxy and other galaxies \cite{carrollIntroductionModernAstrophysics2017}, allowing for the study of galactic evolution. Finally, the ISM impacts astronomical observations of everything from nearby stars to distant galaxies, making its study a crucial component of many other areas of astrophysics. \\
+
+Part of the ISM is interstellar dust, which absorbs or scatters visible and ultraviolet light in a process called interstellar extinction. Dust extinction acts like a veil, limiting the distance that visible light can travel, which limits the area we can study through visible light. Radio waves do not suffer from dust extinction, so radio observations can reveal regions of the ISM that are inaccessible to visible light. \\
+
+The dominant component of the ISM is hydrogen gas, comprising approximately 70\% of the ISM by mass, with the remainder consisting of helium and trace amounts of heavier elements \cite{carrollIntroductionModernAstrophysics2017}. Most hydrogen in the diffuse interstellar medium is neutral hydrogen (H I), which contains one electron in the ground state. Neutral hydrogen is very stable and is generally incapable of producing emission or absorption lines by the transition of the electron between orbitals. The 21-cm line, which arises from electron spin reversals in neutral hydrogen, is the main method used to detect neutral hydrogen.\\
+
+When neutral hydrogen absorbs a photon in excess of 13.6 eV, the electron is ejected from the hydrogen atom, producing ionized hydrogen (H II). When the electron recombines, it can cascade downwards through the energy levels, producing a number of low-energy photons. Some very hot stars, or regions of very hot stars, can produce sufficient radiation to fully ionize the surrounding hydrogen gas in what are called H II regions. For these regions to maintain local thermodynamic equilibrium (LTE), the rate of ionization must equal the rate of recombination, which produces a continuous emission of low-energy photons. We discuss emission in the radio range in more technical detail in section \ref{sec:rrl_emission}. \\
+
 \input{thesis/1_Background/RRL_Emission}
 
-\section{Previous Surveys}
-TODO: Describe WHAM, GDIGS, SIGGMA surveys and compare the key characteristics in terms of sky coverage, sensitivity, angular resolution, frequency, dust extinction etc.
-
 \section{CHORD telescope}
-TODO: Describe the CHORD telescope and explain what metrics CHORD would need to acheive to compare / improve uppon the previous surveys mentioned above.
+The Canadian Hydrogen Observatory and Radio-transient Detector (CHORD) is a radio interferometer being constructed at the Dominion Radio Astrophysical Observatory (DRAO) in British Columbia, Canada. The telescope consists of a 512-element core array of 6-meter dishes operating from \(300-1500 \MHz\). A 64-dish subset of the full array, called pathfinder, is expected to provide early calibration data by 2026. The full array is scheduled to be commissioned in 2028.\\
+
+The CHORD design consists of a highly redundant grid of dishes forming multiple repeated baselines, meaning that the distance vector separating each pair of dishes is repeated numerous times. Each baseline measures a unique angular scale on the sky. By repeating baselines, CHORD obtains multiple samples of the same angular scale, which allows for improved sensitivity and calibration. \\
+
+As a drift-scan telescope, CHORD maintains a fixed pointing and measures continuously along the strip of right ascension (RA) that passes through its field of view as the Earth rotates. The full survey is then built up by repointing the dishes to different declinations. The full declination range accessible to CHORD is \( +20\deg < \delta < +80\deg\), which is planned to be fully covered over a 5-year survey \cite{vanderlindeCanadianHydrogenObservatory2019}.\\
+
+The instrument will have a native spectral resolution of 195.3 kHz, with the option of unchannelizing to higher resolution using a two-stage polyphase filter bank (PFB) \cite{bij2026chord}. We henceforth assume a spectral resolution of \( 5 \kHz\), corresponding to a velocity resolution of \(5 \kms\) at \(300 \MHz\) and \(1 \kms\) at \(1500 \MHz\). Beam characteristics of CHORD and pathfinder are discussed in detail in section \ref{sec:angular_resolution}.\\
+
+\section{Previous Surveys}
+ % Suggest one sentence at most
+
