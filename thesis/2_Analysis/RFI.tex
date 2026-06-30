@@ -17,13 +17,6 @@ RRL science is particularly sensitive to RFI for multiple reasons:
 \end{itemize}
 With these considerations in mind, it is vital to understand the RFI environment surrounding each target frequency to inform RRL survey performance.
 
-
-% There are a few important limitations to consider about conclusions from the RFI monitor:
-% \begin{itemize}
-%     \item CHORD is orders of magnitude more sensitive than the RFI monitor, signals that are not detectable by the RFI monitor may nonetheless impede CHORD.
-%     \item CHORD has a directional beam pointed upwards while the RFI monitor receives signal from all directions. RF signals travelling horizontally or from the surface upwards will be be visible to the RFI monitor but may be absent from CHORD.
-%     \item RFI changes over time and as new sources emerge, spectrum currently free of RFI might become corrupted.
-% \end{itemize}
 \section{RFI detection methods}
 \label{sec:rfi_detection_methods}
 \subsection{Excess Kurtosis for non-Gaussianity}
@@ -262,3 +255,12 @@ where $f_i$ is the frequency of bin $i$ and $\text{RFI}_i \in \{0, 1\}$ is its R
 \hline
 \end{tabular}
 \end{table}
+
+\subsection{Analysis Limitations}
+There are a few important limitations to consider about conclusions from the RFI monitor:
+\begin{itemize}
+    \item CHORD is orders of magnitude more sensitive than the RFI monitor, signals that are not detectable by the RFI monitor may nonetheless impede CHORD.
+    \item CHORD has a directional beam pointed upwards while the RFI monitor receives signal from all directions, signals travelling horizontally, or from the surface upwards, will be be visible to the RFI monitor but may be absent from CHORD.
+    \item This analysis is based on a single hour of RFI monitor data, which may not be representative of the long-term RFI environment.
+    \item RFI changes over time and as new sources emerge, spectrum currently free of RFI might become corrupted.
+\end{itemize}
