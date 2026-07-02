@@ -15,9 +15,16 @@ The Canadian Hydrogen Observatory and Radio-transient Detector (CHORD) is a radi
 
 The CHORD design consists of a highly redundant grid of dishes forming multiple repeated baselines, meaning that the distance vector separating each pair of dishes is repeated numerous times. Each baseline measures a unique angular scale on the sky. By repeating baselines, CHORD obtains multiple samples of the same angular scale, which allows for improved sensitivity and calibration. \\
 
-As a drift-scan telescope, CHORD maintains a fixed pointing and measures continuously along the strip of right ascension (RA) that passes through its field of view as the Earth rotates. The full survey is then built up by repointing the dishes to different declinations. The full declination range accessible to CHORD is \( +20\deg < \delta < +80\deg\), which is planned to be fully covered over a 5-year survey \cite{vanderlindeCanadianHydrogenObservatory2019}.\\
+As a drift-scan telescope, CHORD maintains a fixed pointing and measures continuously along the strip of right ascension (RA) that passes through its field of view as the Earth rotates. The full survey is then built up by repointing the dishes to different declinations. The full declination range accessible to CHORD is \( +20\deg < \delta < +80\deg\), which is planned to be fully covered over a 5-year survey \cite{vanderlindeCanadianHydrogenObservatory2019}. The full possible CHORD survey extent is plotted in Figure \ref{fig:chord_survey_extent}.\\
 
 The instrument will have a native spectral resolution of 195.3 kHz, with the option of unchannelizing to higher resolution using a two-stage polyphase filter bank (PFB) \cite{bij2026chord}. We henceforth assume a spectral resolution of \( 5 \kHz\), corresponding to a velocity resolution of \(5 \kms\) at \(300 \MHz\) and \(1 \kms\) at \(1500 \MHz\). Beam characteristics of CHORD and pathfinder are discussed in detail in section \ref{sec:angular_resolution}.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{thesis/plots/chord_survey_range_subfigures.png}
+    \caption{The full declination range accessible to CHORD, \( +20\deg < \delta < +80\deg\). The left plot shows celestial coordinates centered on the equator, the right plot shows Galactic coordinates centered on the Galactic plane.}
+    \label{fig:chord_survey_extent}
+\end{figure}
 
 \section{Previous Surveys}
  % Suggest one sentence at most

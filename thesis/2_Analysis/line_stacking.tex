@@ -1,6 +1,6 @@
 \chapter{Radio Line Stacking}
 \label{sec:line_stacking}
-The principle of line stacking is that each RRL is a measurement of the same underlying physical quantities, namely the emission measure and electron temperature of the ionized gas. We model each observation \(x_i\) as an independent draw from a normal distribution, \(x_i \sim \mathcal{N}(T_L, \sigma_i^2)\), where \(T_L\) is the line strength and \(\sigma_i\) is the brightness temperature sensitivity\footnote{Brightness temperature sensitivity is equivalent to the noise in the measurement and the two terms are used interchangeably} of line \(i\). In the ideal case, for \(n\) independent samples with mean \(\mu\) and common variance \(\sigma^2\), the variance on the mean is \(\sigma^2/n\). For RRLs, however, lines at different frequencies have different noise, so the optimal estimator is not a simple average but a weighted average which we discuss in section \ref{sec:weighted_average}. In section \ref{sec:snr_by_region} we provide optimal stacking strategies by region. \\
+The principle of line stacking is that each RRL is a measurement of the same underlying physical quantities, namely the emission measure and electron temperature of the ionized gas. We model each observation \(x_i\) as an independent draw from a normal distribution, \(x_i \sim \mathcal{N}(T_L, \sigma_i^2)\), where \(T_L\) is the line strength and \(\sigma_i\) is the brightness temperature sensitivity\footnote{Brightness temperature sensitivity is equivalent to the noise in the measurement, and the two terms are used interchangeably.} of line \(i\). In the ideal case, for \(n\) independent samples with mean \(\mu\) and common variance \(\sigma^2\), the variance on the mean is \(\sigma^2/n\). For RRLs, however, lines at different frequencies have different noise, so the optimal estimator is not a simple average but a weighted average which we discuss in section \ref{sec:weighted_average}. In section \ref{sec:snr_by_region} we provide optimal stacking strategies by region. \\
 
 \section{Inverse-variance-weighted average}
 \label{sec:weighted_average}
@@ -27,31 +27,31 @@ The choice of \(\nu_0\) is arbitrary and simply changes the reference point of t
 
 \section{Signal-to-Noise Ratio by Region}
 \label{sec:snr_by_region}
-Peak line intensity \(T_L\) is inversely proportional to frequency, meaning that lower-frequency lines are expected to be strongest and easiest to detect. However, CHORD is also less sensitive at low frequency, as seen in figure \ref{fig:total_noise_maps}, due to the dominant impact of background noise. It is therefore important to understand how the signal-to-noise ratio (SNR) varies across the CHORD band depending on the sky location. To compute the SNR, we take the ratio of the expected signal, which is the line intensity \(T_L\) from equation \eqref{eq:line_intensity}, to the noise, which is the total sensitivity \(\sigma_T\) from section \ref{sec:background_noise}.\\
+Peak line intensity \(T_L\) is inversely proportional to frequency, meaning that lower-frequency lines are expected to be strongest and easiest to detect. However, CHORD is also less sensitive at low frequency, as seen in Figure \ref{fig:total_noise_maps}, due to the dominant impact of background noise. It is therefore important to understand how the signal-to-noise ratio (SNR) varies across the CHORD band depending on the sky location. To compute the SNR, we take the ratio of the expected signal, which is the line intensity \(T_L\) from equation \eqref{eq:line_intensity}, to the noise, which is the total sensitivity \(\sigma_T\) from section \ref{sec:background_noise}. In this section we use the native angular resolution per line, which is the smallest possible synthesised beam for the given frequency, and a common frequency resolution of \(5 \kHz\), representing the maximum possible precision per line. We analyse smoothing in section \ref{sec:smoothed_snr}.
 
-To visualise SNR by region, we assume a uniform line intensity of \(T_L = 10 \mK\) at 1500 MHz across the entire sky. In reality, line intensity will vary significantly across the sky, so the SNR scale is not accurate. However, the shape and maxima of the SNR-per-frequency plots are still valid and can be used to understand which lines are most important for a given sky location. The locations used are shown in figure \ref{fig:snr_locations}, and the SNR versus frequency for each location is shown in figure \ref{fig:snr_by_region}.\\
+To visualize SNR by region, we assume a uniform line intensity of \(T_L = 10 \mK\) at 1500 MHz across the entire sky. In reality, line intensity will vary significantly across the sky, so the SNR scale is not accurate. However, the shape and maxima of the SNR-per-frequency plots are still valid and can be used to understand which lines are most important for a given sky location. The locations used are shown in Figure \ref{fig:snr_locations}, and the SNR versus frequency for each location is shown in Figure \ref{fig:snr_by_region}.\\
 
 % From section \ref{sec:rrl_emission} we have shown that the peak line intensity \(T_L\) is inversely proportional to frequency, meaning that lower frequency lines are expected to be strongest and easiest to detect. However from section \ref{sec:background_noise} we have shown that sensitivity is also spacially and frequency dependent, being impacted by background noise at low frequency, small beam size at high frequency, and shorter integration times at low declination. Due to these many factors the signal to noise ratio (SNR) varies significantly across the CHORD band depending on the sky location. To compute the SNR, we take the ratio of the expected signal, which is the line intensity \(T_L\) from equation \eqref{eq:line_intensity}, to the noise, which is the total sensitivity \(\sigma_T\) from section \ref{sec:background_noise}.\\
 
 % To visualise how SNR changes by region, we assume a uniform line intensity of \(T_L = 10 \mK\) at 1500 MHz across the entire sky. In reality line intensity will vary significantly across the sky but the true signal strength only applies a scaling factor to the SNR it does not change the shape or maxima of the SNR per frequency plots. Signal is assumed to scale exactly as \(1/\nu\) while noise per frequency is taken from the total noise maps shown in figure \ref{fig:total_noise_maps}, noting that noise is equivalent to sensitivity in this case. Three locations are chosen to demonstrate the high galactic latitude, mid galactic latitude, and galactic plane cases, and the SNR is computed across the CHORD band for each location. A plot of the selected locations is shown in figure \ref{fig:snr_locations} and the SNR vs frequency for each location is shown in figure \ref{fig:snr_by_region}.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/snr_locations.png}
-    \caption{400 MHz noise map showing the three selected regions used to demonstrate SNR variations for high galactic latitude, mid galactic latitude, and galactic plane cases.}
+    \caption{400 MHz noise map showing the three selected regions used to demonstrate SNR variations for high Galactic latitude, mid Galactic latitude, and Galactic plane cases.}
     \label{fig:snr_locations}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/snr_by_region.png}
-    \caption{SNR per line by sky location, demonstrating that in the Galactic plane SNR peaks around 500 MHz, at mid Galactic latitudes SNR peaks around 400 MHz, and at high Galactic latitudes SNR peaks around 300 MHz.}
+    \caption{SNR per line by sky location for a common \(5 \kHz\) channel width and native angular resolution. Demonstrating that in the Galactic plane SNR peaks around 500 MHz, at mid Galactic latitudes SNR peaks around 400 MHz, and at high Galactic latitudes SNR peaks around 300 MHz.}
     \label{fig:snr_by_region}
 \end{figure}
 
-To understand what is driving the SNR trends by region, we can separate the impact of system effects (beam shape, integration time, declination) from the impact of background noise. In figure \ref{fig:snr_system_vs_background} we plot SNR ignoring all background and SNR assuming sensitivity is equal to the background. Based on system effects alone, SNR is significantly higher at low frequency due to the compound effect of higher signal and higher sensitivity. In contrast, when sensitivity is directly proportional to background temperature, SNR is highest at high frequency where background noise is lowest. In reality, sensitivity is a combination of system effects, beam shape, and background noise, which is why SNR peaks differently depending on the sky location.
+To understand what is driving the SNR trends by region, we can separate the impact of system effects (beam shape, integration time, declination) from the impact of background noise. In Figure \ref{fig:snr_system_vs_background} we plot SNR ignoring all background and SNR assuming sensitivity is equal to the background. Based on system effects alone, SNR is significantly higher at low frequency due to the compound effect of higher signal and higher sensitivity. In contrast, when sensitivity is directly proportional to background temperature, SNR is highest at high frequency where background noise is lowest. In reality, sensitivity is a combination of system effects, beam shape, and background noise, which is why SNR peaks differently depending on the sky location.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \begin{subfigure}{0.49\linewidth}
         \centering
@@ -66,3 +66,38 @@ To understand what is driving the SNR trends by region, we can separate the impa
     \caption{In the system-noise-only case, SNR peaks at low frequency due to the wider beam and higher signals. When sensitivity is assumed equal to background temperature, SNR peaks at high frequency.}
     \label{fig:snr_system_vs_background}
 \end{figure}
+
+\subsection{Signal-to-Noise Ratio after Smoothing}
+\label{sec:smoothed_snr}
+The results of Figure \ref{fig:snr_by_region} use a common bandwidth of \( 5 \kHz \) and apply each line's native angular resolution. We showed in section \ref{sec:angular_resolution} that the synthesized beam varies from \( \sim\!21' \) at \( 300 \MHz \) to \( \sim\!4.2' \) at \( 1500 \MHz \). Therefore, each line carries a different angular precision. Furthermore, a \( 5 \kHz \) bandwidth corresponds to a \( \sim\!5 \kms \) velocity resolution at \( 300 \MHz \) and a \( \sim\!1 \kms \) resolution at \( 1500 \MHz \), meaning each line also measures a unique velocity sampling.\\
+
+A common approach employed by \citet{andersonGBTDiffuseIonized2021} and \citet{liuSIGGMASURVEYIONIZED2013} is to smooth each line to a common lowest resolution. Smoothing decreases precision. However, it increases the SNR of the high-frequency lines which are otherwise being oversampled.\\
+
+We smoothed velocity resolution by applying a custom bandwidth (\(\Delta \nu\)) to each line corresponding to a common velocity resolution \( \Delta v \),
+\begin{equation}
+    \Delta \nu = \frac{\Delta v}{c} \nu,
+\end{equation}
+which impacts the point-source sensitivity of equation \ref{eq:combined_point_source_sensitivity}.\\
+
+We smoothed angular resolution by averaging the native synthesized beam over the larger smoothed synthesized beam. For a smoothed solid angle \( \Omega_{\text{smoothed}} \), and native solid angle \( \Omega_{\text{native}} \) the number of independent samples is
+\begin{equation}
+    N = \frac{\Omega_{\text{smoothed}}}{\Omega_{\text{native}}}.
+\end{equation}
+We scale the brightness temperature sensitivity from equation \ref{eq:brightness_temperature_sensitivity} by \( 1/\sqrt{N} \) to account for the averaging of independent samples, giving
+\begin{align}
+\sigma_T [\text{K}] &= \frac{\sigma_{\RMS} c^2}{\Omega_{\text{native}} 2k\nu^2} \sqrt{\frac{\Omega_{\text{native}}}{\Omega_{\text{smoothed}}}} \\[4pt]
+&= \frac{\sigma_{\RMS} c^2}{2k\nu^2 \sqrt{\Omega_{\text{native}} \Omega_{\text{smoothed}}}}.
+\label{eq:brightness_temperature_sensitivity_smoothed}
+\end{align}
+It is interesting to note that the smoothed brightness temperature sensitivity of equation \ref{eq:brightness_temperature_sensitivity_smoothed} is equivalent to treating the solid angle as the geometric mean of the native and smoothed solid angles. One caveat of this approach is that it assumes each synthesized beam sample is independent, when in reality noise may be correlated over spatially adjacent samples. A second caveat is that previous surveys such as \cite{andersonGBTDiffuseIonized2021} and \cite{liuSIGGMASURVEYIONIZED2013} perform angular smoothing by convolving native resolution maps with a Gaussian kernel, whereas we have performed a non-weighted boxcar average. Despite these differences, the overall relationship between smoothing and SNR remains the same.\\
+
+We computed SNR by region using a common velocity resolution of \( 5 \kms \) and a common angular resolution of \( 22' \). The results are shown in Figure \ref{fig:snr_by_region_smoothed}. SNR is significantly improved at high frequency, which is expected since both smoothing effects improve sensitivity at high frequency. Low-frequency lines still benefit from a larger primary beam and increased RRL signal strength. However, these results become outweighed by the stronger radio background at low frequency.\\
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{thesis/plots/sensitivity/smoothed_snr_by_region.png}
+    \caption{SNR per line by sky location after smoothing to a common velocity resolution of \( 5 \kms \) and a common angular resolution of 22 arcminutes. SNR is significantly improved at high frequency due to the smoothing effects.}
+    \label{fig:smoothed_snr_by_region}
+\end{figure}
+
+We have shown that SNR per line is not a static quantity. It varies spatially based on changing background noise, and it varies with design choices such as velocity and angular smoothing. Therefore, the optimal stacking strategy, and the decision of which lines to target, depends heavily on the specific science goals.

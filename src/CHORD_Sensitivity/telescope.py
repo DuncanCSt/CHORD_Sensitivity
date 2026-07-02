@@ -6,6 +6,7 @@ from .helpers import convert_freq_to_Hz
 from typing import Literal
 from numpy.typing import NDArray
 import numpy as np
+import warnings
 
 class Telescope:
     """A simple telescope class."""
@@ -248,7 +249,8 @@ class Telescope:
     def surface_temperature(self,
                             freq: float | NDArray,
                             sigma_rms: None | float | NDArray = None,
-                            delta_nu: None | float = None) -> float | NDArray:
+                            delta_nu: None | float = None,
+                            smoothed_resolution: None | float = None) -> float | NDArray:
         r"""
         Convert RMS noise level to surface temperature sensitivity.
 
@@ -262,6 +264,11 @@ class Telescope:
             Channel width in Hz. Required if sigma_rms is None.
         freq : float | NDArray
             Observing frequency in Hz.
+        smoothed_resolution : None | float
+            Smoothed resolution (FWHM) in arcmin. If None, the native synthesized beam
+            solid angle is used. If provided, the native map is treated as smoothed to this
+            coarser beam, averaging N = omega_smooth / omega_native independent synthesized
+            beams so the brightness-temperature noise scales as 1/sqrt(N).
 
         Returns
         -------
@@ -276,7 +283,22 @@ class Telescope:
         is_scalar = np.ndim(sigma_rms) == 0
         freq = convert_freq_to_Hz(freq, self.params)  # Hz
 
-        omega_s = self.S_solid_angle(freq)  # steradians
+        if smoothed_resolution is not None:
+            # Smoothing the native map to a coarser beam averages N = omega_smooth / omega_native
+            # independent synthesized beams, so the brightness-temperature noise drops as 1/sqrt(N).
+            # This is equivalent to using the geometric-mean solid angle in the sigma_T conversion.
+            omega_smooth = np.pi * (np.radians(smoothed_resolution / 60))**2 / (4 * np.log(2))  # steradians
+            omega_native = self.S_solid_angle(freq)  # steradians
+            if np.any(omega_smooth < omega_native):
+                warnings.warn(
+                    "smoothed_resolution is finer than the native synthesized beam "
+                    "(omega_smooth < omega_native); this is not a valid smoothing. "
+                    "Continuing with the calculation.",
+                    stacklevel=2,
+                )
+            omega_s = np.sqrt(omega_native * omega_smooth)  # effective solid angle, steradians
+        else:
+            omega_s = self.S_solid_angle(freq)  # steradians
 
         sigma_array = np.atleast_1d(sigma_rms)  # Jy/beam
         omega_s_array = np.atleast_1d(omega_s)  # steradians

@@ -3,13 +3,33 @@
 
 \subsection{Candidate Site Selection}
 
-Angular resolution of an interferometer is determined by the maximum baseline, which is the distance between the two furthest dishes. CHORD plans to include very long baselines by adding outrigger stations 3300 km and 1000 km away at Green Bank Observatory and Hat Creek Radio Observatory respectively. These outriggers are designed to provide precise localization of bright transient events like Fast Radio Bursts, but can't be used for high-sensitivity surveys like RRL surveys, which require continuous integration over weeks to months. Instead, 16 to 32 additional dishes can be added to the DRAO site, which will feed directly into the main correlator. The purpose of these additional dishes, dubbed Extension CHORD, is to improve the angular resolution of the synthesized beam. The impact on sensitivity will be minimal, as increasing from 512 dishes to 544 dishes only improves the sensitivity by 6 percent, and so it is ignored in the sensitivity analysis of section \ref{sec:sensitivity}.\\
+The angular resolution of an interferometer is determined by the maximum baseline, which is the distance between the two furthest dishes. CHORD plans to include very long baselines by adding outrigger stations 3300 km and 1000 km away at Green Bank Observatory and Hat Creek Radio Observatory respectively, to perform very long baseline interferometry (VLBI). These outriggers are designed to provide precise localization of bright transient events like Fast Radio Bursts, but do not provide smaller angular resolution for extended sources such as RRLs. Instead, tens of additional dishes can be added to the Dominion Radio Astrophysical Observatory (DRAO) site, which can supplement the core array with longer baselines. The purpose of these additional dishes, dubbed Extension CHORD, is to improve the angular resolution of the synthesized beam, while maintaining the highly sensitive redundant baseline architecture of CHORD. The impact on overall point source and surface brightness sensitivity will be minimal, as increasing collecting area from 512 dishes to 544 dishes only improves the sensitivity by 6 percent, and so it is ignored in the sensitivity analysis of section \ref{sec:sensitivity}.\\
 
-Locations to model extension CHORD were selected by identifying areas of the site that could be developed with minimal effort, such as places that already have disturbed ground and pre-existing power connections. A map of the site showing the proposed labeled locations is shown in Figure \ref{fig:ext_chord_site_map}. For each candidate location we assume 16 additional dishes could be added, with the exception of location G, which is only large enough for 8 additional dishes. Location A2 is an alternate placement of location A which avoids dismantling the CHORD fabrication garage.
+The DRAO site is located on ecologically sensitive land, which is developed in partnership with Indigenous stakeholders, and only certain areas of the site have the power infrastructure to support additional dishes. We selected candidate locations to model Extension CHORD by identifying the areas most suitable for development, such as places that already have disturbed ground and pre-existing power connections. A map of the site showing the proposed labeled locations is shown in Figure \ref{fig:ext_chord_site_map}. For each candidate location we assume 16 additional dishes could be added, with the exception of location G, which is only large enough for 8 additional dishes. Location A2 is an alternate placement of location A which avoids dismantling the CHORD fabrication garage.
+
+\begin{table}
+	\centering
+	\begin{tabular}{lp{8.5cm}ll}
+		\hline
+		Location & Description & \(D_{\textrm{EW}}\) & \(D_{\textrm{NS}}\) \\
+		\hline
+		A & CHORD fabrication garage and cement parking area. & 600m & 250m \\
+		A2 & Alternate placement of location A avoiding the CHORD fabrication garage & 600m & 250m \\
+		B & Gravel immediately south of Synthesis Telescope Track & 220m & 120m \\
+		C & Disturbed land immediately West of CHIME array & 200m & 0m \\
+		D & Disturbed land south of CHIME array & 180m & 150m \\
+		E & Disturbed land northeast of blockhouse & 20m & 220m \\
+		F & CHIME pathfinder & 250m & 550m \\
+		G & Natural land near north water pump station & 250m & 70m \\
+		\hline
+	\end{tabular}
+	\caption{Extension CHORD candidate locations at the DRAO site. \(D_{\textrm{EW}}\) and \(D_{\textrm{NS}}\) represent the approximate East-West and North-South distances from the center of the location array to the center of the core array.}
+	\label{tab:ext_chord_locations}
+\end{table}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{plots/ext_chord/site_map.png}
+	\includegraphics[width=1\linewidth]{plots/ext_chord/site_map_v2.png}
 	\caption{Site map for Extension CHORD. Each potential location is labeled A through G. The locations are selected to minimize construction effort by utilizing areas of disturbed ground and pre-existing power connections.}
 	\label{fig:ext_chord_site_map}
 \end{figure}
@@ -19,15 +39,15 @@ The Fourier transform of an image decomposes the image into a sum of spatial sin
 \begin{equation}
     u = \frac{b_{EW}}{\lambda}, v = \frac{b_{NS}}{\lambda}.
 \end{equation}
-Shorter baselines are sensitive to large-scale spatial structures on the sky, while longer baselines provide fine details. The collection of all $u$ and $v$ values sampled is called the UV coverage. The synthesised beam, sometimes called the `dirty beam', is the shape on the sky that a telescope is sensitive to given its UV coverage. To perfectly reconstruct an image of the sky, every spatial frequency would need to be measured. An infinitely sampled UV coverage would produce a delta function synthesised beam, meaning a single point on the sky could be perfectly measured. In practice there are a finite number of baselines, creating a finite UV coverage, so the reconstructed image will contain distortions. The shape of the synthesised beam determines the type of distortions and the overall angular resolution.\\
+Shorter baselines are sensitive to large-scale spatial structures on the sky, while longer baselines provide fine details. The collection of all $u$ and $v$ values sampled is called the UV coverage. The synthesised beam, sometimes called the `dirty beam', is the shape on the sky that a telescope is sensitive to given its UV coverage. To perfectly reconstruct an image of the sky, every spatial frequency would need to be measured. An infinitely sampled UV coverage would produce a delta-function synthesised beam, meaning a single point on the sky could be perfectly measured. In practice there are a finite number of baselines, creating a finite UV coverage, so the reconstructed image will contain distortions. The shape of the synthesised beam determines the type of distortions and the overall angular resolution.\\
 
-The UV coverage and synthesised beam for the core CHORD array without any proposed extension dishes are shown in figure \ref{fig:ext_chord_uv_coverage}. The UV coverage is extremely evenly sampled, which is reflected in the Gaussian shape of the synthesised beam. Angular resolution is defined as the Full Width Half Maximum (FWHM) of the synthesised beam and is plotted as a red contour. The angular resolution matches the theoretical values of $7.41'$\footnote{the '$'$' indicates arcminutes where 1 arcminute is 1/60 of a degree} and $5.05'$ in E-W and N-S respectively, with the asymmetry due to the longer baselines in $v$ as seen in the UV coverage plot.
+The UV coverage and synthesised beam for the core CHORD array without any proposed extension dishes are shown in Figure \ref{fig:ext_chord_uv_coverage}. The UV coverage is extremely evenly sampled, which is reflected in the Gaussian shape of the synthesised beam. Angular resolution is defined as the Full Width Half Maximum (FWHM) of the synthesised beam and is plotted as a red contour. The angular resolution matches the theoretical values of $7.41'$\footnote{the '$'$' indicates arcminutes where 1 arcminute is 1/60 of a degree} and $5.05'$ in E-W and N-S respectively, with the asymmetry due to the longer baselines in $v$ as seen in the UV coverage plot.
 % The average effective resolution of core alone is 6.12'
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{plots/ext_chord/uv_coverage_and_beam.png}
-	\caption{UV coverage and synthesised beam for the core CHORD array at 900 MHz. The angular resolution is plotted as a red contour of the Full Width Half Maximum (FWHM) of the synthesised beam.}
+	\caption{UV coverage and synthesised beam for the full 512-element core CHORD array at 900 MHz. The angular resolution is plotted as a red contour of the Full Width Half Maximum (FWHM) of the synthesised beam.}
 	\label{fig:ext_chord_uv_coverage}
 \end{figure}
 
@@ -43,13 +63,13 @@ where $W_k$ is the number of baselines that fall in cell $k$ and the robust valu
 
 Improving angular resolution comes at the cost of sensitivity, since signal from densely sampled cells is down-weighted. The amount of sensitivity lost can be quantified by the noise factor, which is the ratio of the sensitivity of the applied weighting to the sensitivity of natural weighting. The noise factor is given by
 \begin{equation}
-    \text{Noise Factor} = \frac{\sigma_R}{\sigma_\text{nat}} = \frac{\sqrt{\sum_k w_k^2} \big/ \sum_k w_k}{\sqrt{\sum_k W_k^2} \big/ \sum_k W_k}.
+    \text{Noise Factor} = \frac{\sigma_R}{\sigma_\text{nat}} = \frac{\sqrt{\sum_k w_k^2} \big/ \sum_k w_k}{\sqrt{\sum_k W_k^2} \big/ \sum_k W_k},
     \label{eq:noise_factor}
 \end{equation}
-where $\sigma_R$ and $\sigma_\text{nat}$ are the image noise of the applied and natural weighting respectively.
+where $\sigma_R$ and $\sigma_\text{nat}$ are the image noise levels of the applied and natural weighting respectively.
 
 \subsection{Evaluating Beam Patterns}
-The impact of adding location A to the CHORD array is analysed in detail to illustrate how irregularly sampled UV coverage affects the synthesised beam. The UV coverage in the top left of figure \ref{fig:loc_A_cov_and_beam} shows the added long baselines, which appear as densely sampled zones at $\pm 0.6$ km in $u$ and $\pm 0.3$ km in $v$, while the rest of the plane remains unsampled. The top right plot shows the combined core plus location A beam using natural weighting, where the beam is almost unchanged compared to the core array alone shown in figure \ref{fig:ext_chord_uv_coverage}. This is expected since adding only 16 dishes has a minimal impact compared to the 512 dish core array. The bottom left plot shows the beam using uniform weighting, which applies more weight to location A than to the core. The uniform beam has multiple peaks, which arise from the UV plane being poorly sampled. While the central peak does achieve an angular resolution close to the theoretical resolution of $1.69'$ and $3.13'$ in E-W and N-S respectively, the multiple peaks make it impossible to apply this angular resolution to practical observations. Instead, we define the `effective angular resolution' as the maximum extent of the FWHM contours in E-W and N-S, plotted as an ellipse. Based on the effective angular resolution, the uniform beam achieves $4.92'$ and $3.95'$ in E-W and N-S respectively, at a noise factor cost of 2.83. To understand the trade-off between angular improvement and sensitivity loss, the bottom right plot shows effective resolution versus noise factor for a range of robust values, where a noise factor of exactly 1 corresponds to natural weighting and the maximum noise factor corresponds to uniform weighting. From the elbow curve we can see that a roughly 25\% improvement in angular resolution can be achieved for a marginal increase in noise factor.
+Here we analyse in detail the impact of adding location A to the CHORD array to illustrate how irregularly sampled UV coverage affects the synthesised beam. The UV coverage in the top left of Figure \ref{fig:loc_A_cov_and_beam} shows the added long baselines, which appear as densely sampled zones at $\pm 0.6$ km in $u$ and $\pm 0.3$ km in $v$, while the rest of the plane remains unsampled. The top right plot shows the combined core plus location A beam using natural weighting, where the beam is almost unchanged compared to the core array alone shown in Figure \ref{fig:ext_chord_uv_coverage}. This is expected since adding only 16 dishes has a minimal impact compared to the 512 dish core array. The bottom left plot shows the beam using uniform weighting, which applies more weight to the long baselines of location A than to the core. The uniform beam has multiple peaks, which arise from the UV plane being poorly sampled. While the central peak does achieve an angular resolution close to the theoretical resolution of $1.69'$ and $3.13'$ in E-W and N-S respectively, the multiple peaks make it impossible to apply this angular resolution to practical observations. Instead, we define the `effective angular resolution' as the maximum extent of the FWHM contours in E-W and N-S, plotted as an ellipse. Based on the effective angular resolution, the uniform beam achieves $4.92'$ and $3.95'$ in E-W and N-S respectively, at a noise factor cost of 2.83. To understand the trade-off between angular improvement and sensitivity loss, the bottom right plot shows effective resolution versus noise factor for a range of robust values, where a noise factor of exactly 1 corresponds to natural weighting and the maximum noise factor corresponds to uniform weighting. From the elbow curve we can see that a roughly 25\% improvement in angular resolution can be achieved for a marginal increase in noise factor.
 
 \begin{figure}
 	\centering
@@ -59,7 +79,7 @@ The impact of adding location A to the CHORD array is analysed in detail to illu
 \end{figure}
 
 \subsection{Optimal Extension CHORD Configurations}
-In this section we consider configurations of at most two extension locations and compare every permutation. We compare the uniform weighting results, as they represent the maximal possible improvement, comparisons for other weighting methods are given in appendix \ref{sec:ext_chord_appendix} and all arrive at the same conclusion. Configurations are compared using the geometric mean resolution, the diameter of the circle whose area matches that of the effective resolution ellipse, with results for all permutations shown in figure \ref{fig:pairplot_resolution_uniform}. The best individual locations are B, C, and F at $3.16'$ each, and the worst individual locations are A/A2 and G at $4.06'$ and above. The individual location findings are counter-intuitive since the longest-baseline sites (A/A2 and G) should have the best theoretical resolution. However, the beam-quality impact of irregular UV coverage outweighs this advantage. The best overall location is B+D at $2.26'$.
+In this section we consider configurations of at most two extension locations and compare every permutation. We compare the uniform weighting results, as they represent the maximal possible improvement. Comparisons for other weighting methods are given in appendix \ref{sec:ext_chord_appendix} and all arrive at the same conclusion. We compare configurations using the geometric mean resolution, the diameter of the circle whose area matches that of the effective resolution ellipse, with results for all permutations shown in Figure \ref{fig:pairplot_resolution_uniform}. The best individual locations are B, C, and F at $3.16'$ each, and the worst individual locations are A/A2 and G at $4.06'$ and above. The individual location findings are counter-intuitive since the longest-baseline sites (A/A2 and G) should have the best theoretical resolution. However, the beam-quality impact of irregular UV coverage outweighs this advantage. The best overall location is B+D at $2.26'$.
 
 \begin{figure}
 	\centering
@@ -70,15 +90,15 @@ In this section we consider configurations of at most two extension locations an
 
 After exploring all the promising combinations the best overall configuration is B+D. The primary drivers for this selection are:
 \begin{enumerate}
-	\item B is an excellent individual location, with a best effective resolution of $3.16'$ and a regular beam shape, as seen in the top left of figure \ref{fig:loc_BD_beam_briggs}, making it the best stand-alone choice.
-	\item D is a complementary shape to B, shown in the top right of figure \ref{fig:loc_BD_beam_briggs}, which fills UV coverage gaps in B as shown in appendix \ref{sec:ext_chord_appendix}.
-	\item The B+D combination can achieve a resolution of $3.45'$ at a noise factor of just 1.26, which is a 44\% improvement in angular resolution for a 26\% loss in sensitivity, while having a perfectly symmetric beam shape, as seen in the bottom left of figure \ref{fig:loc_BD_beam_briggs}.
-	\item For situations where sensitivity is not important, the B+D combination achieves the best overall effective resolution of $2.26'$ at a noise factor of 3, which is a 63\% improvement in angular resolution for a 200\% loss in sensitivity, as seen in the bottom right of figure \ref{fig:loc_BD_beam_briggs}.
+	\item B is an excellent individual location, with a best effective resolution of $3.16'$ and a regular beam shape, as seen in the top left of Figure \ref{fig:loc_BD_beam_briggs}, making it the best stand-alone choice.
+	\item D is a complementary shape to B, shown in the top right of Figure \ref{fig:loc_BD_beam_briggs}, which fills UV coverage gaps in B as shown in appendix \ref{sec:ext_chord_appendix}.
+	\item The B+D combination can achieve a resolution of $3.45'$ at a noise factor of just 1.26, which is a 44\% improvement in angular resolution for a 26\% loss in sensitivity, while having a perfectly symmetric beam shape, as seen in the bottom left of Figure \ref{fig:loc_BD_beam_briggs}.
+	\item For situations where sensitivity is not important, the B+D combination achieves the best overall effective resolution of $2.26'$ at a noise factor of 3, which is a 63\% improvement in angular resolution for a 200\% loss in sensitivity, as seen in the bottom right of Figure \ref{fig:loc_BD_beam_briggs}.
 \end{enumerate}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{thesis/plots/ext_chord/loc_BD_beam_briggs.png}
-	\caption{Synthesised beams for locations B and D, and the combination B+D with resolution versus noise factor plot. The beam shapes for B and D are complementary which when added together produce an excellent symetric beam shape. The B+D combination can achieve a resolution of $3.45'$ at a noise factor of 1.26, or a resolution of $2.26'$ at a noise factor of 3.}
+	\caption{Synthesised beams for locations B and D, and the combination B+D with resolution versus noise factor plot. The beam shapes for B and D are complementary which when added together produce an excellent symmetric beam shape. The B+D combination can achieve a resolution of $3.45'$ at a noise factor of 1.26, or a resolution of $2.26'$ at a noise factor of 3.}
 	\label{fig:loc_BD_beam_briggs}
 \end{figure}

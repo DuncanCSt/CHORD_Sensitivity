@@ -10,7 +10,7 @@ The point source sensitivity of a radio interferometer is the minimum flux densi
     = \frac{2kT_S}{A_e\sqrt{N(N-1)~\Delta \nu ~\tau_{\mathrm{eff}}}},
     \label{eq:radiometer_noise_rms}
 \end{equation}
-where \(k=1.38\times 10^3 \Jy \K^{-1} \m^2\) is the Boltzmann constant, \( T_s = 30\K\) is the expected system temperature of each antenna, and \( A_e = \pi(D/2)^2\cdot0.5=14.14 \m^2\) is the effective collecting area assuming a \(50\%\) illumination efficiency. The remaining quantities are the bandwidth \(\Delta \nu\) in Hz, the number of antennas \(N\) and the effective integration time \(\tau_{\mathrm{eff}}\) in seconds, defined below. We obtained antenna parameters from the CHORD internal wiki \cite{CHORDSummaryCHORD}.
+where \(k=1.38\times 10^3 \Jy \K^{-1} \m^2\) is the Boltzmann constant, \( T_s = 30\K\) is the expected system temperature of each antenna, and \( A_e = \pi(D/2)^2\cdot0.5=14.14 \m^2\) is the effective collecting area assuming a \(50\%\) illumination efficiency \cite{SPIEpaper}. The remaining quantities are the bandwidth \(\Delta \nu\) in Hz, the number of antennas \(N\) and the effective integration time \(\tau_{\mathrm{eff}}\) in seconds, defined below.
 
 The physical antenna parameters of $T_s$ and $A_e$ are typically combined into a single quantity called the system equivalent flux density (SEFD), defined as
 \begin{align}
@@ -81,11 +81,11 @@ where \(\theta_{\FWHM} = 2 \sqrt{2 \ln 2} ~\sigma\) is the Gaussian beam FWHM, \
 
 Combining equations \ref{noise_rms} and \ref{tau_eff} yields:
 \begin{equation}
-    \sigma_{RMS} = \frac{SEFD}{\sqrt{2 ~\Delta\nu~N(N-1) }}~\sqrt{\frac{2\sqrt{2\ln2}~\omega~\cos\phi_0}{\sqrt{\pi}~\theta_{\FWHM}~D(\phi)}}
+    \sigma_{\RMS} = \frac{SEFD}{\sqrt{2 ~\Delta\nu~N(N-1) }}~\sqrt{\frac{2\sqrt{2\ln2}~\omega~\cos\phi_0}{\sqrt{\pi}~\theta_{\FWHM}~D(\phi)}}
 \end{equation}
 This can be simplified and expressed in radians as:
 \begin{equation}
-    \sigma_{RMS}~[Jy/Beam] = \frac{SEFD}{143}~\sqrt{\frac{~\cos\phi_0}{\Delta\nu[Hz]~N(N-1)~\theta_{\FWHM}[\text{rad}] ~D(\phi)}}
+    \sigma_{\RMS}~[Jy/Beam] = \frac{SEFD}{143}~\sqrt{\frac{~\cos\phi_0}{\Delta\nu[Hz]~N(N-1)~\theta_{\FWHM}[\text{rad}] ~D(\phi)}}
 \label{eq:combined_point_source_sensitivity}
 \end{equation}
 
@@ -129,7 +129,7 @@ The synthesized beam solid angle \(\Omega_s\) is the area subtended by the beam.
 \label{sec:surface_brightness_sensitivity}
 Surface brightness sensitivity, which is a measure of the telescope's ability to detect extended sources, is obtained by dividing the point source sensitivity by the synthesized beam solid angle
 \begin{equation}
-\sigma_\Omega [\text{Jy/sr}] = \frac{\sigma_{RMS}}{\Omega_s}.
+\sigma_\Omega [\text{Jy/sr}] = \frac{\sigma_{\RMS}}{\Omega_s}.
 \end{equation}
 
 \begin{figure}[H]
@@ -141,6 +141,7 @@ Surface brightness sensitivity, which is a measure of the telescope's ability to
 
 It is then converted to a brightness temperature by applying the Raleigh-Jeans limit
 \begin{equation}
+\label{eq:brightness_temperature_sensitivity}
 \sigma_T [\text{K}] = \frac{\sigma_\Omega c^2}{2k\nu^2}.
 \end{equation}
 
@@ -183,9 +184,9 @@ Maps of total sensitivity, which incorporates both system noise and radio backgr
 
 \begin{figure}[H]
     \centering
-    \textbf{Total noise maps}
+    \textbf{Total Sensitivity maps}
     \includegraphics[width=1\linewidth]{thesis/plots/sensitivity/total_noise.png}
-    \caption{Total noise maps in Galactic coordinates centered on the CHORD field of view, measured in brightness temperature (mK) for 4 different frequencies.}
+    \caption{Total sensitivity maps in Galactic coordinates centered on the CHORD field of view, measured in brightness temperature (mK) for 4 different frequencies.}
     \label{fig:total_noise_maps}
 \end{figure}
 

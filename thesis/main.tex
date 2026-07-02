@@ -11,14 +11,13 @@
 % uncomment and modify the next line:
 %\degreetitle{B.Sc. Computer Science Honours}
 
-\title{Sample Thesis Template for UBC Okanagan graduate students (mostly) in computer science and mathematics}
+\title{Radio Recombination Line Forecasts with CHORD}
 %\subtitle{With a Subtitle}
-\author{Jane Mary Doe} % The name needs to be exactly the same as on the diploma i.e. (Name from SISC)
-\copyrightyear{2010}
-\submitdate{April 2010} % date of approved thesis
-\program{Computer Science}%or Mathematics, or Interdisciplinary Studies
-\previousdegree{B.Sc. Hons., The University of British Columbia, 2008}
-\previousdegree{M.Sc., The University of British Columbia, 2010}
+\author{Duncan Cameron-Steinke} % The name needs to be exactly the same as on the diploma i.e. (Name from SISC)
+\copyrightyear{2026}
+\submitdate{July 2026} % date of approved thesis
+\program{Mathematics}%or Mathematics, or Interdisciplinary Studies
+\previousdegree{B.Sc., Queen's University, 2020}
 
 % ================================================================================
 
@@ -51,6 +50,7 @@
 \newcommand{\FWHM}{\ensuremath{\, \mathrm{FWHM}}}
 \newcommand{\RM}{\ensuremath{\, \mathrm{RM}}}
 \newcommand{\EM}{\ensuremath{\, \mathrm{EM}}}
+\newcommand{\RMS}{\ensuremath{\, \mathrm{RMS}}}
 \newcommand{\var}{\ensuremath{\, \mathrm{var}}}
 \renewcommand{\deg}{\ensuremath{\, ^{\circ}}}
 \newcommand{\arcmin}{\ensuremath{\, \mathrm{arcmin}}}
@@ -74,7 +74,7 @@
 \begin{document}
 % \include{thesis/outline}
 
-% \include{thesis/0_preamble/preamble}
+\include{thesis/0_preamble/preamble}
 \include{thesis/1_Background/background_main}
 
 \input{thesis/2_Analysis/RFI}
@@ -85,6 +85,9 @@
 
 \chapter{Simulations}
 \input{thesis/3_Simulations/SIGGMA}
+
+\chapter{Conclusions}
+\input{thesis/4_Conclusions/conclusions}
 
 \include{thesis/bibliography}
 \include{thesis/appendices/appendix_main}

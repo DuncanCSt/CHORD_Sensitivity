@@ -64,6 +64,7 @@ class SkyMap:
             freq: float | NDArray,
             type: Literal["background_only", "system_only", "total_noise"] = "total_noise",
             CHORD_range: bool = True,
+            smoothed_resolution: None | float = None
         ) -> list[NDArray]:
         """
         Compute brightness-temperature sky maps over the observable sky.
@@ -139,7 +140,7 @@ class SkyMap:
                 T_background=T_background,
                 dec_deg=dec_obs,
             )
-            sigma_T = self.telescope.surface_temperature(sigma_rms=sigma_rms, freq=f)
+            sigma_T = self.telescope.surface_temperature(sigma_rms=sigma_rms, freq=f, smoothed_resolution=smoothed_resolution)
 
             sky_map = np.full(npix, np.nan)
             sky_map[mask] = sigma_T
