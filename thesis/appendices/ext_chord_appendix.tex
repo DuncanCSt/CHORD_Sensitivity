@@ -1,0 +1,35 @@
+\section{Additional Extension CHORD Plots}
+\label{sec:ext_chord_appendix}
+
+\subsection{Pairwise comparisons}
+
+Pairwise comparisons were performed by looking at natural weighting, robust weighting with R=0, and uniform weighting for each permutation of extension CHORD locations. The combination B + D emerges as the best candidate in every weighting scheme. A combined metric of resolution times noise factor which attempts to balance the trade-off between resolution and sensitivity also shows that B + D is the best candidate across all weighting schemes. The pairwise comparisons are shown in Figure \ref{fig:pairwise_comparisons}.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pairplot_resolution_noise_natural.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pairplot_resolution_noise_briggs0.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pairplot_resolution_noise_uniform.png}
+    \end{subfigure}
+    \caption{Resolution and Resolution x Noise Factor pairwise comparisons for natural, robust (R=0), and uniform weighting schemes. B + D emerges as the best candidate in every comparison method.}
+    \label{fig:pairwise_comparisons}
+\end{figure}
+
+\subsection{UV coverage of B + D}
+
+A plot of the UV coverage of B, D, and B + D is shown in Figure \ref{fig:uv_coverage_B_D} which shows the complementary nature of the two locations and that the combined UV coverage plot is well-filled.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{uv_coverage_B_D_BD.png}
+    \caption{UV coverage of B, D and B + D configuration showing the complementary nature of the two locations.}
+    \label{fig:uv_coverage_B_D}
+\end{figure}
+

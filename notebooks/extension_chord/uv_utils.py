@@ -9,6 +9,7 @@ Provides helpers for:
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.patches import Ellipse
 import geopandas as gpd
 from pyproj import Transformer
 from astropy.coordinates import EarthLocation
@@ -228,6 +229,43 @@ def _measure_fwhm_1d(profile, half_max=0.5):
     return pos_right - pos_left
 
 
+def eff_halfmax_extent(beam, x_coords, y_coords, level=0.5):
+    """Max extent of the half-maximum region in x and y, treated independently.
+
+    The beam is assumed normalised to a peak of unity. For every adjacent
+    pixel pair that straddles ``level``, the crossing location is found by
+    linear interpolation; the extent along each axis is the span between the
+    outermost crossings (so multiple separate half-max islands are included).
+
+    Returns (extent_x, extent_y) in the units of *x_coords* / *y_coords*.
+    """
+    b = beam - level
+
+    # Crossings along x (between columns j and j+1) across every row.
+    sx = b[:, :-1] * b[:, 1:] < 0
+    if np.any(sx):
+        rows, cols = np.nonzero(sx)
+        b0, b1 = b[rows, cols], b[rows, cols + 1]
+        frac = b0 / (b0 - b1)
+        xc = x_coords[cols] + frac * (x_coords[cols + 1] - x_coords[cols])
+        extent_x = xc.max() - xc.min()
+    else:
+        extent_x = np.nan
+
+    # Crossings along y (between rows i and i+1) across every column.
+    sy = b[:-1, :] * b[1:, :] < 0
+    if np.any(sy):
+        rows, cols = np.nonzero(sy)
+        b0, b1 = b[rows, cols], b[rows + 1, cols]
+        frac = b0 / (b0 - b1)
+        yc = y_coords[rows] + frac * (y_coords[rows + 1] - y_coords[rows])
+        extent_y = yc.max() - yc.min()
+    else:
+        extent_y = np.nan
+
+    return extent_x, extent_y
+
+
 def _apply_weighting(uv_density, v_idx, u_idx, valid,
                      weighting, robust, sum_w_natural, sum_w2_natural):
     """Grid visibilities with the requested weighting scheme.
@@ -265,7 +303,8 @@ def compute_dirty_beam(uvd, title="", npix=128, freq_hz=900e6,
                        padding=10.0, image_extent_deg=None,
                        zoom_factor=1.5,
                        weighting="natural", robust=None,
-                       zoom_extent=None, plot_beam=True):
+                       zoom_extent=None, plot_beam=True, save_path=None,
+                       show=True):
     """Compute and plot the normalised dirty beam (synthesized PSF).
 
     Parameters
@@ -293,6 +332,11 @@ def compute_dirty_beam(uvd, title="", npix=128, freq_hz=900e6,
     zoom_extent : float or None
         If given, fix the plot window to +/-zoom_extent arcmin (overrides
         zoom_factor). Useful for consistent axes when comparing weightings.
+    save_path : str or None
+        If given, save the plot to this path.
+    show : bool
+        If True, display the figure with ``plt.show()``; if False, close it
+        after saving (useful for batch runs that only write files to disk).
 
     Returns
     -------
@@ -356,24 +400,29 @@ def compute_dirty_beam(uvd, title="", npix=128, freq_hz=900e6,
     l_arcmin = (np.arange(npix) - npix // 2) * delta_theta_arcmin
     m_arcmin = l_arcmin.copy()
 
-    # Effective resolution: fit a 2D Gaussian to the main lobe and extract the FWHM
-    y, x = np.mgrid[:beam.shape[0], :beam.shape[1]]
-    gaussian_init = models.Gaussian2D(amplitude=beam.max(), x_mean=beam.shape[1]//2, y_mean=beam.shape[0]//2, x_stddev=5, y_stddev=5)
-    fitter = fitting.LevMarLSQFitter()
-    gaussian_fit = fitter(gaussian_init, x, y, beam)
-    gauss_beam_fit = gaussian_fit(x, y)
-    peak_idx = np.unravel_index(np.argmax(gauss_beam_fit), gauss_beam_fit.shape)
-    eff_l_pix = _measure_fwhm_1d(gauss_beam_fit[peak_idx[0], :], half_max = 0.5) 
-    eff_m_pix = _measure_fwhm_1d(gauss_beam_fit[:, peak_idx[1]], half_max = 0.5)
-    eff_l_arcmin = eff_l_pix * delta_theta_arcmin if not np.isnan(eff_l_pix) else np.nan
-    eff_m_arcmin = eff_m_pix * delta_theta_arcmin if not np.isnan(eff_m_pix) else np.nan
+    # # Effective resolution: fit a 2D Gaussian to the main lobe and extract the FWHM
+    # y, x = np.mgrid[:beam.shape[0], :beam.shape[1]]
+    # gaussian_init = models.Gaussian2D(amplitude=beam.max(), x_mean=beam.shape[1]//2, y_mean=beam.shape[0]//2, x_stddev=5, y_stddev=5)
+    # fitter = fitting.LevMarLSQFitter()
+    # gaussian_fit = fitter(gaussian_init, x, y, beam)
+    # gauss_beam_fit = gaussian_fit(x, y)
+    # peak_idx = np.unravel_index(np.argmax(gauss_beam_fit), gauss_beam_fit.shape)
+    # eff_l_pix = _measure_fwhm_1d(gauss_beam_fit[peak_idx[0], :], half_max = 0.5) 
+    # eff_m_pix = _measure_fwhm_1d(gauss_beam_fit[:, peak_idx[1]], half_max = 0.5)
+    # eff_l_arcmin = eff_l_pix * delta_theta_arcmin if not np.isnan(eff_l_pix) else np.nan
+    # eff_l_arcmin = eff_m_pix * delta_theta_arcmin if not np.isnan(eff_m_pix) else np.nan
 
-    # FWHM measurement (1-D slices through peak for the main lobe)
-    peak_idx = np.unravel_index(np.argmax(beam), beam.shape)
-    fwhm_l_pix = _measure_fwhm_1d(beam[peak_idx[0], :])
-    fwhm_m_pix = _measure_fwhm_1d(beam[:, peak_idx[1]])
-    fwhm_l_arcmin = fwhm_l_pix * delta_theta_arcmin if not np.isnan(fwhm_l_pix) else np.nan
-    fwhm_m_arcmin = fwhm_m_pix * delta_theta_arcmin if not np.isnan(fwhm_m_pix) else np.nan
+    # # FWHM measurement (1-D slices through peak for the main lobe)
+    # peak_idx = np.unravel_index(np.argmax(beam), beam.shape)
+    # fwhm_l_pix = _measure_fwhm_1d(beam[peak_idx[0], :])
+    # fwhm_m_pix = _measure_fwhm_1d(beam[:, peak_idx[1]])
+    # fwhm_l_arcmin = fwhm_l_pix * delta_theta_arcmin if not np.isnan(fwhm_l_pix) else np.nan
+    # fwhm_m_arcmin = fwhm_m_pix * delta_theta_arcmin if not np.isnan(fwhm_m_pix) else np.nan
+
+    # Max FWHM: the beam is normalised to a peak of unity above, so find every
+    # half-maximum crossing (sub-pixel, by interpolation) along l and m and take
+    # the outermost span on each axis. l and m are treated independently.
+    eff_l_arcmin, eff_m_arcmin = eff_halfmax_extent(beam, l_arcmin, m_arcmin)
 
     # Theoretical resolution
     max_u_lam = np.abs(u_lam).max()
@@ -389,8 +438,10 @@ def compute_dirty_beam(uvd, title="", npix=128, freq_hz=900e6,
         plt.colorbar(im, label="Normalised amplitude")
         plt.contour(beam, levels=[0.5], colors="red", linewidths=2.0,
                     linestyles="--", extent=extent)
-        plt.contour(gauss_beam_fit, levels=[0.5], colors="cyan", linewidths=2.0,
-                    linestyles=":", extent=extent)
+        ellipse = Ellipse((0, 0), width=eff_l_arcmin, height=eff_m_arcmin,
+                          edgecolor="cyan", facecolor="none",
+                          linewidth=2.0, linestyle=":")
+        plt.gca().add_patch(ellipse)
         plt.plot([], [], color="red", linestyle="--", linewidth=2,
                  label="FWHM contour (half-maximum)")
         plt.plot([], [], color="cyan", linestyle=":", linewidth=2,
@@ -401,8 +452,8 @@ def compute_dirty_beam(uvd, title="", npix=128, freq_hz=900e6,
             zoom = zoom_extent
         else:
             zoom = zoom_factor * max(
-                fwhm_l_arcmin if not np.isnan(fwhm_l_arcmin) else 10,
-                fwhm_m_arcmin if not np.isnan(fwhm_m_arcmin) else 10,
+                eff_l_arcmin if not np.isnan(eff_l_arcmin) else 10,
+                eff_m_arcmin if not np.isnan(eff_m_arcmin) else 10,
             )
         plt.xlim(-zoom, zoom)
         plt.ylim(-zoom, zoom)
@@ -412,18 +463,22 @@ def compute_dirty_beam(uvd, title="", npix=128, freq_hz=900e6,
 
         info = (
             f"Theoretical: l ~ {theta_l:.2f}', m ~ {theta_m:.2f}'\n"
-            f"Measured FWHM: l = {fwhm_l_arcmin:.3f}', m = {fwhm_m_arcmin:.3f}'\n"
             f"Effective res: l = {eff_l_arcmin:.3f}', m = {eff_m_arcmin:.3f}'\n"
-            f"Weighting: {weighting.capitalize()} "
-            f"(noise factor: {relative_noise:.3f}x)"
+            f"Noise factor: {relative_noise:.3f}x)"
         )
         fig.text(0.45, 0.18, info, ha="center", va="center", fontsize=12,
                  bbox=dict(boxstyle="round,pad=0.4", facecolor="white",
                            alpha=0.85, edgecolor="gray"))
         plt.tight_layout()
-        plt.show()
+        if save_path is not None:
+            plt.savefig(save_path, dpi=300)
+            print(f"Saved dirty beam plot to '{save_path}'")
+        if show:
+            plt.show()
+        else:
+            plt.close(fig)
 
-    return beam, l_arcmin, m_arcmin, fwhm_l_arcmin, fwhm_m_arcmin, eff_l_arcmin, eff_m_arcmin, relative_noise
+    return beam, l_arcmin, m_arcmin, eff_l_arcmin, eff_m_arcmin, relative_noise
 
 def adaptive_briggs_sweep(dish_array, r_lo=-2, r_hi=2, tol=0.1,
                           max_iter=50, freq_hz=FREQ_HZ, npix=256, image_extent_deg=1):
@@ -432,7 +487,7 @@ def adaptive_briggs_sweep(dish_array, r_lo=-2, r_hi=2, tol=0.1,
     def _eval(r):
         """Compute and cache noise factor + effective resolution for a robust value."""
         if r not in cache:
-            *_, eff_l, eff_m, nf = compute_dirty_beam(
+            _, _, _, eff_l, eff_m, nf = compute_dirty_beam(
                 dish_array, npix=npix, freq_hz=freq_hz, image_extent_deg=image_extent_deg,
                 weighting="briggs", robust=r, plot_beam=False,
             )
@@ -478,7 +533,8 @@ def adaptive_briggs_sweep(dish_array, r_lo=-2, r_hi=2, tol=0.1,
     print(f"Sampled {len(r_arr)} robust values in {n_iter} bisections, total iterations: {n_iter}")
     return r_arr, nf_arr, eff_l_arr, eff_m_arr
 
-def plot_briggs_values(title, r_arr, nf_arr, eff_l_arr, eff_m_arr):
+def plot_briggs_values(title, r_arr, nf_arr, eff_l_arr, eff_m_arr, save_path=None,
+                       show=True):
     fig, ax1 = plt.subplots(figsize=(8, 5))
 
     color1 = "tab:blue"
@@ -506,4 +562,10 @@ def plot_briggs_values(title, r_arr, nf_arr, eff_l_arr, eff_m_arr):
     fig.legend(loc="upper center", bbox_to_anchor=(0.5, 0.88), ncol=2)
     ax1.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.show()
+    if save_path is not None:
+        plt.savefig(save_path, dpi=300)
+        print(f"Saved Briggs values plot to '{save_path}'")
+    if show:
+        plt.show()
+    else:
+        plt.close(fig)
