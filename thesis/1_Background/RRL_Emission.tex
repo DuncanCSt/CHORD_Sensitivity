@@ -1,37 +1,31 @@
 \section{Radio Recombination Line Emission}
 \label{sec:rrl_emission}
 
-Radio recombination lines (RRLs) are sources of radio frequency emissions produced in an ionized medium after an electron recombines with an ion and transitions down to lower energy levels. As the negatively charged electron moves closer to the positive nucleus, it decreases its electric potential energy, and the excess energy is emitted as a photon. Since the energy levels of an atom are quantized, the emitted photons are also quantized and appear only at specific frequencies. Photon energy and frequency are interchangeable quantities related by \(E = h\nu\), where \(E\) is the photon energy, \(h\) is Planck's constant, and \(\nu\) is the frequency. RRLs specifically refer to photons in the radio frequency range, which for a hydrogen atom are emitted when electrons transition between high energy levels (e.g. n=100 to n=99). The exact frequency of RRLs can be calculated using the Rydberg formula, which for hydrogen is given by
-
+Radio recombination lines (RRLs) are sources of radio frequency emissions produced in an ionized medium after an electron recombines with an ion which transitions down to lower energy levels. As the negatively charged electron moves closer to the positive nucleus, it decreases its electric potential energy, and the excess energy is emitted as a photon. Since the energy levels of an atom are quantized, the emitted photons are also quantized and appear only at specific frequencies. Photon energy and frequency are interchangeable quantities related by \(E = h\nu\), where \(E\) is the photon energy, \(h\) is Planck's constant, and \(\nu\) is the frequency. RRLs specifically refer to photons in the radio frequency range, which for a hydrogen atom are emitted when electrons transition between high energy levels (e.g. \(n=100\) to \(n=99\)). The exact frequency of RRLs can be calculated using the Rydberg formula, which for hydrogen is given by
 \begin{equation}
     \nu = R_H c \left( \frac{1}{n^2} - \frac{1}{(n + \Delta n)^2} \right),
     \label{eq:rydberg_formula}
 \end{equation}
-
 where \(R_H\) is the Rydberg constant for hydrogen, \(c\) is the speed of light, \(n\) is the final quantum number, and \(\Delta n\) is the change in quantum numbers. Transitions where \(\Delta n = 1\) are called alpha transitions, \(\Delta n = 2\) and \(\Delta n = 3\) are beta and gamma transitions respectively.\\
 
-Line intensity estimates in the radio range assuming optically thin emission and local thermodynamic equilibrium are shown by \citet{andersonGBTDiffuseIonized2021} to be
-
+Line intensity estimates in the radio range assuming optically thin emission and local thermodynamic equilibrium are \cite{andersonGBTDiffuseIonized2021}
 \begin{equation}
     \left( \frac{T_L}{\K} \right) \backsimeq 3076~\left(\frac{T_e}{\K}\right)^{-3/2}\left(\frac{\EM}{\pc \cm^{-6}}\right) \left(\frac{\nu_0}{\GHz}\right)^{-1} \left(\frac{\Delta V}{\km \s^{-1}} \right)^{-1} \Delta n M_{\Delta n},
     \label{eq:line_intensity}
 \end{equation}
-
 where \(T_e\) is the electron temperature, \(\EM\) is the emission measure, \(\nu_0\) is the line frequency, \(\Delta V\) is the FWHM line width, and \(M_{\Delta n}\) is a quantum mechanical correction factor of \(M_{\Delta n} = 0.19, 0.026 \text{ and } 0.0081\) for \(\Delta n = 1, 2 \text{ and } 3\) respectively.\\
 
 Emission measure is defined as the integral of the electron density squared along the line of sight, given by
 \begin{equation}
     \EM = \int n_e^2 dl
 \end{equation}
-
 where \(n_e\) is the electron density and \(l\) is the line of sight distance, meaning \(\EM\) is a measure of the total quantity of electrons producing photons within the line of sight. Electron temperature is a measure of the average kinetic energy of electrons, and is assumed by \citet{andersonGBTDiffuseIonized2021} to be \(\approx 8000 \K\). Taken together, temperature and emission measure are the two physical parameters that determine the strength of RRL emission.\\
 
 The two important features to note from equation \eqref{eq:line_intensity} is firstly that alpha transitions are expected to be an order of magnitude stronger than beta transitions and two orders of magnitude stronger than gamma transitions, and secondly that line intensity is inversely proportional to frequency, meaning that lower frequency lines are expected to be strongest.\\
 
-While line emission should theoretically occur only at the specific frequency characterized by the Rydberg formula \eqref{eq:rydberg_formula}, when measuring a line emission produced by an astronomical source the line will be broadened in its frequency profile to a shape approximately Gaussian characterized by its FWHM line width \(\Delta V\). The line broadening is caused by a combination of thermal broadening, the random motion of electrons, turbulence, the bulk motion of the gas, and pressure broadening, the perturbations of energy levels between closely packed neighboring particles.\\
+While line emission from a source at rest should classically occur only at the specific frequency characterized by the Rydberg formula of equation \eqref{eq:rydberg_formula}, when measuring a line emission produced by an astronomical source the line will be broadened in its frequency profile to a shape approximately Gaussian characterized by its FWHM line width \(\Delta V\). The line broadening is caused by a combination of thermal broadening, the random motion of electrons, turbulence, the bulk motion of the gas, and pressure broadening, the perturbations of energy levels between closely packed neighboring particles.\\
 
 The integrated line intensity, which is the line intensity integrated over the line width, which eliminates the dependence on \(\Delta V\), is further shown by \citet{andersonGBTDiffuseIonized2021} to be
-
 \begin{equation}
     \frac{W_{RRL}}{\K \km \s^{-1}} \backsimeq 3274~\left(\frac{T_e}{\K}\right)^{-3/2}\left(\frac{\EM}{\pc \cm^{-6}}\right) \left(\frac{\nu_0}{\GHz}\right)^{-1} \Delta n M_{\Delta n}.
 \end{equation}

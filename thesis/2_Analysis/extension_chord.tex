@@ -5,7 +5,7 @@
 
 The angular resolution of an interferometer is determined by the maximum baseline, which is the distance between the two furthest dishes. CHORD plans to include very long baselines by adding outrigger stations 3300 km and 1000 km away at Green Bank Observatory and Hat Creek Radio Observatory respectively, to perform very long baseline interferometry (VLBI). These outriggers are designed to provide precise localization of bright transient events like Fast Radio Bursts, but do not provide smaller angular resolution for extended sources such as RRLs. Instead, tens of additional dishes can be added to the Dominion Radio Astrophysical Observatory (DRAO) site, which can supplement the core array with longer baselines. The purpose of these additional dishes, dubbed Extension CHORD, is to improve the angular resolution of the synthesized beam, while maintaining the highly sensitive redundant baseline architecture of CHORD. The impact on overall point source and surface brightness sensitivity will be minimal, as increasing collecting area from 512 dishes to 544 dishes only improves the sensitivity by 6 percent, and so it is ignored in the sensitivity analysis of section \ref{sec:sensitivity}.\\
 
-The DRAO site is located on ecologically sensitive land, which is developed in partnership with Indigenous stakeholders, and only certain areas of the site have the power infrastructure to support additional dishes. We selected candidate locations to model Extension CHORD by identifying the areas most suitable for development, such as places that already have disturbed ground and pre-existing power connections. A map of the site showing the proposed labeled locations is shown in Figure \ref{fig:ext_chord_site_map}. For each candidate location we assume 16 additional dishes could be added, with the exception of location G, which is only large enough for 8 additional dishes. Location A2 is an alternate placement of location A which avoids dismantling the CHORD fabrication garage.
+The DRAO site is located on ecologically sensitive land, which is developed in partnership with Indigenous stakeholders, and only certain areas of the site have the power infrastructure to support additional dishes. We selected candidate locations to model Extension CHORD by identifying the areas most suitable for development, such as places that already have disturbed ground and pre-existing power connections. A map of the site showing the proposed labeled locations is shown in Figure \ref{fig:ext_chord_site_map}. For each candidate location we assume 16 additional dishes could be added, with the exception of location G, which is only large enough for 8 additional dishes. Location A2 is an alternate placement of location A which avoids dismantling the CHORD fabrication tent.
 
 \begin{table}
 	\centering
@@ -13,14 +13,14 @@ The DRAO site is located on ecologically sensitive land, which is developed in p
 		\hline
 		Location & Description & \(D_{\textrm{EW}}\) & \(D_{\textrm{NS}}\) \\
 		\hline
-		A & CHORD fabrication garage and cement parking area. & 600m & 250m \\
-		A2 & Alternate placement of location A avoiding the CHORD fabrication garage & 600m & 250m \\
+		A & CHORD fabrication tent and gravel parking area. & 600m & 250m \\
+		A2 & Alternate placement of location A avoiding the CHORD fabrication tent & 600m & 250m \\
 		B & Gravel immediately south of Synthesis Telescope Track & 220m & 120m \\
 		C & Disturbed land immediately West of CHIME array & 200m & 0m \\
 		D & Disturbed land south of CHIME array & 180m & 150m \\
 		E & Disturbed land northeast of blockhouse & 20m & 220m \\
-		F & CHIME pathfinder & 250m & 550m \\
-		G & Natural land near north water pump station & 250m & 70m \\
+		F & CHIME pathfinder & 250m & 70m \\
+		G & Natural land near north water pump station & 250m & 550m \\
 		\hline
 	\end{tabular}
 	\caption{Extension CHORD candidate locations at the DRAO site. \(D_{\textrm{EW}}\) and \(D_{\textrm{NS}}\) represent the approximate East-West and North-South distances from the center of the location array to the center of the core array.}
@@ -88,7 +88,7 @@ In this section we consider configurations of at most two extension locations an
 	\label{fig:pairplot_resolution_uniform}
 \end{figure}
 
-After exploring all the promising combinations the best overall configuration is B+D. The primary drivers for this selection are:
+After exploring all the combinations (Appendix \ref{sec:ext_chord_appendix} Figures \ref{fig:combined_results_A_A2_A_D} through \ref{fig:combined_results_D_G_F_G}), the best overall configuration is B+D. The primary drivers for this selection are:
 \begin{enumerate}
 	\item B is an excellent individual location, with a best effective resolution of $3.16'$ and a regular beam shape, as seen in the top left of Figure \ref{fig:loc_BD_beam_briggs}, making it the best stand-alone choice.
 	\item D is a complementary shape to B, shown in the top right of Figure \ref{fig:loc_BD_beam_briggs}, which fills UV coverage gaps in B as shown in appendix \ref{sec:ext_chord_appendix}.

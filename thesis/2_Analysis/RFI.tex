@@ -23,7 +23,7 @@ With these considerations in mind, it is vital to understand the RFI environment
 
 Kurtosis based RFI detection originates from the principle that true astronomical signals, along with thermal noise, should appear Gaussian while RFI should not. RFI is non-Gaussian because it originates from a single source or a small number of sources. If that source is constantly on, then the signal should exhibit lower than expected variance, while if the source is intermittent, then it should exhibit higher than expected variance.\\
 
-Kurtosis is the standardized fourth central moment of a distribution and is a measure of how strong the tails of a distribution are. The $k$-th central moment of a distribution is defined by the expectation value $\mu_k \equiv \E[(X-\mu)^k]$, the first four central moments are given by:
+Kurtosis is the standardized fourth central moment of a distribution and is a measure of how strong the tails of a distribution are. The $k$-th central moment of a distribution is defined by the expectation value $\mu_k \equiv \E[(X-\mu)^k]$. The first four central moments are given by:
 \begin{align}
     \text{Mean:}     \quad & \mu = \E[X] = \frac{1}{N}\sum_{i=1}^{N} x_i
         && \\[4pt]
@@ -99,7 +99,7 @@ A roof mounted receiver located at the DRAO site called the `RFI monitor' record
 \subsection{RFI Monitor data statistics}
 \label{sec:rfi_monitor_data_statistics}
 To understand the statistics of kurtosis and spectral kurtosis we trace how statistical noise propagates through the RFI monitor.\\
-First an analog voltage is digitized to real and imaginary components $V_R$ and $V_I$ respectively, which can be represented as a complex voltage $V$ given by
+First an analog voltage is digitized to real and imaginary components, $V_R$ and $V_I$ respectively, which can be represented as a complex voltage $V$ given by
 \begin{equation}
     V = V_R + jV_I.
 \end{equation}
@@ -218,7 +218,7 @@ When applied to the entire CHORD band, spectral kurtosis finds that 75.6\% of th
 \subsection{Radio Recombination Line Visibility}
 Because each calibration segment must be treated independently, the spectral kurtosis results produce 11 distinct RFI labels for each frequency bin, one from each segment. Typically there is strong agreement between segments. On average any two segments provide the same RFI labels for 93.8\% of frequency bins, with the lowest segment agreement being 91.7\% and the highest being 95.9\%. A full pairwise comparison is presented in appendix \ref{sec:spectral_kurtosis_pair_plot}. Disagreement between segments is likely driven in part by random noise fluctuations and in part by intermittent RFI. \\
 
-Because a Radio Recombination Line survey is expected to observe the same region of sky over long periods of time (weeks to months), we chose to consider a frequency bin clean if it is clean in \textbf{at least 50\%} of the calibration segments. We chose this approach with the assumption that intermittent RFI would still enable observations during those periods when the RFI is not present, and based on expert opinion that a spectrum becomes unusable if it is corrupted more than 50\% of the time. With this definition of RFI free, we find that 76.3\% of the spectrum is RFI free (consistent with the overall estimate in figure \ref{fig:spectral_kurtosis_CHORD_range} of 75.6\%). The full CHORD spectrum, with RFI labels and the locations of Hydrogen RRLs, is shown in figure \ref{fig:rfi_flagged_spectrum}. \\
+Because a RRl survey is expected to observe the same region of sky over long periods of time (weeks to months), we chose to consider a frequency bin clean if it is clean in \textbf{at least 50\%} of the calibration segments. We chose this approach with the assumption that intermittent RFI would still enable observations during those periods when the RFI is not present, and based on expert opinion that a spectrum becomes unusable if it is corrupted more than 50\% of the time. With this definition of RFI free, we find that 76.3\% of the spectrum is RFI free (consistent with the overall estimate in figure \ref{fig:spectral_kurtosis_CHORD_range} of 75.6\%). The full CHORD spectrum, with RFI labels and the locations of Hydrogen RRLs, is shown in figure \ref{fig:rfi_flagged_spectrum}. \\
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{thesis/plots/rfi/rfi_flagged_spectrum.png}
@@ -262,5 +262,5 @@ There are a few important limitations to consider about conclusions from the RFI
     \item CHORD is orders of magnitude more sensitive than the RFI monitor, signals that are not detectable by the RFI monitor may nonetheless impede CHORD.
     \item CHORD has a directional beam pointed upwards while the RFI monitor receives signal from all directions, signals travelling horizontally, or from the surface upwards, will be be visible to the RFI monitor but may be absent from CHORD.
     \item This analysis is based on a single hour of RFI monitor data, which may not be representative of the long-term RFI environment.
-    \item RFI changes over time and as new sources emerge, spectrum currently free of RFI might become corrupted.
+    \item RFI changes over time, as new RFI sources emerge, spectrum currently free of RFI might become corrupted.
 \end{itemize}

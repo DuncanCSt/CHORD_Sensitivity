@@ -15,7 +15,6 @@ The inverse-variance-weighted average minimizes the variance of the mean when va
 When all variances are equal, equation \eqref{eq:weighted_avg} reduces to the simple arithmetic mean.
 
 The inverse-variance-weighted average assumes that each sample has the same mean. However, peak line strength is inversely proportional to frequency, \(T_L \propto \nu^{-1}\), meaning the expected mean is not constant. To account for this we rescale each line and its noise to a common reference frequency \(\nu_0\). After rescaling, each observation has the same expected mean but different variances. The rescaled line strength \(x'\), noise \(\sigma'\), and weights \(w'\) are given by
-
 \begin{equation}
     x_i' = x_i \frac{\nu_i}{\nu_0}, \quad \sigma_i' = \sigma_i \frac{\nu_i}{\nu_0}, \quad w_i' = \frac{\nu_0^2}{\sigma_i^2 \nu_i^2}.
     \label{eq:rescaled_signal_and_noise}
@@ -91,7 +90,7 @@ We scale the brightness temperature sensitivity from equation \ref{eq:brightness
 \end{align}
 It is interesting to note that the smoothed brightness temperature sensitivity of equation \ref{eq:brightness_temperature_sensitivity_smoothed} is equivalent to treating the solid angle as the geometric mean of the native and smoothed solid angles. One caveat of this approach is that it assumes each synthesized beam sample is independent, when in reality noise may be correlated over spatially adjacent samples. A second caveat is that previous surveys such as \cite{andersonGBTDiffuseIonized2021} and \cite{liuSIGGMASURVEYIONIZED2013} perform angular smoothing by convolving native resolution maps with a Gaussian kernel, whereas we have performed a non-weighted boxcar average. Despite these differences, the overall relationship between smoothing and SNR remains the same.\\
 
-We computed SNR by region using a common velocity resolution of \( 5 \kms \) and a common angular resolution of \( 22' \). The results are shown in Figure \ref{fig:snr_by_region_smoothed}. SNR is significantly improved at high frequency, which is expected since both smoothing effects improve sensitivity at high frequency. Low-frequency lines still benefit from a larger primary beam and increased RRL signal strength. However, these results become outweighed by the stronger radio background at low frequency.\\
+We computed SNR by region using a common velocity resolution of \( 5 \kms \) and a common angular resolution of \( 22' \). The results are shown in Figure \ref{fig:smoothed_snr_by_region}. SNR is significantly improved at high frequency, which is expected since both smoothing effects improve sensitivity at high frequency. Low-frequency lines still benefit from a larger primary beam and increased RRL signal strength. However, these results become outweighed by the stronger radio background at low frequency.\\
 
 \begin{figure}
     \centering
