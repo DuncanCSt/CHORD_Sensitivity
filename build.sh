@@ -29,6 +29,15 @@ if [[ "${1:-}" == "clean" ]]; then
     exit 0
 fi
 
+# \include{thesis/...} makes pdflatex write .aux files into matching subfolders
+# of the output dir (e.g. build/thesis/0_preamble/preamble.aux). pdflatex cannot
+# create these nested dirs itself and latexmk only makes one level at a time, so
+# we pre-create every subfolder referenced by an \include in main.tex.
+mkdir -p build/thesis/0_preamble \
+         build/thesis/1_Background \
+         build/thesis/appendices \
+         build/thesis
+
 # -f forces latexmk to push through compile errors so a full PDF (with TOC and
 # resolved citations) is still produced for previewing. latexmk still returns
 # nonzero when it hit errors, so we don't treat that as fatal here and instead

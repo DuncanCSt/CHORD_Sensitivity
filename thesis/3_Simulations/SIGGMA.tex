@@ -3,7 +3,7 @@
 
 In this section we describe the RRL measurements from the Survey of Ionized Gas in the Galaxy, Made with the Arecibo Telescope (SIGGMA) \cite{liuSIGGMASURVEYIONIZED2013} and estimate CHORD's ability to detect the H II regions reported by SIGGMA.\\
 
-The SIGGMA survey covers a thin strip of the Galactic plane between Galactic longitudes \(32\deg \leq \ell \leq 70\deg\) and Galactic latitudes \(|b| \leq 1.5\deg\) with a frequency range of 1225 MHz to 1525 MHz. A plot of the SIGGMA data showing the overlap with CHORD is shown in Figure \ref{fig:siggma_with_chord_coverage}. The survey averages the intensity profile of 12 RRLs (H163\(\alpha\) to H174\(\alpha\)) and covers a velocity range of \(\pm 300 \km \s^{-1}\) with a \(5.1 \km \s^{-1}\) channel resolution and a 6-arcminute angular resolution. An inner-Galaxy data release \cite{liuSurveyIonizedGas2019} provides measurements of 244 known H II regions and an additional 79 candidate regions\footnote{Data available at \url{https://cdsarc.cds.unistra.fr/viz-bin/cat/J/ApJS/240/14t}}, of which 14 and 12, respectively, are within the CHORD survey range. The H II regions visible to CHORD are plotted over the CHORD sensitivity map at \(900 \MHz\) shown in Figure \ref{fig:hii_regions_over_chord_sensitivity}, which shows that most H II regions are located in areas with high background noise. A subset of the visible H II regions is provided in table \ref{tab:siggma_candidates} and a full table is available in appendix \ref{sec:siggma_appendix}.
+The SIGGMA survey covers a thin strip of the Galactic plane between Galactic longitudes \(32\deg \leq \ell \leq 70\deg\) and Galactic latitudes \(|b| \leq 1.5\deg\) with a frequency range of 1225 MHz to 1525 MHz. A plot of the SIGGMA data showing the overlap with CHORD is shown in Figure \ref{fig:siggma_with_chord_coverage}. The survey averages the intensity profile of 12 RRLs (H163\(\alpha\) to H174\(\alpha\)) and covers a velocity range of \(\pm 300 \km \s^{-1}\) with a \(5.1 \km \s^{-1}\) channel resolution and a 6-arcminute angular resolution. An inner-Galaxy data release \cite{liuSurveyIonizedGas2019} provides measurements of 244 known H II regions and an additional 79 candidate regions\footnote{Data available at \url{https://cdsarc.cds.unistra.fr/viz-bin/cat/J/ApJS/240/14t}}, of which 14 and 12, respectively, are within the CHORD survey range. The H II regions visible to CHORD are plotted over the CHORD sensitivity map at \(900 \MHz\) shown in Figure \ref{fig:hii_regions_over_chord_sensitivity}, which shows that most H II regions are located in areas with high background noise. A subset of the visible H II regions is provided in table \ref{tab:siggma_candidates_subset} and a full table is available in appendix \ref{sec:siggma_appendix}.
 % \begin{figure}[h]
 %     \centering
 %     \includegraphics[width=0.5\textwidth]{plots/siggma/siggma_range_map.png}
@@ -39,14 +39,13 @@ The SIGGMA survey covers a thin strip of the Galactic plane between Galactic lon
         \bottomrule
     \end{tabular}
     \caption{A subset of the H II region results reported by SIGGMA which are within the CHORD coverage, ordered from highest to lowest peak line strength. A full table is available in appendix \ref{sec:siggma_appendix}.}
-    \label{tab:siggma_candidates}
+    \label{tab:siggma_candidates_subset}
 \end{table}
 
 The 12 stacked lines have an average frequency of 1375 MHz, so we define the peak line strength as the brightness temperature at 1375 MHz, \(T_{L}(1375\,\MHz)\). We can then obtain the peak line strength for each line in the CHORD frequency range by scaling from this reference frequency,
 \begin{equation}
     T_{L}(\nu) = T_{L}(1375\,\MHz) \frac{1375 \MHz}{\nu}.
 \end{equation}
-
 We computed the single-day per-line SNR of each of the 26 H II regions by dividing peak line strength by the CHORD sensitivity. We applied a common frequency resolution of \(5 \kHz\) and used CHORD's native angular resolution for each line, based on the precise spatial location of the given H II region. A plot of per-line SNR for one observing day is shown in Figure \ref{fig:SNR_per_SIGGMA_line}. SNR is maximized between 500 and 600 MHz, which is expected for observations along the Galactic plane. The lowest SNR is around 0.5, while the highest is 24. The two very bright H II regions `G063.164+00.449' and `G061.473+00.094' are significant outliers, with SNRs of 24 and 10, respectively, and are omitted from Figure \ref{fig:SNR_per_SIGGMA_line}.
 
 \begin{figure}[H]
