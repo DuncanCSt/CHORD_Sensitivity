@@ -18,6 +18,14 @@ classifiers = [
 ]
 dependencies = [
   "numpy>=1.26",
+  "scipy>=1.13",
+  "astropy>=6.0",
+  "matplotlib>=3.9",
+  "healpy>=1.17",
+  "pygdsm>=1.6",
+  "pandas>=2.2",
+  "plotly>=5.20",
+  "nbformat>=5.7",
 ]
 
 [project.urls]

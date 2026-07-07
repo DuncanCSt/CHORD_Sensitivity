@@ -92,7 +92,7 @@ A roof mounted receiver located at the DRAO site called the `RFI monitor' record
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{thesis/plots/rfi/rfi_monitor_full_slice.png}
-    \caption{RFI monitor data from 0 to 2 GHz for a single time sample recorded on May 5, 2026 at 6:00 PM PDT.}
+    \caption[Sample of RFI moniter data]{RFI monitor data from 0 to 2 GHz for a single time sample recorded on May 5, 2026 at 6:00 PM PDT.}
     \label{rfi_monitor_full_slice}
 \end{figure}
 
@@ -130,7 +130,7 @@ The log scaling is easily reversed to obtain $G_{cc}P_N$, however, the gain fact
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{thesis/plots/rfi/rfi_monitor_time_slice_violin.png}
-    \caption{RFI monitor data at 1420 MHz. Top panel shows periodic calibration cycle, middle panel shows PSD between cycles, and bottom panel shows a violin plot with mean and standard error of PSD within each cycle. The results show a statistically significant change in mean power between cycles caused by changes in the gain factor $G_{cc}$.}
+    \caption[RFI monitor gain factor effects on mean power at 1420 MHz]{RFI monitor data at 1420 MHz. Top panel shows periodic calibration cycle, middle panel shows PSD between cycles, and bottom panel shows a violin plot with mean and standard error of PSD within each cycle. The results show a statistically significant change in mean power between cycles caused by changes in the gain factor $G_{cc}$.}
     \label{rfi_monitor_time_slice_violin}
 \end{figure}
 
@@ -147,14 +147,14 @@ To validate the theoretical bounds, we selected a clean portion of the spectrum 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{thesis/plots/rfi/simulated_and_observed_EK_histogram.png}
-    \caption{Monte Carlo simulation of excess kurtosis and observed excess kurtosis within the RFI free 1400 MHz to 1430 MHz band. The 0.1\% and 99.9\% simulated thresholds are shown as vertical dashed lines.}
+    \caption[Excess Kurtosis histogram for simulated and observed RFI free spectrum]{Histogram of excess kurtosis for 100,000 Monte Carlo simulations of Gaussian noise in blue, and histogram of observed excess kurtosis within the RFI free 1400 MHz to 1430 MHz band in yellow. Showing observed excess kurtosis is slightly higher than predicted by theory. The 0.1\% and 99.9\% simulated thresholds are shown as vertical dashed lines.}
     \label{fig:excess_kurtosis_monte_carlo}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{thesis/plots/rfi/1400_band_excess_kurtosis.png}
-    \caption{Top: Power Spectral Density in dBm/Hz across the 1400 MHz to 1430 MHz band. Bottom: Excess kurtosis of $P_N$ for each frequency bin with the 0.1\% and 99.9\% simulated thresholds shown as horizontal dashed lines, confirming that the band is free of RFI.}
+    \caption[Power and Excess Kurtosis from 1400 MHz to 1430 MHz]{Top: Power Spectral Density in dBm/Hz across the 1400 MHz to 1430 MHz band. Bottom: Excess kurtosis of $P_N$ for each frequency bin with the 0.1\% and 99.9\% simulated thresholds shown as horizontal dashed lines, indicating that the band is largely free of RFI.}
     \label{fig:excess_kurtosis_1400MHz}
 \end{figure}
 
@@ -163,7 +163,7 @@ We evaluated the excess kurtosis RFI detection method by examining known RFI reg
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{thesis/plots/rfi/600MHz_sample_EK.png}
-    \caption{Power and excess kurtosis from 590 MHz to 610 MHz, showing that excess kurtosis is not able to clearly distinguish between clean and RFI-contaminated spectrum.}
+    \caption[Power and Excess Kurtosis from 590 MHz to 610 MHz]{Power and excess kurtosis from 590 MHz to 610 MHz, showing that excess kurtosis is not able to clearly distinguish between clean and RFI-contaminated spectrum.}
     \label{fig:excess_kurtosis_600MHz}
 \end{figure}
 
@@ -184,7 +184,7 @@ We reduce the integrated sample count $N$ from 2500 to \(2500 \times 15/16\) to 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{thesis/plots/rfi/hist_setting_sk_p.png}
-    \caption{The blue histogram shows spectral kurtosis on RFI free spectrum using the theoretical shape parameter $d=1$. The salmon histogram shows the same spectrum using an empirically estimated shape parameter $d=0.96$, which places the mode at 1.}
+    \caption[Spectral Kurtosis shape parameter calibration]{The blue histogram shows spectral kurtosis on RFI free spectrum using the theoretical shape parameter $d=1$ with a mode of 1.04. The salmon histogram shows the same spectrum using an empirically estimated shape parameter $d=0.96$, which places the mode at 1.}
     \label{fig:spectral_kurtosis_histogram}
 \end{figure}
 
@@ -193,7 +193,7 @@ We computed the RFI thresholds following the same approach as for excess kurtosi
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{thesis/plots/rfi/spectral_kurtosis_all_time.png}
-    \caption{Spectral Kurtosis of the clean 1400 MHz to 1430 MHz band across all time samples along with simulated spectral kurtosis. The 0.1\% and 99.9\% thresholds are shown as horizontal dashed lines.}
+    \caption[Spectral kurtosis histograms for simulated and observed RFI free spectrum]{Histogram of spectral kurtosis for 100,000 Monte Carlo simulations of Gaussian noise in blue, and histogram of observed spectral kurtosis using the RFI free spectrum from 1400 MHz to 1430 MHz across all time segments in yellow, showing near perfect agreement between the distributions. The 0.1\% and 99.9\% thresholds are shown as horizontal dashed lines.}
     \label{fig:spectral_kurtosis_all_time}
 \end{figure}
 
@@ -202,7 +202,7 @@ To assess the quality of the spectral kurtosis RFI method, we examined spectrum 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{thesis/plots/rfi/600MHz_sample_SK.png}
-    \caption{Power and spectral kurtosis from 590 MHz to 610 MHz, showing a clear distinction in spectral kurtosis between clean and RFI-contaminated regions.}
+    \caption[Power and Spectral kurtosis from 590 MHz to 610 MHz]{Power and spectral kurtosis from 590 MHz to 610 MHz, showing a clear distinction in spectral kurtosis between clean and RFI-contaminated regions.}
     \label{fig:spectral_kurtosis_600MHz}
 \end{figure}
 
@@ -211,7 +211,7 @@ When applied to the entire CHORD band, spectral kurtosis finds that 75.6\% of th
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{thesis/plots/rfi/spectral_kurtosis_histogram.png}
-    \caption{Histogram of spectral kurtosis across the full 300 MHz to 1500 MHz CHORD band for all calibration segments, which finds that 75.6\% of the sampled frequency bins are RFI free. Spectral kurtosis above 1.6 is aggregated at 1.6 for visibility.}
+    \caption[Spectral kurtosis histogram across the full CHORD band]{Histogram of spectral kurtosis across the full 300 MHz to 1500 MHz CHORD band for all calibration segments, which finds that 75.6\% of the sampled frequency bins are RFI free. Spectral kurtosis above 1.6 is aggregated at 1.6 for visibility.}
     \label{fig:spectral_kurtosis_CHORD_range}
 \end{figure}
 
@@ -221,31 +221,32 @@ Because each calibration segment must be treated independently, the spectral kur
 Because a RRl survey is expected to observe the same region of sky over long periods of time (weeks to months), we chose to consider a frequency bin clean if it is clean in \textbf{at least 50\%} of the calibration segments. We chose this approach with the assumption that intermittent RFI would still enable observations during those periods when the RFI is not present, and based on expert opinion that a spectrum becomes unusable if it is corrupted more than 50\% of the time. With this definition of RFI free, we find that 76.3\% of the spectrum is RFI free (consistent with the overall estimate in figure \ref{fig:spectral_kurtosis_CHORD_range} of 75.6\%). The full CHORD spectrum, with RFI labels and the locations of Hydrogen RRLs, is shown in figure \ref{fig:rfi_flagged_spectrum}. \\
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{thesis/plots/rfi/rfi_flagged_spectrum.png}
-    \caption{CHORD spectrum coloured by RFI label with locations of Hydrogen RRLs. Spectrum with intermittent RFI is still considered observable if it is clean in at least 50\% of calibration segments.}
+    \includegraphics[width=1\linewidth]{thesis/plots/rfi/rfi_flagged_spectrum.png}
+    \caption[RFI labels for full CHORD spectrum]{Sample RFI monitor power spectrum coloured by RFI label, the locations of Hydrogen RRLs are shown as vertical dashed lines. Some spectrum with intermittent RFI is still considered clean if it is RFI free in at least 50\% of calibration segments.}
     \label{fig:rfi_flagged_spectrum}
 \end{figure}
-For an RRL to be detectable, it should be measurable across a width of at least 100 km/s, and ideally up to 200 km/s. To characterize this full width rather than the line centre alone, we compute a Gaussian-weighted average of the binary RFI labels, centred on each line's rest frequency $f_0$ with a standard deviation of 100 km/s. We convert velocity widths to frequency using $\Delta f = f_0 \Delta v / c$, resulting in a wider Gaussian at higher frequencies (100 km/s equates to 30 bins at 300 MHz and 148 bins at 1500 MHz). This approach places 68\% of the weighted importance within $\pm$100 km/s of the centre and 95\% within $\pm$200 km/s. The resulting score is
+For an RRL to be detectable, it should be measurable across a width of at least 100 km/s, and ideally up to 200 km/s. To characterize this full width rather than the line centre alone, we compute a Gaussian-weighted average of the binary RFI labels, centred on each line's rest frequency $f_0$ with a standard deviation of 100 km/s. We convert velocity widths to frequency using $\Delta f = f_0 \Delta v / c$, resulting in a wider Gaussian at higher frequencies (100 km/s equates to 30 bins at 300 MHz and 148 bins at 1500 MHz). This approach places 68\% of the weighted importance within $\pm$100 km/s of the centre and 95\% within $\pm$200 km/s. The resulting visibility score is
 \begin{equation}
     s(f_0) = \frac{\sum_i w_i\, \text{RFI}_i}{\sum_i w_i}, \qquad w_i = \exp\!\left(-\frac{(f_i - f_0)^2}{2\sigma_f^2}\right),
 \end{equation}
-where $f_i$ is the frequency of bin $i$ and $\text{RFI}_i \in \{0, 1\}$ is its RFI label. The score is bounded by $[0, 1]$, where $1$ indicates spectrum that is completely clean and $0$ that it is completely RFI. A plot of clean scores vs frequency for all Hydrogen RRLs is shown in figure \ref{fig:h_line_clean_score}. Using a threshold that a line must have a clean score of at least 99\%, we find that 79 of the 116 Hydrogen RRLs in the CHORD band are observable, and 37 are not. The number of visible lines per frequency range is presented in table \ref{tbl:RFI_lines}. If instead we consider a frequency bin clean when at least one segment is RFI free, the total number of visible lines becomes 91. A sensitivity analysis of spectral kurtosis thresholds and combination methods is presented in appendix \ref{sec:alternative_rfi_thresholds}.
+where $f_i$ is the frequency of bin $i$ and $\text{RFI}_i \in \{0, 1\}$ is its RFI label. The score is bounded by $[0, 1]$, where $1$ indicates spectrum that is completely clean and $0$ that it is completely RFI. A plot of visibility scores vs frequency for all Hydrogen RRLs is shown in figure \ref{fig:h_line_clean_score}. Using a threshold that a line must have a visibility score of at least 99\%, we find that 79 of the 116 Hydrogen RRLs in the CHORD band expected to be detectable, and 37 are not. The number of detectable transitions per frequency range is presented in table \ref{tbl:RFI_lines}. If we instead consider a frequency bin clean when a minimum of one segment is RFI free, the total detectable lines becomes 91. A sensitivity analysis of spectral kurtosis thresholds and combination methods is presented in appendix \ref{sec:alternative_rfi_thresholds}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{thesis/plots/rfi/h_line_clean_score.png}
-    \caption{Zoomed-in view of the clean score of each Hydrogen RRL in the CHORD range, computed as a Gaussian-weighted average of the RFI labels using a 100 km/s standard deviation.}
+    \includegraphics[width=1\linewidth]{thesis/plots/rfi/h_line_clean_score.png}
+    \caption[RRL visibility scores for each RRL in the CHORD range]{Visibility score of each Hydrogen RRL in the CHORD range using a 99\% visibility score cutoff to classify each line as detectable or contaminated.}
     \label{fig:h_line_clean_score}
 \end{figure}
 
-\begin{table}[h!]
+\begin{table}
 \centering
-\caption{RFI Impact on Hydrogen Transition Line Detectability}
+\caption[Detectable lines by frequency range]{Table of detectable Hydrogen RRLs vs RFI contaminated RRLs by frequency range.}
 \label{tbl:RFI_lines}
 
 \begin{tabular}{lrr}
 \hline
-\textbf{Frequency (MHz)} & \textbf{Detectable Transitions} & \textbf{Contaminated Transitions} \\
+\textbf{Frequency Range} & \textbf{Detectable} & \textbf{Contaminated} \\
+\textbf{(MHz)} & \textbf{Transitions} & \textbf{Transitions} \\
 \hline
 300--470     & 29 & 10 \\
 470--800    & 23 & 16  \\
@@ -263,4 +264,5 @@ There are a few important limitations to consider about conclusions from the RFI
     \item CHORD has a directional beam pointed upwards while the RFI monitor receives signal from all directions, signals travelling horizontally, or from the surface upwards, will be be visible to the RFI monitor but may be absent from CHORD.
     \item This analysis is based on a single hour of RFI monitor data, which may not be representative of the long-term RFI environment.
     \item RFI changes over time, as new RFI sources emerge, spectrum currently free of RFI might become corrupted.
+    \item This analysis only considers the impact of RFI on detectability, we do not consider how line broadening or the superposition of Helium, Carbon or Hydrogen Beta lines might also impact detectability.
 \end{itemize}
