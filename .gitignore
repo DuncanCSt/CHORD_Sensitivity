@@ -31,3 +31,5 @@ build/
 
 notebooks/extension_chord/results
 .github
+.claude
+.vscode

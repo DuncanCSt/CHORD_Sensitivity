@@ -1,0 +1,28 @@
+{
+  "noise_type": "total_noise",
+  "delta_nu_hz": 5000.0,
+  "freqs_mhz": [
+    300,
+    500,
+    700,
+    900,
+    1100,
+    1300,
+    1500
+  ],
+  "unit": "mK",
+  "grid_deg": 0.5,
+  "colour_scale": {
+    "vmin": 18.918904568009967,
+    "vmax": 79.98649472664441,
+    "percentiles": [
+      0.5,
+      99.0
+    ]
+  },
+  "dec_band_deg": [
+    20.0,
+    80.0
+  ],
+  "telescope": "CHORD"
+}

@@ -14,13 +14,13 @@ The SIGGMA survey covers a thin strip of the Galactic plane between Galactic lon
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{thesis/plots/siggma/siggma_with_chord_coverage.png}
-    \caption{The SIGGMA data products, showing peak intensity per pixel. The area of declination \( \delta \geq 20\deg \) observable by CHORD is highlighted in blue.}
+    \caption[SIGGMA data with CHORD coverage]{The SIGGMA data products, showing peak intensity per pixel. The area of declination \( \delta \geq 20\deg \) observable by CHORD is highlighted in blue.}
     \label{fig:siggma_with_chord_coverage}
 \end{figure}
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{thesis/plots/siggma/hii_regions_over_chord_sensitivity.png}
-    \caption{H II regions detected by SIGGMA plotted over the CHORD sensitivity map at 900 MHz, showing that most H II regions are in places with high background noise.}
+    \caption[H II regions over CHORD sensitivity]{H II regions detected by SIGGMA plotted over the CHORD sensitivity map at 900 MHz, showing that most H II regions are in places with high background noise.}
     \label{fig:hii_regions_over_chord_sensitivity}
 \end{figure}
 
@@ -38,7 +38,7 @@ The SIGGMA survey covers a thin strip of the Galactic plane between Galactic lon
         26 & G062.142-00.144 & $16.8 \pm 2.6$ & $63.9 \pm 11.7$ & 6.2 & Candidate \\
         \bottomrule
     \end{tabular}
-    \caption{A subset of the H II region results reported by SIGGMA which are within the CHORD coverage, ordered from highest to lowest peak line strength. A full table is available in appendix \ref{sec:siggma_appendix}.}
+    \caption[A subset of H II region results within CHORD coverage]{A subset of the H II region results reported by SIGGMA which are within the CHORD coverage, ordered from highest to lowest peak line strength. A full table is available in appendix \ref{sec:siggma_appendix}.}
     \label{tab:siggma_candidates_subset}
 \end{table}
 
@@ -51,7 +51,7 @@ We computed the single-day per-line SNR of each of the 26 H II regions by dividi
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{thesis/plots/siggma/SNR_per_SIGGMA_line.png}
-    \caption{Single-day per-line SNR with a \( 5 \kHz\) frequency resolution and native angular resolution for each H II region visible to CHORD, excluding the two very bright outliers, showing that SNR peaks between 500 and 600 MHz and is in the range 0.5 to 3.7.}
+    \caption[Single-day per-line SNR of SIGGMA H II regions]{Single-day per-line SNR with a \( 5 \kHz\) frequency resolution and native angular resolution for each H II region visible to CHORD, excluding the two very bright outliers, showing that SNR peaks between 500 and 600 MHz and is in the range 0.5 to 3.7.}
     \label{fig:SNR_per_SIGGMA_line}
 \end{figure}
 
@@ -60,11 +60,11 @@ Next we analysed the impact of smoothing on SNR using a velocity resolution of \
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{thesis/plots/siggma/SNR_per_SIGGMA_line_smoothed.png}
-    \caption{Single-day per-line SNR for 24 H II regions within the CHORD coverage, smoothed to a velocity resolution of \(5 \km \s^{-1}\) and an angular resolution of 22 arcminutes. The frequency corresponding to an average CHORD angular resolution of 5, 6, 8, 12 and 22 arcminutes is shown as dashed vertical lines.}
+    \caption[Single-day per-line SNR of SIGGMA H II regions, smoothed to common resolution]{Single-day per-line SNR for 24 H II regions within the CHORD coverage, smoothed to a velocity resolution of \(5 \km \s^{-1}\) and an angular resolution of 22 arcminutes. The frequency corresponding to an average CHORD angular resolution of 5, 6, 8, 12 and 22 arcminutes is shown as dashed vertical lines.}
     \label{fig:SNR_per_SIGGMA_line_smoothed}
 \end{figure}
 
-We simulated the line-stacking process described in section \ref{sec:line_stacking} using both the native-resolution SNR of Figure \ref{fig:SNR_per_SIGGMA_line} and different smoothed resolutions. In the case of native resolution, we present results for the top 1, 15 and 60 lines of each H II region. The resultant SNR predictions for one observing day are shown in table \ref{tab:siggma_stacked_snr}. The lowest single-day SNR with 60 stacked lines is \(3.93 \pm 0.39\), which demonstrates that each region should be easily detectable by CHORD without sacrificing any precision through smoothing. Furthermore, each observing day is an independent sample, so SNR increases in proportion to the square root of the number of observing days. A true survey will observe each region between 9 and 36 days, meaning SNR is expected to increase by a factor of 3 to 6.
+We simulated the line-stacking process described in section \ref{sec:line_stacking} using both the native-resolution SNR of Figure \ref{fig:SNR_per_SIGGMA_line} and different smoothed resolutions. In the case of native resolution, we present results for the top 1, 15 and 60 lines of each H II region. The resultant SNR predictions for one observing day are shown in table \ref{tab:siggma_stacked_snr_subset}. The lowest single-day SNR with 60 stacked lines is \(3.93 \pm 0.39\), which demonstrates that each region should be easily detectable by CHORD without sacrificing any precision through smoothing. Furthermore, each observing day is an independent sample, so SNR increases in proportion to the square root of the number of observing days. A true survey will observe each region between 9 and 36 days, meaning SNR is expected to increase by a factor of 3 to 6.
 
 \begin{table}[H]
     \centering
@@ -80,11 +80,11 @@ We simulated the line-stacking process described in section \ref{sec:line_stacki
         26 & G062.142-00.144 & $0.61 \pm 0.09$ & $2.37 \pm 0.37$ & $4.45 \pm 0.69$ \\
         \bottomrule
     \end{tabular}
-    \caption{SNR after stacking the top 1, 15 and 60 lines for CHORD observations of SIGGMA H II regions using one observing day and native angular resolutions. A full results table is in appendix \ref{sec:siggma_appendix}.}
-    \label{tab:siggma_stacked_snr}
+    \caption[SNR after stacking the top 1, 15 and 60 lines for CHORD observations of SIGGMA H II regions]{SNR after stacking the top 1, 15 and 60 lines for CHORD observations of SIGGMA H II regions using one observing day and native angular resolutions. A full results table is in appendix \ref{sec:siggma_appendix}.}
+    \label{tab:siggma_stacked_snr_subset}
 \end{table}
 
-We also considered the case of prioritizing angular resolution over sensitivity by only including the lines which meet a given angular resolution cutoff. We selected angular resolutions of 5, 6, and 8 arcminutes, and smoothed the available lines to that cutoff. We also smoothed the velocity resolution to \(5 \km \s^{-1}\). The results are shown in table \ref{tab:siggma_stacked_snr_subset}. The results show that with a 6-arcminute angular resolution, the predicted stacked SNR per day is 3 or greater, which matches SIGGMA results if using 4 or more observing days. For an improved angular resolution of 5 arcminutes, at least 9 observing days are required to obtain an SNR of 6 or greater.
+We also considered the case of prioritizing angular resolution over sensitivity by only including the lines which meet a given angular resolution cutoff. We selected angular resolutions of 5, 6, and 8 arcminutes, and smoothed the available lines to that cutoff. We also smoothed the velocity resolution to \(5 \km \s^{-1}\). The results are shown in table \ref{tab:siggma_stacked_snr_smoothed_subset}. The results show that with a 6-arcminute angular resolution, the predicted stacked SNR per day is 3 or greater, which matches SIGGMA results if using 4 or more observing days. For an improved angular resolution of 5 arcminutes, at least 9 observing days are required to obtain an SNR of 6 or greater.
 
 \begin{table}[H]
     \centering
@@ -100,6 +100,6 @@ We also considered the case of prioritizing angular resolution over sensitivity 
         26 & G062.142-00.144 & $2.03 \pm 0.31$ & $3.13 \pm 0.49$ & $5.42 \pm 0.84$ \\
         \bottomrule
     \end{tabular}
-    \caption{SNR for CHORD observations of SIGGMA H II regions with a smoothed angular resolution of 5, 6 and 8 arcminutes after stacking 8, 14, and 27 lines, respectively. A full results table is in appendix \ref{sec:siggma_appendix}.}
-    \label{tab:siggma_stacked_snr_subset}
+    \caption[SNR for CHORD observations of SIGGMA H II regions with smoothed angular resolution]{SNR for CHORD observations of SIGGMA H II regions with a smoothed angular resolution of 5, 6 and 8 arcminutes after stacking 8, 14, and 27 lines, respectively. A full results table is in appendix \ref{sec:siggma_appendix}.}
+    \label{tab:siggma_stacked_snr_smoothed_subset}
 \end{table}

@@ -1,0 +1,40 @@
+{
+  "sk_estimator": {
+    "N": 2343.75,
+    "empirical_mode": 1.0407104832483614,
+    "d": 0.9608820282838969,
+    "Nd": 2252.0672537903833,
+    "ref_db": -173
+  },
+  "rfi_thresholds": {
+    "SK_low": 0.7913373950013837,
+    "SK_high": 1.2418535003811635,
+    "gamma_percentile": 0.1,
+    "gamma_percentile_upper": 99.9
+  },
+  "cutoffs": {
+    "segment_agreement_fraction": 0.5,
+    "line_clean_threshold": 0.99
+  },
+  "line_scoring": {
+    "velocity_width_kms": 100.0,
+    "n_sigma": 3
+  },
+  "resampling": {
+    "velocity_resolution_kms": 50.0,
+    "n_traces": 10
+  },
+  "band": {
+    "chord_min_mhz": 300,
+    "chord_max_mhz": 1500,
+    "n_channels": 360000
+  },
+  "summary": {
+    "n_segments": 11,
+    "cal_cutoff_db": -174,
+    "clean_channel_fraction": 0.7629805555555556,
+    "n_lines": 116,
+    "n_clean_lines": 79,
+    "clean_line_fraction": 0.6810344827586207
+  }
+}

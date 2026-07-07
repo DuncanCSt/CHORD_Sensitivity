@@ -6,7 +6,7 @@ The principle of line stacking is that each RRL is a measurement of the same und
 \label{sec:weighted_average}
 The inverse-variance-weighted average minimizes the variance of the mean when variances are not constant. The weighted mean \(\hat{\mu}\) and variance \(\mathrm{Var}(\hat{\mu})\) are given by
 \begin{equation}
-    \hat{\mu} = \frac{\sum_i x_i w_i}{\sum_i w_i}, \quad \mathrm{Var}(\hat{\mu}) = \frac{\sum_i w_i^2 \sigma_i^2}{(\sum_i w_i)^2}
+    \hat{\mu} = \frac{\sum_i x_i w_i}{\sum_i w_i}, \quad \mathrm{Var}(\hat{\mu}) = \frac{1}{\sum_i w_i}
     \label{eq:weighted_avg}
 \end{equation}
 \begin{equation}
@@ -21,7 +21,7 @@ The inverse-variance-weighted average assumes that each sample has the same mean
 \end{equation}
 The choice of \(\nu_0\) is arbitrary and simply changes the reference point of the estimated mean. The SNR of the stacked estimate is independent of the choice of \(\nu_0\) and is given by
 \begin{equation}
-    \mathrm{SNR} = \frac{\hat{\mu}}{\sqrt{\mathrm{Var}(\hat{\mu})}} = \frac{\sum_i x_i w_i}{\sqrt{\sum_i w_i^2 \sigma_i^2}}.
+    \mathrm{SNR} = \frac{\hat{\mu}}{\sqrt{\mathrm{Var}(\hat{\mu})}} = \frac{\sum_i x_i w_i}{\sqrt{\sum_i w_i}}.
 \end{equation}
 
 \section{Signal-to-Noise Ratio by Region}
@@ -37,14 +37,14 @@ To visualize SNR by region, we assume a uniform line intensity of \(T_L = 10 \mK
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/snr_locations.png}
-    \caption{400 MHz noise map showing the three selected regions used to demonstrate SNR variations for high Galactic latitude, mid Galactic latitude, and Galactic plane cases.}
+    \caption[Sample SNR Locations Map]{400 MHz noise map showing the three selected regions used to demonstrate SNR variations for high Galactic latitude, mid Galactic latitude, and Galactic plane cases.}
     \label{fig:snr_locations}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/snr_by_region.png}
-    \caption{SNR per line by sky location for a common \(5 \kHz\) channel width and native angular resolution. Demonstrating that in the Galactic plane SNR peaks around 500 MHz, at mid Galactic latitudes SNR peaks around 400 MHz, and at high Galactic latitudes SNR peaks around 300 MHz.}
+    \caption[SNR per line by sky location with native velocity and angular resolutions]{SNR per line by sky location for a common \(5 \kHz\) channel width and native angular resolution. Demonstrating that in the Galactic plane SNR peaks around 500 MHz, at mid Galactic latitudes SNR peaks around 400 MHz, and at high Galactic latitudes SNR peaks around 300 MHz.}
     \label{fig:snr_by_region}
 \end{figure}
 
@@ -62,7 +62,7 @@ To understand what is driving the SNR trends by region, we can separate the impa
         \includegraphics[width=\linewidth]{thesis/plots/sensitivity/snr_by_region_background_only.png}
         \caption{Background noise only}
     \end{subfigure}
-    \caption{In the system-noise-only case, SNR peaks at low frequency due to the wider beam and higher signals. When sensitivity is assumed equal to background temperature, SNR peaks at high frequency.}
+    \caption[SNR of system only effects and background only effects]{In the system-noise-only case, SNR peaks at low frequency due to the wider beam and higher signals. When sensitivity is assumed equal to background temperature, SNR peaks at high frequency.}
     \label{fig:snr_system_vs_background}
 \end{figure}
 
@@ -95,7 +95,7 @@ We computed SNR by region using a common velocity resolution of \( 5 \kms \) and
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{thesis/plots/sensitivity/smoothed_snr_by_region.png}
-    \caption{SNR per line by sky location after smoothing to a common velocity resolution of \( 5 \kms \) and a common angular resolution of 22 arcminutes. SNR is significantly improved at high frequency due to the smoothing effects.}
+    \caption[SNR after smoothing to a common velocity and angular resolution]{SNR per line by sky location after smoothing to a common velocity resolution of \( 5 \kms \) and a common angular resolution of 22 arcminutes. SNR is significantly improved at high frequency due to the smoothing effects.}
     \label{fig:smoothed_snr_by_region}
 \end{figure}
 
