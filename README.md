@@ -1,8 +1,34 @@
 # CHORD_Sensitivity
-Repo to compute sensitivity of CHORD to Radio Recombination Lines.
 
+Supporting code and analysis of the thesis *Radio recombination line
+forecasts with CHORD*.
 
-Input/Output Goals:
-* get_sensitivity: Full sky sensitivity plots as a function of number of lines, channel resolution, angular smoothing
-* snr_siggma: Get detection SNR from an input Siggma fits file
-* optimize_survey: search parameter space for optimal settings based on sky location, velocity resolution, angular resolution, number of lines, observing days.
+## Interactive dashboards
+
+Select results are published as an interactive website:
+
+### 👉 https://duncancst.github.io/CHORD_Sensitivity/
+
+- **RFI classification** — spectral-kurtosis flagging of the DRAO RFI monitor data.
+- **CHORD sensitivity** — brightness-temperature sensitivity maps across the sky, by frequency.
+- **Extension CHORD** — synthesised beams and Briggs resolution/noise trade-offs for
+  compact-core extension configurations.
+
+## Setup
+
+Requires **Python ≥ 3.10**. Create a virtual environment and install the package
+(editable), which pulls in all dependencies:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+python -m pip install --upgrade pip
+python -m pip install -e .
+```
+
+Check the python version if you hit import errors — the package needs 3.10+:
+
+```bash
+python --version
+```
+
