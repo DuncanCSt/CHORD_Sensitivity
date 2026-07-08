@@ -78,7 +78,7 @@ def build_figure(ra, dec, freqs, maps, params):
     ra_grid = np.tile(np.round(ra_actual).astype(np.int16), (dec.size, 1))
 
     def title_for(f):
-        return f"CHORD total-noise surface-brightness sensitivity &mdash; {f:.0f} MHz"
+        return f"CHORD Brightness Temperature Sensitivity Map (mK); {f:.0f} MHz"
 
     fig = go.Figure()
     for i, f in enumerate(freqs):
@@ -118,6 +118,7 @@ def build_figure(ra, dec, freqs, maps, params):
     )
     fig.update_layout(
         height=620,
+        autosize=True,          # width follows the grid cell (avoids overflow)
         title=title_for(freqs[0]),
         margin=dict(t=70, b=40, l=60, r=20),
         sliders=sliders,
@@ -129,9 +130,19 @@ def build_figure(ra, dec, freqs, maps, params):
 # Assemble the HTML page
 # --------------------------------------------------------------------------- #
 def build_page(fig, params):
+    # Force a resize once the grid has its final width: Plotly measures the
+    # container at creation (still too wide in the grid) and otherwise only
+    # recomputes on an interaction, so the plot renders oversized until touched.
+    resize_js = (
+        "var gd = document.getElementById('sky-plot');"
+        "function fit(){ if (window.Plotly) Plotly.Plots.resize(gd); }"
+        "window.addEventListener('resize', fit);"
+        "window.addEventListener('load', fit);"
+        "requestAnimationFrame(fit);"
+    )
     plot_div = fig.to_html(
         full_html=False, include_plotlyjs="cdn", div_id="sky-plot",
-        config={"responsive": True},
+        config={"responsive": True}, post_script=resize_js,
     )
 
     unit = params["unit"]
@@ -143,34 +154,44 @@ def build_page(fig, params):
 
     description = f"""
 <h2>Instructions</h2>
-<p>Use the <em>Frequency</em> slider to step through the observing bands. Drag a box to zoom
-into a region of sky and double-click to reset; hovering reports the RA, Dec and
+<p>Use the <em>Frequency</em> slider to step through observing frequency options. Drag a box to zoom into a region, double-click to reset, hovering reports the RA, Dec and
 surface-brightness sensitivity of each pixel.</p>
 
 <h2>Description</h2>
-<p>Each panel is the CHORD <strong>total-noise</strong> surface-brightness sensitivity over
-CHORD's observable declination band
-\\({dec_lo:.0f}^\\circ\\!\\le\\!\\delta\\!\\le\\!{dec_hi:.0f}^\\circ\\), in {unit}, on a shared
+<p>Each pixel is brightness temperature sensitivity using a \\(\\Delta\\nu = {delta_nu*1e-3:.0f}\\,\\mathrm{{kHz}}\\) channel bandwidth and one observing day, displayed in mK.</p>
+<p>The maps cover CHORD's observable declination band
+\\({dec_lo:.0f}^\\circ\\!\\le\\!\\delta\\!\\le\\!{dec_hi:.0f}^\\circ\\), on a shared linear
 colour scale (\\({vmin:.0f}\\!-\\!{vmax:.0f}\\,\\mathrm{{{unit}}}\\)).</p>
 
 <h2>Methods</h2>
-<h3>Sky background</h3>
-<p>The sky brightness temperature \\(T_\\mathrm{{sky}}\\) comes from the Global Sky Model
-(GSM 2016), rotated to equatorial coordinates and resampled onto a regular RA/Dec grid.
-The total system temperature is</p>
-$$T_\\mathrm{{tot}} = T_\\mathrm{{sys}} + T_\\mathrm{{sky}}(\\alpha,\\delta,\\nu).$$
+<h3>Point source sensitivity</h3>
+<p>The point-source RMS noise follows the radiometer equation:</p>
+$$\\sigma_{{\\mathrm{{RMS}}}}\\,[\\mathrm{{Jy/beam}}] =
+\\frac{{2k\\,(T_{{\\mathrm{{ant}}}}+T_{{\\mathrm{{sky}}}})}}
+{{A_e\\sqrt{{2\\,\\Delta\\nu\\,\\tau_{{\\mathrm{{eff}}}}\\,N(N-1)}}}}$$
+<p>where \\(k\\) is the Boltzmann constant, \\(T_{{\\mathrm{{ant}}}} = 30\\,\\mathrm{{K}}\\) is the
+antenna temperature, \\(T_{{\\mathrm{{sky}}}}\\) is the radio background obtained per location from
+the 2016 Global Sky Model, \\(A_e\\) is the per-dish collecting area,
+\\(\\Delta\\nu = {delta_nu*1e-3:.0f}\\,\\mathrm{{kHz}}\\) is the per-channel bandwidth,
+\\(\\tau_{{\\mathrm{{eff}}}}\\) is the effective per-day integration time (which increases towards
+high declination), and \\(N = 512\\) is the number of dishes.</p>
 
-<h3>Noise sensitivity</h3>
-<p>The point-source r.m.s. follows the radiometer equation, with the system-equivalent flux
-density set by the total temperature and effective area \\(A_\\mathrm{{eff}}\\):</p>
-$$\\sigma_\\mathrm{{rms}} = \\frac{{\\mathrm{{SEFD}}}}{{\\eta\\sqrt{{n_\\mathrm{{pol}}\\,\\Delta\\nu\\,\\tau}}}},
-\\qquad \\mathrm{{SEFD}} = \\frac{{2 k_B T_\\mathrm{{tot}}}}{{A_\\mathrm{{eff}}}}.$$
-<p>A channel bandwidth of \\(\\Delta\\nu = {delta_nu:.0f}\\,\\mathrm{{Hz}}\\) is assumed, and the
-drift-scan integration time \\(\\tau\\) carries the \\(\\cos\\delta\\) dependence with declination.</p>
+<h3>Brightness temperature sensitivity</h3>
+<p>The brightness temperature sensitivity is obtained by dividing the point-source RMS by the
+synthesised-beam solid angle and applying the Rayleigh&ndash;Jeans limit:</p>
+$$\\sigma_T\\,[\\mathrm{{K}}] = \\frac{{\\sigma_{{\\mathrm{{RMS}}}}}}{{\\Omega_s}}\\,
+\\frac{{c^2}}{{2k\\nu^2}}$$
+<p>where \\(\\Omega_s\\) is the synthesised-beam solid angle, \\(c\\) is the speed of light, and
+\\(\\nu\\) is the observing frequency.</p>
 
-<h3>Surface-brightness temperature</h3>
-<p>The per-pixel flux sensitivity is converted to a brightness-temperature sensitivity
-\\(\\sigma_T\\) through the synthesised-beam solid angle, giving the maps shown here.</p>
+<h3>Plotting maps yourself</h3>
+<p>These maps are reproducible with:</p>
+<pre><code>from CHORD_Sensitivity.sky_map import SkyMap
+
+chord = SkyMap("CHORD")
+chord.sky_noise(
+    delta_nu=5e3, freq=500, type='total_noise', CHORD_range=True
+)</code></pre>
 """
 
     page = f"""<!DOCTYPE html>
@@ -178,7 +199,7 @@ drift-scan integration time \\(\\tau\\) carries the \\(\\cos\\delta\\) dependenc
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CHORD sky-noise sensitivity</title>
+  <title>CHORD Sensitivity Maps</title>
   <link rel="stylesheet" href="../assets/style.css">
   <script>
     window.MathJax = {{ tex: {{ inlineMath: [['\\\\(', '\\\\)']], displayMath: [['$$', '$$']] }} }};
@@ -188,8 +209,8 @@ drift-scan integration time \\(\\tau\\) carries the \\(\\cos\\delta\\) dependenc
 <body>
   <header>
     <p class="crumb"><a href="../index.html">&larr; All components</a></p>
-    <h1>CHORD sky-noise sensitivity</h1>
-    <p>Total-noise surface-brightness sensitivity across the sky, by frequency.</p>
+    <h1>CHORD Brightness Temperature Sensitivity Maps</h1>
+    <p>CHORD total brightness temperature sensitivity maps for observable declinations {dec_lo:.0f}&deg; to {dec_hi:.0f}&deg;, by frequency.</p>
   </header>
   <div class="layout">
     <div class="plot">{plot_div}</div>

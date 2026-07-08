@@ -199,7 +199,7 @@ gd.on('plotly_relayout', resizeMarkers);
     description = f"""
 <h2>Instructions</h2>
 <p>Pick a line from the <em>Zoom&nbsp;to&nbsp;line</em> dropdown to jump to a given
-H&thinsp;n&alpha; line, or drag a box on either panel to zoom into a region. The two panels
+H&thinsp;n&alpha; line, or drag a box on either panel to zoom into a region, double click to reset zoom. The two panels
 share the frequency axis, and hovering reports the frequency, value and clean/RFI status.</p>
 
 <h2>Description</h2>

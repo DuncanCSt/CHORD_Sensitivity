@@ -60,6 +60,13 @@ header p {
   margin-top: 0;
 }
 
+/* wide display equations scroll within the column instead of overflowing */
+.desc mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
 .desc h3 {
   font-size: 1rem;
   margin-bottom: 0.25rem;
@@ -72,10 +79,69 @@ header p {
   font-size: 0.9em;
 }
 
+.desc pre {
+  background: #1e2430;
+  color: #e6e9ef;
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+  overflow-x: auto;          /* scroll long lines instead of overflowing */
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+.desc pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
 /* stack on narrow screens */
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
 }
+
+/* extension-chord site map (above the plot) */
+.site-map-wrap { margin-bottom: 1rem; text-align: center; }
+.site-map {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+/* extension-chord location table (in its own box, next to the site map) */
+.site-table {
+  overflow-x: auto;
+}
+.site-table table { border-collapse: collapse; width: 100%; font-size: 0.82rem; }
+.site-table th, .site-table td {
+  text-align: left;
+  padding: 0.28rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.site-table th { font-weight: 600; }
+.site-table tr:last-child td { border-bottom: none; }
+
+/* extension-chord dropdown controls */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+.controls label { display: flex; align-items: center; gap: 0.4rem; }
+.controls select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 0.95rem;
+  background: var(--bg);
+  color: var(--fg);
+}
+.controls .combo { color: var(--muted); }
 
 /* breadcrumb link back to the landing page */
 .crumb {
