@@ -40,7 +40,7 @@ NOISE_TYPE = "total_noise"
 
 GRID_DEG = 0.5          # RA/Dec grid spacing in degrees
 UNIT = "mK"             # maps are stored in milli-kelvin
-CBAR_PERCENTILES = (0.5, 99.0)  # shared colour limits across all maps
+CBAR_PERCENTILES = (0.2, 99.8)  # shared colour limits across all maps
 
 
 # --------------------------------------------------------------------------- #

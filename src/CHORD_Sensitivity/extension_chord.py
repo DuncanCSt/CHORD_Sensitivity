@@ -18,7 +18,6 @@ from typing import Literal
 
 import numpy as np
 import matplotlib.pyplot as plt
-import geopandas as gpd
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 from numpy.typing import NDArray
@@ -172,6 +171,8 @@ def setup_uvdata(
 
 def plot_antenna_positions(locations: EarthLocation, title: str = "") -> None:
     """Plot antenna positions on a UTM map."""
+    import geopandas as gpd   # heavy, optional dependency: only needed here
+
     gdf = gpd.GeoDataFrame(
         geometry=gpd.points_from_xy(locations.lon.deg, locations.lat.deg),
         crs="EPSG:4326",
