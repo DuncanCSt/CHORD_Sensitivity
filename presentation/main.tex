@@ -1,0 +1,134 @@
+\documentclass[aspectratio=169]{beamer}
+
+\definecolor{myaccent}{HTML}{356AE6}
+\usetheme[
+  accent=myaccent,
+  progressbar=none,
+  sectionpage=simple,
+  subsectionpage=none,
+  numbering=fraction,
+  titleformat=regular,
+  block=fill
+]{cookie}
+
+% Override Cookie's section divider so it also lists the section's subsections
+% as sub-points. This keeps the theme file pristine; it copies the theme's
+% section page and adds a \tableofcontents[currentsection] node (subsections
+% only) below the title. \cookie@format / colors are the theme's own macros.
+\makeatletter
+\setbeamertemplate{subsection in toc}{%
+  \leavevmode\leftskip=2em\rlap{\raise.05ex\hbox{\textbullet}}\hskip1em%
+  \inserttocsubsection\par%
+}
+\renewcommand{\cookie@sectionpageframe}{%
+  \begin{frame}[plain,noframenumbering,c]
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[cookieAccent]
+        (current page.south west) rectangle ($(current page.north west)+(.012\paperwidth,0)$);
+      \node[anchor=west,text=cookieAccent,font=\fontsize{46}{46}\selectfont\bfseries]
+        at ($(current page.west)+(.07\paperwidth,.22\paperheight)$) {\insertsectionnumber};
+      \node[anchor=west,text width=.80\paperwidth,align=left]
+        at ($(current page.west)+(.07\paperwidth,.10\paperheight)$)
+        {{\usebeamerfont{section title}\usebeamercolor[fg]{section title}\cookie@format{\insertsectionhead}}};
+      \node[anchor=north west,text width=.80\paperwidth,align=left]
+        at ($(current page.west)+(.07\paperwidth,-.04\paperheight)$)
+        {\begin{minipage}{.80\paperwidth}%
+           \fontsize{14}{16}\selectfont\usebeamercolor[fg]{normal text}%
+           \tableofcontents[currentsection,sectionstyle=hide]%
+         \end{minipage}};
+      \fill[cookieAccent] ($(current page.east)+(-.095\paperwidth,.24\paperheight)$) circle[radius=.014\paperheight];
+      \fill[cookieAccent,opacity=.45] ($(current page.east)+(-.072\paperwidth,.18\paperheight)$) circle[radius=.008\paperheight];
+    \end{tikzpicture}
+  \end{frame}%
+}
+\makeatother
+
+% Shared bibliography with the thesis: natbib + BibTeX (apj style), pointing at
+% thesis/references.bib. build.sh puts thesis/ on BIBINPUTS/BSTINPUTS so the
+% .bib and apj.bst are found without copying them here.
+\usepackage[numbers,sort&compress]{natbib}
+
+\title{Radio Recombination Line Forecasts with CHORD}
+\author{Duncan Cameron-Steinke}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Background}
+\subsection{The Interstellar Medium}
+\begin{frame}{The Interstellar Medium}{The stuff between the stars}
+  \begin{columns}[T]
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}
+        \item The interstellar medium (ISM) is the gas and dust between stars.
+        \item Hot stars ionize hydrogen in the ISM, producing H$\alpha$ emission.
+        \item ISM studies trace the structure of the Milky Way, providing information on Galactic evolution and star formation.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      {\usebeamercolor[fg]{structure}Wisconsin H$\alpha$ Mapper sky survey}
+      \par\smallskip
+      \includegraphics[width=0.8\linewidth]{wham_image.png}
+      \par\medskip
+      {\footnotesize All-sky map of H$\alpha$ emission in the visible spectrum \cite{haffnerEarlyResultsWisconsin2010}.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\subsection{Radio Recombination Lines}
+\begin{frame}{Radio Recombination Lines}{The radio emission from ionized hydrogen}
+  \begin{columns}[T]
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}
+        \item Hydrogen radio recombination lines (RRLs) are produced when ionized electrons recombine with protons and cascade through energy levels.
+        \item Low energy transitions (for example, $n=100 \to 99$) produce emission in the radio spectrum.
+        \item RRLs only occur at specific frequencies determined by the energy levels.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \centering
+      {\usebeamercolor[fg]{structure}Bohr atomic model}
+      \par\smallskip
+      \includegraphics[width=0.8\linewidth]{rrl_model.png}
+      \par\medskip
+      {\footnotesize Simplified Bohr model of the hydrogen atom showing RRL emission from $N=100 \to 99$.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\subsection{CHORD}
+\begin{frame}{CHORD telescope}{The Canadian Hydrogen Observatory and Radio-transient Detector}
+  \begin{columns}[T]
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}
+        \item  CHORD is a radio interferometer being constructed at the Dominion Radio Astro-physical Observatory (DRAO) in British Columbia, Canada.
+        \item CHORD measures radio spectrum from 300 MHz to 1.5 GHz, which incumpasses 116 Hn$\alpha$ RRLs.
+        \item CHORD will be able to observe declinations from $+20\deg$ to $+80\deg$, covering most of the northern sky.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \centering
+      {\usebeamercolor[fg]{structure}CHORD under construction}
+      \par\smallskip
+      \includegraphics[width=0.8\linewidth]{CHORD.jpeg}
+      \par\medskip
+      {\footnotesize The CHORD array, once complete, will consist of 512 6-meter dishes \cite{SPIEpaper}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \section{Radio Frequency Interference (RFI)}
+% \subsection{Definition of RFI}
+
+
+
+\section*{References}
+\begin{frame}[allowframebreaks]{References}
+  \footnotesize
+  \bibliographystyle{apj}
+  \bibliography{references}
+\end{frame}
+\end{document}
+

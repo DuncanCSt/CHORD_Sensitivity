@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# Build the beamer presentation PDF.
+#
+# Usage:  ./build.sh          # build main.pdf
+#         ./build.sh clean    # remove all build artifacts
+#
+# Notes on why the env vars below are needed:
+#   * PATH      - use the full TeX Live install at /Library/TeX/texbin instead
+#                 of the minimal TinyTeX that ships first on PATH (which may be
+#                 missing packages the beamer theme depends on).
+#   * TEXINPUTS - so pdflatex finds beamerthemecookie.sty (and any assets) that
+#                 live alongside main.tex in this folder.
+#   * BIBINPUTS / BSTINPUTS - the presentation shares the thesis bibliography
+#                 (thesis/references.bib) and its BibTeX style (thesis/apj.bst),
+#                 so we add ../thesis to the search path instead of copying them.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$ROOT"
+
+export PATH="/Library/TeX/texbin:$PATH"
+export TEXINPUTS=".//:"
+export BSTINPUTS=".:../thesis:"
+export BIBINPUTS=".:../thesis:"
+
+if [[ "${1:-}" == "clean" ]]; then
+    latexmk -C -outdir=build main.tex
+    rm -rf build
+    echo "Cleaned build artifacts."
+    exit 0
+fi
+
+mkdir -p build
+
+# -f forces latexmk to push through compile errors so a full PDF is still
+# produced for previewing. latexmk still returns nonzero when it hit errors, so
+# we don't treat that as fatal here and instead judge success on whether the PDF
+# was actually produced.
+latexmk -pdf -f -interaction=nonstopmode -outdir=build main.tex || true
+
+echo
+if [[ -f build/main.pdf ]]; then
+    echo "Built: build/main.pdf"
+    echo "(latexmk may report errors above from missing images / unresolved macros;"
+    echo " the PDF is still produced for previewing.)"
+else
+    echo "Build FAILED: no PDF produced. See output above." >&2
+    exit 1
+fi
