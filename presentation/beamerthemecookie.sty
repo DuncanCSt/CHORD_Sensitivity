@@ -920,17 +920,17 @@
       \fill[cookieAccent]
         (current page.south west) rectangle ($(current page.north west)+(.012\paperwidth,0)$);
       \node[anchor=east,text=cookieAccent!7,font=\fontsize{86}{86}\selectfont\bfseries]
-        at ($(current page.east)+(-.060\paperwidth,-.185\paperheight)$) {TOC};
+        at ($(current page.east)+(-.060\paperwidth,-.185\paperheight)$) {};
       \node[anchor=west,text=cookieAccent,font=\fontsize{7.5}{9}\selectfont\bfseries]
-        at ($(current page.west)+(.087\paperwidth,.145\paperheight)$) {ROADMAP};
+        at ($(current page.west)+(.087\paperwidth,.145\paperheight)$) {};
       \node[anchor=west,text=cookieInk,font=\fontsize{31}{35}\selectfont\bfseries]
-        at ($(current page.west)+(.087\paperwidth,.005\paperheight)$) {Agenda};
+        at ($(current page.west)+(.095\paperwidth,.005\paperheight)$) {Agenda};
       \draw[cookieAccent,line width=1.2pt]
         ($(current page.west)+(.087\paperwidth,-.120\paperheight)$)
         -- ($(current page.west)+(.177\paperwidth,-.120\paperheight)$);
-      \node[anchor=north west,inner sep=0pt,text width=.62\paperwidth]
-        at ($(current page.west)+(.300\paperwidth,.235\paperheight)$)
-        {\begin{minipage}[t]{.62\paperwidth}
+      \node[anchor=north west,inner sep=0pt,text width=.55\paperwidth]
+        at ($(current page.west)+(.360\paperwidth,.235\paperheight)$)
+        {\begin{minipage}[t]{.55\paperwidth}
           \cookie@agendatoc[#1]%
         \end{minipage}};
     \end{tikzpicture}%

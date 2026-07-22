@@ -221,7 +221,7 @@ configuration. Every configuration also includes the CHORD compact core.</p>
 N&ndash;S) against sensitivity loss (noise factor) as the Briggs robustness \\(R\\) varies.</p>
 
 <h2>Methods</h2>
-<h3>Dirty beam</h3>
+<h3>Synthesised Beam Plots</h3>
 <p>The synthesised beam is constructed as follows:</p>
 <ol>
 <li>Antenna positions for the compact core and the selected site(s) are taken from the survey
