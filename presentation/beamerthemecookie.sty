@@ -896,7 +896,8 @@
   \vspace*{.055\paperheight}%
   \begin{minipage}[t]{.58\paperwidth}
     \raggedright
-    \ifdefempty{\insertcookietagline}{}{\cookiekicker{\insertcookietagline}\par\vspace{.9em}}%
+    \ifdefempty{\insertcookietagline}{}{\cookiekicker{\insertcookietagline}\par\vspace{5.5em}}%
+    \vspace{1em}
     {\usebeamerfont{title}\usebeamercolor[fg]{title}\cookie@format{\inserttitle}\par}%
     \ifx\@subtitle\@empty\else\vspace{.45em}{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}\fi%
     \vspace{1.05em}{\color{cookieAccent}\rule{.16\paperwidth}{1.4pt}}\par
@@ -924,7 +925,7 @@
       \node[anchor=west,text=cookieAccent,font=\fontsize{7.5}{9}\selectfont\bfseries]
         at ($(current page.west)+(.087\paperwidth,.145\paperheight)$) {};
       \node[anchor=west,text=cookieInk,font=\fontsize{31}{35}\selectfont\bfseries]
-        at ($(current page.west)+(.095\paperwidth,.005\paperheight)$) {Agenda};
+        at ($(current page.west)+(.095\paperwidth,.005\paperheight)$) {Contents};
       \draw[cookieAccent,line width=1.2pt]
         ($(current page.west)+(.087\paperwidth,-.120\paperheight)$)
         -- ($(current page.west)+(.177\paperwidth,-.120\paperheight)$);
