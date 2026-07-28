@@ -151,12 +151,15 @@ header p {
 .crumb a { color: var(--accent); text-decoration: none; }
 .crumb a:hover { text-decoration: underline; }
 
-/* landing page: grid of component cards */
+/* component cards: the landing-page grid, repeated at the top of every
+   dashboard so the three stay in place as you move between them. 1400px to line
+   up with header and .layout; auto-fit (not auto-fill) so the three cards
+   stretch to fill the row rather than leaving empty tracks on wide screens. */
 .cards {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.25rem;
 }
 .card {
@@ -182,3 +185,47 @@ header p {
   font-size: 0.75rem;
   color: var(--muted);
 }
+
+/* the card for the dashboard currently open */
+.card.is-active {
+  border-color: var(--accent);
+  background: #eaf1f9;
+  /* inset ring rather than a thicker border, so the card does not change size */
+  box-shadow: inset 0 0 0 1px var(--accent);
+  cursor: default;
+}
+.card.is-active:hover { transform: none; }
+.card.is-active h2 { color: var(--accent); }
+
+/* dashboard pages: the page's own title, below the shared card nav */
+.page-intro {
+  max-width: 1400px;
+  margin: 1.75rem auto 1.25rem;
+}
+.page-intro h2 { font-size: 1.3rem; margin: 0 0 0.3rem; }
+.page-intro p { margin: 0; color: var(--muted); }
+
+/* landing page: the slide deck embedded below the cards */
+.presentation {
+  max-width: 1400px;
+  margin: 2.25rem auto 0;
+}
+.presentation h2 { font-size: 1.3rem; margin: 0 0 0.6rem; }
+
+.pdf-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;     /* the deck is 16:9, so this avoids letterboxing */
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+/* iOS Safari (and some mobile browsers) will not render a PDF in an iframe, so
+   the direct link is always offered underneath rather than only as fallback
+   content inside the frame. */
+.pdf-fallback {
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.pdf-fallback a { color: var(--accent); }

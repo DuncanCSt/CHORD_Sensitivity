@@ -12,7 +12,9 @@
     <p>Interactive dashboards from the thesis 'Radio recombination line forecasts with CHORD'.</p>
   </header>
 
-  <div class="cards">
+  <!-- Mirrors components/component_nav.py, which renders this same grid on each
+       dashboard page. No card is highlighted here. -->
+  <nav class="cards" aria-label="Analysis components">
     <a class="card" href="rfi/index.html">
       <h2>RFI classification</h2>
       <p>RFI classification using spectral kurtosis of the DRAO RFI monitor data.</p>
@@ -27,6 +29,17 @@
       <h2>Extension CHORD</h2>
       <p>Extension CHORD configurations and their beam patterns.</p>
     </a>
-  </div>
+  </nav>
+
+  <!-- presentation.pdf is copied in here by presentation/build.sh; it has to
+       live under docs/ because that is the GitHub Pages publishing root. -->
+  <section class="presentation">
+    <h2>Thesis presentation</h2>
+    <iframe class="pdf-frame" src="presentation.pdf"
+            title="Radio Recombination Line Forecasts with CHORD &mdash; slides"></iframe>
+    <p class="pdf-fallback">
+      Slides not displaying? <a href="presentation.pdf">Open the PDF directly</a>.
+    </p>
+  </section>
 </body>
 </html>
