@@ -10,6 +10,7 @@ Run:  python components/sensitivity/generate_html.py
 
 import json
 import os
+import sys
 
 import numpy as np
 import plotly.graph_objects as go
@@ -21,6 +22,11 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
 DATA_DIR = os.path.join(_HERE, "data")
 DOCS_SENS = os.path.join(_ROOT, "docs", "sensitivity")
+
+# component_nav.py sits in components/, one level up from this script, and is
+# shared by all three dashboards.
+sys.path.insert(0, os.path.dirname(_HERE))
+from component_nav import nav_html  # noqa: E402
 
 RA_CENTER = -120.0   # RA (deg) placed at the centre of the panel (240 deg)
 COLORSCALE = "Viridis"
@@ -194,6 +200,8 @@ chord.sky_noise(
 )</code></pre>
 """
 
+    nav = nav_html(active="sensitivity")
+
     page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -208,10 +216,15 @@ chord.sky_noise(
 </head>
 <body>
   <header>
-    <p class="crumb"><a href="../index.html">&larr; All components</a></p>
-    <h1>CHORD Brightness Temperature Sensitivity Maps</h1>
-    <p>CHORD total brightness temperature sensitivity maps for observable declinations {dec_lo:.0f}&deg; to {dec_hi:.0f}&deg;, by frequency.</p>
+    <p class="crumb"><a href="../index.html">&larr; Return to presentation</a></p>
+    <h1>CHORD Sensitivity</h1>
+    <p>Interactive dashboards from the thesis 'Radio recombination line forecasts with CHORD'.</p>
   </header>
+{nav}
+  <section class="page-intro">
+    <h2>CHORD Brightness Temperature Sensitivity Maps</h2>
+    <p>CHORD total brightness temperature sensitivity maps for observable declinations {dec_lo:.0f}&deg; to {dec_hi:.0f}&deg;, by frequency.</p>
+  </section>
   <div class="layout">
     <div class="plot">{plot_div}</div>
     <aside class="desc">{description}</aside>

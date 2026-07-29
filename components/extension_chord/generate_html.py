@@ -12,6 +12,7 @@ Run:  python components/extension_chord/generate_html.py
 
 import json
 import os
+import sys
 
 import numpy as np
 import plotly.graph_objects as go
@@ -24,6 +25,11 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
 DATA_DIR = os.path.join(_HERE, "data")
 DOCS_EXT = os.path.join(_ROOT, "docs", "extension_chord")
+
+# component_nav.py sits in components/, one level up from this script, and is
+# shared by all three dashboards.
+sys.path.insert(0, os.path.dirname(_HERE))
+from component_nav import nav_html  # noqa: E402
 
 COLORSCALE = "Viridis"
 DEFAULT_COMBO = "B_D"          # combination shown on load
@@ -243,6 +249,8 @@ on the left and uniform-like weighting (\\(R \\approx -2\\)) on the right, with 
 roughly in the middle.</p>
 """
 
+    nav = nav_html(active="extension_chord")
+
     page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -257,10 +265,15 @@ roughly in the middle.</p>
 </head>
 <body>
   <header>
-    <p class="crumb"><a href="../index.html">&larr; All components</a></p>
-    <h1>Extension-CHORD: Site locations and synthesised beams</h1>
-    <p>Plots of the synthesised beam patterns for different extension-CHORD configurations.</p>
+    <p class="crumb"><a href="../index.html">&larr; Return to presentation</a></p>
+    <h1>CHORD Sensitivity</h1>
+    <p>Interactive dashboards from the thesis 'Radio recombination line forecasts with CHORD'.</p>
   </header>
+{nav}
+  <section class="page-intro">
+    <h2>Extension-CHORD: Site locations and synthesised beams</h2>
+    <p>Plots of the synthesised beam patterns for different extension-CHORD configurations.</p>
+  </section>
   <div class="layout">
     {site_block}
     <aside class="desc">{table_html}</aside>

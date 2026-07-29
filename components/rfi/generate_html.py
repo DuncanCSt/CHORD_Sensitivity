@@ -9,6 +9,7 @@ Run:  python components/rfi/generate_html.py
 
 import json
 import os
+import sys
 
 import numpy as np
 import pandas as pd
@@ -22,6 +23,11 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
 DATA_DIR = os.path.join(_HERE, "data")
 DOCS_RFI = os.path.join(_ROOT, "docs", "rfi")
+
+# component_nav.py sits in components/, one level up from this script, and is
+# shared by all three dashboards.
+sys.path.insert(0, os.path.dirname(_HERE))
+from component_nav import nav_html  # noqa: E402
 
 WINDOW_MHZ = 2.0   # half-width of the dropdown zoom window around a line
 
@@ -240,6 +246,8 @@ $$\\mathrm{{score}}(f_0) = \\frac{{\\sum_i w_i\\,\\mathrm{{clean}}_i}}{{\\sum_i 
 <strong>{nclean} / {nlines}</strong> lines qualify.</p>
 """
 
+    nav = nav_html(active="rfi")
+
     page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -254,10 +262,15 @@ $$\\mathrm{{score}}(f_0) = \\frac{{\\sum_i w_i\\,\\mathrm{{clean}}_i}}{{\\sum_i 
 </head>
 <body>
   <header>
-    <p class="crumb"><a href="../index.html">&larr; All components</a></p>
-    <h1>CHORD RFI-monitor spectrum &amp; H-line visibility</h1>
-    <p>Interactive assessment of hydrogen recombination line visibility against measured RFI.</p>
+    <p class="crumb"><a href="../index.html">&larr; Return to presentation</a></p>
+    <h1>CHORD Sensitivity</h1>
+    <p>Interactive dashboards from the thesis 'Radio recombination line forecasts with CHORD'.</p>
   </header>
+{nav}
+  <section class="page-intro">
+    <h2>CHORD RFI-monitor spectrum &amp; H-line visibility</h2>
+    <p>Interactive assessment of hydrogen recombination line visibility against measured RFI.</p>
+  </section>
   <div class="layout">
     <div class="plot">{plot_div}</div>
     <aside class="desc">{description}</aside>

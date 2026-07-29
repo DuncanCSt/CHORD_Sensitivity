@@ -58,11 +58,19 @@
 % Shared bibliography with the thesis: natbib + BibTeX (apj style), pointing at
 % thesis/references.bib. build.sh puts thesis/ on BIBINPUTS/BSTINPUTS so the
 % .bib and apj.bst are found without copying them here.
-\usepackage[numbers,sort&compress]{natbib}
+\usepackage[authoryear,round,sort]{natbib}
+% apj/AAS convention puts no comma between author and year: "(Nita 2010)".
+% \bibpunct args: open, close, separator between cites, style (a=author-year),
+% separator between author and year, separator between multiple years.
+\bibpunct{(}{)}{;}{a}{}{,}
 \usepackage{booktabs}
 
 \title{Radio Recombination Line Forecasts with CHORD}
-\author[Duncan Cameron-Steinke]{Duncan Cameron-Steinke\\[1ex] {\small Supervisor: Dr.~Alex Hill}}
+\author[Duncan Cameron-Steinke]{
+  Duncan Cameron-Steinke\\[1ex] 
+  {\small Supervisor: Dr.~Alex Hill} \\[1ex] 
+  {\small The University of British Columbia, Okanagan,\\ Irving K. Barber Faculty of Science}
+}
 \date{July 30, 2026}
 
 \begin{document}
@@ -96,6 +104,7 @@
           \item \textbf{Interferometer}: 512 dishes work together to form a single sky image.
           \item \textbf{Radio telescope}: CHORD measures from $300-1500$ MHz.
         \end{itemize}
+        \item CHORD Pathfinder will be operational in 2026, with the full CHORD array operational in 2028.
       \end{itemize}
     \end{column}
     \begin{column}{0.4\linewidth}
@@ -104,7 +113,7 @@
       \par\smallskip
       \includegraphics[width=0.8\linewidth]{plots/CHORD.jpeg}
       \par\medskip
-      {\footnotesize CHORD is situated at the Dominion Radio Astrophysical Observatory (DRAO) near Penticton, British Columbia, Canada \cite{SPIEpaper}}
+      {\footnotesize CHORD is situated at the Dominion Radio Astrophysical Observatory (DRAO) \citep{SPIEpaper}}
     \end{column}
   \end{columns}
 \end{frame}
@@ -123,7 +132,7 @@
       \centering
       {\usebeamercolor[fg]{structure}Bohr atomic model}
       \par\smallskip
-      \includegraphics[width=0.8\linewidth]{plots/rrl_model.png}
+      \includegraphics[width=0.8\linewidth, clip, trim=0 0 400pt 40pt]{plots/rrl_model.png}
       \par\medskip
       {\footnotesize Simplified Bohr model of the hydrogen atom showing RRL emission from $N=100 \to 99$.}
     \end{column}
@@ -146,7 +155,7 @@
       \par\smallskip
       \includegraphics[width=0.8\linewidth,clip,trim=0 20pt 0 60pt]{plots/wham_image.png}
       \par\medskip
-      {\footnotesize All-sky map of H$\alpha$ emission in the visible spectrum showing the ionized ISM \cite{haffnerEarlyResultsWisconsin2010}.}
+      {\footnotesize All-sky map of H$\alpha$ emission in the visible spectrum showing the ionized ISM \citep{haffnerEarlyResultsWisconsin2010}.}
     \end{column}
   \end{columns}
 \end{frame}
@@ -158,7 +167,7 @@
   \begin{columns}[T]
     \begin{column}{0.5\linewidth}
       \begin{itemize}
-        \item Radio Frequency Interference (RFI) are unwanted man-made signals.
+        \item Radio Frequency Interference (RFI) are unwanted human-made signals.
         \item Astronomical Signals are Gaussian distributed, while RFI is non-Gaussian.
       \end{itemize}
       \par\medskip
@@ -170,7 +179,7 @@
       \par\smallskip
       \includegraphics[width=1\linewidth]{plots/RFI_examples.png}
       \par\medskip
-      {\footnotesize Sources of RFI can include satellites, aircraft, mobile phones, and cars. \cite{RFI_image}}
+      {\footnotesize Sources of RFI can include satellites, aircraft, mobile phones, and cars. \citep{RFI_image}}
     \end{column}
   \end{columns}
 \end{frame}
@@ -183,17 +192,19 @@
       \begin{enumerate}
         \item Complex voltages are measured and converted to power
         \[P = |V|^2 \sim \text{Exp}(2\sigma^2). \]
-        \item Power is integrated over $N = 2500$ time samples
+        \item Power is integrated into $0.75s$ windows over $N = 2500$ time samples
         \[P_N = \sum_{i=1}^{N} P_i \sim \text{Gamma}(N, 2\sigma^2).\]
       \end{enumerate}
+
+      \footnotesize{RFI-monitor data provided by Nick Bruce, DRAO.}
     \end{column}
     \begin{column}{0.45\linewidth}
       \centering
       {\usebeamercolor[fg]{structure}DRAO RFI Monitor}
       \par\smallskip
-      \includegraphics[width=0.65\linewidth]{plots/RFI_monitor.png}
+      \includegraphics[width=0.6\linewidth]{plots/RFI_monitor.png}
       \par\medskip
-      {\footnotesize The roof mounted DRAO RFI-Monitor which measures all incoming radio signals \cite{bruceWidebandRFIMonitor2026}.}
+      {\footnotesize The roof mounted DRAO RFI-Monitor which measures all incoming radio signals \citep{bruceWidebandRFIMonitor2026}.}
     \end{column}
   \end{columns}
 \end{frame}
@@ -202,12 +213,13 @@
 \begin{frame}{RFI Detection}{}
   \begin{columns}[T]
     \begin{column}{0.5\linewidth}
-      I applied the generalized Spectral Kurtosis (SK) \cite{nitaGeneralizedSpectralKurtosis2010} estimator to detect RFI.
+      I applied the generalized Spectral Kurtosis (SK) \citep{nitaGeneralizedSpectralKurtosis2010} estimator to detect RFI.
       \begin{itemize}
         \item I showed how to calibrate the SK estimator on RFI free data.
         \item I found that SK must be computed within RFI monitor calibration cycles.
-        \item I Showed that the SK estimator could accurately detect RFI.
+        \item I showed that the SK estimator could accurately detect RFI.
       \end{itemize}
+      
     \end{column}
     \begin{column}{0.5\linewidth}
       \centering
@@ -242,33 +254,39 @@
 \end{frame}
 
 \subsection{RFI impact on Radio Recombination Lines}
-\begin{frame}{Detection Results}{}
-  \begin{columns}[T]
-    \begin{column}{0.5\linewidth}
-      \begin{itemize}
-        \item I obtained RFI flags for the entire CHORD band and found that 75.6\% of the band is RFI free.\\
-      \end{itemize}
-      \par\medskip
-      How does this impact RRL detection?
-      \par\medskip
-      \begin{itemize}
-        \item I computed a gaussian weighted average around each RRL and found that 79 of the 116 Hn$\alpha$ RRLs remain visible.
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.5\linewidth}
-      \centering
-      {\usebeamercolor[fg]{structure}RFI across the full CHORD Spectrum}
-      \par\smallskip
-      \includegraphics[width=1\linewidth, clip,trim=0 0 0 31.7pt]{../thesis/plots/rfi/RFI_flagged_spectrum.png}
-      \par\medskip
-      {\footnotesize RFI monitor power colored by SK RFI flagging results.}
-    \end{column}
-  \end{columns}
+\begin{frame}{RFI across the full CHORD Spectrum}{}
+  \centering
+  {\usebeamercolor[fg]{structure}RFI across the full CHORD Spectrum}
+  \par\smallskip
+  \includegraphics[width=0.7\linewidth, clip,trim=0 10pt 0 33pt]{../thesis/plots/rfi/RFI_flagged_spectrum.png}
+  \par\smallskip
+  {\footnotesize RFI-monitor power colored by RFI flagging.}
+  \par\medskip
+  \begin{itemize}
+    \item I found that 75.6\% of the CHORD band is RFI free.\\
+    \item The GNSS band (1215-1300 MHz) shows less RFI then expected.\\
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Clean Scores}{}
+  \centering
+  {\usebeamercolor[fg]{structure}Per line clean scores}
+  \par\smallskip
+  \includegraphics[width=0.7\linewidth, clip,trim=0 10pt 0 33pt]{../thesis/plots/rfi/h_line_clean_score.png}
+  \par\smallskip
+  {\footnotesize Gaussian weighted average around each RRL with a $100$ km s$^{-1}$ standard deviation.}
+  \par\medskip
+  \par\medskip
+  \begin{itemize}
+    \item I found that 79 of the 116 Hn$\alpha$ RRLs are RFI free.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{RFI Analysis Limitations}{}
 \begin{itemize}
     \item RFI-monitor sensitivity differs from CHORD.
+    \par\medskip
+    \item The RFI-monitor is angled towards the ground and horizon.
     \par\medskip
     \item The available data was limited to a single hour.
     \par\medskip
@@ -276,8 +294,8 @@
 \end{itemize}
 \end{frame}
 
-\section{Sensitivity}
-\subsection{CHORD sensitivity to RRLs}
+\section{CHORD Sensitivity to RRLs}
+\subsection{CHORD sensitivity maps}
 \begin{frame}{Sensitivity Definitions}{Point Source Sensitivity}
   CHORD's point source sensitivity is computed as
   \[
@@ -344,7 +362,7 @@
       \par\smallskip
       \includegraphics[width=1\linewidth]{../thesis/plots/sensitivity/background_only.png}
       \par\medskip
-      {\footnotesize Radio Background obtained from the 2016 Global Sky Model \cite{zhengImprovedModelDiffuse2017}.}
+      {\footnotesize Radio Background obtained from the 2016 Global Sky Model \citep{zhengImprovedModelDiffuse2017}.}
     \end{column}
   \end{columns}
 \end{frame}
@@ -606,13 +624,13 @@ Angular resolution decreased by 44\% while noise increased by 26\%.
 \setcounter{cookiemaintotal}{\value{framenumber}}
 % \makeatletter\def\cookie@numbering{counter}\makeatother
 % \setcounter{framenumber}{0}
-
+\section{Appendix}
 \begin{frame}{RFI Detection}{Spectral Kurtosis definition}
   \begin{columns}[T]
     \begin{column}{0.5\linewidth}
       \begin{itemize}
         \item System noise and astronomical signals are Gaussian distributed over time, while RFI is not.
-        \item Spectral Kurtosis (SK) \cite{nitaGeneralizedSpectralKurtosis2010} is a measure of Gaussianity in a power timeseries.
+        \item Spectral Kurtosis (SK) \citep{nitaGeneralizedSpectralKurtosis2010} is a measure of Gaussianity in a power timeseries.
         \item For a Gaussian voltage timeseries, the spectral kurtosis is 1.
       \end{itemize}
     \end{column}
@@ -676,7 +694,7 @@ Angular resolution decreased by 44\% while noise increased by 26\%.
       \par\smallskip
       \includegraphics[width=1\linewidth]{../thesis/plots/rfi/600MHz_sample_SK.png}
       \par\medskip
-      {\footnotesize SK (bottom plot) clearly shows RFI-affected spectrum present in the Power measurement (top).}
+      {\footnotesize SK (bottom) identifies RFI-affected Power spectrum (top).}
     \end{column}
     \begin{column}{0.5\linewidth}
       \centering
@@ -775,7 +793,7 @@ Angular resolution decreased by 44\% while noise increased by 26\%.
 \end{frame}
 
 \begin{frame}{Line Strength}{}
-  Emission intensity of an RRL is a function of the physical quantities of the ISM and the transition frequency. Peak line strength is given by \cite{andersonGBTDiffuseIonized2021} as
+  Emission intensity of an RRL is a function of the physical quantities of the ISM and the transition frequency. Peak line strength is given by \citet{andersonGBTDiffuseIonized2021} as
   \begin{equation*}
     \left( \frac{T_L}{\text{K}} \right) \backsimeq 3076~\left(\frac{T_e}{\text{K}}\right)^{-3/2}\left(\frac{EM}{\text{pc cm}^{-6}}\right) \left(\frac{\nu_0}{\text{GHz}}\right)^{-1} \left(\frac{\Delta V}{\text{km s}^{-1}} \right)^{-1} \Delta n M_{\Delta n},
     \label{eq:line_intensity}
