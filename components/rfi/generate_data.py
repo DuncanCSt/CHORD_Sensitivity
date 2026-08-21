@@ -46,7 +46,7 @@ N_CHANNELS = 600000       # frequency channels per row in the raw file
 F_MAX = 2000              # MHz, full band of the RFI monitor
 CHORD_MIN, CHORD_MAX = 300, 1500  # MHz, CHORD band
 
-REF_DB = -173            # dB reference used to stabilise the moment sums
+REF_DB = -173            # dB reference used to stabilize the moment sums
 CAL_CUTOFF_DB = -174     # rows below this (at 1420 MHz) are calibration cycles
 SK_N = 2500 * 15 / 16    # accumulation length N for the SK estimator
 BLOCK = 256              # time-block size for the streaming moment pass
@@ -133,7 +133,7 @@ def block_moments(data, ref_db, block=BLOCK):
 
 
 def spectral_kurtosis(M, S1, S2, N, d):
-    """Generalised Spectral Kurtosis estimator from the power-sum moments."""
+    """Generalized Spectral Kurtosis estimator from the power-sum moments."""
     return (N * M * d + 1) / (M - 1) * (M * S2 / S1**2 - 1)
 
 

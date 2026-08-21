@@ -70,7 +70,7 @@ class SkyMap:
         Compute brightness-temperature sky maps over the observable sky.
 
         For each frequency a HEALPix map (in the GSM's native Galactic
-        pixelisation) is returned. Pixels within the telescope's declination
+        pixelization) is returned. Pixels within the telescope's declination
         range ``[min_dec, max_dec]`` hold the requested quantity; pixels
         outside that range are set to ``NaN``.
 
@@ -94,7 +94,7 @@ class SkyMap:
             One HEALPix map per requested frequency.
         """
         # convert_freq_to_Hz returns a float for scalar input and a list for
-        # array-like input; atleast_1d normalises both (and bare numpy arrays)
+        # array-like input; atleast_1d normalizes both (and bare numpy arrays)
         # to a 1-D array we can iterate over.
         freq = np.atleast_1d(convert_freq_to_Hz(freq, self.params))
         background_maps, nside, npix, dec_deg = self._gsm_maps(freq)

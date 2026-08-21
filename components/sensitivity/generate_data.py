@@ -2,7 +2,7 @@
 """Precompute CHORD total-noise sensitivity sky maps for the interactive dashboard.
 
 For each frequency the ``SkyMap.sky_noise`` HEALPix map (GSM Galactic
-pixelisation, masked to CHORD's declination band) is resampled onto a regular
+pixelization, masked to CHORD's declination band) is resampled onto a regular
 RA/Dec grid (Method A) so it can be shown as a Plotly heatmap. All frequencies
 share one colour scale. Outputs:
 

@@ -11,7 +11,7 @@ Select results are published as an interactive website:
 
 - **RFI classification** — spectral-kurtosis flagging of the DRAO RFI monitor data.
 - **CHORD sensitivity** — brightness-temperature sensitivity maps across the sky, by frequency.
-- **Extension CHORD** — synthesised beams and Briggs resolution/noise trade-offs for
+- **Extension CHORD** — synthesized beams and Briggs resolution/noise trade-offs for
   compact-core extension configurations.
 
 ## Setup

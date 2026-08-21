@@ -220,22 +220,22 @@ document.getElementById('loc2').addEventListener('change', updateCombo);
 configuration. Every configuration also includes the CHORD compact core.</p>
 
 <h2>Description</h2>
-<p>The three heatmaps are the normalised synthesised beam at {freq_mhz:.0f}&nbsp;MHz over a
+<p>The three heatmaps are the normalized synthesized beam at {freq_mhz:.0f}&nbsp;MHz over a
 &plusmn;{abs(extent[0]):.0f}&nbsp;arcminute field of view: <strong>natural</strong> weighting
 (top left), <strong>Briggs&nbsp;R=0</strong> (top right) and <strong>uniform</strong> weighting
 (bottom left). The bottom-right panel shows the effective angular resolution (E&ndash;W and
 N&ndash;S) against sensitivity loss (noise factor) as the Briggs robustness \\(R\\) varies.</p>
 
 <h2>Methods</h2>
-<h3>Synthesised Beam Plots</h3>
-<p>The synthesised beam is constructed as follows:</p>
+<h3>Synthesized Beam Plots</h3>
+<p>The synthesized beam is constructed as follows:</p>
 <ol>
 <li>Antenna positions for the compact core and the selected site(s) are taken from the survey
 layout shown in the site map above.</li>
 <li><code>pyuvdata</code> constructs the UV coverage from the antenna positions.</li>
 <li>The UV coverage is gridded and sampled with the chosen weighting (natural, Briggs, or
 uniform).</li>
-<li>An inverse FFT of the gridded samples gives the synthesised beam, normalised to a peak of 1.</li>
+<li>An inverse FFT of the gridded samples gives the synthesized beam, normalized to a peak of 1.</li>
 <li>The FFT is evaluated on a {npix}&times;{npix} grid with a \\(1^\\circ\\) field of view for
 adequate sampling; only the inner {save_pix}&times;{save_pix} block of pixels
 (\\(\\pm{abs(extent[0]):.1f}\\)&nbsp;arcminutes), which contains the main lobe, is shown.</li>
@@ -271,8 +271,8 @@ roughly in the middle.</p>
   </header>
 {nav}
   <section class="page-intro">
-    <h2>Extension-CHORD: Site locations and synthesised beams</h2>
-    <p>Plots of the synthesised beam patterns for different extension-CHORD configurations.</p>
+    <h2>Extension-CHORD: Site locations and synthesized beams</h2>
+    <p>Plots of the synthesized beam patterns for different extension-CHORD configurations.</p>
   </section>
   <div class="layout">
     {site_block}

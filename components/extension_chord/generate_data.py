@@ -2,20 +2,20 @@
 """Precompute CHORD extension-chord dirty beams for the interactive dashboard.
 
 For every single extension location and every location pair (each combined with
-the compact core) this computes the synthesised (dirty) beam under three
+the compact core) this computes the synthesized (dirty) beam under three
 weightings -- natural, Briggs R=0, uniform -- plus an adaptive Briggs
 robustness sweep.
 
 Beams are computed on an ``NPIX x NPIX`` grid (``image_extent_deg=1`` for correct
 FFT sampling) and only the inner ``SAVE_PIX x SAVE_PIX`` block is kept -- that
-window holds the main lobe and near sidelobes. Beams are normalised to peak 1
+window holds the main lobe and near sidelobes. Beams are normalized to peak 1
 (linear) and stored as int16 (value x BEAM_SCALE) to keep the embedded arrays
 small. Set ``TEST = True`` to run only a small subset of locations. Outputs:
 
     extension_beams.npz    combos, l/m axes, beam_{natural,briggs0,uniform}
                            (ncombos, SAVE_PIX, SAVE_PIX) int16, per-combo
                            metrics, and per-combo Briggs sweep arrays
-    extension_params.json  grid/quantisation metadata + combo list
+    extension_params.json  grid/quantization metadata + combo list
 
 Run (needs the project env: pyuvdata, astropy, geopandas, ...):
     python components/extension_chord/generate_data.py
@@ -71,7 +71,7 @@ N_TIMES = 10             # UV coverage is geometry-driven; a few integrations su
 NPIX = 512              # FFT grid side (accurate sampling)
 SAVE_PIX = 60           # inner block kept (main lobe + near sidelobes)
 IMAGE_EXTENT_DEG = 1    # >= 1 deg required for correct beam FFT sampling
-BEAM_SCALE = 10000      # int16 quantisation: stored = round(beam * BEAM_SCALE)
+BEAM_SCALE = 10000      # int16 quantization: stored = round(beam * BEAM_SCALE)
 
 # When True, only process a small subset of locations (fast pipeline test).
 TEST = False
@@ -101,7 +101,7 @@ def crop_slice(npix=NPIX, save_pix=SAVE_PIX):
     return slice(start, start + save_pix)
 
 
-def quantise(beam):
+def quantize(beam):
     """Linear beam (0..1) -> int16 via BEAM_SCALE."""
     return np.clip(np.round(beam * BEAM_SCALE), 0, 32767).astype(np.int16)
 
@@ -149,7 +149,7 @@ def main():
                 uvd, npix=NPIX, freq_hz=FREQ_HZ, image_extent_deg=IMAGE_EXTENT_DEG,
                 weighting=weighting, robust=robust, plot_beam=False,
             )
-            beams[w_key].append(quantise(beam[sl, sl]))
+            beams[w_key].append(quantize(beam[sl, sl]))
             eff_l[w_key].append(el)
             eff_m[w_key].append(em)
             noise[w_key].append(nf)

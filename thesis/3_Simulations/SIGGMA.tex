@@ -3,7 +3,7 @@
 
 In this section we describe the RRL measurements from the Survey of Ionized Gas in the Galaxy, Made with the Arecibo Telescope (SIGGMA) \cite{liuSIGGMASURVEYIONIZED2013} and estimate CHORD's ability to detect the H II regions reported by SIGGMA.\\
 
-The SIGGMA survey covers a thin strip of the Galactic plane between Galactic longitudes \(32\deg \leq \ell \leq 70\deg\) and Galactic latitudes \(|b| \leq 1.5\deg\) with a frequency range of 1225 MHz to 1525 MHz. A plot of the SIGGMA data showing the overlap with CHORD is shown in Figure \ref{fig:siggma_with_chord_coverage}. The survey averages the intensity profile of 12 RRLs (H163\(\alpha\) to H174\(\alpha\)) and covers a velocity range of \(\pm 300 \km \s^{-1}\) with a \(5.1 \km \s^{-1}\) channel resolution and a 6-arcminute angular resolution. An inner-Galaxy data release \cite{liuSurveyIonizedGas2019} provides measurements of 244 known H II regions and an additional 79 candidate regions\footnote{Data available at \url{https://cdsarc.cds.unistra.fr/viz-bin/cat/J/ApJS/240/14t}}, of which 14 and 12, respectively, are within the CHORD survey range. The H II regions visible to CHORD are plotted over the CHORD sensitivity map at \(900 \MHz\) shown in Figure \ref{fig:hii_regions_over_chord_sensitivity}, which shows that most H II regions are located in areas with high background noise. A subset of the visible H II regions is provided in table \ref{tab:siggma_candidates_subset} and a full table is available in appendix \ref{sec:siggma_appendix}.
+The SIGGMA survey covers a thin strip of the Galactic plane between Galactic longitudes \(32\deg \leq \ell \leq 70\deg\) and Galactic latitudes \(|b| \leq 1.5\deg\) with a frequency range of 1225 MHz to 1525 MHz. A plot of the SIGGMA data showing the overlap with CHORD is shown in Figure \ref{fig:siggma_with_chord_coverage}. The survey averages the intensity profile of 12 RRLs (H163\(\alpha\) to H174\(\alpha\)) and covers a velocity range of \(\pm 300 \km \s^{-1}\) with a \(5.1 \km \s^{-1}\) channel resolution and a 6-arcminute angular resolution. An inner-Galaxy data release \cite{liuSurveyIonizedGas2019} provides measurements of 244 known H II regions and an additional 79 candidate regions\footnote{Data available at \url{https://cdsarc.cds.unistra.fr/viz-bin/cat/J/ApJS/240/14t}}, of which 14 and 12, respectively, are within the CHORD survey range. The H II regions visible to CHORD are plotted over the CHORD sensitivity map at \(900 \MHz\) shown in Figure \ref{fig:hii_regions_over_chord_sensitivity}, which shows that most H II regions are located in areas with high background noise\footnote{RRL intensity is expected to be strongly correlated with background noise since the factors that produce RRL emission, temperature and electron density, are also responsible for bright free-free emission.} A subset of the visible H II regions is provided in table \ref{tab:siggma_candidates_subset} and a full table is available in appendix \ref{sec:siggma_appendix}.
 % \begin{figure}[h]
 %     \centering
 %     \includegraphics[width=0.5\textwidth]{plots/siggma/siggma_range_map.png}
@@ -17,6 +17,7 @@ The SIGGMA survey covers a thin strip of the Galactic plane between Galactic lon
     \caption[SIGGMA data with CHORD coverage]{The SIGGMA data products, showing peak intensity per pixel. The area of declination \( \delta \geq 20\deg \) observable by CHORD is highlighted in blue.}
     \label{fig:siggma_with_chord_coverage}
 \end{figure}
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{thesis/plots/siggma/hii_regions_over_chord_sensitivity.png}
@@ -55,7 +56,7 @@ We computed the single-day per-line SNR of each of the 26 H II regions by dividi
     \label{fig:SNR_per_SIGGMA_line}
 \end{figure}
 
-Next we analysed the impact of smoothing on SNR using a velocity resolution of \(5 \km \s^{-1}\) and a common angular resolution of 22 arcminutes as described in section \ref{sec:smoothed_snr}. The resultant SNR is shown in Figure \ref{fig:SNR_per_SIGGMA_line_smoothed}. We also include the locations of the 5, 6, 8, 12 and 22 arcminute angular resolution cutoffs as dashed vertical lines. The number of lines within each cutoff is 8, 14, 27, 42, and 79, respectively. When smoothing is applied, the high-frequency lines have the highest SNR, so we prioritize them for stacking.
+Next we analyzed the impact of smoothing on SNR using a velocity resolution of \(5 \km \s^{-1}\) and a common angular resolution of 22 arcminutes as described in section \ref{sec:smoothed_snr}. The resultant SNR is shown in Figure \ref{fig:SNR_per_SIGGMA_line_smoothed}. We also include the locations of the 5, 6, 8, 12 and 22 arcminute angular resolution cutoffs as dashed vertical lines. The number of lines within each cutoff is 8, 14, 27, 42, and 79, respectively. When smoothing is applied, the high-frequency lines have the highest SNR, so we prioritize them for stacking.
 
 \begin{figure}[H]
     \centering
@@ -64,8 +65,8 @@ Next we analysed the impact of smoothing on SNR using a velocity resolution of \
     \label{fig:SNR_per_SIGGMA_line_smoothed}
 \end{figure}
 
-We simulated the line-stacking process described in section \ref{sec:line_stacking} using both the native-resolution SNR of Figure \ref{fig:SNR_per_SIGGMA_line} and different smoothed resolutions. In the case of native resolution, we present results for the top 1, 15 and 60 lines of each H II region. The resultant SNR predictions for one observing day are shown in table \ref{tab:siggma_stacked_snr_subset}. The lowest single-day SNR with 60 stacked lines is \(3.93 \pm 0.39\), which demonstrates that each region should be easily detectable by CHORD without sacrificing any precision through smoothing. Furthermore, each observing day is an independent sample, so SNR increases in proportion to the square root of the number of observing days. A true survey will observe each region between 9 and 36 days, meaning SNR is expected to increase by a factor of 3 to 6.
-
+We simulated the line-stacking process described in section \ref{sec:line_stacking} using both the native-resolution SNR of Figure \ref{fig:SNR_per_SIGGMA_line} and different smoothed resolutions. In the case of native resolution, we present results from stacking 1, 15 and 60 lines of each H II region. The resultant SNR predictions for one observing day are shown in table \ref{tab:siggma_stacked_snr_subset}. The lowest single-day SNR with 60 stacked lines is \(3.93 \pm 0.39\), which demonstrates that each region should be easily detectable by CHORD without sacrificing any precision through smoothing. Furthermore, each observing day is an independent sample, so SNR increases in proportion to the square root of the number of observing days. A true survey will observe each region between 9 and 36 days, meaning SNR is expected to increase by a factor of 3 to 6.
+%# TODO define better what is meant by "Top"
 \begin{table}[H]
     \centering
     \begin{tabular}{l c c c c}
@@ -103,3 +104,5 @@ We also considered the case of prioritizing angular resolution over sensitivity 
     \caption[SNR for CHORD observations of SIGGMA H II regions with smoothed angular resolution]{SNR for CHORD observations of SIGGMA H II regions with a smoothed angular resolution of 5, 6 and 8 arcminutes after stacking 8, 14, and 27 lines, respectively. A full results table is in appendix \ref{sec:siggma_appendix}.}
     \label{tab:siggma_stacked_snr_smoothed_subset}
 \end{table}
+
+\hl{A limitation of this analysis is that we estimate the radio background using the global sky model} \cite{zhengImprovedModelDiffuse2017} \hl{which has an angular resolution of 56 arcminutes while the SIGGMA survey has an angular resolution of 6 arcminutes. The background model suffers from beam dilution, when a bright but compact source is averaged over the larger beam size, causing the specific source location to be understated. RRL emission is strongly correlated with background emission. If the size of an H II region reported by SIGGMA is much smaller than the 56 arcminute beam size of the global sky model, then the background emission for that precise location is likely to be higher than predicted by the global sky model, causing our SNR estimates to be overstated.}

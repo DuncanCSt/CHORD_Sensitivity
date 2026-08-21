@@ -1,7 +1,7 @@
 \section{Log-Gamma vs Gaussian Distributions}
 \label{sec:gamma_vs_gaussian}
 \subsection{Gamma Distribution}
-Proof that the sum of $N$ independent Gamma random variables approaches a Gaussian distribution for $N >> 1$.\\
+Proof that the sum of $N$ independent Gamma random variables approaches a Gaussian distribution for $N \gg 1$.\\
 
 Starting with taking the log of a Gamma PDF with shape parameter $N$ and scale parameter $\theta$ (which is written as $f(x)$ instead of $f(x; N, \theta)$ for compactness):
 \begin{align}
@@ -18,7 +18,7 @@ The curvature at the mode can be found by taking the second derivative of the lo
     \frac{d^2}{dx^2} \ln f(x_0) &= -\frac{N-1}{x_0^2} \\[4pt]
     &=-\frac{1}{(N-1)\theta^2} \approx -\frac{1}{N\theta^2}.
 \end{align}
-Next we can take a Taylor expansion of the log PDF around the mode $x_0$ noting that $d/dx \ln f(x_0) = 0$ given that its the mode:
+Next we can take a Taylor expansion of the log PDF around the mode $x_0$ noting that $d/dx \ln f(x_0) = 0$ given that it is the mode:
 \begin{align}
     \ln f(x) &= \ln f(x_0) + \frac{1}{2} \frac{d^2}{dx^2} \ln f(x_0) (x - x_0)^2 + \dots \\[4pt]
     &\approx \ln f(x_0) - \frac{(x - x_0)^2}{2N\theta^2}.
@@ -82,6 +82,7 @@ So we have shown that the PDF of a log-Gamma $W = \ln X$ to second order is exac
 
 Two subjective design decisions were made in the RFI analysis of section \ref{sec:excess_kurtosis_rfi_detection}. The first was to use RFI thresholds of [0.1\%, 99.9\%] on calibrated spectral kurtosis. These thresholds were chosen to reduce false positives (clean spectrum labeled RFI); however, they will also decrease true positives (RFI spectrum labeled RFI). Secondly, while aggregating the 11 independent time segments, we assumed that if at at least 6 of the 11 segment are clean we consider the frequency clean (`mean'); alternative approaches are to require that at least one of the segments be clean (`any') or that all segments be clean (`all'). The results of these alternative approaches are shown in table \ref{tbl:rrl_clean_counts}.\\
 
+%# TODO: This needs to be reworked for more clarity.
 From the results we can see that neither the `any' or `mean' aggregation method is very sensitive to the choice of spectral kurtosis threshold. Meanwhile the 'all' aggregation is extremly sensitive and produces no visible lines for thresholds above 0.5\% and only one for 0.1\%. In the case of `all' aggregation with a 0.1\% threshold, a clean channel is expected to be falsely labeled as RFI 0.2\% of the time; over 11 samples, the probability that at least one channel is a false positive is $\approx 0.02$. When computing the Gaussian weighted average at 300 MHz three standard deviations cover 180 channels (with even more channels covered at higher frequencies), so the probability that at least one channel is falsely labeled as RFI is $\approx 0.97$. This explains why the `all' aggregation predicts that no lines are visible since even under true Gaussian noise the probability of a false positive inducing a clean score less then 99\% is close to 1.\\
 
 In Comparison, under Gaussian noise there is only a $2.9 \times 10^{-14}$ probability of observing a false positive within 6 or more of the same bin across the 11 segments (the `mean' case). Even over 888 bins (six standard deviations at 1500 MHz) the probability of observing a false positive is just $2.6 \times 10^{-11}$. The probability of a false positive in the `any' case is even lower. It is therefore safe to conclude that lines labeled RFI contaminated using the `mean' approach reflects true RFI and not sampling uncertainty.\\

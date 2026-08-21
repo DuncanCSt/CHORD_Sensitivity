@@ -49,7 +49,7 @@ def utm_txt_to_earthlocations(filename: str, height_default: float = 545.0) -> E
     Returns
     -------
     EarthLocation
-        Vectorised EarthLocation array in WGS84.
+        Vectorized EarthLocation array in WGS84.
     """
     data = np.loadtxt(filename)
     east, north = data[:, 0], data[:, 1]
@@ -305,7 +305,7 @@ def compute_dirty_beam(
     zoom_extent: float | None = None,
     plot_beam: bool = True,
 ) -> tuple[NDArray, NDArray, NDArray, float, float, float, float, float]:
-    """Compute and plot the normalised dirty beam (synthesized PSF).
+    """Compute and plot the normalized dirty beam (synthesized PSF).
 
     Parameters
     ----------
@@ -338,7 +338,7 @@ def compute_dirty_beam(
     Returns
     -------
     beam : ndarray
-        Normalised dirty beam (npix, npix).
+        Normalized dirty beam (npix, npix).
     l_arcmin, m_arcmin : ndarray
         Coordinate axes in arcminutes.
     fwhm_l_arcmin, fwhm_m_arcmin : float
@@ -432,7 +432,7 @@ def compute_dirty_beam(
         extent = [l_arcmin[0], l_arcmin[-1], m_arcmin[0], m_arcmin[-1]]
         fig = plt.figure(figsize=(8, 7))
         im = plt.imshow(beam, origin="lower", extent=extent, cmap="viridis")
-        plt.colorbar(im, label="Normalised amplitude")
+        plt.colorbar(im, label="Normalized amplitude")
         plt.contour(beam, levels=[0.5], colors="red", linewidths=2.0,
                     linestyles="--", extent=extent)
         plt.contour(gauss_beam_fit, levels=[0.5], colors="cyan", linewidths=2.0,

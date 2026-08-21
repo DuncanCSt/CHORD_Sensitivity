@@ -10,18 +10,20 @@ When neutral hydrogen absorbs a photon in excess of 13.6 eV, the electron is eje
 
 \input{thesis/1_Background/RRL_Emission}
 
-\section{CHORD telescope}
+\section{CHORD Telescope}
 The Canadian Hydrogen Observatory and Radio-transient Detector (CHORD) is a radio interferometer being constructed at the Dominion Radio Astrophysical Observatory (DRAO) in British Columbia, Canada. The telescope consists of a 512-dish core array of 6-meter dishes operating from \(300-1500 \MHz\). A 64-dish subset of the full array, called pathfinder, is expected to provide early science and testing data by late 2026. The full array is scheduled to be commissioned in 2028.\\
 
-As an interferometer, each pair of dishes measures a single component of the Fourier transform of the sky. Each Fourier component corresponds to a unique spatial pattern, meaning each dish pair is sensitivite to a specific spatial pattern on the sky. CHORD consists of a highly redundant array design where multiple pairs of dishes all measure the same Fourier component. While this design reduces the total Fourier components which CHORD can measure, each component receives multiple samples increasing measurement precision. As a result, CHORD is able to calibrate individual antennas with accuracy, and acheive overal higher sensitivity compared to a non-redundant array design. \\
+\hl{
+CHORD is an interferometer, meaning it does not generate conventional images directly; instead, each pair of dishes measures a single component of the sky's 2-dimensional Fourier transform. Each Fourier component measures the intensity of a unique 2-dimensional sinusoid, with alternating sensitive and non-sensitive regions. Combining many Fourier components reconstructs a conventional image. CHORD consists of a highly redundant array, meaning multiple pairs of dishes measure the same Fourier components. This design reduces the total unique Fourier components, however, each component receives multiple independent samples, reducing measurement error and assisting with antenna calibration. As a result, CHORD is expected to achieve higher sensitivity compared to a non-redundant design.\\
+}
 
 As a drift-scan telescope, CHORD maintains a fixed pointing and measures continuously along the strip of right ascension (RA) that passes through its field of view as the Earth rotates. The full survey is then built up by repointing the dishes to different declinations. The full declination range accessible to CHORD is \( +20\deg < \delta < +80\deg\), which is planned to be fully covered over a 5-year survey \cite{vanderlindeCanadianHydrogenObservatory2019}. The full possible CHORD survey extent is plotted in Figure \ref{fig:chord_survey_extent}.\\
 
-The instrument will have a native spectral resolution of 195.3 kHz, with the option of unchannelizing to higher resolution using a two-stage polyphase filter bank (PFB) \cite{bij2026chord}. We henceforth assume a spectral resolution of \( 5 \kHz\), corresponding to a velocity resolution of \(5 \kms\) at \(300 \MHz\) and \(1 \kms\) at \(1500 \MHz\). Beam characteristics of CHORD and pathfinder are discussed in detail in section \ref{sec:angular_resolution}.\\
+The instrument will have a native spectral resolution of 195.3 kHz, with the option of upchannelizing to higher resolution using a two-stage polyphase filter bank (PFB) \cite{bij2026chord}. We henceforth assume a spectral resolution of \( 5 \kHz\), corresponding to a velocity resolution of \(5 \kms\) at \(300 \MHz\) and \(1 \kms\) at \(1500 \MHz\). Beam characteristics of CHORD and pathfinder are discussed in detail in section \ref{sec:angular_resolution}.\\
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{thesis/plots/chord_survey_range_subfigures.png}
-    \caption[CHORD survey range]{The full declination range accessible to CHORD, \( +20\deg < \delta < +80\deg\). The left plot shows celestial coordinates centered on the equator, the right plot shows Galactic coordinates centered on the Galactic plane.}
+    \caption[CHORD survey range]{The full declination range accessible to CHORD, \( +20\deg < \delta < +80\deg\). The left plot shows equatorial coordinates centered on the equator, the right plot shows Galactic coordinates centered on the Galactic plane.}
     \label{fig:chord_survey_extent}
 \end{figure}
