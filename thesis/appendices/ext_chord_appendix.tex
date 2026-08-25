@@ -3,7 +3,7 @@
 
 \subsection{Pairwise Comparisons}
 
-Pairwise comparisons were performed by looking at natural weighting, robust weighting with $R=0$, and uniform weighting for each permutation of extension CHORD locations. The combination B + D emerges as the best candidate in every weighting scheme. A combined metric of resolution times noise factor which attempts to balance the trade-off between resolution and sensitivity also shows that B + D is the best candidate across all weighting schemes. The pairwise comparisons are shown in figure \ref{fig:pairwise_comparisons}.
+Pairwise comparisons were performed by looking at natural weighting, robust weighting \citep{briggsHighFidelityDeconvolution1995} with $R=0$, and uniform weighting for each permutation of extension CHORD locations. The combination B + D emerges as the best candidate in every weighting scheme. A combined metric of resolution times noise factor, which attempts to balance the trade-off between resolution and sensitivity, also shows that B + D is the best candidate across all weighting schemes. The pairwise comparisons are shown in figure \ref{fig:pairwise_comparisons}.
 
 \begin{figure}[h]
     \centering
@@ -23,31 +23,31 @@ Pairwise comparisons were performed by looking at natural weighting, robust weig
     \label{fig:pairwise_comparisons}
 \end{figure}
 
-\subsection{UV Coverage of B + D}
+\subsection{\UV\ Coverage of B + D}
 
-A plot of the UV coverage of B, D, and B + D is shown in figure \ref{fig:uv_coverage_B_D} which shows the complementary nature of the two locations and that the combined UV coverage plot is well-filled.
+A plot of the \UV\  coverage of B, D, and B + D is shown in figure \ref{fig:uv_coverage_B_D}, which shows the complementary nature of the two locations and that the combined \UV\  coverage plot is well-filled.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{uv_coverage_B_D_BD.png}
-    \caption[UV coverage of locations B, D, and B + D]{UV coverage of locations core + B, core + D, and core + B + D configuration showing the complementary nature of the two locations.}
+    \caption[\UV\  coverage of locations B, D, and B + D]{\UV\  coverage of core + B, core + D, and core + B + D configurations showing the complementary nature of  locations B and D.}
     \label{fig:uv_coverage_B_D}
 \end{figure}
 
 \subsection{Beam Plots for Each Individual Location}
 
-The beam plots for each individual location plus the core CHORD array are shown in figures \ref{fig:beam_plots_A_C} and \ref{fig:beam_plots_D_G}. The plots show the beam using natural weighting. Also included is a plot of angular resolution versus noise factor for a range of Briggs robust weighting values from $+2$ (natural weighting) to $-2$ (uniform weighting).
+The beam plots for each individual location plus the core CHORD array are shown in figures \ref{fig:beam_plots_A_C} and \ref{fig:beam_plots_D_G}. The plots show the beam using natural weighting. Also included is a plot of angular resolution versus noise factor for a range of Briggs robust weighting parameter values from $R=+2$ (natural weighting) to $R=-2$ (uniform weighting).
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{v2_combined_results_A_C.png}
-    \caption[Beam plots for locations A, A2, B, and C]{Beam plots for locations A, A2, B and C showing uniform weighting, and a Briggs robust value sweep.}
+    \caption[Beam plots for locations A, A2, B, and C]{Beam plots for locations A, A2, B and C showing uniform weighting, and a Briggs robust parameter value sweep.}
     \label{fig:beam_plots_A_C}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{v2_combined_results_D_G.png}
-    \caption[Beam plots for locations D, E, F, and G]{Beam plots for locations D, E, F, and G showing uniform weighting, and a Briggs robust value sweep.}
+    \caption[Beam plots for locations D, E, F, and G]{Beam plots for locations D, E, F, and G showing uniform weighting, and a Briggs robust parameter value sweep.}
     \label{fig:beam_plots_D_G}
 \end{figure}
 
@@ -58,59 +58,59 @@ The beam plots for each location pair are shown in figures \ref{fig:combined_res
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{v2_combined_results_A_A2_A_D.png}
-    \caption[Beam plots for location pairs A+A2, A+B, A+C, and A+D]{Beam plots for location pairs A+A2, A+B, A+C, and A+D showing uniform weighting, and a Briggs robust value sweep.}
+    \caption[Beam plots for location pairs A+A2, A+B, A+C, and A+D]{Beam plots for location pairs A+A2, A+B, A+C, and A+D showing uniform weighting, and a Briggs robust parameter value sweep.}
     \label{fig:combined_results_A_A2_A_D}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{v2_combined_results_A_E_A2_B.png}
-    \caption[Beam plots for location pairs A+E, A+F, A+G, and A2+B]{Beam plots for location pairs A+E, A+F, A+G, and A2+B showing uniform weighting, and a Briggs robust value sweep.}
+    \caption[Beam plots for location pairs A+E, A+F, A+G, and A2+B]{Beam plots for location pairs A+E, A+F, A+G, and A2+B showing uniform weighting, and a Briggs robust parameter value sweep.}
     \label{fig:combined_results_A_E_A2_B}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{v2_combined_results_A2_C_A2_F.png}
-    \caption[Beam plots for location pairs A2+C, A2+D, A2+E, and A2+F]{Beam plots for location pairs A2+C, A2+D, A2+E, and A2+F showing uniform weighting, and a Briggs robust value sweep.}
+    \caption[Beam plots for location pairs A2+C, A2+D, A2+E, and A2+F]{Beam plots for location pairs A2+C, A2+D, A2+E, and A2+F showing uniform weighting, and a Briggs robust parameter value sweep.}
     \label{fig:combined_results_A2_C_A2_F}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{v2_combined_results_A2_G_B_E.png}
-    \caption[Beam plots for location pairs A2+G, B+C, B+D, and B+E]{Beam plots for location pairs A2+G, B+C, B+D, and B+E showing uniform weighting, and a Briggs robust value sweep.}
+    \caption[Beam plots for location pairs A2+G, B+C, B+D, and B+E]{Beam plots for location pairs A2+G, B+C, B+D, and B+E showing uniform weighting, and a Briggs robust parameter value sweep.}
     \label{fig:combined_results_A2_G_B_E}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{v2_combined_results_B_F_C_E.png}
-    \caption[Beam plots for location pairs B+F, B+G, C+D, and C+E]{Beam plots for location pairs B+F, B+G, C+D, and C+E showing uniform weighting, and a Briggs robust value sweep.}
+    \caption[Beam plots for location pairs B+F, B+G, C+D, and C+E]{Beam plots for location pairs B+F, B+G, C+D, and C+E showing uniform weighting, and a Briggs robust parameter value sweep.}
     \label{fig:combined_results_B_F_C_E}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{v2_combined_results_C_F_D_F.png}
-    \caption[Beam plots for location pairs C+F, C+G, D+E, and D+F]{Beam plots for location pairs C+F, C+G, D+E, and D+F showing uniform weighting, and a Briggs robust value sweep.}
+    \caption[Beam plots for location pairs C+F, C+G, D+E, and D+F]{Beam plots for location pairs C+F, C+G, D+E, and D+F showing uniform weighting, and a Briggs robust parameter value sweep.}
     \label{fig:combined_results_C_F_D_F}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{v2_combined_results_D_G_F_G.png}
-    \caption[Beam plots for location pairs D+G, E+F, E+G, and F+G]{Beam plots for location pairs D+G, E+F, E+G, and F+G showing uniform weighting, and a Briggs robust value sweep.}
+    \caption[Beam plots for location pairs D+G, E+F, E+G, and F+G]{Beam plots for location pairs D+G, E+F, E+G, and F+G showing uniform weighting, and a Briggs robust parameter value sweep.}
     \label{fig:combined_results_D_G_F_G}
 \end{figure}
 
-\subsection{UV Coverage and Beam Pattern for the Complete Array}
+\subsection{\UV\  Coverage and Beam Pattern for the Complete Array}
 
-UV coverage and uniform-weighted beam pattern for the complete array (incorporating locations A, B, C, D, E, F, G and the core array) is shown in figure \ref{fig:uv_coverage_and_beam_complete}. The resolution is 1.4 arcminutes in E-W and 1.5 arcminutes in N-S.
+\UV\  coverage and uniform-weighted beam pattern for the complete array (incorporating locations A, B, C, D, E, F, G and the core array) are shown in figure \ref{fig:uv_coverage_and_beam_complete}. The resolution is 1.4 arcminutes in the E$-$W direction and 1.5 arcminutes in the N$-$S direction.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{uv_coverage_and_beam_complete.png}
-    \caption[UV coverage and uniform-weighted beam pattern for the complete array including all candidate locations]{UV coverage and uniform-weighted beam pattern for the complete array incorporating all extension locations and the core array.}
+    \caption[\UV\  coverage and uniform-weighted beam pattern for the complete array including all candidate locations]{\UV\  coverage and uniform-weighted beam pattern for the complete array incorporating all extension locations and the core array.}
     \label{fig:uv_coverage_and_beam_complete}
 \end{figure}

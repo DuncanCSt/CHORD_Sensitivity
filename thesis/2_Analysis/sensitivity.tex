@@ -4,38 +4,37 @@ We derive the instrumental point source sensitivity of CHORD in \autoref{sec:sen
 
 \section{Point Source Sensitivity}
 \label{sec:sensitivity}
-The point source sensitivity of a radio interferometer is the minimum flux density of a point source that can be detected at a given signal-to-noise ratio (SNR). The standard approach is to choose an SNR of 1, in which case the sensitivity is equal to the Root-Mean-Square (RMS) noise. We will use the terms sensitivity and RMS noise interchangeably. The RMS noise can be theoretically computed using the radiometer equation \cite{condonEssentialRadioAstronomy2016}
+The point source sensitivity of a radio interferometer is the minimum flux density of a point source that can be detected at a given signal-to-noise ratio (SNR). The standard approach is to choose an SNR of 1, in which case the sensitivity is equal to the root-mean-square (RMS) noise. We will use the terms sensitivity and RMS noise interchangeably. The RMS noise can be theoretically computed using the radiometer equation \cite{condonEssentialRadioAstronomy2016}
 \begin{equation}
     \sigma_{\mathrm{RMS}, ~\mathrm{single~pol}}
-    = \frac{2kT_{sys}}{A_e\sqrt{N(N-1)~\Delta \nu ~\tau_{\mathrm{eff}}}},
+    = \frac{2kT_\mathrm{sys}}{A_e\sqrt{N(N-1)~\Delta \nu ~\tau_{\mathrm{eff}}}},
     \label{eq:radiometer_noise_rms}
 \end{equation}
-where \(k=1.38\times 10^{-23} \J \K^{-1}\) is the Boltzmann constant, \( T_{sys} = 30\K\) is the expected system temperature of each antenna, and \( A_e = \pi(D/2)^2\cdot0.5=14.14 \m^2\) is the effective collecting area assuming a \(50\%\) illumination efficiency \cite{SPIEpaper}. The remaining quantities are the bandwidth \(\Delta \nu\) in Hz, the number of antennas \(N\) and the effective integration time \(\tau_{\mathrm{eff}}\) in seconds, defined below.
+where \(k=1.38\times 10^{-23} \J \K^{-1}\) is the Boltzmann constant, \( T_\mathrm{sys} = 30\K\) is the expected system temperature of each antenna, and \( A_e = \pi(D/2)^2\cdot0.5=14.14 \m^2\) is the effective collecting area assuming a \(50\%\) illumination efficiency \cite{SPIEpaper}. The remaining quantities are the bandwidth \(\Delta \nu\) in Hz, the number of antennas \(N\) and the effective integration time \(\tau_{\mathrm{eff}}\) in seconds, defined below.
 
 The physical antenna parameters of $T_s$ and $A_e$ are typically combined into a single quantity called the system equivalent flux density (SEFD), defined as
 \begin{align}
-    SEFD &= \frac{2kT_{sys}}{A_e} \\
+    \mathrm{SEFD} &= \frac{2kT_\mathrm{sys}}{A_e} \\
     &= 5868 \Jy.
 \end{align}
-The SEFD, in units of flux density, represents the flux density of a point source that would produce the same measured power as the system noise.\\
+The SEFD, in units of janskys, represents the flux density of a point source that would produce the same measured power as the system noise.\\
 
-While equation \ref{eq:radiometer_noise_rms} provides RMS noise for a single polarization, CHORD will measure dual polarizations. The total intensity, denoted as a Stokes I measurement, combines both orthogonal polarizations. Since each polarization is independent, the RMS noise is reduced by a factor of \(\sqrt{2}\) due to the averaging of two independent noise contributions. Thus, the one sigma sensitivity for Stokes I can be expressed as
+While equation \ref{eq:radiometer_noise_rms} provides RMS noise for a single polarization, CHORD will measure dual polarizations. The total intensity, denoted as a Stokes~$I$ measurement, combines both orthogonal polarizations. Since each polarization is independent, the RMS noise is reduced by a factor of \(\sqrt{2}\) due to the averaging of two independent noise contributions. Thus, the one-sigma sensitivity for Stokes~$I$ can be expressed as
 \begin{equation}
 \sigma_{\mathrm{RMS}} = \frac{\mathrm{SEFD}}{\sqrt{2 \, \Delta \nu \, \tau_{\mathrm{eff}} \, N(N-1)}}.
 \label{noise_rms}
 \end{equation}
 
-% Defining the effective integration time
-Equation \ref{eq:radiometer_noise_rms} assumes that the source is directly in the center of the primary beam, which is the power response pattern produced by the dish geometry. However, CHORD is a drift scan telescope, meaning that instead of tracking a source of interest, it maintains a fixed pointing and sources move through the beam as the sky rotates overhead. We define the effective integration time \(\tau_{\mathrm{eff}}\) as the equivalent time that a source would need to spend in the center of the primary beam to accumulate the same total power as it does given its drift path.\\
+Equation \ref{eq:radiometer_noise_rms} assumes that the source is directly in the centre of the primary beam, which is the power response pattern produced by the dish geometry. However, CHORD is a drift scan telescope, meaning that instead of tracking a source of interest, it maintains a fixed pointing and sources move through the beam as the sky rotates overhead. We define the effective integration time \(\tau_{\mathrm{eff}}\) as the equivalent time that a source would need to spend in the centre of the primary beam to accumulate the same total power as it does given its drift path.\\
 
-The CHORD primary beam is an Airy disk which has response pattern
+The CHORD primary beam is an Airy disk, whose response pattern is given by
 \begin{equation}
-    A(\rho) = \left[\frac{2 J_1\!\left(\frac{\pi D f}{c}\sin\rho\right)}{\frac{\pi D f}{c}\sin\rho}\right]^2,
+    A(\rho) = \left[\frac{2 J_1\!\left(\frac{\pi D \nu}{c}\sin\rho\right)}{\frac{\pi D \nu}{c}\sin\rho}\right]^2,
 \end{equation}
-where $J_1$ is the first order Bessel function of the first kind, $D$ is the dish diameter, $f$ is the observing frequency, and $\rho$ is the angle from the beam center. The Full Width at Half Maximum (FWHM) of the Airy disk is given by 
+where $J_1$ is the first-order Bessel function of the first kind, $D$ is the dish diameter, $\nu$ is the observing frequency, and $\rho$ is the angle from the beam centre. The full width at half maximum (FWHM) of the Airy disk is given by 
 \begin{align}
-\    A\left(\frac{\rho_{\mathrm{FWHM}}}{2}\right) &= \frac{1}{2} \\
-\    \Rightarrow \rho_{\mathrm{FWHM}} &\approx 1.029 \frac{\lambda}{D}.
+    A\left(\frac{\rho_{\mathrm{FWHM}}}{2}\right) &= \frac{1}{2} \\
+    \Rightarrow \rho_{\mathrm{FWHM}} &\approx 1.029 \frac{\lambda}{D}.
 \end{align}
 For simplicity we will model the primary beam as a Gaussian with a matched FWHM and ignore the sidelobes. The Gaussian beam response is given by
 \begin{align}
@@ -49,7 +48,7 @@ where $\rho_{\FWHM} = 2 \sqrt{2 \ln 2} ~\sigma$ is the primary beam FWHM. A plot
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{thesis/plots/sensitivity/airy_vs_gaussian.png}
-    \caption[Comparison of Airy disk and Gaussian beam]{Comparison of the Airy disk and FWHM-matched Gaussian beam for observing frequencies of 400 and 1200 MHz, demonstrating that a Gaussian is a good approximation to the Airy disk.}
+    \caption[Comparison of Airy disk and Gaussian beam]{Comparison of the Airy disk and FWHM-matched Gaussian beam for observing frequencies of 400 and 1200~MHz, demonstrating that a Gaussian is a good approximation to the Airy disk.}
     \label{fig:airy_gaussian_comparison}
 \end{figure}
 
@@ -58,41 +57,41 @@ The radial distance \(\rho\) can be expressed in terms of the azimuth and zenith
     \rho(t) = \sqrt{\theta(t)^2 + \phi^2},
     \label{eq:radial_distance}
 \end{equation}
-where \(\theta(t)=\theta^*(t)-\theta_0\) and \( \phi=\phi^*-\phi_0\) are the offset angles in azimuth (EW) and zenith (NS) between the beam center \( (\theta_0, \phi_0) \) and a given sky location \(( \theta^*(t), \phi^*)\). We can further express the azimuth angle in terms of Earth's declination specific apparent angular velocity (\(\omega\)) as \( \theta^*(t) = t\cdot\omega\cos\phi_0\), and assume for simplicity that \( \theta_0 = 0\deg \) (that the azimuth angle is zero at time \(t=0\)). The radial distance from the beam center in terms of time and zenith offset is then
+where \(\theta(t)=\theta^*(t)-\theta_0\) and \( \phi=\phi^*-\phi_0\) are the offset angles in azimuth (EW) and zenith (NS) between the beam centre \( (\theta_0, \phi_0) \) and a given sky location \(( \theta^*(t), \phi^*)\). We can further express the azimuth angle in terms of Earth's declination-specific apparent angular velocity (\(\omega\)) as \( \theta^*(t) = t\cdot\omega\cos\phi_0\), and assume for simplicity that \( \theta_0 = 0\deg \) (that the azimuth angle is zero at time \(t=0\)). The radial distance from the beam centre in terms of time and zenith offset is then
 \begin{equation}
     \rho(t) = \sqrt{t^2\omega^2 \cos^2\phi_0 + \phi^2}.
     \label{eq:radial_distance_time}
 \end{equation}
 
-Making the tangent plane assumption we will ignore curvature and treat \( \theta, \phi \) as Cartesian coordinates. \hl{The primary beam power response for sources with a zenith angle offset \mbox{\(\phi\)} as a function of time is obtained by combining equations} \ref{eq:gaussian_beam} and \ref{eq:radial_distance_time} to yield
+Making the flat-sky approximation, we will ignore curvature over the small angle of the primary beam, and treat \( \theta, \phi \) as Cartesian coordinates. The primary beam power response for sources with a zenith angle offset \mbox{\(\phi\)} as a function of time is obtained by combining equations \ref{eq:gaussian_beam} and \ref{eq:radial_distance_time} to yield
 \begin{equation}
-    A(t, \phi) = \exp\left[-4\ln2~\frac{t^2\omega^2 \cos^2\phi_0 + \phi^2}{\theta_{\FWHM}^2 }\right].
+    A(t, \phi) = \exp\left[-4\ln2~\frac{t^2\omega^2 \cos^2\phi_0 + \phi^2}{\rho_{\FWHM}^2 }\right].
     \label{eq:primary_beam_time}
 \end{equation}
-The total power accumulated from a point source per day of drift scan is obtained by integrating equation \ref{eq:primary_beam_time}. \hl{During map making, a matched filter reconstructs a sky image by reweighting visibilities relative to the image center} \cite{hopkinsMatchedFilteringCanadian2026}. \hl{The reweighting is done using the primary beam response. As a result, the effective power accumulation is the integral of the square of the power response and not the total power accumulation}. Taking \(t=0\) to be when the source is directly over the beam with \(\theta(0) = 0 \), then the effective integration time, \( \tau_{\mathrm{eff}} \), which is the equivalent time that a source would spend in the center of the beam to accumulate the same effective power, is given by:
+The total power accumulated from a point source per day of drift scan is obtained by integrating equation \ref{eq:primary_beam_time}. During mapmaking, a matched filter reconstructs a sky image by reweighting visibilities relative to the image centre \cite{hopkinsMatchedFilteringCanadian2026}. The reweighting is done using the primary beam response. As a result, the effective power accumulation is the integral of the square of the power response and not the total power accumulation. Taking \(t=0\) to be when the source is directly over the beam with \(\theta(0) = 0 \), the effective integration time, \( \tau_{\mathrm{eff}} \), which is the equivalent time that a source would spend in the centre of the beam to accumulate the same effective power, is given by:
 \begin{align}
     \tau_{\mathrm{eff}} 
     &= \int_{-\infty}^\infty A^2(t)dt \\
-    &= \int_{-\infty}^\infty  \exp\left[-8\ln(2)~\frac{t^2\omega^2 \cos^2\phi_0 + \phi^2}{\theta_{\FWHM}^2 }\right] dt \\
-    &= \exp\left(-8\ln(2)\frac{\phi^2}{\theta_{\FWHM}^2}\right)\int_{-\infty}^\infty  \exp\left[-8\ln(2)~\frac{t^2\omega^2 \cos^2\phi_0}{\theta_{\FWHM}^2 }\right] dt\\
-    &= D(\phi)\sqrt{\frac{\pi}{8\ln(2)}}\frac{\theta_{\FWHM}}{\omega \cos\phi_0}.
+    &= \int_{-\infty}^\infty  \exp\left[-8\ln(2)~\frac{t^2\omega^2 \cos^2\phi_0 + \phi^2}{\rho_{\FWHM}^2 }\right] dt \\
+    &= \exp\left(-8\ln(2)\frac{\phi^2}{\rho_{\FWHM}^2}\right)\int_{-\infty}^\infty  \exp\left[-8\ln(2)~\frac{t^2\omega^2 \cos^2\phi_0}{\rho_{\FWHM}^2 }\right] dt\\
+    &= D(\phi)\sqrt{\frac{\pi}{8\ln(2)}}\frac{\rho_{\FWHM}}{\omega \cos\phi_0}.
     \label{tau_eff}
 \end{align}
-The factor \(D(\phi) = \exp\left(-8\ln(2)\frac{\phi^2}{\theta_{\FWHM}^2}\right)\) is a term in the range \(\left]0,1\right]\) accounting for the attenuation of sources outside the beam path.\\
+The factor \(D(\phi) = \exp\left(-8\ln(2)\frac{\phi^2}{\rho_{\FWHM}^2}\right)\) is a term in the range \(\left]0,1\right]\) accounting for the attenuation of sources outside the beam path.\\
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{thesis/plots/sensitivity/chord_primary_beam_attenuation.png}
-    \caption[CHORD primary beam attenuation]{CHORD primary beam attenuation factor \(D(\phi)\) vs zenith angle \(\phi\) for different frequencies, showing that lower frequencies have wider beams and thus less attenuation for sources outside the beam path.}
+    \caption[CHORD primary beam attenuation]{CHORD primary beam attenuation factor \(D(\phi)\) versus zenith angle \(\phi\) for different frequencies, showing that lower frequencies have wider beams and thus less attenuation for sources outside the beam path.}
     \label{fig:primary_beam_attenuation}
 \end{figure}
 
 The total RMS noise is obtained by combining equations \ref{noise_rms} and \ref{tau_eff} which yields:
 \begin{equation}
-    \sigma_{\RMS} = \frac{SEFD}{\sqrt{2 ~\Delta\nu~N(N-1) }}~\sqrt{\frac{2\sqrt{2\ln(2)}~\omega~\cos\phi_0}{\sqrt{\pi}~\theta_{\FWHM}~D(\phi)}}
+    \sigma_{\RMS} = \frac{\mathrm{SEFD}}{\sqrt{2 ~\Delta\nu\,N(N-1) }}\,\sqrt{\frac{2\sqrt{2\ln(2)}\,\omega\,\cos\phi_0}{\sqrt{\pi}\,\rho_{\FWHM}\,D(\phi)}}
 \end{equation}
 This can be simplified and expressed in radians as:
 \begin{equation}
-    \sigma_{\RMS}~[Jy/Beam] = \frac{SEFD}{143}~\sqrt{\frac{~\cos\phi_0}{\Delta\nu[Hz]~N(N-1)~\theta_{\FWHM}[\text{rad}] ~D(\phi)}}
+    \sigma_{\RMS}\left[\mathrm{Jy\,beam^{-1}}\right] = \frac{\mathrm{SEFD}}{143}\,\sqrt{\frac{\cos\phi_0}{\Delta\nu[\mathrm{Hz}]\,N(N-1)\,\rho_{\FWHM}[\text{rad}]\,D(\phi)}}
 \label{eq:combined_point_source_sensitivity}
 \end{equation}
 
@@ -108,9 +107,9 @@ This can be simplified and expressed in radians as:
 The angular resolution is the smallest angular scale that can be resolved by the telescope. Angular resolution is derived from the synthesized beam, which is the combined sensitivity profile after correlating all antennas. The standard angular resolution metric is the synthesized beam FWHM, which is given by
 \begin{equation}
     \label{eq:angular_resolution}
-    \theta_{FWHM} = \frac{\lambda}{d_{EW}}, \quad \phi_{FWHM} = \frac{\lambda}{d_{NS}},
+    \theta_\mathrm{FWHM} = \frac{\lambda}{b_\mathrm{EW}}, \quad \phi_\mathrm{FWHM} = \frac{\lambda}{b_\mathrm{NS}},
 \end{equation}
-where \(d_{EW}\) and \(d_{NS}\) are the distances of the longest baselines in the east-west and north-south directions, respectively and \(\lambda\) is the observing wavelength which can be converted to frequency by \(\nu = c/\lambda\). We plot the angular resolution versus frequency for both CHORD and Pathfinder in figure \ref{fig:angular_resolution} showing that angular resolution improves at higher frequencies due to the shorter wavelength.
+where \(b_\mathrm{EW}\) and \(b_\mathrm{NS}\) are the distances of the longest baselines in the east-west and north-south directions, respectively, and \(\lambda\) is the observing wavelength that can be converted to frequency by \(\nu = c/\lambda\). We plot the angular resolution versus frequency for both CHORD and Pathfinder in figure \ref{fig:angular_resolution} showing that angular resolution improves at higher frequencies due to the shorter wavelength.
 
 \begin{figure}
     \centering
@@ -119,16 +118,16 @@ where \(d_{EW}\) and \(d_{NS}\) are the distances of the longest baselines in th
     \label{fig:angular_resolution}
 \end{figure}
 
-We approximate the synthesized beam as a 2D Gaussian with FWHM equal to the angular resolution in azimuth (\(\theta_{\mathrm{FWHM}}\)) and zenith (\(\phi_{\mathrm{FWHM}}\)) directions. The synthesized beam's Gaussian profile is given by
+We approximate the synthesized beam as a 2-dimensional Gaussian with FWHM equal to the angular resolution in the azimuth (\(\theta_{\mathrm{FWHM}}\)) and zenith (\(\phi_{\mathrm{FWHM}}\)) directions. The synthesized beam's Gaussian profile is given by
 \begin{equation}
     A(\theta, \phi) = \exp\left[-4\ln2~\left (\frac{\theta}{\theta_{\mathrm{FWHM}}} \right )^2 \right] \exp\left[-4\ln2~\left( \frac{\phi}{\phi_{\mathrm{FWHM}}}\right)^2\right].
 \end{equation}
-The synthesized beam solid angle \(\Omega_s\) is the area subtended by the beam. The solid angle is obtained by integrating the beam response over all angles. \hl{Making the tangent plane approximation we treat} \(\theta\) and \(\phi\) as Cartesian coordinates. For a Gaussian beam, the synthesized beam solid angle is given by
+The synthesized beam solid angle \(\Omega_s\) is the area subtended by the beam. In spherical coordinates, the differential solid angle is $d\Omega_s = \sin\theta \, d\theta \, d\phi$. For integrations over small solid angles, we can ignore the sky curvature and treat $\theta$ and $\phi$ as Cartesian coordinates (the synthesized beam ranges from $\sim 1^\circ$ to $\sim 0.1^\circ$ making the small angle approximation valid). The differential solid angle without curvature is $d\Omega_s \approx d\theta \, d\phi$. The synthesized beam solid angle is obtained by integrating the Gaussian beam over all angles, given by
 \begin{align}
     \Omega_s
-    &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}A(\theta, \phi)~ d\theta d\phi \\
-    &= \int_{-\infty}^{\infty}\exp\left[-4\ln2~\left (\frac{\theta}{\theta_{\mathrm{FWHM}}} \right )^2 \right]~ d\theta \int_{-\infty}^{\infty}\exp\left[-4\ln2~\left (\frac{\phi}{\phi_{\mathrm{FWHM}}} \right )^2 \right]d\phi \\
-    &= \frac{\pi ~\theta_{\FWHM}~\phi_{\FWHM}}{4\ln2}.
+    &\approx \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}A(\theta, \phi)\, d\theta d\phi \\
+    &\approx \int_{-\infty}^{\infty}\exp\left[-4\ln2\,\left (\frac{\theta}{\theta_{\mathrm{FWHM}}} \right )^2 \right]\, d\theta \int_{-\infty}^{\infty}\exp\left[-4\ln2\,\left (\frac{\phi}{\phi_{\mathrm{FWHM}}} \right )^2 \right]d\phi \\
+    &\approx \frac{\pi \,\theta_{\FWHM}\,\phi_{\FWHM}}{4\ln2}.
 \end{align}
 
 \section{Brightness Sensitivity}
@@ -145,7 +144,7 @@ Surface brightness sensitivity, which is a measure of the telescope's ability to
     \label{fig:surface_brightness_sensitivity}
 \end{figure}
 
-It is then converted to a brightness temperature by applying the Raleigh-Jeans limit
+It is then converted to a brightness temperature by applying the Rayleigh-Jeans limit
 \begin{equation}
 \label{eq:brightness_temperature_sensitivity}
 \sigma_T [\text{K}] = \frac{\sigma_\Omega c^2}{2k\nu^2}.
@@ -157,31 +156,31 @@ It is then converted to a brightness temperature by applying the Raleigh-Jeans l
     \caption[CHORD and Pathfinder brightness temperature sensitivity]{CHORD and Pathfinder brightness temperature sensitivity (\(\sigma_T\)) using a 5 kHz bandwidth and one observation day. Sensitivity is still worse at higher frequencies but the trend is less pronounced compared to surface brightness sensitivity.}
     \label{fig:surface_temperature_5kHz}
 \end{figure}
-Figures \ref{fig:angular_resolution} and \ref{fig:surface_temperature_5kHz} show the inverse relationship between angular resolution and surface temperature sensitivity across the 300-1500 MHz band, representing the trade-off between beam size and integration time.  Sensitivity at higher frequency can be improved at the cost of angular resolution by convolving the final image to a larger beam, however low frequency angular resolution cannot be improved without increasing the maximum baseline length. Sensitivity is also improved at higher declinations due to the longer effective integration time, as sources move slower across the sky and spend more time within the primary beam. The sensitivity maps for a single observing day are shown in figure \ref{fig:system_only_noise}.
+Figures \ref{fig:angular_resolution} and \ref{fig:surface_temperature_5kHz} show the inverse relationship between angular resolution and surface temperature sensitivity across the 300--1500~MHz band, representing the trade-off between beam size and integration time.  Sensitivity at higher frequency can be improved at the cost of angular resolution by convolving the final image to a larger beam, however low-frequency angular resolution cannot be improved without increasing the maximum baseline length. Sensitivity is also improved at higher declinations due to the longer effective integration time, as sources move slower across the sky and spend more time within the primary beam. The sensitivity maps for a single observing day are shown in figure \ref{fig:system_only_noise}.
 
 \begin{figure}
     \centering
     \textbf{Brightness Temperature Sensitivity Maps Assuming Empty Sky}
     \includegraphics[width=1\linewidth]{thesis/plots/sensitivity/system_only_noise.png}
-    \caption[CHORD Brightness Temperature Sensitivity maps assuming empty sky]{Brightness temperature sensitivity (\(\sigma_T\)) in the CHORD declination range for different frequencies assuming empty sky. Sensitivity improves at high declination due to the longer effective integration time, and at lower frequencies due to the wider primary beam.}
+    \caption[CHORD brightness temperature sensitivity maps assuming empty sky]{Brightness temperature sensitivity (\(\sigma_T\)) in the CHORD declination range for different frequencies assuming empty sky. Sensitivity improves at high declination due to the longer effective integration time, and at lower frequencies due to the wider primary beam.}
     \label{fig:system_only_noise}
 \end{figure}
 
 \section{Sensitivity with Radio Background}
 \label{sec:background_noise}
 
-Radio background contributes unwanted noise which degrades sensitivity. Radio background is received by the antenna and adds linearly to the total antenna temperature. Therefore, RMS noise from background is calculated in the same method as equation \eqref{eq:combined_point_source_sensitivity}. In other words, SEFD for combined background and internal RMS noise is taken to be the sum of antenna temperature and the background temperature,
+Radio background contributes unwanted noise, which degrades sensitivity. Radio background is received by the antenna and adds linearly to the total antenna temperature. Therefore, RMS noise from background is calculated in the same method as equation \eqref{eq:combined_point_source_sensitivity}. In other words, SEFD for combined background and internal RMS noise is taken to be the sum of antenna temperature and the background temperature,
 \begin{equation}
-    SEFD = \frac{2k(T_{\text{ant}}+T_{\text{sky}})}{A_e}.
+    \mathrm{SEFD} = \frac{2k(T_{\text{ant}}+T_{\text{sky}})}{A_e}.
 \end{equation}
 
-The radio background is obtained from the Global Sky Model \citep{zhengImprovedModelDiffuse2017}. This model incorporates all dominant sources of radio emission into a single all-sky map of brightness temperature from 10 MHz to 5THz. The model is accesable through the pygdsm package \citep{pricePyGDSMPythonInterface2016}. Plots are created using mollweide projections in Galactic coordinates using the healpy package \citep{zoncaHealpyEqualArea2019}. The full sky background maps are shown in figure \ref{fig:Radio_background_maps}.
+The radio background is obtained from the Global Sky Model \citep{zhengImprovedModelDiffuse2017}. This model incorporates all dominant sources of radio emission into a single all-sky map of brightness temperature from 10~MHz to 5~THz. The model is accessible through the \texttt{pygdsm} package \citep{pricePyGDSMPythonInterface2016}. Plots are created using Mollweide projections in Galactic coordinates using the \texttt{healpy} package \citep{zoncaHealpyEqualArea2019}. The full-sky background maps are shown in figure \ref{fig:Radio_background_maps}.
 
 \begin{figure}
     \centering
     \textbf{Radio Background Maps}
     \includegraphics[width=1\linewidth]{thesis/plots/sensitivity/background_only.png}
-    \caption[Radio background maps]{Radio background maps in Galactic coordinates centered on the CHORD field of view, measured in brightness temperature (K) for four different frequencies. Background is highest at lower frequency and along the galactic plane, particularly towards the galactic center. }
+    \caption[Radio background maps]{Radio background maps in Galactic coordinates centred on the CHORD field of view, measured in brightness temperature (K) for four different frequencies. Background is highest at lower frequency and along the Galactic plane, particularly towards the Galactic centre. }
     \label{fig:Radio_background_maps}
 \end{figure}
 
@@ -191,6 +190,6 @@ Maps of total sensitivity, which incorporates both system RMS noise and radio ba
     \centering
     \textbf{Total Brightness Temperature Sensitivity Maps}
     \includegraphics[width=1\linewidth]{thesis/plots/sensitivity/total_noise.png}
-    \caption[CHORD Brightness Temperature Sensitivity maps with radio background]{Total CHORD brightness temperature sensitivity maps measured in millikelvin (mK) for four different frequencies, showing the spatial and frequency dependence of sensitivity.}
+    \caption[CHORD brightness temperature sensitivity maps with radio background]{Total CHORD brightness temperature sensitivity maps measured in millikelvins (mK) for four different frequencies, showing the spatial and frequency dependence of sensitivity.}
     \label{fig:total_noise_maps}
 \end{figure}
