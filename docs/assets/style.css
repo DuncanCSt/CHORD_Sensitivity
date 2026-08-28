@@ -205,20 +205,65 @@ header p {
 .page-intro h2 { font-size: 1.3rem; margin: 0 0 0.3rem; }
 .page-intro p { margin: 0; color: var(--muted); }
 
-/* landing page: the slide deck embedded below the cards */
-.presentation {
+/* landing page: the slide deck and the full thesis, embedded below the cards
+   in a two-tab switcher */
+.documents {
   max-width: 1400px;
   margin: 2.25rem auto 0;
 }
-.presentation h2 { font-size: 1.3rem; margin: 0 0 0.6rem; }
+
+.tabs {
+  display: flex;
+  gap: 0.4rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.9rem;
+}
+
+.tab {
+  appearance: none;
+  background: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 0.55rem 1.1rem;
+  /* buttons do not inherit the body font, so restate it to match .card h2 */
+  font: inherit;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  /* pull down by the tablist's 1px rule so the active tab can cover it */
+  margin-bottom: -1px;
+  transition: color 0.15s, background 0.15s;
+}
+.tab:hover { color: var(--fg); background: var(--panel); }
+.tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.tab[aria-selected="true"] {
+  color: var(--accent);
+  background: var(--bg);
+  border-color: var(--border);
+  /* paint over the tablist rule beneath this tab so the tab and its panel read
+     as one continuous surface */
+  box-shadow: 0 1px 0 0 var(--bg);
+  cursor: default;
+}
+
+.tab-panel[hidden] { display: none; }
 
 .pdf-frame {
   width: 100%;
-  aspect-ratio: 16 / 9;     /* the deck is 16:9, so this avoids letterboxing */
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--panel);
 }
+
+/* the deck is 16:9, so this avoids letterboxing */
+.pdf-frame--slides { aspect-ratio: 16 / 9; }
+
+/* the thesis is portrait, where a 16:9 frame would shrink a page to an
+   unreadable strip; a tall viewport keyed to the window suits it better */
+.pdf-frame--thesis { height: 85vh; min-height: 420px; }
 
 /* iOS Safari (and some mobile browsers) will not render a PDF in an iframe, so
    the direct link is always offered underneath rather than only as fallback

@@ -31,15 +31,85 @@
     </a>
   </nav>
 
-  <!-- presentation.pdf is copied in here by presentation/build.sh; it has to
-       live under docs/ because that is the GitHub Pages publishing root. -->
-  <section class="presentation">
-    <h2>Thesis presentation</h2>
-    <iframe class="pdf-frame" src="presentation.pdf"
-            title="Radio Recombination Line Forecasts with CHORD &mdash; slides"></iframe>
-    <p class="pdf-fallback">
-      Slides not displaying? <a href="presentation.pdf">Open the PDF directly</a>.
-    </p>
+  <!-- presentation.pdf and thesis.pdf are copied in here by presentation/build.sh
+       and build.sh respectively; both have to live under docs/ because that is
+       the GitHub Pages publishing root, so an ../ reference would not resolve
+       once the site is deployed. Both copies must be committed to appear. -->
+  <section class="documents">
+    <div class="tabs" role="tablist" aria-label="Thesis documents">
+      <button class="tab" type="button" role="tab" id="tab-slides"
+              aria-controls="panel-slides" aria-selected="true">
+        Thesis presentation
+      </button>
+      <button class="tab" type="button" role="tab" id="tab-thesis"
+              aria-controls="panel-thesis" aria-selected="false" tabindex="-1">
+        Full thesis
+      </button>
+    </div>
+
+    <div class="tab-panel" id="panel-slides" role="tabpanel" aria-labelledby="tab-slides">
+      <iframe class="pdf-frame pdf-frame--slides" src="presentation.pdf"
+              title="Radio Recombination Line Forecasts with CHORD &mdash; slides"></iframe>
+      <p class="pdf-fallback">
+        Slides not displaying? <a href="presentation.pdf">Open the PDF directly</a>.
+      </p>
+    </div>
+
+    <div class="tab-panel" id="panel-thesis" role="tabpanel" aria-labelledby="tab-thesis" hidden>
+      <!-- data-src rather than src: the thesis PDF is far larger than the deck,
+           so it is only fetched once this tab is actually opened. -->
+      <iframe class="pdf-frame pdf-frame--thesis" data-src="thesis.pdf"
+              title="Radio recombination line forecasts with CHORD &mdash; full thesis"></iframe>
+      <p class="pdf-fallback">
+        Thesis not displaying? <a href="thesis.pdf">Open the PDF directly</a>.
+      </p>
+    </div>
   </section>
+
+  <script>
+    // Two-tab switcher for the embedded PDFs. Follows the ARIA tabs pattern:
+    // arrow keys move between tabs, and only the selected tab is in the tab
+    // order so Tab steps straight from the tablist into the panel.
+    (function () {
+      const tablist = document.querySelector('.tabs[role="tablist"]');
+      if (!tablist) return;
+      const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+
+      function select(tab, moveFocus) {
+        tabs.forEach(function (t) {
+          const isTarget = t === tab;
+          t.setAttribute('aria-selected', String(isTarget));
+          t.tabIndex = isTarget ? 0 : -1;
+          document.getElementById(t.getAttribute('aria-controls')).hidden = !isTarget;
+        });
+
+        // Swap data-src to src the first time a lazily-loaded panel is shown.
+        const frame = document
+          .getElementById(tab.getAttribute('aria-controls'))
+          .querySelector('iframe[data-src]');
+        if (frame) {
+          frame.src = frame.dataset.src;
+          delete frame.dataset.src;
+        }
+
+        if (moveFocus) tab.focus();
+      }
+
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener('click', function () { select(tab, false); });
+        tab.addEventListener('keydown', function (event) {
+          let next = null;
+          if (event.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+          else if (event.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+          else if (event.key === 'Home') next = tabs[0];
+          else if (event.key === 'End') next = tabs[tabs.length - 1];
+          if (next) {
+            event.preventDefault();
+            select(next, true);
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
