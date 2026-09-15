@@ -101,14 +101,9 @@
     %pagebordercolor={1 0.7 0.7},
 	pdfborder={0 0 0},%remove boxes around links
 	colorlinks=false,
-    pagebackref,linktocpage%
+    linktocpage%
     ]{hyperref}
-%%% The following change how the the back-references text is typeset in a
-%%% bibliography when `backref' or `pagebackref' are used
-\usepackage{color}
-\definecolor{greytext}{gray}{0.5}
-\renewcommand\backrefpagesname{\(\rightarrow\) pages}
-\renewcommand\backref{\textcolor{greytext} \backrefpagesname\ }
+%%% Back-references disabled (see hyperref pagebackref option above)
 
 % Permanent style changes
 % =======================
